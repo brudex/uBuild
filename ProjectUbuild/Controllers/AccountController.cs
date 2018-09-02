@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using ProjectUbuild.Models;
+using uBuildCore;
+using uBuildCore.Models;
 
 namespace ProjectUbuild.Controllers
 {
@@ -90,10 +92,19 @@ namespace ProjectUbuild.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var ghlclient = new GhlClientProfile();
+                    ghlclient.UserName = model.UserName;
+                    ghlclient.Email = model.Email;
+                    ghlclient.Firstname = model.Firstname;
+                    ghlclient.Lastname = model.Lastname;
+                    ghlclient.Othernames = model.Othernames;
+                    ghlclient.Phonenumber = model.Phonenumber.FormatMobile();
+                    ghlclient.ApplicationId = user.Id;
+                    DbHandler.Instance.SaveGhlClientProfile(ghlclient);
                     await SignInAsync(user, isPersistent: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -101,7 +112,6 @@ namespace ProjectUbuild.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
                     return RedirectToAction("Index", "Home");
                 }
                 else

@@ -59,6 +59,28 @@ namespace ProjectUbuild.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "User Name")]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+         public string Firstname { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string Lastname { get; set; }
+
+        [Required]
+        [Display(Name = "Other Names")]
+        public string Othernames { get; set; }
+        
+        [Required]
+        [Display(Name = "Phone Number")]
+        [StringLength(10, ErrorMessage = "The {0} must be at 10 characters long(0244000111).", MinimumLength = 10)]
+        public string Phonenumber { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

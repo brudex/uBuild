@@ -21,12 +21,12 @@ namespace ProjectUbuild
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            InitializeDb();
+            ///InitializeDb();
         }
 
         private void InitializeDb()
         {
-            Bcf<GhlClientProfile>.Migrate();
+            Bcf<ClientAuths>.Migrate();
             BrudexCodeFirst.RunMigrations("DefaultConnection",true);
         }
     }

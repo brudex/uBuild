@@ -96,14 +96,14 @@ namespace ProjectUbuild.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var ghlclient = new GhlClientProfile();
-                    ghlclient.UserName = model.UserName;
-                    ghlclient.Email = model.Email;
-                    ghlclient.Firstname = model.Firstname;
-                    ghlclient.Lastname = model.Lastname;
-                    ghlclient.Othernames = model.Othernames;
-                    ghlclient.Phonenumber = model.Phonenumber.FormatMobile();
-                    ghlclient.ApplicationId = user.Id;
+                    var ghlclient = new ClientAuths();
+                    ghlclient.EmailAddress = model.Email;
+                    ghlclient.FirstName = model.Firstname;
+                    ghlclient.LastName = model.Lastname;
+                    ghlclient.OtherNames = model.Othernames;
+                    ghlclient.MobileNumber = model.Phonenumber.FormatMobile();
+                    ghlclient.EncPassword = user.Id;
+                    ghlclient.AuthorizerName = "system";
                     DbHandler.Instance.SaveGhlClientProfile(ghlclient);
                     await SignInAsync(user, isPersistent: false);
 

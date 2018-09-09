@@ -14,6 +14,13 @@ namespace ProjectUbuild.Controllers
             return View();
         }
 
+        // GET: Loan
+        public ActionResult Apply()
+        {
+            return View();
+        }
+
+        
         
     }
 }

@@ -1774,6 +1774,56 @@
     <Content Include="pages\scss\_modules.scss" />
     <Content Include="pages\scss\_responsive.scss" />
     <Content Include="pages\scss\_var.scss" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\account-activity.controller.js" />
+    <Content Include="Scripts\app\account-statement.controller.js" />
+    <Content Include="Scripts\app\account-summary.controller.js" />
+    <Content Include="Scripts\app\account.controller.js" />
+    <Content Include="Scripts\app\add-beneficiaries.controller.js" />
+    <Content Include="Scripts\app\add-billing-account.controller.js" />
+    <Content Include="Scripts\app\airtime-topup.controller.js" />
+    <Content Include="Scripts\app\app.module.js" />
+    <Content Include="Scripts\app\billpayment.controller.js" />
+    <Content Include="Scripts\app\bootstrap-select.js" />
+    <Content Include="Scripts\app\cardrequest.controller.js" />
+    <Content Include="Scripts\app\changepassword.controller.js" />
+    <Content Include="Scripts\app\changepin.controller.js" />
+    <Content Include="Scripts\app\chequebookrequest.list.controller.js" />
+    <Content Include="Scripts\app\custom.currency.filter.js" />
+    <Content Include="Scripts\app\dashboard.controller.js" />
+    <Content Include="Scripts\app\ebiller.controller.js" />
+    <Content Include="Scripts\app\generate-zvouchertoken.controller.js" />
+    <Content Include="Scripts\app\inter-transfer.controller.js" />
+    <Content Include="Scripts\app\interbank-transfer.controller.js" />
+    <Content Include="Scripts\app\intra-transfer.controller.js" />
+    <Content Include="Scripts\app\investment-transfer.controller.js" />
+    <Content Include="Scripts\app\list-beneficiaries.controller.js" />
+    <Content Include="Scripts\app\list-billing-accounts.controller.js" />
+    <Content Include="Scripts\app\listrequest.controller.js" />
+    <Content Include="Scripts\app\main.controller.js" />
+    <Content Include="Scripts\app\newrequest.controller.js" />
+    <Content Include="Scripts\app\scheduled-transfers.controller.js" />
+    <Content Include="Scripts\app\services.factory.js" />
+    <Content Include="Scripts\app\session-data.factory.js" />
+    <Content Include="Scripts\app\title.case.filter.js" />
+    <Content Include="Scripts\app\transfer-history-bydate.controller.js" />
+    <Content Include="Scripts\app\transfer-history.controller.js" />
+    <Content Include="Scripts\app\visa-card-transfer.controller.js" />
+    <Content Include="Scripts\app\wallet-transfer.controller.js" />
+    <Content Include="Scripts\app\zvoucher.controller.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jQuery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.idle.min.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Views\Loan\Apply.cshtml" />
     <Content Include="Views\tes.html" />
     <Content Include="Web.config" />
@@ -1814,7 +1864,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

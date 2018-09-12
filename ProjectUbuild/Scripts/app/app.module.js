@@ -28,8 +28,6 @@
                 controller: 'AccountSummary',
                 controllerAs: 'vm'
             });
-
-
     }
 
 })();

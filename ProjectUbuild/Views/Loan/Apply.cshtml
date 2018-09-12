@@ -6,204 +6,232 @@
 
 <h2>Apply for Loan</h2>
 
-          <!-- START CONTAINER FLUID -->
-          <div class=" container-fluid   container-fixed-lg">
-            <div id="rootwizard" class="m-t-50">
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
+
+    
+
+
+<div data-ng-app="ubuild.app">
+
+    <div class="container-fluid container-fixed-lg" data-ng-controller="LoanApplicationController as vm">
+        <div id="rootwizard" class="m-t-50">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
                 <li class="nav-item">
-                  <a class="active" data-toggle="tab" href="#tab1" role="tab"><i class="fa fa-shopping-cart tab-icon"></i> <span>Loan Type</span></a>
+                    <a class="active" data-toggle="tab" href="#tab1" role="tab"><i class="fa fa-shopping-cart tab-icon"></i> <span>Loan Type</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-shopping-cart tab-icon"></i> <span>Options Type</span></a>
+                    <a class="" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-shopping-cart tab-icon"></i> <span>Check Eligibility </span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="" data-toggle="tab" href="#tab3" role="tab"><i class="fa fa-truck tab-icon"></i> <span>Check Eligibility</span></a>
+                    <a class="" data-toggle="tab" href="#tab3" role="tab"><i class="fa fa-truck tab-icon"></i> <span> Options Type</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-credit-card tab-icon"></i> <span>Complete Information</span></a>
+                    <a class="" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-credit-card tab-icon"></i> <span>Complete Information</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="" data-toggle="tab" href="#tab5" role="tab"><i class="fa fa-check tab-icon"></i> <span>Thank You</span></a>
+                    <a class="" data-toggle="tab" href="#tab5" role="tab"><i class="fa fa-check tab-icon"></i> <span>Thank You</span></a>
                 </li>
-              </ul>
-              <!-- Tab panes -->
-              
-                
-                <div class="tab-content">
+            </ul>
+            <!-- Tab panes -->
+            
+            <div class="tab-content">
                 <div class="tab-pane padding-20 sm-no-padding active slide-left" id="tab1">
-                  <div class="row row-same-height">                   
-                    <div class="col-md-6">
-                      <div class="padding-30 sm-padding-5">
-                        <div data-pages="card" class="card card-default" id="card-basic">
-                          <div class="card-header  ">
-                            <div class="card-title">
-                              <h3>
-                                <div class="checkbox check-success checkbox-circle">
-                                  <input type="checkbox" value="1" id="fullhouse-check" name="loan-type">
-                                  <label for="fullhouse-check"> Full House</label>
+                    <div class="row row-same-height">
+                        <form>
+
+                            <div class="col-md-6">
+                                <div class="padding-30 sm-padding-5">
+                                    <div data-pages="card" class="card card-default" id="card-basic">
+                                        <div class="card-header  ">
+                                            <div class="card-title">
+                                                <h3>
+                                                    <div class="checkbox check-success checkbox-circle">
+                                                        <input type="radio" value="fullhouse" id="fullhouse-check" name="loan-type" data-ng-model="vm.applyModel">
+                                                        <label for="fullhouse-check"> Full House</label>
+                                                    </div>
+                                                </h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
-                              </h3>
                             </div>
-                            <div class="card-controls">
-                            </div>
-                          </div>                      
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                      <div class="padding-30 sm-padding-5">                        
-                        <div data-pages="card" class="card card-default" id="card-basic">
-                          <div class="card-header  ">
-                            <div class="card-title">
-                              <h3>
-                                <div class="checkbox check-success checkbox-circle">
-                                  <input type="checkbox" value="1" id="phase-check" name="loan-type">
-                                  <label for="phase-check"> Phase</label>
+                            <div class="col-md-6">
+                                <div class="padding-30 sm-padding-5">
+                                    <div data-pages="card" class="card card-default" id="card-basic">
+                                        <div class="card-header  ">
+                                            <div class="card-title">
+                                                <h3>
+                                                    <div class="checkbox check-success checkbox-circle">
+                                                        <input type="radio" value="phase" id="phase-check" name="loan-type" data-ng-model="vm.applyModel">
+                                                        <label for="phase-check"> Phase</label>
+                                                    </div>
+                                                </h3>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
-                              </h3>
                             </div>
-                            <div class="card-controls">
-                            </div>
-                          </div>
-                       
-                        </div>
-                      </div>
+                        </form>
                     </div>
-                  </div>
                 </div>
-                  <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab2">
+
+                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab2">
                     <div class="row row-same-height">
-                      <div class="col-md-8 b-r b-dashed b-grey ">
-                       
-                        <h4>LOAD HOUSE SELECTION OR PHASE TYPES
-                        </h4> 
-                      
-                      </div>
-                     
-                    </div>
-                  </div>
-                  <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab3">
-                    <div class="row row-same-height">
-                      <div class="col-md-8 b-r b-dashed b-grey ">
-                       
-                        <h4>LOAD ELIGIBILITY CALCULATOR TYP BASE ON PREVIOUS TAB SELECTION
-                        </h4> 
-                      
-                      </div>
-                     
-                    </div>
-                  </div>
-                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab4">
-                  <div class="row">
-                    <div class="col-md-4 b-r b-dashed b-grey "> 
-                     
-                      <h4>Account Info</h4>
-                        <form class="" role="form">
-                          <div class="form-group form-group-default required">
-                            <label>Full Name</label>
-                            <input type="email" class="form-control" >
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group form-group-default">
-                                <label>Account Number</label>
-                                <input type="text" class="form-control" >
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group form-group-default">
-                                <label>Customer ID</label>
-                                <input type="text" class="form-control">
-                              </div>
-                            </div>
-                          </div>                           
-                        </form> 
-                      
-                    </div>
-                    <div class="col-md-6">
-                      <h4>Complete Loan Form</h4>
-                      
-                      <form role="form">
-                        <div class="form-group form-group-default required">
-                          <label>Applying For</label>
-                          <input type="text" class="form-control" value="PHASE" readonly="" >
-                        </div>                       
-                        <div class="form-group form-group-default required">
-                          <label>For Phase</label>
-                          <input type="text" class="form-control" value="PHASE" readonly="" >
-                        </div>                     
-                        <div class="form-group">
-                          <label>Loan Amount</label>
-                          <input type="email" class="form-control" required="">
+                        <div class="col-md-8 b-r b-dashed b-grey ">
+
+                            <h4>
+                                LOAD ELIGIBILITY CALCULATOR TYP BASE ON PREVIOUS TAB SELECTION
+                            </h4>
+
                         </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <label>Loan Tenure</label>
-                              <select class="form-control" required="">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                              </select>
+
+                    </div>
+                </div>
+
+
+                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab3">
+                    <div class="row row-same-height">
+                        <div class="col-md-8 b-r b-dashed b-grey ">
+
+                            <div class="panel panel-transparent">
+                                <div class="panel-body">
+                                    <div class="row m-t-10" data-ng-repeat="item in vm.fixtureFittings">
+                                        <div class="col-xs-8 col-lg-9 bg-master-light">
+                                            <p class="pull-left no-margin p-t-10 p-b-10 font-montserrat all-caps semi-bold small"> <span data-ng-bind="item"></span> </p>
+                                            <p class="pull-right no-margin p-t-10 p-b-10">
+                                                <div class="checkbox check-success  ">
+                                                    <input type="checkbox" checked="checked" value="1" id="checkbox2">
+                                                    <label for="checkbox2"></label>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                              <label>Tenure Unit</label>
-                              <select class="form-control" required="">
-                                <option value="Year">Years</option>
-                                <option value="Month">Months</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>                      
-                      </form> 
-                    </div> 
-                  </div>
+
+
+                            <h4>
+                                LOAD  PHASE TYPES
+                            </h4>
+                        </div>
+
+                        <div class="col-md-8 b-r b-dashed b-grey ">
+                            <h4>
+                                LOAD HOUSE SELECTION OR PHASE TYPES
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab4">
+                    <div class="row">
+                        <div class="col-md-4 b-r b-dashed b-grey ">
+                            <h4>Account Info</h4>
+                            <form class="" role="form">
+                                <div class="form-group form-group-default required">
+                                    <label>Full Name</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Account Number</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Customer ID</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Complete Loan Form</h4>
+                            <form role="form">
+                                <div class="form-group form-group-default required">
+                                    <label>Applying For</label>
+                                    <input type="text" class="form-control" value="PHASE" readonly="">
+                                </div>
+                                <div class="form-group form-group-default required">
+                                    <label>For Phase</label>
+                                    <input type="text" class="form-control" value="PHASE" readonly="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Loan Amount</label>
+                                    <input type="email" class="form-control" required="">
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Loan Tenure</label>
+                                            <select class="form-control" required="">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Tenure Unit</label>
+                                            <select class="form-control" required="">
+                                                <option value="Year">Years</option>
+                                                <option value="Month">Months</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab5">
-                  <h1>Thank you for your loan application. Your ULAIN information is <b>1234</b> .</h1>
+                    <h1>Thank you for your loan application. Your ULAIN information is <b>1234</b> .</h1>
                 </div>
                 <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
-                  <ul class="pager wizard no-style">
-                    <li class="next">
-                      <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
-                        <span>Next</span>
-                      </button>
-                    </li>
-                    <li class="next finish hidden">
-                      <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
-                        <span>Finish</span>
-                      </button>
-                    </li>
-                    <li class="previous first hidden">
-                      <button class="btn btn-default btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
-                        <span>First</span>
-                      </button>
-                    </li>
-                    <li class="previous">
-                      <button class="btn btn-default btn-cons pull-right" type="button">
-                        <span>Previous</span>
-                      </button>
-                    </li>
-                  </ul>
+                    <ul class="pager wizard no-style">
+                        <li class="next">
+                            <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+                                <span>Next</span>
+                            </button>
+                        </li>
+                        <li class="next finish hidden">
+                            <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                <span>Finish</span>
+                            </button>
+                        </li>
+                        <li class="previous first hidden">
+                            <button class="btn btn-default btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                <span>First</span>
+                            </button>
+                        </li>
+                        <li class="previous">
+                            <button class="btn btn-default btn-cons pull-right" type="button">
+                                <span>Previous</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
                 <div class="wizard-footer padding-20 bg-master-light">
-                  <p class="small hint-text pull-left no-margin">
-                   </p>
-                   
-                  <div class="clearfix"></div>
+                    <p class="small hint-text pull-left no-margin">
+                    </p>
+
+                    <div class="clearfix"></div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
+</div>        
           
-          <!-- END CONTAINER FLUID -->
      
         

@@ -68,7 +68,8 @@
     <Compile Include="Dbhandler.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="Models\GhlClientProfile.cs" />
+    <Compile Include="Models\ClientAuths.cs" />
+    <Compile Include="Models\ClientInfos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestHandler.cs" />
   </ItemGroup>

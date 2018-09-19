@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "FaQs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">FAQs</h2>
+                <p class="lead mb0">Frequently asked questions</p>
+            </div>
+            <div class="col-md-6 text-right hidden-xs hidden-sm">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                    </li>
+                    <li class="active">FaQs</li>
+                </ol>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+
+<section style="top:-80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                
+                <div class="card-group horizontal" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingOne">
+                            <h4 class="card-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="False" aria-controls="collapseOne">
+                                    1. Am I eligible to take a loan?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="collapse" role="tabcard" aria-labelledby="headingOne">
+                            <div class="card-block">
+                                You can check your eligibility here
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingTwo">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    2. What is the maximum amount of money I can take.?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="collapse" role="tabcard" aria-labelledby="headingTwo">
+                            <div class="card-block">
+                                You can take a loan up to $105,000
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingThree">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    3. I am building the house myself , Can i take a loan to complete it?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="collapse" role="tabcard" aria-labelledby="headingThree">
+                            <div class="card-block">
+                                Yes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end of text tabs-->
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>

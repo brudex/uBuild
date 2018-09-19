@@ -50,11 +50,11 @@ namespace uBuildCore
         }
 
 
-        public void SaveGhlClientProfile(GhlClientProfile profile)
+        public void SaveGhlClientProfile(ClientAuths auths)
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                conn.Insert(profile);
+                conn.Insert(auths);
             }
         }
     }

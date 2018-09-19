@@ -187,6 +187,7 @@
     <Compile Include="Controllers\Api\LoanApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1835,6 +1836,7 @@
     <Content Include="Views\Loan\Eligibility.cshtml" />
     <Content Include="Views\Account\Login_bck.cshtml" />
     <Content Include="Views\Account\Register_bck.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

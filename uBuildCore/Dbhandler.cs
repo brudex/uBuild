@@ -57,6 +57,14 @@ namespace uBuildCore
             }
         }
 
+        public void SaveGhlClientInfos(ClientInfos auths)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                conn.Insert(auths);
+            }
+        }
+
         public List<FittingsFixtures> GetFittingsFixtures()
         {
             using (var conn = GetOpenDefaultDbConnection())

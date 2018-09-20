@@ -1,11 +1,9 @@
 ﻿@{
     ViewBag.Title = "title";
 }
-  
-
- <h2>Complete Your Profile</h2>
-<div class="panel panel-transparent">
-    <div class="panel-body">
+<h2>Complete Your Profile</h2>
+<div class="panel panel-transparent" data-ng-app="ubuild.app">
+    <div class="panel-body" data-ng-controller="UpdateProfileController as vm">
         <form id="form-project" role="form" autocomplete="off" novalidate="novalidate">
             <p>Basic Information</p>
             <div class="form-group-attached">
@@ -14,19 +12,19 @@
                     <div class="col-sm-3">
                         <div class="form-group form-group-default required" aria-required="true">
                             <label>Title</label>
-                            <input type="text" class="form-control" name="Title" required="" aria-required="true">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.Title"  name="Title" required="" aria-required="true">
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default required" aria-required="true">
                             <label>First name</label>
-                            <input type="text" class="form-control" name="FirstName" required="" aria-required="true">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="" aria-required="true">
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default">
                             <label>Middle name</label>
-                            <input type="text" class="form-control" name="MiddleName">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -52,14 +50,14 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default">
-                            <label>Date of birth name</label>
-                            <input type="text" class="form-control" name="lastName">
+                            <label>Date of birth </label>
+                            <input type="text" class="form-control" name="DateOfBirth">
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default">
                             <label>Place of birth</label>
-                            <input type="text" class="form-control" name="lastName">
+                            <input type="text" class="form-control"  name="PlaceOfBirth">
                         </div>
                     </div>
                 </div>
@@ -76,9 +74,9 @@
                         <label>Gender</label>
                         <div class="form-group">
                             <div class="radio radio-success">
-                                <input type="radio" value="male" name="optionyes" id="male" aria-invalid="false">
+                                <input type="radio" value="male" name="Gender"  aria-invalid="false">
                                 <label for="male">Male</label>
-                                <input type="radio" checked="checked" value="female" name="optionyes" id="female">
+                                <input type="radio" checked="checked" value="female" name="Gender">
                                 <label for="female">Female</label>
                             </div>
                         </div>
@@ -251,10 +249,7 @@
 
 
             <div class="form-group-attached">
-                <p class="m-t-10">Employment Information</p>
-
-
-                 
+                <p class="m-t-10">Employment Information</p> 
                 <div class="row clearfix">
                     <div class="col-sm-3">
                         <div class="form-group form-group-default required" aria-required="true">
@@ -377,27 +372,13 @@
                         </div>
                     </div>
                     
-                </div>
+                </div> 
 
-
-                
-
-            </div>
-
-             
-
-
+            </div> 
  
-        <div class="pull-left">
-                <div class="checkbox check-success  ">
-                    <input type="checkbox" checked="checked" value="1" id="checkbox-agree">
-                    <label for="checkbox-agree">
-                        I hereby certify that the information above is true and accurate
-                    </label>
-                </div>
-            </div>
+       
             <br>
-            <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-success" type="submit" data-ng-click="vm.">Submit</button>
              <div class="popover fade top in" role="tooltip" id="popover21638" style="top: 32px; left: 136.875px; display: block;"><div class="arrow" style="left: 50%;"></div><h3 class="popover-title" style="display: none;"></h3><div class="popover-content">This field is required.</div></div>
         </form>
     </div>

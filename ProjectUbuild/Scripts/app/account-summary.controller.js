@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict'; 
      angular
-    .module('ubuild.app')
+    .module('ubuild')
     .controller('AccountSummary', AccountSummary);
     AccountSummary.$inject = ['brudexservices','sessionService', '$state'];
     function AccountSummary(services,sessionService, state) {

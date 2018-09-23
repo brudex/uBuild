@@ -82,5 +82,15 @@ namespace uBuildCore
                 return list;
             }
         }
+
+        public ClientAuths GetClientAuthByEmail(string email)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<ClientAuths>(f => f.EmailAddress, Operator.Eq, email);
+                var item = conn.GetList<ClientAuths>(predicate).FirstOrDefault();
+                return item;
+            }
+        }
     }
 }

@@ -17,7 +17,11 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public  ServiceResponse SaveProfile([FromBody]JObject value)
         {
+            var email = User.Identity.Name;
+            var clientAuth = DbHandler.Instance.GetClientAuthByEmail(email);
             var infos = JsonConvert.DeserializeObject<ClientInfos>(value.ToString());
+            infos.CreatedDate = DateTime.Now;
+            infos.ClientId = clientAuth.RecordId;
              DbHandler.Instance.SaveGhlClientInfos(infos);
             var response = new ServiceResponse
             {

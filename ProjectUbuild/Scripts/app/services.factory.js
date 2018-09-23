@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('ubuild.app')
+        .module('ubuild')
         .factory('brudexservices', DataService);
     DataService.$inject = ['$http', '$location', '$window'];
     function DataService($http, $location,$window) {
@@ -9,9 +9,7 @@
             gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
             getHouseImages: getData('/api/LoanApi/GetHouseImages'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
-            getRequests: doAction('get-request-list'),
-            getCustomerEmail: doAction('customer-email'),
-            updateRequestStatus: doAction('update-request-status')
+             
         }; 
 
         function postData(endpoint) {
@@ -23,7 +21,7 @@
                 var url = baseUrl + endpoint;
                  doPost(url,data, function (err, response) {
                    if (err) {
-                        toastr.error(err);
+                        console.error(err);
                         return;
                     }
                     callback(response.data);
@@ -35,7 +33,7 @@
             return function (callback) {
                  doGet(url, function (err, response) {
                     if (err) {
-                        toastr.error(err);
+                        console.error(err);
                         return;
                     }
                     callback(response.data);

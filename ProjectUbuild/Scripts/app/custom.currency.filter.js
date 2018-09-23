@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ubuild.app')
+        .module('ubuild')
         .filter('customCurrency', customCurrencyFilter);
     customCurrencyFilter.$inject = ['$filter'];
     function customCurrencyFilter($filter) {

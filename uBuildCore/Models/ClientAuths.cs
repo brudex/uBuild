@@ -50,7 +50,7 @@ namespace uBuildCore.Models
          
         public String AuthorizerName { get; set; }
 
-        public DateTime AuthorizedDate { get; set; }
+        public DateTime? AuthorizedDate { get; set; }
 
     }
  

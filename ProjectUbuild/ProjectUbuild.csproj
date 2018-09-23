@@ -184,19 +184,20 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\LoanApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoanApplicationModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\animate.css" />
-    <Content Include="assets\css\flexslider.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\style.min.css" />
     <Content Include="assets\foundry\css\bootstrap.css" />
@@ -840,7 +841,6 @@
     <Content Include="assets\img\social\quote.jpg" />
     <Content Include="assets\img\widget-hero.png" />
     <Content Include="assets\img\wm-logo.svg" />
-    <Content Include="assets\js\app.js" />
     <Content Include="assets\js\bootgrid.js" />
     <Content Include="assets\js\calendar.js" />
     <Content Include="assets\js\calendar_lang.js" />
@@ -848,8 +848,6 @@
     <Content Include="assets\js\calendar_month.js" />
     <Content Include="assets\js\card.js" />
     <Content Include="assets\js\charts.js" />
-    <Content Include="assets\js\Controllers\EligibilityCtrl.js" />
-    <Content Include="assets\js\Controllers\index.js" />
     <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\datatables.js" />
     <Content Include="assets\js\demo.js" />
@@ -859,11 +857,8 @@
     <Content Include="assets\js\gallery.js" />
     <Content Include="assets\js\google_map.js" />
     <Content Include="assets\js\icon.js" />
-    <Content Include="assets\js\jquery.easing.min.js" />
-    <Content Include="assets\js\main.js" />
     <Content Include="assets\js\nestables.js" />
     <Content Include="assets\js\notifications.js" />
-    <Content Include="assets\js\pages.min.js" />
     <Content Include="assets\js\scripts.js" />
     <Content Include="assets\js\slider.js" />
     <Content Include="assets\js\tables.js" />
@@ -874,8 +869,6 @@
     <Content Include="assets\plugins\alerts\sweet-alert.css" />
     <Content Include="assets\plugins\alerts\sweet-alert.js" />
     <Content Include="assets\plugins\alerts\sweet-alert.min.js" />
-    <Content Include="assets\plugins\angular\angular.js" />
-    <Content Include="assets\plugins\angular\angular.min.js" />
     <Content Include="assets\plugins\animate.min.css" />
     <Content Include="assets\plugins\bootstrap-checkbox\css\bootstrap-checkbox.css" />
     <Content Include="assets\plugins\bootstrap-checkbox\img\Tick.png" />
@@ -1774,6 +1767,65 @@
     <Content Include="assets\plugins\moment\moment.min.js" />
     <Content Include="assets\plugins\noui-slider\jquery.nouislider.css" />
     <Content Include="assets\plugins\noui-slider\jquery.nouislider.min.js" />
+    <Content Include="assets\plugins\nvd3\lib\cie.js" />
+    <Content Include="assets\plugins\nvd3\lib\colorbrewer.js" />
+    <Content Include="assets\plugins\nvd3\lib\crossfilter.js" />
+    <Content Include="assets\plugins\nvd3\lib\crossfilter.min.js" />
+    <Content Include="assets\plugins\nvd3\lib\d3.v2.js" />
+    <Content Include="assets\plugins\nvd3\lib\d3.v2.min.js" />
+    <Content Include="assets\plugins\nvd3\lib\d3.v3.js" />
+    <Content Include="assets\plugins\nvd3\lib\fisheye.js" />
+    <Content Include="assets\plugins\nvd3\lib\hive.js" />
+    <Content Include="assets\plugins\nvd3\lib\horizon.js" />
+    <Content Include="assets\plugins\nvd3\lib\sankey.js" />
+    <Content Include="assets\plugins\nvd3\nv.d3.min.css" />
+    <Content Include="assets\plugins\nvd3\nv.d3.min.js" />
+    <Content Include="assets\plugins\nvd3\src\core.js" />
+    <Content Include="assets\plugins\nvd3\src\interactiveLayer.js" />
+    <Content Include="assets\plugins\nvd3\src\intro.js" />
+    <Content Include="assets\plugins\nvd3\src\models\axis.js" />
+    <Content Include="assets\plugins\nvd3\src\models\backup\bullet.js" />
+    <Content Include="assets\plugins\nvd3\src\models\backup\bulletChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\boilerplate.js" />
+    <Content Include="assets\plugins\nvd3\src\models\bullet.js" />
+    <Content Include="assets\plugins\nvd3\src\models\bulletChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\cumulativeLineChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\discreteBar.js" />
+    <Content Include="assets\plugins\nvd3\src\models\discreteBarChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\distribution.js" />
+    <Content Include="assets\plugins\nvd3\src\models\historicalBar.js" />
+    <Content Include="assets\plugins\nvd3\src\models\historicalBarChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\indentedTree.js" />
+    <Content Include="assets\plugins\nvd3\src\models\legend.js" />
+    <Content Include="assets\plugins\nvd3\src\models\line.js" />
+    <Content Include="assets\plugins\nvd3\src\models\lineChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\linePlusBarChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\linePlusBarWithFocusChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\lineWithFisheye.js" />
+    <Content Include="assets\plugins\nvd3\src\models\lineWithFisheyeChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\lineWithFocusChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBar.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBarChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBarHorizontal.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBarHorizontalChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBarTimeSeries.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiBarTimeSeriesChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\multiChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\ohlcBar.js" />
+    <Content Include="assets\plugins\nvd3\src\models\parallelCoordinates.js" />
+    <Content Include="assets\plugins\nvd3\src\models\pie.js" />
+    <Content Include="assets\plugins\nvd3\src\models\pieChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\scatter.js" />
+    <Content Include="assets\plugins\nvd3\src\models\scatterChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\scatterPlusLineChart.js" />
+    <Content Include="assets\plugins\nvd3\src\models\sparkline.js" />
+    <Content Include="assets\plugins\nvd3\src\models\sparklinePlus.js" />
+    <Content Include="assets\plugins\nvd3\src\models\stackedArea.js" />
+    <Content Include="assets\plugins\nvd3\src\models\stackedAreaChart.js" />
+    <Content Include="assets\plugins\nvd3\src\nv.d3.css" />
+    <Content Include="assets\plugins\nvd3\src\outro.js" />
+    <Content Include="assets\plugins\nvd3\src\tooltip.js" />
+    <Content Include="assets\plugins\nvd3\src\utils.js" />
     <Content Include="assets\plugins\owl-carousel\assets\owl.carousel.css" />
     <Content Include="assets\plugins\owl-carousel\owl.carousel.js" />
     <Content Include="assets\plugins\owl-carousel\owl.carousel.min.js" />
@@ -1968,8 +2020,6 @@
     <Content Include="pages\js\pages.min.js" />
     <Content Include="pages\js\pages.social.js" />
     <Content Include="pages\js\pages.social.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\js\charts.json" />
     <Content Include="assets\js\company_revenue_chart.json" />
     <Content Include="assets\js\countries.json" />
@@ -2169,6 +2219,21 @@
     <Content Include="pages\scss\_modules.scss" />
     <Content Include="pages\scss\_responsive.scss" />
     <Content Include="pages\scss\_var.scss" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\account-activity.controller.js" />
+    <Content Include="Scripts\app\account-summary.controller.js" />
+    <Content Include="Scripts\app\account.controller.js" />
+    <Content Include="Scripts\app\app.module.js" />
+    <Content Include="Scripts\app\bootstrap-select.js" />
+    <Content Include="Scripts\app\loanapplication.controller.js" />
+    <Content Include="Scripts\app\custom.currency.filter.js" />
+    <Content Include="Scripts\app\main.controller.js" />
+    <Content Include="Scripts\app\services.factory.js" />
+    <Content Include="Scripts\app\title.case.filter.js" />
     <Content Include="assets\foundry\css\less\theme.less" />
     <Content Include="assets\foundry\fonts\et-line.eot" />
     <Content Include="assets\foundry\fonts\et-line.ttf" />
@@ -2216,19 +2281,16 @@
     <Content Include="assets\foundry\video\video.webm" />
     <Content Include="assets\foundry\video\video2.ogg" />
     <Content Include="assets\foundry\video\video2.webm" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jQuery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.idle.min.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Views\Loan\Apply.cshtml" />
     <Content Include="Views\tes.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -2244,7 +2306,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
@@ -2266,9 +2327,7 @@
     <Content Include="Views\Loan\Eligibility.cshtml" />
     <Content Include="Views\Account\Login_bck.cshtml" />
     <Content Include="Views\Account\Register_bck.cshtml" />
-    <Content Include="Views\Home\MyApplications.cshtml" />
-    <Content Include="Views\Home\FaQs.cshtml" />
-    <Content Include="Views\Home\Guidelines.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2277,7 +2336,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

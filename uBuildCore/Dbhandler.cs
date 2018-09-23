@@ -4,8 +4,7 @@ using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using DapperExtensions;
 using uBuildCore.Models;
 
@@ -55,6 +54,24 @@ namespace uBuildCore
             using (var conn = GetOpenDefaultDbConnection())
             {
                 conn.Insert(auths);
+            }
+        }
+
+        public List<FittingsFixtures> GetFittingsFixtures()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<FittingsFixtures>().ToList();
+                return list;
+            }
+        }
+        
+        public List<HouseImage> GetHouseImages()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<HouseImage>().ToList();
+                return list;
             }
         }
     }

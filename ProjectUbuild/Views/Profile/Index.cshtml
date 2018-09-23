@@ -1,390 +1,444 @@
 ﻿@{
     ViewBag.Title = "title";
 }
-<h2>Complete Your Profile</h2>
-<div class="panel panel-transparent" ng-app="ubuild">
-    <div class="panel-body" data-ng-controller="UpdateProfileController as vm">
-        <form id="form-project" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
-            <p>Basic Information</p>
-            <div class="form-group-attached">
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
-                            <label>Title</label>
-                            <input type="text" class="form-control" data-ng-model="vm.profile.Title"  name="Title" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
-                            <label>First name</label>
-                            <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
-                            <label>Middle name</label>
-                            <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
-                            <label>Last name</label>
-                            <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default " >
-                            <label>Maiden name</label>
-                            <input type="text" class="form-control" name="firstName" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Mothers Maiden name</label>
-                            <input type="text" class="form-control" name="firstName" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Date of birth </label>
-                            <input type="text" class="form-control" name="DateOfBirth">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Place of birth</label>
-                            <input type="text" class="form-control"  name="PlaceOfBirth">
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="form-group-attached">
-
-                <p class="m-t-10"></p>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <label>Gender</label>
-                        <div class="form-group">
-                            <div class="radio radio-success">
-                                <input type="radio" value="male" name="Gender"  aria-invalid="false">
-                                <label for="male">Male</label>
-                                <input type="radio" checked="checked" value="female" name="Gender">
-                                <label for="female">Female</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <label>Marital Status</label>
-                        <div class="form-group">
-                            <div class="radio radio-success">
-                                <input type="radio" value="male" name="optionyes" id="male" aria-invalid="false">
-                                <label for="male">Single</label>
-                                <input type="radio" checked="checked" value="female" name="optionyes" id="female">
-                                <label for="female">Married</label>
-                                <input type="radio" checked="checked" value="female" name="optionyes" id="female">
-                                <label for="female">Divorced</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Nationality</label>
-                            <input type="text" class="form-control" name="Nationality" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Occupation</label>
-                            <input type="text" class="form-control" name="Occupation" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Mobile Phone</label>
-                            <input type="text" class="form-control" name="MobilePhone">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Email Address</label>
-                            <input type="text" class="form-control" name="EmailAddress">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-            <div class="form-group-attached">
-
-                <p class="m-t-10">Residential Information</p>
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Resident Permit No</label>
-                            <input type="text" class="form-control" name="ResidentPermitNo" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Permit Issue Date</label>
-                            <input type="text" class="form-control" name="PermitIssueDate" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Permit Issue Place</label>
-                            <input type="text" class="form-control" name="PermitIssuePlace">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>PermitExpiryDate</label>
-                            <input type="text" class="form-control" name="PermitExpiryDate">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row clearfix">
-
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Residential Address</label>
-                            <input type="text" class="form-control" name="ResidentialAddress" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Social Security No</label>
-                            <input type="text" class="form-control" name="SocialSecurityNo" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Postal Address</label>
-                            <input type="text" class="form-control" name="PostalAddress">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>City Of Residence</label>
-                            <input type="text" class="form-control" name="CityOfResidence">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Country Of Residence</label>
-                            <input type="text" class="form-control" name="CountryOfResidence" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Residential Phone</label>
-                            <input type="text" class="form-control" name="ResidentialPhone" required="" >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="form-group-attached">
-                <p class="m-t-10">Identification</p>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>ID Card Type</label>
-                            <input type="text" class="form-control" name="IdCardType" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>ID Card Number </label>
-                            <input type="text" class="form-control" name="IdCardNumber" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>ID Issue Date</label>
-                            <input type="text" class="form-control" name="IdIssueDate">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>ID Issue Country</label>
-                            <input type="text" class="form-control" name="IdIssueCountry">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>ID Expiry Date</label>
-                            <input type="text" class="form-control" name="ResidentialAddress" required="" >
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="form-group-attached">
-                <p class="m-t-10">Employment Information</p> 
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Employment Status</label>
-                            <input type="text" class="form-control" name="EmploymentStatus" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Employer Name </label>
-                            <input type="text" class="form-control" name="EmployerName" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Employer City </label>
-                            <input type="text" class="form-control" name="EmployerCity">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Employer Country </label>
-                            <input type="text" class="form-control" name="EmployerCountry">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Employer Type OfBiz </label>
-                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Employer Phone .No </label>
-                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Employer Email </label>
-                            <input type="text" class="form-control" name="EmployerEmail">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>Years at current Employment </label>
-                            <input type="text" class="form-control" name="CurrentEmplLength">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>Monthly Salary </label>
-                            <input type="text" class="form-control" name="MonthlySalary" required="" >
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-          
-
-               <div class="form-group-attached">
-                <p class="m-t-10">Emergency Contact</p>
-
-
-                 
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>EmergencyContactTitle </label>
-                            <input type="text" class="form-control" name="EmergencyContactTitle" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>EmergencyContactFirstName </label>
-                            <input type="text" class="form-control" name="EmergencyContactFirstName" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>EmergencycontactLastName </label>
-                            <input type="text" class="form-control" name="EmergencycontactLastName">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>EmergencyConactPhone  </label>
-                            <input type="text" class="form-control" name="EmergencyConactPhone">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row clearfix">
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>EmergencyContactAddress </label>
-                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default required" >
-                            <label>EEmergencyContactEmail </label>
-                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" >
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group form-group-default">
-                            <label>EmergencyContactRship </label>
-                            <input type="text" class="form-control" name="EmployerEmail">
-                        </div>
-                    </div>
-                    
-                </div> 
-
-            </div> 
- 
-       
-            <br>
-            <button class="btn btn-success" type="submit">Submit</button>
-             <div class="popover fade top in" role="tooltip" id="popover21638" style="top: 32px; left: 136.875px; display: block;"><div class="arrow" style="left: 50%;"></div><h3 class="popover-title" style="display: none;"></h3><div class="popover-content">This field is required.</div></div>
-        </form>
+<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Complete Your Profile</h2>
+                <p class="lead mb0">Please update your profile.</p>
+            </div>
+            <div class="col-md-6 text-right hidden-xs hidden-sm">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                    </li>
+                    <li class="active">My Profile</li>
+                </ol>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
 
-          
 
 
- 
+
+<section style="padding-top: 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <form id="msform" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Basic Information</li>
+                        <li>Residential Info. </li>
+                        <li>Identification</li>
+                        <li>Employment</li>
+                        <li>Emergency contact</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">Basic Information</h2>
+                        <div class="row clearfix">
+                            <div class="form-group-attached">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
+                                        <label>First name</label>
+                                        <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="form-group-attached">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
+                                        <label>Middle name</label>
+                                        <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
+                                        <label>Last name</label>
+                                        <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group-attached">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default ">
+                                        <label>Maiden name</label>
+                                        <input type="text" class="form-control" name="firstName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Mothers Maiden name</label>
+                                        <input type="text" class="form-control" name="firstName" required="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Date of birth </label>
+                                        <input type="text" class="form-control" name="DateOfBirth">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Place of birth</label>
+                                        <input type="text" class="form-control" name="PlaceOfBirth">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Gender</label>
+                                    <div class="form-group">
+                                        <div class="radio radio-success">
+                                            <input type="radio" value="male" name="Gender" aria-invalid="false">
+                                            <label for="male">Male</label>
+                                            <input type="radio" checked="checked" value="female" name="Gender">
+                                            <label for="female">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Marital Status</label>
+                                    <div class="form-group">
+                                        <div class="radio radio-success">
+                                            <input type="radio" value="male" name="optionyes" id="male" aria-invalid="false">
+                                            <label for="male">Single</label>
+                                            <input type="radio" checked="checked" value="female" name="optionyes" id="female">
+                                            <label for="female">Married</label>
+                                            <input type="radio" checked="checked" value="female" name="optionyes" id="female">
+                                            <label for="female">Divorced</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Nationality</label>
+                                        <input type="text" class="form-control" name="Nationality" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Occupation</label>
+                                        <input type="text" class="form-control" name="Occupation" required="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Mobile Phone</label>
+                                        <input type="text" class="form-control" name="MobilePhone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Email Address</label>
+                                        <input type="text" class="form-control" name="EmailAddress">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Select a loan type to continue." />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Residential Information</h2>
+                        <div class="row">
+                            <div class="form-group-attached">
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Resident Permit No</label>
+                                            <input type="text" class="form-control" name="ResidentPermitNo" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Permit Issue Date</label>
+                                            <input type="text" class="form-control" name="PermitIssueDate" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Permit Issue Place</label>
+                                            <input type="text" class="form-control" name="PermitIssuePlace">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>PermitExpiryDate</label>
+                                            <input type="text" class="form-control" name="PermitExpiryDate">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row clearfix">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Residential Address</label>
+                                            <input type="text" class="form-control" name="ResidentialAddress" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Social Security No</label>
+                                            <input type="text" class="form-control" name="SocialSecurityNo" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Postal Address</label>
+                                            <input type="text" class="form-control" name="PostalAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>City Of Residence</label>
+                                            <input type="text" class="form-control" name="CityOfResidence">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Country Of Residence</label>
+                                            <input type="text" class="form-control" name="CountryOfResidence" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Residential Phone</label>
+                                            <input type="text" class="form-control" name="ResidentialPhone" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Complete form to continue." />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Identification</h2>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                    <label>ID Card Type</label>
+                                    <input type="text" class="form-control" name="IdCardType" required="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                    <label>ID Card Number </label>
+                                    <input type="text" class="form-control" name="IdCardNumber" required="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-group-default">
+                                    <label>ID Issue Date</label>
+                                    <input type="text" class="form-control" name="IdIssueDate">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-group-default">
+                                    <label>ID Issue Country</label>
+                                    <input type="text" class="form-control" name="IdIssueCountry">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-group-default required">
+                                    <label>ID Expiry Date</label>
+                                    <input type="text" class="form-control" name="ResidentialAddress" required="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Employment</h2>
+                        <div class="row">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Employment Status</label>
+                                        <input type="text" class="form-control" name="EmploymentStatus" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Employer Name </label>
+                                        <input type="text" class="form-control" name="EmployerName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Employer City </label>
+                                        <input type="text" class="form-control" name="EmployerCity">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Employer Country </label>
+                                        <input type="text" class="form-control" name="EmployerCountry">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Employer Type OfBiz </label>
+                                        <input type="text" class="form-control" name="EmployerTypeOfBiz" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Employer Phone .No </label>
+                                        <input type="text" class="form-control" name="EmployerPhoneNo" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Employer Email </label>
+                                        <input type="text" class="form-control" name="EmployerEmail">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Years at current Employment </label>
+                                        <input type="text" class="form-control" name="CurrentEmplLength">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>Monthly Salary </label>
+                                        <input type="text" class="form-control" name="MonthlySalary" required="">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Emergency Contact</h2>
+                        <div class="form-group-attached">
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>EmergencyContactTitle </label>
+                                        <input type="text" class="form-control" name="EmergencyContactTitle" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>EmergencyContactFirstName </label>
+                                        <input type="text" class="form-control" name="EmergencyContactFirstName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>EmergencycontactLastName </label>
+                                        <input type="text" class="form-control" name="EmergencycontactLastName">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>EmergencyConactPhone  </label>
+                                        <input type="text" class="form-control" name="EmergencyConactPhone">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>EmergencyContactAddress </label>
+                                        <input type="text" class="form-control" name="EmployerTypeOfBiz" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label>EEmergencyContactEmail </label>
+                                        <input type="text" class="form-control" name="EmployerPhoneNo" required="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>EmergencyContactRship </label>
+                                        <input type="text" class="form-control" name="EmployerEmail">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+
+                        <input type="button" name="previous" style="width: 200px" class="previous action-button" value="Submit" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+
+
+
+
+
+
+
+
+
+

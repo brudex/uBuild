@@ -1744,7 +1744,7 @@ body.menu-pin .overlay .overlay-brand {
 /* Overlay Search
 ------------------------------------
 */
-.overlay {
+.pages-overlay {
   position: fixed;
   left: 0;
   right: 0;
@@ -1755,35 +1755,35 @@ body.menu-pin .overlay .overlay-brand {
   padding-left: 64px;
   overflow: auto;
 }
-.overlay .inline-block {
-  display: inline-block;
-}
-.overlay .overlay-brand {
-  margin-left: 7px;
-}
-.overlay > div {
-  width: 100%;
-  height: 260px;
-  display: block;
-  overflow: hidden;
-}
-.overlay .has-results {
-  overflow: visible;
-}
-.overlay .overlay-search {
-  font-weight: 700;
-  font-size: 77px;
-  height: 100px;
-  letter-spacing: -1.925px;
-  line-height: 100px;
-  width: 100%;
-  padding-left: 0 !important;
-}
-.overlay .overlay-close {
-  position: absolute;
-  right: 20px;
-  top: 5px;
-}
+    .pages-overlay .inline-block {
+        display: inline-block;
+    }
+    .pages-overlay .overlay-brand {
+        margin-left: 7px;
+    }
+    .pages-overlay > div {
+        width: 100%;
+        height: 260px;
+        display: block;
+        overflow: hidden;
+    }
+    .pages-overlay .has-results {
+        overflow: visible;
+    }
+    .pages-overlay .overlay-search {
+        font-weight: 700;
+        font-size: 77px;
+        height: 100px;
+        letter-spacing: -1.925px;
+        line-height: 100px;
+        width: 100%;
+        padding-left: 0 !important;
+    }
+    .pages-overlay .overlay-close {
+        position: absolute;
+        right: 20px;
+        top: 5px;
+    }
 .group-container {
   white-space: nowrap !important;
 }
@@ -2837,7 +2837,7 @@ ol {
 ul > li,
 ol > li {
   padding-left: 3px;
-  line-height: 24px;
+  /*line-height: 24px;*/
 }
 ul.lg-icon > li,
 ol.lg-icon > li {
@@ -7062,18 +7062,17 @@ body.rtl .checkbox label::after {
   color: rgba(87, 87, 87, 0.55);
 }
 .form-group-default {
-  background-color: #fff;
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 2px;
-  padding-top: 7px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-bottom: 4px;
-  overflow: hidden;
-  width: 100%;
-  -webkit-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
+    background-color: #fff;
+    position: relative;
+    border: 1px solid rgba(139, 92, 92, 0.39) border-radius: 2px;
+    padding-top: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 4px;
+    overflow: hidden;
+    width: 100%;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 .form-group-default.required:after {
   color: #f35958;

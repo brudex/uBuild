@@ -2,69 +2,128 @@
 
 @{
     ViewBag.Title = "Check Load Eligibility";
- }
+    Layout = "~/views/shared/_Layout.cshtml";
+}
 
-<h2>Check Load Eligibility</h2>
-
-<div class="row">
-    <div class="col-md-12">
-        <h5>F In Tabs</h5> Add the class
-        <code>nav-tabs-fillup</code> to the main wrapper of the tabs
-        <br>
-        <br>
-        <div class="card card-transparent ">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs nav-tabs-fillup" data-init-reponsive-tabs="dropdownfx">
-                <li class="nav-item">
-                    <a href="#" class="active" data-toggle="tab" data-target="#tab-fillup1"><span>Full House</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" data-toggle="tab" data-target="#tab-fillup2"><span>Phase</span></a>
-                </li>
-                
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab-fillup1">
-                    <div class="row column-seperation">
-                        <div class="col-lg-6">
-                            <h3>
-                                <span class="semi-bold">Sometimes</span> Small things in life means the most
-                            </h3>
-                        </div>
-                        <div class="col-lg-6">
-                            <h3 class="semi-bold">great tabs</h3>
-                            <p>Native boostrap tabs customized to Pages look and feel, simply changing class name you can change color as well as its animations</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="tab-fillup2">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3>
-                                “ Nothing is
-                                <span class="semi-bold">impossible</span>, the word itself says 'I'm
-                                <span class="semi-bold">possible</span>'! ”
-                            </h3>
-                            <p>A style represents visual customizations on top of a layout. By editing a style, you can use Squarespace's visual interface to customize your...</p>
-                            <br>
-                            <p class="pull-right">
-                                <button type="button" class="btn btn-default btn-cons">White</button>
-                                <button type="button" class="btn btn-success btn-cons">Success</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="tab-fillup3">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3>Follow us &amp; get updated!</h3>
-                            <p>Instantly connect to what's most important to you. Follow your friends, experts, favorite celebrities, and breaking news.</p>
-                            <br>
-                        </div>
-                    </div>
-                </div>
+<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Check Loan eligibility</h2>
+                <p class="lead mb0">Find out if you are able to take a loan with us.</p>
+            </div>
+            <div class="col-md-6 text-right hidden-xs hidden-sm">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                    </li>
+                    <li class="active">Check Eligibility</li>
+                </ol>
             </div>
         </div>
+        <!--end of row-->
     </div>
-</div>
+    <!--end of container-->
+</section>
+
+
+<section ng-controller="EligibilityCtrl" ng-init="init()" style="padding-top: 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8  col-sm-12 text-center">
+                <form id="msform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Choose Loan Type</li>
+                        <li ng-if="builder.loanType=='Phase'">Choose Phase </li>
+                        <li>Your Financials</li>
+                        <li>Results</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">Choose Loan Type</h2>
+                        <div class="radio radio-success">
+                            <span title="Choose this loan type buy a full house">
+                                <input type="radio" checked="checked" ng-model="builder.loanType" name="loanType" value="Fullhouse" id="fullhouse">
+                                <label for="fullhouse">Full House</label>
+                            </span>
+                            <span style="display: inline-block" title="Choose this loan type to complete a particular phase of your building project ">
+                                <input type="radio" ng-model="builder.loanType" name="loanType" id="phase" value="Phase">
+                                <label for="phase">Phase</label>
+                            </span>
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="Next" title="Select a loan type to continue." ng-disabled="!builder.loanType"/>
+                    </fieldset>
+                    <fieldset ng-show="builder.loanType=='Phase'">
+                        <h2 class="fs-title">Choose Phase</h2>
+                        <div>
+                            <select class="" ng-model="builder.phase">
+                                <option value="">-Select Phase-</option>
+                                <option>Land</option>
+                                <option>Foundation</option>
+                                <option>Walls</option>
+                                <option>Roof</option>
+                                <option>Fittings and Fixtures</option>
+                            </select>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Next" title="Complete form to continue." ng-disabled="!builder.phase"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Enter your financials</h2>
+                        <div>
+                            <div class="form-group">
+                                <label>Choose Currency</label>
+                                <div class="radio radio-success">
+                                    <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
+                                    <label for="currencyGHS">GHS</label>
+                                    <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
+                                    <label for="currencyUSD">USD</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default" ng-show="builder.currency" title="How much do you earn monthly?">
+                                <label>Monthly Income</label>
+                                <div class="irs-wrapper danger">
+                                    <input type="text" name="" ng-model="builder.monthlyIncome" value="0" id="loan_monthly_income" />
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default" ng-show="builder.currency">
+                                <label>Loan Amount</label>
+                                <div class="irs-wrapper danger">
+                                    <input type="text" name="" ng-model="builder.loanAmount" value="0" id="loan_amount" />
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default" ng-show="builder.currency">
+                                <label>Interest Rate</label>
+                                <div class="irs-wrapper danger">
+                                    <input type="text" name="" ng-model="builder.loanInterestRate" value="0;100" id="loan_Irate" />
+                                </div>
+                            </div>
+
+                            <div class="form-group form-group-default" ng-show="builder.currency">
+                                <label>Loan Tenure(Years)</label>
+                                <div class="irs-wrapper danger">
+                                    <input type="text" name="" ng-model="builder.loanTenure" value="12,24" id="loan_Tenure" />
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Next" title="Please choose your currency to continue" ng-disabled="!builder.currency" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Results</h2>
+                        <h3 class="fs-subtitle">results here</h3>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+
+                        <input type="button" name="previous" style="width: 200px" class="previous action-button" value="Check Eligibility" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>

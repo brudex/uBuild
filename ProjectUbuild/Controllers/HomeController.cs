@@ -13,9 +13,24 @@ namespace ProjectUbuild.Controllers
             return View();
         }
 
+        public ActionResult MyApplications()
+        {
+            return View();
+        }
+
+        public ActionResult Guidelines()
+        {
+            
+            return View();
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+        public ActionResult FaQs()
+        {
 
             return View();
         }

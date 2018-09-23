@@ -1,31 +1,521 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+﻿<section class="cover fullscreen image-slider slider-all-controls controls-inside parallax">
+    <ul class="slides">
+        <li class="vid-bg image-bg overlay pt240 pb240">
+            <div class="background-image-holder">
+                <img alt="Background Image" class="background-image" src="https://unsplash.imgix.net/photo-1425321395722-b1dd54a97cf3?q=75&fm=jpg&w=1080&fit=max&s=9e4ce3e023621d6f94259eea8fa3b856">
+            </div>
+            <div class="fs-vid-background">
+                <video muted loop>
+                    <source src="~/assets/foundry/video/video2.webm" type="video/webm">
+                    <source src="~/assets/foundry/video/video2.mp4" type="video/mp4">
+                    <source src="~/assets/foundry/video/video2.ogv" type="video/ogg">
+                </video>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="large">Video in slider</h1>
+                        <p class="lead">
+                            We can have a short video clip playing here
+                        </p>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        @*<li class="overlay image-bg">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/one-bedroom.png" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h1 class="mb40 mb-xs-16 large">One bedroom</h1>
+                        <h6 class="uppercase mb16">Get a loan to own a one bedroom apartment</h6>
+                        <p class="lead mb40">
+                            Slider
+                        </p>
+                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>*@
+       
+        
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/land.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Your Land</h1>
+                        <h6 class="uppercase mb16">Let us help you own a land</h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Apply now</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/foundation.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Your Foundation</h1>
+                        <h6 class="uppercase mb16">Get help to complete your foundation</h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/walling.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Your Walling</h1>
+                        <h6 class="uppercase mb16">Let us help you put up your walls</h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/roofing.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Your Roofing</h1>
+                        <h6 class="uppercase mb16">Get help to roof your house</h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/fixtures and fittings.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Fixtures and Fittings</h1>
+                        <h6 class="uppercase mb16">Get a loan to finance your Fixtures and fittings  </h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Start Now</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/two-bedrooms.png" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Your fully completed house</h1>
+                        @*<h6 class="uppercase mb16">Get a loan to own a two bedroom apartment</h6>*@
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        @*<a class="btn btn-lg btn-filled" href="#">Start Now</a>*@
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+        <li class="overlay image-bg ">
+            <div class="background-image-holder">
+                <img alt="image" class="background-image" src="~/assets/foundry/img/couples living happily in thier full house.jpg" />
+            </div>
+            <div class="container v-align-transform">
+                <div class="row">
+                    <div class="col-sm-offset-1 text-center col-sm-10">
+                        <h1 class="mb40 mb-xs-16 large">Juuust Chill</h1>
+                        <h6 class="uppercase mb16"></h6>
+                        @*<p class="lead mb40">
+                            Slider 3
+                        </p>*@
+                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </li>
+    </ul>
+</section>
+@*<section>
+        <div class="container">
+            <div class="row mb80 mb-xs-0">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h1>Sleek, Flexible & Stylish.</h1>
+                    <p>
+                        Foundry is a remarkably complete template offering you a plethora of handcrafted design elements. Whether promoting a product, service or portfolio - Foundry's unique and flexible style has you covered.
+                    </p>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row v-align-children">
+                <div class="col-md-7 col-sm-6 text-center mb-xs-24">
+                    <img class="cast-shadow" alt="Screenshot" src="~/assets/foundry/img/screenshot.jpg" />
+                </div>
+                <div class="col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1">
+                    <h3>Build a slick, modern site faster than ever</h3>
+                    <p>
+                        Foundry is your complete design toolkit, built from the ground up to be flexible, extensible and stylish. Building slick, contemporary sites has never been this easy!
+                    </p>
+                    <a class="btn btn-lg" href="#">Explore Foundry</a>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row mb64 mb-xs-24">
+                <div class="col-sm-12 col-md-10 col-md-offset-1 text-center">
+                    <h3>Foundry gives you the flexibility to build your site using purpose-made content blocks.</h3>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <div class="feature">
+                        <div class="text-center">
+                            <i class="ti-layout-grid2 icon-lg mb40 mb-xs-24 inline-block color-primary"></i>
+                            <h5 class="uppercase">Expert, Modular Design</h5>
+                        </div>
+                        <p>
+                            Customers love our block-based approach to template building,
+                            <br class="hidden-sm" />it makes assembling beautiful pages fast and enjoyable, leaving
+                            <br class="hidden-sm" /> more time to craft your perfect layout.
+                        </p>
+                    </div>
+                    <!--end of feature-->
+                </div>
+                <div class="col-sm-6 text-center">
+                    <div class="feature">
+                        <div class="text-center">
+                            <i class="ti-heart icon-lg mb40 mb-xs-24 inline-block color-primary"></i>
+                            <h5 class="uppercase">Flexibility for Developers</h5>
+                        </div>
+                        <p>
+                            We haven't forgotten developers, that's why we've built Foundry
+                            <br class="hidden-sm" /> from the ground-up as a powerful, easy to understand framework
+                            <br class="hidden-sm" /> with a particular focus on code readability.
+                        </p>
+                    </div>
+                    <!--end of feature-->
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="image-edge pt120 pb120 pt-xs-40 pb-xs-40">
+        <div class="col-md-6 col-sm-4 p0 col-md-push-6 col-sm-push-8">
+            <img alt="Screenshot" class="cast-shadow mb-xs-24" src="~/assets/foundry/img/home1.jpg" />
+        </div>
+        <div class="container">
+            <div class="col-md-5 col-md-pull-0 col-sm-7 col-sm-pull-4 v-align-transform">
+                <h3 class="mb40 mb-xs-16">Get started fast with one of our unique, pre-built concepts.</h3>
+                <p class="lead mb40">
+                    We've built 10 fresh and distinct concepts to showcase Foundry's adaptability for almost any purpose.
+                </p>
+                <div class="feature boxed">
+                    <p>
+                        &ldquo;Stunning design, prompt support with an easy to use site builder make this and outstanding product. Well done Medium Rare!&rdquo;
+                    </p>
+                    <div class="spread-children">
+                        <img alt="Pic" class="image-xs" src="~/assets/foundry/img/avatar2.png" />
+                        <span>James Jardine - Themeforest</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="image-bg overlay parallax pt120 pb120 pt-xs-40 pb-xs-40">
+        <div class="background-image-holder">
+            <img alt="image" class="background-image" src="~/assets/foundry/img/home7.jpg" />
+        </div>
+        <div class="container">
+            <div class="row mb40 mb-xs-24">
+                <div class="col-sm-12 text-center spread-children">
+                    <img class="image-xs" alt="Pic" src="~/assets/foundry/img/avatar5.png" />
+                    <img class="image-xs" alt="Pic" src="~/assets/foundry/img/avatar2.png" />
+                    <img class="image-xs" alt="Pic" src="~/assets/foundry/img/avatar3.png" />
+                    <img class="image-xs" alt="Pic" src="~/assets/foundry/img/avatar6.png" />
+                    <img class="image-xs" alt="Pic" src="~/assets/foundry/img/avatar4.png" />
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row mb16 mb-xs-0">
+                <div class="col-sm-12 text-center">
+                    <h3>People just like you are already loving Foundry</h3>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                    <div class="text-slider slider-arrow-controls text-center relative">
+                        <ul class="slides">
+                            <li>
+                                <p class="lead">It's clear to see just how seriously these guys take design. I've never come across a template with the level of polish as this - and don't even get me started on the page builder, there is simply NO competition. Customer for life.</p>
+                                <div class="quote-author">
+                                    <h6 class="uppercase mb0">Anna Thompson</h6>
+                                    <span>Themeforest Customer</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="lead">I love the ease-of-use the builder provides - I can quickly test different combinations and experiment with font and color combinations to find that sweet spot. Kudos for the amazing support too, really quick turnaround!</p>
+                                <div class="quote-author">
+                                    <h6 class="uppercase mb0">Rick Dempsey</h6>
+                                    <span>Themeforest Customer</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="lead">A fine example of atomic design brought to life. As a seasoned template user, I really appreciate the consistent styling for all common tags, it makes customising the sections that much easier. 5 stars as always for an amazing template.</p>
+                                <div class="quote-author">
+                                    <h6 class="uppercase mb0">Gill Sans</h6>
+                                    <span>Themeforest Customer</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="bg-secondary pb0">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="mb64 mb-xs-24">Flexible, Adaptable & Timeless.</h2>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+                    <div class="tabbed-content icon-tabs">
+                        <ul class="tabs">
+                            <li class="active">
+                                <div class="tab-title">
+                                    <i class="ti-layers icon"></i>
+                                    <span>History</span>
+                                </div>
+                                <div class="tab-content">
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title">
+                                    <i class="ti-package icon"></i>
+                                    <span>Approach</span>
+                                </div>
+                                <div class="tab-content">
+                                    <p>
+                                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title">
+                                    <i class="ti-stats-up icon"></i>
+                                    <span>Culture</span>
+                                </div>
+                                <div class="tab-content">
+                                    <p>
+                                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title">
+                                    <i class="ti-layout-media-center-alt icon"></i>
+                                    <span>Method</span>
+                                </div>
+                                <div class="tab-content">
+                                    <p>
+                                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end of icon tabs-->
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row v-align-children">
+                <div class="col-md-7 col-sm-6 text-center mb-xs-24">
+                    <div class="local-video-container">
+                        <div class="background-image-holder">
+                            <img alt="Background Image" class="background-image" src="~/assets/foundry/img/home3.jpg">
+                        </div>
+                        <video controls="">
+                            <source src="~/assets/foundry/video/video.webm" type="video/webm">
+                            <source src="~/assets/foundry/video/video.mp4" type="video/mp4">
+                            <source src="~/assets/foundry/video/video.ogv" type="video/ogg">
+                        </video>
+                        <div class="play-button"></div>
+                    </div>
+                    <!--end of local inline video-->
+                </div>
+                <div class="col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1">
+                    <h3>Design that looks less 'theme' and more you.</h3>
+                    <p>
+                        Foundry offers you the modularity and ease-of-use of a template with the style and aesthetic of contemporary, bespoke web design.
+                    </p>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section>
+        <div class="container">
+            <div class="row mb64 mb-xs-24">
+                <div class="col-sm-12 col-md-10 col-md-offset-1 text-center">
+                    <h3>
+                        Get all this and more by purchasing
+                        <br /> a copy of Foundry today.
+                    </h3>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row masonry masonryFlyIn">
+                <div class="col-md-4 col-sm-12 masonry-item mb30">
+                    <div class="feature boxed cast-shadow-light mb0">
+                        <h2 class=" color-primary mb0">80+</h2>
+                        <h6 class="uppercase color-primary">Page Templates</h6>
+                        <p>
+                            Pre-made HTML page templates including fully realized shop, blog and portfolio layouts.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 masonry-item mb30">
+                    <div class="boxed feature cast-shadow-light mb0">
+                        <i class="icon ti-infinite color-primary inline-block mb0"></i>
+                        <h6 class="uppercase color-primary">Layout Possibilities</h6>
+                        <p>
+                            With tons of purpose-built content blocks, colors and fonts, Foundry presents a mind-boggling number of combinations. Test drive the builder now!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 masonry-item mb30">
+                    <div class="boxed feature cast-shadow-light mb0">
+                        <h2 class=" color-primary mb8">Concepts</h2>
+                        <h6 class="uppercase color-primary">Kickstart your project</h6>
+                        <p>
+                            Fresh and unique concepts included out of the box. From portfolio to property showcase, Foundry's adaptable look is perfect for your next project.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 masonry-item mb30">
+                    <div class="boxed feature cast-shadow-light mb0">
+                        <h2 class=" color-primary mb8">One / Multi</h2>
+                        <h6 class="uppercase color-primary">Suit Yourself</h6>
+                        <p>
+                            Capabilities for one and multi-page are built right in. Create a one page scrolling site with ease in Variant Page Builder.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 masonry-item mb30">
+                    <div class="boxed feature cast-shadow-light mb0">
+                        <h2 class=" color-primary mb8">Support</h2>
+                        <h6 class="uppercase color-primary">Timely & Personable</h6>
+                        <p>
+                            Receive included support with your purchase via our dedicated support forum. We aim to assist you in plain English as quickly as possible.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 masonry-item mb30">
+                    <div class="boxed feature cast-shadow-light mb0">
+                        <h2 class=" color-primary mb8">Page Builder</h2>
+                        <h6 class="uppercase color-primary">Intuitive & Powerful</h6>
+                        <p>
+                            We've worked hard to bring you a page builder that speeds up your workflow, leaving more time for your to experiment with layout combinations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="image-bg parallax overlay">
+        <div class="background-image-holder">
+            <img alt="Background Image" class="background-image" src="~/assets/img/home2.jpg">
+        </div>
+        <div class="container">
+            <div class="row mb64 mb-xs-24">
+                <div class="col-sm-6 col-md-5 text-right text-center-xs">
+                    <h1 class="large mb8">10,000+</h1>
+                    <h6 class="uppercase">Customers using our templates</h6>
+                </div>
+                <div class="col-md-2 text-center hidden-sm hidden-xs">
+                    <i class="ti-infinite icon icon-lg mt8 mt-xs-0"></i>
+                </div>
+                <div class="col-sm-6 col-md-5 text-center-xs">
+                    <h1 class="large mb8">Limitless</h1>
+                    <h6 class="uppercase">Layout potential using Foundry</h6>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h3 class="mb40 mb-xs-24">
+                        Authentic, handcrafted design that gives your
+                        <br /> site subtle, confident appeal.
+                    </h3>
+                    <a class="btn btn-lg btn-filled" href="chooser.html">Check Out The Demos</a>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>*@

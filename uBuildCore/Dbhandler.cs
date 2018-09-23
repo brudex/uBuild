@@ -57,6 +57,14 @@ namespace uBuildCore
             }
         }
 
+        public void SaveGhlClientInfos(ClientInfos auths)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                conn.Insert(auths);
+            }
+        }
+
         public List<FittingsFixtures> GetFittingsFixtures()
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -72,6 +80,16 @@ namespace uBuildCore
             {
                 var list = conn.GetList<HouseImage>().ToList();
                 return list;
+            }
+        }
+
+        public ClientAuths GetClientAuthByEmail(string email)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<ClientAuths>(f => f.EmailAddress, Operator.Eq, email);
+                var item = conn.GetList<ClientAuths>(predicate).FirstOrDefault();
+                return item;
             }
         }
     }

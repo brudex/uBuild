@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\AccountApiController.cs" />
     <Compile Include="Controllers\Api\LoanApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoanApplicationModels.cs" />
+    <Compile Include="Models\ServiceResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2231,7 +2233,7 @@
     <Content Include="Scripts\app\bootstrap-select.js" />
     <Content Include="Scripts\app\loanapplication.controller.js" />
     <Content Include="Scripts\app\custom.currency.filter.js" />
-    <Content Include="Scripts\app\main.controller.js" />
+    <Content Include="Scripts\app\utilities.factory.js" />
     <Content Include="Scripts\app\services.factory.js" />
     <Content Include="Scripts\app\title.case.filter.js" />
     <Content Include="assets\foundry\css\less\theme.less" />
@@ -2282,6 +2284,7 @@
     <Content Include="assets\foundry\video\video2.ogg" />
     <Content Include="assets\foundry\video\video2.webm" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\app\update-profile.conftroller.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jQuery-2.1.4.min.js" />
     <Content Include="Scripts\jquery.fileupload.js" />

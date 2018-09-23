@@ -92,18 +92,22 @@ namespace ProjectUbuild.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     var ghlclient = new ClientAuths();
-                    ghlclient.EmailAddress = model.Email;
+                    ghlclient.EmailAddress = user.Email;
                     ghlclient.FirstName = model.Firstname;
                     ghlclient.LastName = model.Lastname;
                     ghlclient.OtherNames = model.Othernames;
                     ghlclient.MobileNumber = model.Phonenumber.FormatMobile();
                     ghlclient.EncPassword = user.Id;
                     ghlclient.AuthorizerName = "system";
+                    ghlclient.CreatedDate = DateTime.Now;
+                    ghlclient.LastLoginAt = DateTime.Now;
+                    
+                
                     DbHandler.Instance.SaveGhlClientProfile(ghlclient);
                     await SignInAsync(user, isPersistent: false);
 
@@ -442,8 +446,8 @@ namespace ProjectUbuild.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
+       // [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

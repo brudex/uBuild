@@ -1,35 +1,27 @@
 ﻿(function () {
     angular
-        .module('ubuild.app')
+        .module('ubuild')
         .factory('brudexservices', DataService);
-    DataService.$inject = ['$http', '$location', 'sessionService', '$window'];
-    function DataService($http, $location, sessionService,$window) {
-        var adminActionUrl = "";
-        sessionService.initializeSessionData({ getUserSession: getUserSession, getAvailableTokenGateways: getAvailableTokenGateways });
-        
-        return {
-            
+    DataService.$inject = ['$http', '$location', '$window'];
+    function DataService($http, $location,$window) {
+        var baseUrl = "";      
+        return {          
             gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
             getHouseImages: getData('/api/LoanApi/GetHouseImages'),
-            doSelfServiceRequest: doAction('self-service-request'),
-            getRequests: doAction('get-request-list'),
-            getCustomerEmail: doAction('customer-email'),
-            updateRequestStatus: doAction('update-request-status')
-        };
-       
+            submitProfile: postData('/api/AccountApi/SaveProfile'),
+             
+        }; 
 
-        function doAction(actionName) {
+        function postData(endpoint) {
             return function (data, callback) {
                 if (!callback) {
                     callback = data;
                     data = {};
                 }
-                var payload = {};
-                payload.action = actionName;
-                payload.data = data;
-                doPost(payload, function (err, response) {
+                var url = baseUrl + endpoint;
+                 doPost(url,data, function (err, response) {
                    if (err) {
-                        toastr.error(err);
+                        console.error(err);
                         return;
                     }
                     callback(response.data);
@@ -41,32 +33,23 @@
             return function (callback) {
                  doGet(url, function (err, response) {
                     if (err) {
-                        toastr.error(err);
+                        console.error(err);
                         return;
                     }
                     callback(response.data);
                 });
             }
         }
-       
-
-
-      
-
-        function doPost(data, callback) {         
-             return $http.post(adminActionUrl, data)
+        
+        function doPost(url,data, callback) {
+            
+             return $http.post(url, data)
                 .then(function (response) {
                     if (response == null) {
                        return callback(null, {status:"07",message :"Error in response"});
                     }
-                    if (response && response.status == "3399") {
-                        toastr.error(response.message);
-                        setTimeout(function () {
-                            $window.location = "/Account/Logout";
-                        }, 3000);
-                        return callback(null,response);
-                    }                   
-                    callback(null, response);
+                    return callback(null, response);
+                      
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -75,20 +58,13 @@
         }
 
         function doGet(endpoint, callback) {
-            var url = adminActionUrl + endpoint;
+            var url = baseUrl + endpoint;
             return $http.get(url)
                .then(function (response) {
                    if (response == null) {
                        return callback(null, { status: "07", message: "Error in response" });
                    }
-                   if (response && response.status == "3399") {
-                       toastr.error(response.message);
-                       setTimeout(function () {
-                           $window.location = "/Account/Logout";
-                       }, 3000);
-                       return callback(null, response);
-                   }
-                   return callback(null, response);
+                  return callback(null, response);
                })
                .catch(function (error) {
                    console.log(error);

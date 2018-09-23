@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
     angular
-        .module('ubuild.app')
+        .module('ubuild')
          .filter('titleCase', function () {
              return function (input) {
                  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;

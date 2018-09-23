@@ -1,65 +1,63 @@
 ﻿@{
     ViewBag.Title = "title";
 }
-  
-
- <h2>Complete Your Profile</h2>
-<div class="panel panel-transparent">
-    <div class="panel-body">
-        <form id="form-project" role="form" autocomplete="off" novalidate="novalidate">
+<h2>Complete Your Profile</h2>
+<div class="panel panel-transparent" ng-app="ubuild">
+    <div class="panel-body" data-ng-controller="UpdateProfileController as vm">
+        <form id="form-project" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
             <p>Basic Information</p>
             <div class="form-group-attached">
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
                             <label>Title</label>
-                            <input type="text" class="form-control" name="Title" required="" aria-required="true">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.Title"  name="Title" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
                             <label>First name</label>
-                            <input type="text" class="form-control" name="FirstName" required="" aria-required="true">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default">
+                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
                             <label>Middle name</label>
-                            <input type="text" class="form-control" name="MiddleName">
+                            <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default">
+                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
                             <label>Last name</label>
-                            <input type="text" class="form-control" name="LastName">
+                            <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
                         </div>
                     </div>
                 </div>
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default " >
                             <label>Maiden name</label>
-                            <input type="text" class="form-control" name="firstName" required="" aria-required="true">
+                            <input type="text" class="form-control" name="firstName" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Mothers Maiden name</label>
-                            <input type="text" class="form-control" name="firstName" required="" aria-required="true">
+                            <input type="text" class="form-control" name="firstName" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default">
-                            <label>Date of birth name</label>
-                            <input type="text" class="form-control" name="lastName">
+                            <label>Date of birth </label>
+                            <input type="text" class="form-control" name="DateOfBirth">
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group form-group-default">
                             <label>Place of birth</label>
-                            <input type="text" class="form-control" name="lastName">
+                            <input type="text" class="form-control"  name="PlaceOfBirth">
                         </div>
                     </div>
                 </div>
@@ -76,9 +74,9 @@
                         <label>Gender</label>
                         <div class="form-group">
                             <div class="radio radio-success">
-                                <input type="radio" value="male" name="optionyes" id="male" aria-invalid="false">
+                                <input type="radio" value="male" name="Gender"  aria-invalid="false">
                                 <label for="male">Male</label>
-                                <input type="radio" checked="checked" value="female" name="optionyes" id="female">
+                                <input type="radio" checked="checked" value="female" name="Gender">
                                 <label for="female">Female</label>
                             </div>
                         </div>
@@ -100,15 +98,15 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Nationality</label>
-                            <input type="text" class="form-control" name="Nationality" required="" aria-required="true">
+                            <input type="text" class="form-control" name="Nationality" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Occupation</label>
-                            <input type="text" class="form-control" name="Occupation" required="" aria-required="true">
+                            <input type="text" class="form-control" name="Occupation" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -134,15 +132,15 @@
                 <p class="m-t-10">Residential Information</p>
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Resident Permit No</label>
-                            <input type="text" class="form-control" name="ResidentPermitNo" required="" aria-required="true">
+                            <input type="text" class="form-control" name="ResidentPermitNo" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Permit Issue Date</label>
-                            <input type="text" class="form-control" name="PermitIssueDate" required="" aria-required="true">
+                            <input type="text" class="form-control" name="PermitIssueDate" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -163,15 +161,15 @@
                 <div class="row clearfix">
 
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Residential Address</label>
-                            <input type="text" class="form-control" name="ResidentialAddress" required="" aria-required="true">
+                            <input type="text" class="form-control" name="ResidentialAddress" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Social Security No</label>
-                            <input type="text" class="form-control" name="SocialSecurityNo" required="" aria-required="true">
+                            <input type="text" class="form-control" name="SocialSecurityNo" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -190,15 +188,15 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Country Of Residence</label>
-                            <input type="text" class="form-control" name="CountryOfResidence" required="" aria-required="true">
+                            <input type="text" class="form-control" name="CountryOfResidence" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Residential Phone</label>
-                            <input type="text" class="form-control" name="ResidentialPhone" required="" aria-required="true">
+                            <input type="text" class="form-control" name="ResidentialPhone" required="" >
                         </div>
                     </div>
                 </div>
@@ -210,15 +208,15 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>ID Card Type</label>
-                            <input type="text" class="form-control" name="IdCardType" required="" aria-required="true">
+                            <input type="text" class="form-control" name="IdCardType" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>ID Card Number </label>
-                            <input type="text" class="form-control" name="IdCardNumber" required="" aria-required="true">
+                            <input type="text" class="form-control" name="IdCardNumber" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -238,9 +236,9 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>ID Expiry Date</label>
-                            <input type="text" class="form-control" name="ResidentialAddress" required="" aria-required="true">
+                            <input type="text" class="form-control" name="ResidentialAddress" required="" >
                         </div>
                     </div>
 
@@ -251,21 +249,18 @@
 
 
             <div class="form-group-attached">
-                <p class="m-t-10">Employment Information</p>
-
-
-                 
+                <p class="m-t-10">Employment Information</p> 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Employment Status</label>
-                            <input type="text" class="form-control" name="EmploymentStatus" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmploymentStatus" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Employer Name </label>
-                            <input type="text" class="form-control" name="EmployerName" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmployerName" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -284,15 +279,15 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Employer Type OfBiz </label>
-                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Employer Phone .No </label>
-                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -312,9 +307,9 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>Monthly Salary </label>
-                            <input type="text" class="form-control" name="MonthlySalary" required="" aria-required="true">
+                            <input type="text" class="form-control" name="MonthlySalary" required="" >
                         </div>
                     </div>
 
@@ -332,15 +327,15 @@
                  
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>EmergencyContactTitle </label>
-                            <input type="text" class="form-control" name="EmergencyContactTitle" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmergencyContactTitle" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>EmergencyContactFirstName </label>
-                            <input type="text" class="form-control" name="EmergencyContactFirstName" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmergencyContactFirstName" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -359,15 +354,15 @@
 
                 <div class="row clearfix">
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>EmergencyContactAddress </label>
-                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="form-group form-group-default required" aria-required="true">
+                        <div class="form-group form-group-default required" >
                             <label>EEmergencyContactEmail </label>
-                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" aria-required="true">
+                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" >
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -377,25 +372,11 @@
                         </div>
                     </div>
                     
-                </div>
+                </div> 
 
-
-                
-
-            </div>
-
-             
-
-
+            </div> 
  
-        <div class="pull-left">
-                <div class="checkbox check-success  ">
-                    <input type="checkbox" checked="checked" value="1" id="checkbox-agree">
-                    <label for="checkbox-agree">
-                        I hereby certify that the information above is true and accurate
-                    </label>
-                </div>
-            </div>
+       
             <br>
             <button class="btn btn-success" type="submit">Submit</button>
              <div class="popover fade top in" role="tooltip" id="popover21638" style="top: 32px; left: 136.875px; display: block;"><div class="arrow" style="left: 50%;"></div><h3 class="popover-title" style="display: none;"></h3><div class="popover-content">This field is required.</div></div>

@@ -446,8 +446,8 @@ namespace ProjectUbuild.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpGet]
-       // [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

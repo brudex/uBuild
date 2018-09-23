@@ -17,12 +17,26 @@
                 </div>
                 <div class="module left">
                     <i class="ti-email">&nbsp;</i>
-                    <span class="sub">hello@ubuild.ghlbank.com</span>
+                    <span class="sub">info@ubuild.ghlbank.com</span>
                 </div>
                 <div class="module right">
-                    @Html.ActionLink("Sign Up", "Register", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
-                    @Html.ActionLink("Sign In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled" })
-                    @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style= "border:1px solid #f35958" })
+                    <span>Welcome @User.Identity.Name </span>
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        using (Html.BeginForm("Logoff", "Account", new {}, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Logout" class="btn btn-sm btn-danger"/>
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Sign Up", "Register", "Account", null, new {@class = "btn btn-sm ", style = "border:1px solid #f35958"})
+                        @Html.ActionLink("Sign In", "Login", "Account", null, new {@class = "btn btn-sm btn-filled"})
+                        @Html.ActionLink("Market Place", "Login", "Account", null, new {@class = "btn btn-sm ", style = "border:1px solid #f35958"})
+                    }
+
 
                 </div>
             </div>

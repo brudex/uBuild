@@ -102,9 +102,9 @@
                 services.checkLoanEligibility(payload, function (response) {
                     console.log("the response for eligibility >>", response);
                     if (response.Status === "00") {
-                        utils.alertSuccess("You are eligible");
+                        utils.alertSuccess("Congratulations","You are eligible");
                     }else if (response.Status === "01") {
-                        utils.alertError(response.Message);
+                        utils.alertError("Sorry",response.Message);
                     }
                 }); 
             }

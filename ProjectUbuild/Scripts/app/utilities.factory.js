@@ -14,7 +14,7 @@
                 var args = [].slice.call(arguments);
                 if (args.length === 1) {
                     message = args[0];
-                    title = "Success";
+                    title = alertType;
                 }
                 $window.swal(title, message, alertType);
             } 

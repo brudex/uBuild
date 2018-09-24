@@ -27,16 +27,6 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public ServiceResponse CheckLoanEligibility([FromBody]JObject data)
         {
-
-
-//            currency: "GHS"
-//loanAmount: "27100"
-//loanInterestRate: "12"
-//loanTenure: "12"
-//loanType: "Fullhouse"
-//monthlyIncome: "35800"
-//phase: ""
-
             int currencyId = DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
             //var clientAuth = User.GetUbuildClient();
             var handler = new EligibilityCheckHandler();
@@ -59,7 +49,9 @@ namespace ProjectUbuild.Controllers.Api
                 response.Status = "00";
                 if (result.Qualified)
                 {
-                    response.Message = "You are qualified for a loan";
+                    response.Message = "You are qualified for a loan<br/>";
+                    response.Message += "Your monthly repayment amount is " + result.MonthlyRePmt;
+                    response.Message += "Your have a borrowing capacity of  " + result.BorrowingCap;
                 }
                 else
                 {

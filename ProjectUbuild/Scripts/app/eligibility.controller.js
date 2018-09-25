@@ -113,12 +113,16 @@
                         utils.alertError("Sorry",response.Message);
                     }
                     if (isLoanApplication && callbackFunc) {
-                        var obj = { request: payload, response: response.data };
+                        var obj = { request: payload, response: response };
                         callbackFunc(obj);
                     }
                 }); 
             }
             
+
+
+
+
 
         }
    

@@ -141,6 +141,18 @@ namespace uBuildCore
         //            
         //        }
 
-         
+
+        public string GenerateUlain()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var item = conn.Query("spGenerateULAIN", commandType: CommandType.StoredProcedure).FirstOrDefault();
+                if (item != null)
+                {
+                     return item.newULAIN;
+                }
+                return string.Empty;
+            }
+        }
     }
 }

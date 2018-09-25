@@ -51,74 +51,41 @@ namespace uBuildCore
                 response.Message = "Error checking eligibility";
                 Logger.Error("Error checking eligiblity", ex);
             }
-            return response;
-
-             
+            return response; 
 
         }
 
         public static ServiceResponse ApplyForLoan(JObject data,ClientAuths client)
         {
-
-
-//            request:
-//            currency: "GHS"
-//loanAmount: "1000"
-//loanInterestRate: "12"
-//loanTenure: "12"
-//loanType: "Fullhouse"
-//monthlyIncome: "14300"
-//phase: ""
-//__proto__: Object
-//response:
-//BorrowingCap: 0
-//ClientId: 0
-//CustomerNo: null
-//DateChecked: "2018-09-24T00:00:00"
-//IncomeCurrencyId: "1"
-//InterestRate: 25
-//LoanAmount: 1000
-//LoanCurrencyId: 1
-//LoanTenorMonths: 12
-//MonthlyIncome: 14300
-//MonthlyRePmt: 0
-//PhaseChecked: 1
-//Qualified: true
-//RecordId: 5
-//TypeChecked: 1
-
             var response = new ServiceResponse();
-            
             var loaApp = new LoanAppls();
-            string customerNo = string.Empty;
-            string ulain = string.Empty;
-            int phaseId = 0;
-            int currencyId = DbHandler.Instance.GetCurrencyId(data["request"]["currency"].ToString());
-            loaApp.AmtSought = data["request"]["loanAmount"].ToDecimal();
+            loaApp.ClientId = client.RecordId;
+            string ulain = DbHandler.Instance.GenerateUlain();
+            int phaseId = 0; //todo get phaseId from ui
+            int currencyId = DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
+            loaApp.AmtSought = data["AmtSought"].ToDecimal();
             loaApp.ApplFor = client.RecordId;
             loaApp.ApplSubmitDate= DateTime.Now;
-
-            loaApp.CustomerNo = customerNo;
+            loaApp.CustomerNo = data["customerNo"].ToStringOrEmpty();
             loaApp.ULAIN = ulain;
             loaApp.ForPhase = phaseId;
-//            loaApp.PurposeofLoan = data["request"]["loanPurpose"].ToStringOrEmpty(); //get from ui
-//            loaApp.RepaymentMethod = data["request"]["paymentMethod"];//get from ui
-//            loaApp.ProtectionCover = true;
-//            loaApp.ProtectionSecured = true;
-//            loaApp.ProtectionSecurityType = data["request"]["loanAmount"] 
-//            loaApp.ProtectionSecurityDetails = data["request"]["loanAmount"]
-//            loaApp.LoanTermMonths = data["request"]["loanTenure"].ToInteger()*12;
+            loaApp.PurposeofLoan = data["PurposeofLoan"].ToStringOrEmpty(); 
+            loaApp.RepaymentMethod = data["RepaymentMethod"].ToInteger();
+            loaApp.ProtectionCover = true;
+            loaApp.ProtectionSecured = true;
+            loaApp.ProtectionSecurityType = data["ProtectionSecurityType"].ToStringOrEmpty();
+            loaApp.ProtectionSecurityDetails = data["ProtectionSecurityDetails"].ToStringOrEmpty();
+            loaApp.LoanTermMonths = data["loanTenure"].ToInteger()*12;
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;
             loaApp.ApplSubmitDate = DateTime.Now;
             loaApp.CreatorId = client.RecordId;
-            loaApp.CreatorName = client.FullName;
+            loaApp.CreatorName = client.FullName();
             loaApp.CreatedDate = DateTime.Now;
             DbHandler.Instance.SaveLoanApplication(loaApp);
-
-            return response;
-
-
+            response.Status = "00";
+            response.Message = ulain;
+            return response;  
 
         }
     }

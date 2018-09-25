@@ -194,7 +194,7 @@
                             <form class="" role="form">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.fullName">
+                                    <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.FullName">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -204,18 +204,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group form-group-default">
+                                        <div class="form-group">
                                             <label>Customer ID</label>
                                             <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.customerNo">
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Complete Loan Form</h4>
-                            <form role="form">
-                                <div class="form-group" >
+                                 <div class="form-group">
                                     <label>Applying For</label>
                                     <input type="text" class="form-control" value="PHASE" readonly="" data-ng-model="vm.applyModel.applyingFor">
                                 </div>
@@ -224,9 +219,15 @@
                                     <input type="text" class="form-control" value="PHASE" readonly="" data-ng-model="vm.applyModel.forPhase">
                                 </div>
 
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Complete Loan Form</h4>
+                            <form role="form">
+
                                 <div class="form-group">
                                     <label>Loan Amount</label>
-                                    <input type="text" class="form-control"  readonly="" data-ng-model="vm.applyModel.AmtSought">
+                                    <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.AmtSought">
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -247,13 +248,37 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Specify Other</label>
-                                        <input type="text" class="form-control" required=""  data-ng-model="vm.applyModel.RepaymentOther">
+                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.RepaymentOther">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose of Loan</label>
                                     <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.PurposeofLoan">
                                 </div>
+                                <div class="form-group">
+                                    <label>
+                                        Protection Cover
+                                        <input type="checkbox" data-ng-model="vm.applyModel.ProtectionCover">
+                                    </label>
+                                    <label>
+                                        Protection Secured
+                                        <input type="checkbox" data-ng-model="vm.applyModel.ProtectionSecured">
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>Protection Security Type </label>
+                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityType">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Protection Security Details</label>
+                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary btn-cons btn-animated" type="button" data-ng-click="vm.submitLoanApplication()">
+                                    <span>Apply</span>
+                                </button>
                             </form>
                         </div>
                     </div>

@@ -9,7 +9,9 @@
             gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
             getHouseImages: getData('/api/LoanApi/GetHouseImages'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
-            checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility')
+            checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility'),
+            getAccountProfile: postData('/api/AccountApi/AccountProfile'),
+            applyForLoan: postData('/api/LoanApi/ApplyForLoan')
              
         }; 
 

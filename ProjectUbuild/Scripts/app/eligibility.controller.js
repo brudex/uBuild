@@ -5,9 +5,16 @@
     angular.module("ubuild")
         .controller("EligibilityCtrl", EligibilityCtrl);
     EligibilityCtrl.$inject = [ "$scope", "$http", "$timeout", "$rootScope",'brudexservices', 'brudexutils'];
-    function EligibilityCtrl($scope, $http, $timeout, $rootScope,services,utils) {
-            $scope.init = function () {
-                $scope.builder = {
+    function EligibilityCtrl($scope, $http, $timeout, $rootScope, services, utils) {
+        var isLoanApplication = false;
+        var callbackFunc = null;
+        $scope.init = function (isLoanApp, callback) {
+            if (isLoanApp) {
+                isLoanApplication = isLoanApp;
+                callbackFunc = callback;
+            }
+            
+            $scope.builder = {
                     loanType: null,
                     phase: ""
                 }; 
@@ -88,7 +95,6 @@
                         var loanAmountSlider = $("#loan_amount").data("ionRangeSlider");
                         var loanRateSlider = $("#loan_Irate").data("ionRangeSlider");
                         var loanTenureSlider = $("#loan_Tenure").data("ionRangeSlider");
-
                         monthlyIncomeSlider.update(monthlyIncomeOptions);
                         loanAmountSlider.update(loanAmountSliderOptions);
                         loanRateSlider.update(loanRateSliderOptions);
@@ -105,6 +111,10 @@
                         utils.alertSuccess("Congratulations",response.Message);
                     }else if (response.Status === "01") {
                         utils.alertError("Sorry",response.Message);
+                    }
+                    if (isLoanApplication && callbackFunc) {
+                        var obj = { request: payload, response: response.data };
+                        callbackFunc(obj);
                     }
                 }); 
             }

@@ -67,6 +67,17 @@ namespace uBuildCore
             }
         }
 
+        public ClientInfos GetGhlClientInfoByClientId(int clientId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+
+                var predicate = Predicates.Field<ClientInfos>(f => f.ClientId, Operator.Eq, clientId);
+                var item = conn.GetList<ClientInfos>(predicate).FirstOrDefault();
+                return item;
+            }
+        }
+
         public List<FittingsFixtures> GetFittingsFixtures()
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -95,11 +106,11 @@ namespace uBuildCore
             }
         }
 
-        public EligibilityChecks CheckLoanEligibility(EligibilityCheckHandler eligibilityCheckHandler)
+        public EligibilityChecks CheckLoanEligibility(CheckEligibilityRequest checkEligibilityRequest)
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var item = conn.Query<EligibilityChecks>("spCheckEligibility", eligibilityCheckHandler,commandType:CommandType.StoredProcedure).FirstOrDefault();
+                var item = conn.Query<EligibilityChecks>("spCheckEligibility", checkEligibilityRequest,commandType:CommandType.StoredProcedure).FirstOrDefault();
                 return item;
             }
         }
@@ -114,16 +125,22 @@ namespace uBuildCore
             }
         }
 
-//
-//        public decimal GetInterestRateByCurrency(int currencyId)
-//        {
-//            
-//            
-//        }
-
-        public int GetCurrencyId()
+        public int SaveLoanApplication(LoanAppls loanAppl)
         {
-            throw new NotImplementedException();
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var id = conn.Insert(loanAppl);
+                return id;
+            }
         }
+
+        //
+        //        public decimal GetInterestRateByCurrency(int currencyId)
+        //        {
+        //            
+        //            
+        //        }
+
+         
     }
 }

@@ -7,7 +7,7 @@ using uBuildCore.Models;
 
 namespace uBuildCore
 {
-    public class EligibilityCheckHandler
+    public class CheckEligibilityRequest
     {
 
         public string CustomerNo { get; set; }
@@ -19,11 +19,7 @@ namespace uBuildCore
         public int LoanCurrencyId { get; set; } //from frontend
         public  int LoanTenorMonths { get; set; } //from frontend
 
-        public EligibilityChecks CheckEligibility()
-        {
-          return  DbHandler.Instance.CheckLoanEligibility(this);
-
-        }
+       
 
       
     }

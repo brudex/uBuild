@@ -71,7 +71,7 @@ namespace ProjectUbuild.Models
         [Display(Name = "Last Name")]
         public string Lastname { get; set; }
 
-        [Required]
+       
         [Display(Name = "Other Names")]
         public string Othernames { get; set; }
         

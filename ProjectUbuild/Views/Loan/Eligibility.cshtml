@@ -114,11 +114,9 @@
                         <input type="button" name="next" class="next action-button" value="Next" title="Please choose your currency to continue" ng-disabled="!builder.currency" />
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Results</h2>
-                        <h3 class="fs-subtitle">results here</h3>
+                         
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
-
-                        <input type="button" name="previous" style="width: 200px" class="previous action-button" value="Check Eligibility" />
+                        <input type="button" data-ng-click="checkEligibility()" style="width: 200px" class="previous action-button" value="Check Eligibility" />
                     </fieldset>
                 </form>
             </div>

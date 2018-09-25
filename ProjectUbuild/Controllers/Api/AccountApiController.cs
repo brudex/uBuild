@@ -31,5 +31,41 @@ namespace ProjectUbuild.Controllers.Api
             return response;
 
         }
+
+        public ServiceResponse GetAccountProfile()
+        {
+
+//            vm.applyModel.accountNumber
+//                        vm.applyModel.customerNo
+//                        vm.applyModel.applyingFor
+//                        vm.applyModel.forPhase
+//                        vm.applyModel.AmtSought
+//                        vm.applyModel.RepaymentMethod
+//                        vm.applyModel.RepaymentOther
+//                        vm.applyModel.PurposeofLoan
+//                        vm.applyModel.loanTenure
+//                        vm.applyModel.loanTenureUnit
+//
+//            var clientAuth = User.GetUbuildClient();
+//            var clientInfo = DbHandler.Instance.GetGhlClientInfoByClientId(clientAuth.RecordId);
+//            var jobj 
+//            var dt = new 
+//            {
+//                
+//            }
+//
+//
+//            var infos = JsonConvert.DeserializeObject<ClientInfos>(value.ToString());
+//            infos.CreatedDate = DateTime.Now;
+//            infos.ClientId = clientAuth.RecordId;
+//            DbHandler.Instance.SaveGhlClientInfos(infos);
+            var response = new ServiceResponse
+            {
+                Status = "00",
+                Message = "Data successfully updated"
+            };
+            return response;
+
+        }
     }
 }

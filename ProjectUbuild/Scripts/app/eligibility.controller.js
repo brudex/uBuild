@@ -1,23 +1,24 @@
-﻿"use strict";
+﻿
 
-/* Controllers */
-
-angular.module("ubuild")
-    .controller("EligibilityCtrl", [
-        "$scope", "$http", "$timeout", "$rootScope",
-        function ($scope, $http, $timeout, $rootScope) {
-
-            $scope.init = function () {
-                $scope.builder = {
+(function () {
+    'use strict';
+    angular.module("ubuild")
+        .controller("EligibilityCtrl", EligibilityCtrl);
+    EligibilityCtrl.$inject = [ "$scope", "$http", "$timeout", "$rootScope",'brudexservices', 'brudexutils'];
+    function EligibilityCtrl($scope, $http, $timeout, $rootScope, services, utils) {
+        var isLoanApplication = false;
+        var callbackFunc = null;
+        $scope.init = function (isLoanApp, callback) {
+            if (isLoanApp) {
+                isLoanApplication = isLoanApp;
+                callbackFunc = callback;
+            }
+            
+            $scope.builder = {
                     loanType: null,
                     phase: ""
-                };
-
-
-            };
-
-
-
+                }; 
+            }; 
             $scope.$watch("builder.loanType",
                 function (loantype) {
                     console.log("$scope.builder.loanType", loantype);
@@ -94,7 +95,6 @@ angular.module("ubuild")
                         var loanAmountSlider = $("#loan_amount").data("ionRangeSlider");
                         var loanRateSlider = $("#loan_Irate").data("ionRangeSlider");
                         var loanTenureSlider = $("#loan_Tenure").data("ionRangeSlider");
-
                         monthlyIncomeSlider.update(monthlyIncomeOptions);
                         loanAmountSlider.update(loanAmountSliderOptions);
                         loanRateSlider.update(loanRateSliderOptions);
@@ -102,6 +102,29 @@ angular.module("ubuild")
                     }
                 });
 
+            $scope.checkEligibility = function () {
+                var payload = Object.assign({}, $scope.builder);
+                console.log('the payload is >>>', payload);
+                services.checkLoanEligibility(payload, function (response) {
+                    console.log("the response for eligibility >>", response);
+                    if (response.Status === "00") {
+                        utils.alertSuccess("Congratulations",response.Message);
+                    }else if (response.Status === "01") {
+                        utils.alertError("Sorry",response.Message);
+                    }
+                    if (isLoanApplication && callbackFunc) {
+                        var obj = { request: payload, response: response.data };
+                        callbackFunc(obj);
+                    }
+                }); 
+            }
+            
+
         }
-    ]);
+   
+
+     
+})();
+
+ 
 

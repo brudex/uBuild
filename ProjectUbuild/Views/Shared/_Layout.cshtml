@@ -83,11 +83,14 @@
                         <ul class="menu">
 
                             <li>
-                                @Html.ActionLink("uBuild", "About", "Home", null, new { })
+                                @Html.ActionLink("uBuild", "About", "Home", null, new {})
                             </li>
-                            <li>
-                                @Html.ActionLink("My Applications", "MyApplications", "Home", null, new { })
-                            </li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>
+                                    @Html.ActionLink("My Applications", "MyApplications", "Home", null, new { })
+                                </li>
+                            }                           
                             <li>
                                 @Html.ActionLink("Guidelines", "Guidelines", "Home", null, new { })
                             </li>

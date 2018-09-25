@@ -52,6 +52,7 @@ namespace uBuildCore.Models
 
         public DateTime? AuthorizedDate { get; set; }
 
+        public string FullName => FirstName + " " + LastName;
     }
  
 

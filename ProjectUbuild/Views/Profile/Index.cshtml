@@ -25,9 +25,6 @@
     <!--end of container-->
 </section>
 
-
-
-
 <section style="padding-top: 0">
     <div class="container">
         <div class="row">
@@ -49,7 +46,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
+                                        <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
+                                            <option value="">Select One..</option>
+                                            <option value="Mr">Mr.</option>
+                                            <option value="Mrs">Mrs.</option>
+                                            <option value="Miss">Miss</option>
+                                            <option value="Dr">Dr.</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

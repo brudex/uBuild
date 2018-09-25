@@ -51,7 +51,7 @@ namespace uBuildCore
             }
 
         }
-        internal static string ToStringOrEmpty(this object jt)
+        internal static string ToStringOrEmpty(this JObject jt)
         {
             try
             {

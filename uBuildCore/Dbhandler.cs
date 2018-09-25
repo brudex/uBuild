@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-
+using Dapper;
 using DapperExtensions;
 using uBuildCore.Models;
 
@@ -40,6 +41,7 @@ namespace uBuildCore
             }
         }
 
+       
 
         public DbConnection GetOpenDefaultDbConnection()
         {
@@ -62,6 +64,17 @@ namespace uBuildCore
             using (var conn = GetOpenDefaultDbConnection())
             {
                 conn.Insert(auths);
+            }
+        }
+
+        public ClientInfos GetGhlClientInfoByClientId(int clientId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+
+                var predicate = Predicates.Field<ClientInfos>(f => f.ClientId, Operator.Eq, clientId);
+                var item = conn.GetList<ClientInfos>(predicate).FirstOrDefault();
+                return item;
             }
         }
 
@@ -92,5 +105,42 @@ namespace uBuildCore
                 return item;
             }
         }
+
+        public EligibilityChecks CheckLoanEligibility(CheckEligibilityRequest checkEligibilityRequest)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var item = conn.Query<EligibilityChecks>("spCheckEligibility", checkEligibilityRequest,commandType:CommandType.StoredProcedure).FirstOrDefault();
+                return item;
+            }
+        }
+
+
+        public int GetCurrencyId(string currency)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var item = conn.Query<int>("select recordId as 'int' from [dbo].[Currencies] where ISOCode=@currency", new { currency }).FirstOrDefault();
+                return item;
+            }
+        }
+
+        public int SaveLoanApplication(LoanAppls loanAppl)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var id = conn.Insert(loanAppl);
+                return id;
+            }
+        }
+
+        //
+        //        public decimal GetInterestRateByCurrency(int currencyId)
+        //        {
+        //            
+        //            
+        //        }
+
+         
     }
 }

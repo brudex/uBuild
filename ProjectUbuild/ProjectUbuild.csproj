@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ExtensionMethods.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -193,9 +194,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoanApplicationModels.cs" />
-    <Compile Include="Models\ServiceResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -850,6 +851,7 @@
     <Content Include="assets\js\calendar_month.js" />
     <Content Include="assets\js\card.js" />
     <Content Include="assets\js\charts.js" />
+    <Content Include="assets\js\Controllers\index.js" />
     <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\datatables.js" />
     <Content Include="assets\js\demo.js" />
@@ -1929,6 +1931,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpeg" />
+    <Content Include="images\2.jpeg" />
+    <Content Include="images\3.jpeg" />
     <Content Include="pages\css\editor.css" />
     <Content Include="pages\css\pages-icons.css" />
     <Content Include="pages\css\pages.css" />
@@ -2231,6 +2236,7 @@
     <Content Include="Scripts\app\account.controller.js" />
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\bootstrap-select.js" />
+    <Content Include="Scripts\app\eligibility.controller.js" />
     <Content Include="Scripts\app\loanapplication.controller.js" />
     <Content Include="Scripts\app\custom.currency.filter.js" />
     <Content Include="Scripts\app\utilities.factory.js" />

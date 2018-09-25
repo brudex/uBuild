@@ -34,9 +34,9 @@ namespace uBuildCore
                 response.Status = "00";
                 if (result.Qualified)
                 {
-                    response.Message = "You are qualified for a loan<br/>";
-                    response.Message += "Your monthly repayment amount is " + result.MonthlyRePmt;
-                    response.Message += "Your have a borrowing capacity of  " + result.BorrowingCap;
+                    response.Message = "You are qualified for a loan. \n";
+                    response.Message += "Your monthly repayment amount is "+ data["currency"].ToString()+" " + result.MonthlyRePmt+"\n";
+                    response.Message += "Your have a borrowing capacity of  "+ data["currency"].ToString()+" " + result.BorrowingCap;
                 }
                 else
                 {

@@ -31,14 +31,57 @@
             <div class="col-md-12 col-sm-12 text-center">
                 <form id="msform" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
                     <!-- progressbar -->
-                    <ul id="progressbar">
-                        <li class="active">Basic Information</li>
+                    <ul id="progressbar" style="width: 850px">
+                        <li class="active">GHL Account Status</li>
+                        <li>Basic Information</li>
                         <li>Residential Info. </li>
                         <li>Identification</li>
                         <li>Employment</li>
                         <li>Emergency contact</li>
                     </ul>
                     <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">Check you account Status</h2>
+
+                        <div class="form-group-attached m-b-10">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Are you a GHL Account holder?</label>
+                                        <div class="radio radio-success">
+                                            <input type="radio" value="Yes" name="accountHolderCheck" aria-invalid="false">
+                                            <label for="male">Yes</label>
+                                            <input type="radio" value="No" name="accountHolderCheck">
+                                            <label for="female">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-offset-3">
+                                    <div class="form-group form-group-default input-group">
+                                        <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
+                                        <input autocomplete="off" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
+                                            Verify
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-offset-3">
+                                    <div class="form-group form-group-default input-group">
+                                        <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
+                                        <input autocomplete="off" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
+                                            Confirm SMS
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="Continue" title="Select a loan type to continue." />
+                    </fieldset>
                     <fieldset>
                         <h2 class="fs-title">Basic Information</h2>
                         <div class="form-group-attached m-b-10">

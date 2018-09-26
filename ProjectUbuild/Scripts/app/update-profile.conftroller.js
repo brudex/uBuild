@@ -3,13 +3,20 @@
     angular
         .module('ubuild')
         .controller('UpdateProfileController', UpdateProfileController);
-    UpdateProfileController.$inject = ['brudexservices', 'brudexutils'];
-    function UpdateProfileController(services, utils) {
+    UpdateProfileController.$inject = ['brudexservices', 'brudexutils','$scope'];
+    function UpdateProfileController(services, utils,$scope) {
         var vm = this;
         vm.errorMsg = [];
         vm.successMsg = [];
         vm.profile = {};
         vm.formSubmitted = false;
+        vm.isReadonly = true;
+
+        $scope.$watch("vm.profile.IsAccountHolder",
+            function(newValue) {
+                if (newValue == "No")
+                    vm.isReadonly = false;
+            });
 
         vm.submitProfile = function (formValid) {
             console.log('form is valid', formValid);

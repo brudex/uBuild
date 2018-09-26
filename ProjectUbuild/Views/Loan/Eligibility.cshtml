@@ -39,8 +39,7 @@
                     <ul id="progressbar">
                         <li class="active">Choose Loan Type</li>
                         <li ng-if="builder.loanType=='Phase'">Choose Phase </li>
-                        <li>Your Financials</li>
-                        <li>Results</li>
+                        <li>Your Status</li>
                     </ul>
                     <!-- fieldsets -->
                     <fieldset>
@@ -85,7 +84,7 @@
                                 </div>
                             </div>
                             <div class="form-group form-group-default" ng-show="builder.currency" title="How much do you earn monthly?">
-                                <label>Monthly Income</label>
+                                <label>Enter your Monthly Income</label>
                                 <div class="irs-wrapper danger">
                                     <input type="text" name="" ng-model="builder.monthlyIncome" value="0" id="loan_monthly_income" />
                                 </div>
@@ -97,27 +96,23 @@
                                 </div>
                             </div>
                             <div class="form-group form-group-default" ng-show="builder.currency">
-                                <label>Interest Rate</label>
+                                <label>Interest Rate (Fixed)</label>
                                 <div class="irs-wrapper danger">
                                     <input type="text" name="" ng-model="builder.loanInterestRate" value="0;100" id="loan_Irate" />
                                 </div>
                             </div>
 
                             <div class="form-group form-group-default" ng-show="builder.currency">
-                                <label>Loan Tenure(Years)</label>
+                                <label>Enter Loan Tenure(Years)</label>
                                 <div class="irs-wrapper danger">
                                     <input type="text" name="" ng-model="builder.loanTenure" value="12,24" id="loan_Tenure" />
                                 </div>
                             </div>
                         </div>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" name="next" class="next action-button" value="Next" title="Please choose your currency to continue" ng-disabled="!builder.currency" />
+                        <input type="button" data-ng-show="builder.currency" data-ng-click="checkEligibility()" style="width: 200px" class="action-button" value="Check Eligibility" />
                     </fieldset>
-                    <fieldset>
-                         
-                        <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" data-ng-click="checkEligibility()" style="width: 200px" class="action-button" value="Check Eligibility" />
-                    </fieldset>
+                   
                 </form>
             </div>
         </div>

@@ -111,6 +111,9 @@
                         </div>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
                         <input type="button" data-ng-show="builder.currency" data-ng-click="checkEligibility()" style="width: 200px" class="action-button" value="Check Eligibility" />
+                        <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
+                        </div>
                     </fieldset>
                    
                 </form>

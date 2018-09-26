@@ -8,10 +8,12 @@
     function EligibilityCtrl($scope, $http, $timeout, $rootScope, services, utils, $window) {
         var isLoanApplication = false;
         var callbackFunc = null;
+        var loading = false;
         $scope.init = function (isLoanApp, callback) {
             if (isLoanApp) {
                 isLoanApplication = isLoanApp;
                 callbackFunc = callback;
+                loading = false;
             }
 
             $scope.builder = {
@@ -103,10 +105,12 @@
             });
 
         $scope.checkEligibility = function () {
+            loading = true;
             var payload = Object.assign({}, $scope.builder);
             console.log('the payload is >>>', payload);
             services.checkLoanEligibility(payload, function (response) {
                 console.log("the response for eligibility >>", response);
+                loading = false;
                 if (response.Status === "00") {
 
                     swal({
@@ -130,9 +134,11 @@
                             }
                         });
                 } else if (response.Status === "01") {
+                    loading = false;
                     utils.alertError("Sorry", response.Message);
                 }
                 if (isLoanApplication && callbackFunc) {
+                    loading = false;
                     var obj = { request: payload, response: response };
                     callbackFunc(obj);
                 }

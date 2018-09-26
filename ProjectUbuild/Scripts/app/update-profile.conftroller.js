@@ -16,6 +16,8 @@
             function(newValue) {
                 if (newValue == "No")
                     vm.isReadonly = false;
+                else
+                    vm.isReadonly = true;
             });
 
         vm.submitProfile = function (formValid) {

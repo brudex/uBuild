@@ -40,48 +40,50 @@
                         <li>Emergency contact</li>
                     </ul>
                     <!-- fieldsets -->
-                    <fieldset>
-                        <h2 class="fs-title">Check you account Status</h2>
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>Are you a GHL Account holder?</label>
-                                        <div class="radio radio-success">
-                                            <input type="radio" value="Yes" id="accountHolderYes" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck" aria-invalid="false">
-                                            <label for="accountHolderYes">Yes</label>
-                                            <input type="radio" value="No" id="accountHolderNo" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck">
-                                            <label for="accountHolderNo">No</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
-                                <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group">
-                                        <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
-                                        <input autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
-                                            Verify
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
-                                <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group">
-                                        <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
-                                        <input autocomplete="off" data-ng-model="profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
-                                            Confirm SMS
-                                        </span>
+                <fieldset>
+                    <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                        <div class="progress-circle-indeterminate progress-circle-master"></div>
+                    </div>
+                    <h2 class="fs-title">Check you account Status</h2>
+                    <div class="form-group-attached m-b-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Are you a GHL Account holder?</label>
+                                    <div class="radio radio-success">
+                                        <input type="radio" value="Yes" id="accountHolderYes" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck" aria-invalid="false">
+                                        <label for="accountHolderYes">Yes</label>
+                                        <input type="radio" value="No" id="accountHolderNo" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck">
+                                        <label for="accountHolderNo">No</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <input type="button" name="next" data-ng-disabled="vm.isReadonly" class="next action-button" value="Continue" title="Select a loan type to continue." />
-                    </fieldset>
+                        <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
+                            <div class="col-sm-6 col-md-offset-3">
+                                <div class="form-group form-group-default input-group">
+                                    <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
+                                    <input autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                    <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
+                                        Verify
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
+                            <div class="col-sm-6 col-md-offset-3">
+                                <div class="form-group form-group-default input-group">
+                                    <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
+                                    <input autocomplete="off" data-ng-model="profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                    <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
+                                        Confirm SMS
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" name="next" data-ng-disabled="vm.isReadonly" class="next action-button" value="Continue" title="Select a loan type to continue."/>
+                </fieldset>
                     <fieldset data-ng-disabled="vm.isReadonly">
                         <h2 class="fs-title">Basic Information</h2>
                         <div class="form-group-attached m-b-10">
@@ -386,7 +388,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
                                         <label>Employer Country </label>
-                                        <input type="text" class="form-control" name="EmployerCountry"  data-ng-model="vm.profile.EmployerCountry">
+                                        <input type="text" class="form-control" name="EmployerCountry" data-ng-model="vm.profile.EmployerCountry">
                                     </div>
                                 </div>
                             </div>

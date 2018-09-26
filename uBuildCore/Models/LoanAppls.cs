@@ -9,7 +9,7 @@ namespace uBuildCore.Models
 	public string CustomerNo { get; set; }
 	public string ULAIN { get; set; }
 	public int ApplFor { get; set; }
-	public int ForPhase { get; set; }
+	public int? ForPhase { get; set; }
 	public string PurposeofLoan { get; set; }
     public decimal AmtSought { get; set; }
     public int RepaymentMethod { get; set; }

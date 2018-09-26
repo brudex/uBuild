@@ -161,22 +161,35 @@
                     <div class="row row-same-height">
                         <div class="col-md-8 b-r b-dashed b-grey ">
                             <div>
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="..." alt="First slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="..." alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="..." alt="Third slide">
+                                        </div>
+                                    </div>
+                                </div> 
                                 <ul>
                                     <li>
                                         <label>
-                                            <input type="radio" name="housetype" value="1-bedroom" ng-model="vm.housetype" />
+                                            <input type="radio" name="housetype" value="1-bedroom" ng-model="vm.housetype"/>
                                             <img src="/images/1.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" name="housetype" value="2-bedroom" ng-model="vm.housetype" />
+                                            <input type="radio" name="housetype" value="2-bedroom" ng-model="vm.housetype"/>
                                             <img src="/images/2.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="radio" name="housetype" value="3-bedroom" ng-model="vm.housetype" />
+                                            <input type="radio" name="housetype" value="3-bedroom" ng-model="vm.housetype"/>
                                             <img src="/images/3.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
                                         </label>
                                     </li>
@@ -275,7 +288,6 @@
                                         <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
                                     </div>
                                 </div>
-
                                 <button class="btn btn-primary btn-cons btn-animated" type="button" data-ng-click="vm.submitLoanApplication()">
                                     <span>Apply</span>
                                 </button>
@@ -285,7 +297,7 @@
                 </div>
 
                 <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab5">
-                    <h1>Thank you for your loan application. Your ULAIN information is <b>1234</b> .</h1>
+                    <h1>Thank you for your loan application. Your ULAIN information is <b data-ng-bind="vm.ulain">..</b> .</h1>
                 </div>
                 <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
                     <ul class="pager wizard no-style">

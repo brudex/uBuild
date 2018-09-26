@@ -86,12 +86,47 @@ namespace uBuildCore
                 return list;
             }
         }
-        
-        public List<HouseImage> GetHouseImages()
+
+        public List<RepaymentMethods> GetRepaymentMethods()
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.GetList<HouseImage>().ToList();
+                var list = conn.GetList<RepaymentMethods>().ToList();
+                return list;
+            }
+        }
+
+        public List<Currencies> GetCurrencies()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<Currencies>().ToList();
+                return list;
+            }
+        }
+        public List<LoanApplTypes> GetLoanApplTypes()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<LoanApplTypes>().ToList();
+                return list;
+            }
+        }
+
+        public List<HouseDesigns> GetHouseDesigns()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<HouseDesigns>().ToList();
+                return list;
+            }
+        }
+
+        public List<HouseDesignCustomizables> GetHouseDesignCustomizables()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<HouseDesignCustomizables>().ToList();
                 return list;
             }
         }

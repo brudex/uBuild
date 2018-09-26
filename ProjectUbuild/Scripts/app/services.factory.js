@@ -7,13 +7,18 @@
         var baseUrl = "";      
         return {          
             gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
-            getHouseImages: getData('/api/LoanApi/GetHouseImages'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
             checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility'),
             getAccountProfile: postData('/api/AccountApi/AccountProfile'),
-            applyForLoan: postData('/api/LoanApi/ApplyForLoan')
-             
+            applyForLoan: postData('/api/LoanApi/ApplyForLoan'),
+            getHouseDesigns: getData('/api/LoanApi/GetHouseDesigns'),
+            getHouseCustomizables: getData('/api/LoanApi/GetHouseDesignCustomizibles'),
+            getRepaymentMethods: getData('/api/LoanApi/GetRepaymentMethods'),
+            getCurrencies: getData('/api/LoanApi/GetCurrencies'),
+            getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes') 
         }; 
+         
+
 
         function postData(endpoint) {
             return function (data, callback) {

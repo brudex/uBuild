@@ -17,7 +17,7 @@
         vm.applyModel.eligible = false;
         vm.ulain = "";
 
-        function getHouseImages() {
+        function getHouseImages(){
             var payload = { requestType :1};
             services.getHouseImages(payload, function (response) {
                 if (response.status === '00') {
@@ -72,7 +72,7 @@
             services.applyForLoan(payload, function (response) {
                 console.log("Response from applyForLoan >>", response);
                 if (response.Status === "00") {
-                     
+                    vm.ulain = response.Message;
                 }
             });
         }

@@ -77,11 +77,15 @@
     <Compile Include="Models\ClientAuths.cs" />
     <Compile Include="Models\ClientInfos.cs" />
     <Compile Include="CheckEligibilityRequest.cs" />
+    <Compile Include="Models\Currencies.cs" />
     <Compile Include="Models\EligibilityChecks.cs" />
     <Compile Include="Models\FittingsFixtures.cs" />
-    <Compile Include="Models\HouseImage.cs" />
+    <Compile Include="Models\HouseDesignCustomizables.cs" />
+    <Compile Include="Models\HouseDesigns.cs" />
     <Compile Include="Models\LoanAppls.cs" />
+    <Compile Include="Models\LoanApplTypes.cs" />
     <Compile Include="Models\LoanProcStages.cs" />
+    <Compile Include="Models\RepaymentMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestHandler.cs" />
     <Compile Include="ServiceResponse.cs" />

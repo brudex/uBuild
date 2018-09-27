@@ -39,7 +39,7 @@ namespace ProjectUbuild.Controllers.Api
             bool fullData = false;
             if (data != null)
             {
-                fullData = data["allData"].ToBoolean();
+                fullData = data["allData"] != null && data["allData"].ToBoolean();
             }
             return AccountProfileHandler.GetAccountProfile(clientAuth,fullData);
 

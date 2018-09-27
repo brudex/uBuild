@@ -112,6 +112,14 @@ namespace uBuildCore
                 return list;
             }
         }
+        public List<LoanInterestRates> GetLoanInterestRates()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<LoanInterestRates>().ToList();
+                return list;
+            }
+        }
 
         public List<HouseDesigns> GetHouseDesigns()
         {

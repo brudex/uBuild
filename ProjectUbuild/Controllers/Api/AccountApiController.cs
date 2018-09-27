@@ -33,11 +33,33 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpPost]
-        public ServiceResponse AccountProfile()
+        public ServiceResponse AccountProfile([FromBody]JObject data)
         { 
             var clientAuth = User.GetUbuildClient();
-            return AccountProfileHandler.GetAccountProfile(clientAuth);
+            bool fullData = false;
+            if (data != null)
+            {
+                fullData = data["allData"].ToBoolean();
+            }
+            return AccountProfileHandler.GetAccountProfile(clientAuth,fullData);
 
         }
+
+
+        [System.Web.Mvc.HttpPost]
+        public ServiceResponse SendOtpByAcctNo([FromBody]JObject data)
+        {
+            var clientAuth = User.GetUbuildClient();
+            return AccountProfileHandler.SendOtp(data, clientAuth);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public ServiceResponse ValidateOtpByAcctNo([FromBody]JObject data)
+        {
+            var clientAuth = User.GetUbuildClient();
+            return AccountProfileHandler.ValidateOtp(data, clientAuth);
+        }
+
+
     }
 }

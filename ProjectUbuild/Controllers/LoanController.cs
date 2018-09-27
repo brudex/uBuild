@@ -15,6 +15,8 @@ namespace ProjectUbuild.Controllers
         }
 
         // GET: Loan
+
+        [Authorize]
         public ActionResult Apply()
         {
             return View();

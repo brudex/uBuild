@@ -43,7 +43,7 @@
                     <fieldset>
                         <h2 class="fs-title">Check you account Status</h2>
 
-                        <div class="form-group-attached m-b-10">
+                        <div class="m-b-10">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -57,24 +57,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
+                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  !vm.profile.tokenSent">
                                 <div class="col-sm-6 col-md-offset-3">
                                     <div class="form-group form-group-default input-group">
                                         <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
                                         <input autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
+                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.sendToken()">
                                             Verify
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes'">
+                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  vm.profile.tokenSent" >
                                 <div class="col-sm-6 col-md-offset-3">
                                     <div class="form-group form-group-default input-group">
                                         <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
                                         <input autocomplete="off" data-ng-model="profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer">
-                                            Confirm SMS
+                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.validateToken()">
+                                            Verify Token
                                         </span>
                                     </div>
                                 </div>

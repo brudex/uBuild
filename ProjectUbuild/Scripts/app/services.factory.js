@@ -7,6 +7,7 @@
         var baseUrl = "";      
         return {          
             gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
+            getInterestRates: getData('/api/LoanApi/GetLoanInterestRates'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
             checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility'),
             getAccountProfile: postData('/api/AccountApi/AccountProfile'),
@@ -15,7 +16,9 @@
             getHouseCustomizables: getData('/api/LoanApi/GetHouseDesignCustomizibles'),
             getRepaymentMethods: getData('/api/LoanApi/GetRepaymentMethods'),
             getCurrencies: getData('/api/LoanApi/GetCurrencies'),
-            getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes') 
+            getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes'), 
+            sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
+            validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo')
         }; 
          
 
@@ -50,14 +53,12 @@
         }
         
         function doPost(url,data, callback) {
-            
              return $http.post(url, data)
                 .then(function (response) {
                     if (response == null) {
                        return callback(null, {status:"07",message :"Error in response"});
                     }
                     return callback(null, response);
-                      
                 })
                 .catch(function (error) {
                     console.log(error);

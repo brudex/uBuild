@@ -45,6 +45,12 @@ namespace ProjectUbuild.Controllers.Api
             return DbHandler.Instance.GetLoanApplTypes();
         }
 
+        [System.Web.Mvc.HttpGet]
+        public List<LoanInterestRates> GetLoanInterestRates()
+        {
+            return DbHandler.Instance.GetLoanInterestRates();
+        }
+
         [System.Web.Mvc.HttpPost]
         public ServiceResponse CheckLoanEligibility([FromBody]JObject data)
         {
@@ -58,7 +64,6 @@ namespace ProjectUbuild.Controllers.Api
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }
 
-        
 
 
     }

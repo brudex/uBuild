@@ -64,7 +64,7 @@
                                                     <li class="active">Choose Loan Type</li>
                                                     <li ng-if="builder.loanType=='Phase'">Choose Phase </li>
                                                     <li>Your Financials</li>
-                                                   
+
                                                 </ul>
                                                 <!-- fieldsets -->
                                                 <fieldset>
@@ -135,12 +135,12 @@
                                                         </div>
                                                     </div>
                                                     <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                                                    <input type="button" data-ng-click="checkEligibility()" ng-disabled="!builder.currency"  style="width: 200px" class="action-button" value="Check Eligibility" />
-                                                    
+                                                    <input type="button" data-ng-click="checkEligibility()" ng-disabled="!builder.currency" style="width: 200px" class="action-button" value="Check Eligibility" />
 
-                                                 
+
+
                                                 </fieldset>
-                                                
+
                                             </form>
                                         </div>
                                     </div>
@@ -160,288 +160,136 @@
                     <div class="row row-same-height">
                         <div class="col-md-8 b-r b-dashed b-grey ">
                             <div>
-                                <ul id="house_selction_list">
-                                    <li class="row">
-                                        <div class="col-md-7">
-                                            <label >
+
+                                <ul id="house_selction_list" class="row">
+                                    <li class="col-md-4">
+                                        <div class="">
+                                            <label>
                                                 <input class="radio" type="radio" name="housetype1" value="1-bedroom" ng-model="vm.housetype" />
                                                 <img src="/images/1.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
+                                                <h5>1 Bed Room Apartment</h5>
                                             </label>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div data-pages="card" class="card card-default" id="card-basic" data-ng-show="vm.housetype=='1-bedroom'">
-                                                <div class="card-header  ">
-                                                    <div class="card-title">
-                                                        Customizable Components
-                                                    </div>
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Doors</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Door 1</option>
-                                                                <option value="WA">Door 2</option>
-                                                                <option value="WA">Door 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Wall</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Wall type 1</option>
-                                                                <option value="WA">Wall type 2</option>
-                                                                <option value="WA">Wall type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Windows</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Window type 1</option>
-                                                                <option value="WA">Window Type 2</option>
-                                                                <option value="WA">Window Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Furniture</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Furniture type 1</option>
-                                                                <option value="WA">Furniture Type 2</option>
-                                                                <option value="WA">Furniture Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="row">
-                                        <div class="col-md-7">
-                                            <label>
-                                                <input type="radio" name="housetype2" value="2-bedroom" ng-model="vm.housetype" />
-                                                <img src="/images/2.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
-                                            </label>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div data-pages="card" class="card card-default" id="card-basic" data-ng-show="vm.housetype=='2-bedroom'">
-                                                <div class="card-header  ">
-                                                    <div class="card-title">
-                                                        Customizable Components
-                                                    </div>
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Doors</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Door 1</option>
-                                                                <option value="WA">Door 2</option>
-                                                                <option value="WA">Door 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Wall</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Wall type 1</option>
-                                                                <option value="WA">Wall type 2</option>
-                                                                <option value="WA">Wall type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Windows</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Window type 1</option>
-                                                                <option value="WA">Window Type 2</option>
-                                                                <option value="WA">Window Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Furniture</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Furniture type 1</option>
-                                                                <option value="WA">Furniture Type 2</option>
-                                                                <option value="WA">Furniture Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                     </li>
-                                    <li class="row">
-                                        <div class="col-md-7">
+                                    <li class="col-md-4">
+                                        <div class="">
+                                            <label>
+                                                <input type="radio" name="housetype2" value="2-bedroom" ng-model="vm.housetype" />
+                                                <img src="/images/2.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
+                                                <h5>2 Bed Room Apartment</h5>
+                                            </label>
+                                        </div>
+
+
+                                    </li>
+                                    <li class="col-md-4">
+                                        <div class="">
                                             <label>
                                                 <input type="radio" name="housetype3" value="3-bedroom" ng-model="vm.housetype" />
                                                 <img src="/images/3.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto;">
+                                                <h5>3 Bed Room Apartment</h5>
                                             </label>
                                         </div>
-                                        <div class="col-md-5">
-                                            <div data-pages="card" class="card card-default" id="card-basic" data-ng-show="vm.housetype=='3-bedroom'">
-                                                <div class="card-header  ">
-                                                    <div class="card-title">
-                                                        Customizable Components
-                                                    </div>
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Doors</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Door 1</option>
-                                                                <option value="WA">Door 2</option>
-                                                                <option value="WA">Door 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Wall</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Wall type 1</option>
-                                                                <option value="WA">Wall type 2</option>
-                                                                <option value="WA">Wall type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Windows</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Window type 1</option>
-                                                                <option value="WA">Window Type 2</option>
-                                                                <option value="WA">Window Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                                            <label class="">Furniture</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
-                                                                <option value="WA">Furniture type 1</option>
-                                                                <option value="WA">Furniture Type 2</option>
-                                                                <option value="WA">Furniture Type 3</option>
-                                                            </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
-                                                                <span class="selection">
-                                                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
-                                                                    </span>
-                                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </li>
                                 </ul>
 
 
                             </div>
-                            @*<div class="lightbox-grid square-thumbs" data-gallery-title="Gallery">
-                                    <ul>
-                                        <li>
-                                            <a href="/images/1.jpeg" data-lightbox="true">
-                                                <div class="background-image-holder">
-                                                    <img alt="image" class="background-image" src="/images/1.jpeg" />
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/images/2.jpeg" data-lightbox="true">
-                                                <div class="background-image-holder">
-                                                    <img alt="image" class="background-image" src="/images/2.jpeg" />
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/images/3.jpeg" data-lightbox="true">
-                                                <div class="background-image-holder">
-                                                    <img alt="image" class="background-image" src="/images/3.jpeg" />
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>*@
-                        </div>
 
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div data-pages="card" class="card card-default" id="card-basic">
+                                        <div class="card-header  ">
+                                            <div class="card-title">
+                                                Customizable Components
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="row">
+                                                <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
+                                                    <label class="">Doors</label>
+                                                    <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
+                                                        <option value="WA">Door 1</option>
+                                                        <option value="WA">Door 2</option>
+                                                        <option value="WA">Door 3</option>
+                                                    </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                        <span class="selection">
+                                                            <span class="select2-selection select2-selection--single" role="combobox"
+                                                                  aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                            </span>
+                                                        </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
+                                                    <label class="">Wall</label>
+                                                    <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
+                                                        <option value="WA">Wall type 1</option>
+                                                        <option value="WA">Wall type 2</option>
+                                                        <option value="WA">Wall type 3</option>
+                                                    </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                        <span class="selection">
+                                                            <span class="select2-selection select2-selection--single" role="combobox"
+                                                                  aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                            </span>
+                                                        </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
+                                                    <label class="">Windows</label>
+                                                    <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
+                                                        <option value="WA">Window type 1</option>
+                                                        <option value="WA">Window Type 2</option>
+                                                        <option value="WA">Window Type 3</option>
+                                                    </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                        <span class="selection">
+                                                            <span class="select2-selection select2-selection--single" role="combobox"
+                                                                  aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                            </span>
+                                                        </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
+                                                    <label class="">Furniture</label>
+                                                    <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
+                                                        <option value="WA">Furniture type 1</option>
+                                                        <option value="WA">Furniture Type 2</option>
+                                                        <option value="WA">Furniture Type 3</option>
+                                                    </select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                        <span class="selection">
+                                                            <span class="select2-selection select2-selection--single" role="combobox"
+                                                                  aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                            </span>
+                                                        </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div data-pages="card" class="card card-default" id="card-basic">
+                                        <div class="card-header  ">
+                                            <div class="card-title">
+                                                Amount updates here
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -534,7 +382,7 @@
                                     </div>
                                 </div>
 
-                                
+
                             </form>
                         </div>
                     </div>
@@ -567,7 +415,7 @@
                         </li>
                         <li class="send-application">
                             <button class="action-button" type="button" data-ng-click="vm.submitLoanApplication()">
-                                <span ><i class="fa fa-send"></i> Submit Application</span>
+                                <span><i class="fa fa-send"></i> Submit Application</span>
                             </button>
                         </li>
                     </ul>

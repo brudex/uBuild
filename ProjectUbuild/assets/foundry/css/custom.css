@@ -352,9 +352,18 @@ select.full-width + .select2-container {
     margin-top: 15px;
 }
 
-#house_selction_list li input[type="radio"] {
-    visibility: hidden
+#house_selction_list {
+    width: inherit;
+
 }
+
+house_selction_list li {
+
+}
+
+/*#house_selction_list li input[type="radio"] {
+    visibility: hidden
+}*/
 
 #house_selction_list li:hover {
     background: antiquewhite

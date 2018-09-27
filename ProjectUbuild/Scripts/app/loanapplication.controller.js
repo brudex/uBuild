@@ -14,6 +14,8 @@
         vm.applyModel = {}
         vm.eligibilityCallback = getEligibilityValues;
         vm.submitLoanApplication = submitLoanApplication;
+        vm.getHouseCustomizables = getHouseCustomizables;
+        vm.customizables = [];
         vm.applyModel.eligible = false;
         vm.ulain = "";
 
@@ -23,6 +25,14 @@
                 if (response.status === '00') {
                     vm.houseImages = response.data;
                 }
+            });
+        }
+
+
+        function getHouseCustomizables(houseId) {
+            services.getHouseCustomizables(houseId, function (response) {
+                console.log("Result from customizables >>", response);
+                vm.customizables = response; 
             });
         }
           

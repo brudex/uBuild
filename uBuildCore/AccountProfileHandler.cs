@@ -15,15 +15,15 @@ namespace uBuildCore
          public static ServiceResponse GetAccountProfile(ClientAuths client,bool fullData= false)
          {
              T24Customer tclient = null;
-            var dataResult = new JObject();
-            try
+             var dataResult = new JObject();
+             try
              {
                 
                  tclient = T24Customer.GetCustomerBYNumber(client.MobileNumber.FormatMobile());
                  if(fullData)
                  {
-                     string tjson = JsonConvert.SerializeObject(tclient);
-                     dataResult = JObject.Parse(tjson);
+                    string tjson = JsonConvert.SerializeObject(tclient);
+                    dataResult = JObject.Parse(tjson);
                     dataResult.Remove("CreatorId");
                     dataResult.Remove("CreatorName");
                     dataResult.Remove("CreatedDate");

@@ -42,6 +42,10 @@
 
         function getData(url) {
             return function (callback) {
+                if (arguments.length > 1) {
+                    url = url + "/" + arguments[0];
+                    callback = arguments[1]; 
+                }
                  doGet(url, function (err, response) {
                     if (err) {
                         console.error(err);

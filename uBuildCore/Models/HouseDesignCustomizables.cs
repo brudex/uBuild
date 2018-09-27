@@ -13,6 +13,8 @@ namespace uBuildCore.Models
       public string HouseDesignId{ get; set; }
       public string FixturesAndFittingId{ get; set; }
       public string ItemCount{ get; set; }
-      
+      public decimal UnitCost { get; set; }
+
+         
     }
 }

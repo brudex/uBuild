@@ -16,9 +16,9 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
-        public List<HouseDesignCustomizables> GetHouseDesignCustomizibles()
+        public List<HouseDesignCustomizables> GetHouseDesignCustomizibles(int id)
         {
-            return DbHandler.Instance.GetHouseDesignCustomizables();
+            return DbHandler.Instance.GetDesignCustomizablesByHouseId( id);
         }
 
         [System.Web.Mvc.HttpGet]

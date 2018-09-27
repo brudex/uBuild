@@ -8,8 +8,8 @@
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 33px">
             <div class="col-md-6">
                 <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">My Applications</h2>
                 <p class="lead mb0">A list of all your applications.</p>
@@ -18,7 +18,7 @@
                 <ol class="breadcrumb breadcrumb-2">
                     <li>
                         @Html.ActionLink("Home", "Index", "Home", new { }, null)
-                    </li>                    
+                    </li>
                     <li class="active">My Applications</li>
                 </ol>
             </div>
@@ -30,23 +30,26 @@
 
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: -80px">
             <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
-                <h4 class="uppercase mb80">Start a new application</h4>
+                @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;">
+
+                    
+                </a>*@
+                @Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })
                 <div class="tabbed-content text-tabs">
                     <ul class="tabs">
                         <li class="active">
                             <div class="tab-title">
                                 <span>Pending</span>
                             </div>
-
                         </li>
                         <li class="">
                             <div class="tab-title">
                                 <span>History</span>
                             </div>
 
-                        </li>                       
+                        </li>
                     </ul>
                     <ul class="content">
                         <li class="active">

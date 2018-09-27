@@ -14,20 +14,24 @@
                 <div class="module left">
                     <i class="fa fa-phone">&nbsp;</i>
                     <span class="sub">Call Us Now : (+233) 0274121780</span>
-                </div>
-                <div class="module left hidden-sm">
                     <i class="ti-email">&nbsp;</i>
                     <span class="sub">info@ubuild.ghlbank.com</span>
                 </div>
+                @*<div class="module left hidden-sm hidden-xs">
+                    <i class="ti-email">&nbsp;</i>
+                    <span class="sub">info@ubuild.ghlbank.com</span>
+                </div>*@
                 <div class="module right">
 
                     @if (Request.IsAuthenticated)
                     {
+                        
+
                         <span>Welcome @User.Identity.Name </span>
-                        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style="display:inline-block"}))
+                        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
                         {
                             @Html.AntiForgeryToken()
-                            <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px"/>
+                            <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
                         }
                     }
                     else
@@ -83,14 +87,14 @@
                         <ul class="menu">
 
                             <li>
-                                @Html.ActionLink("uBuild", "About", "Home", null, new {})
+                                @Html.ActionLink("uBuild", "About", "Home", null, new { })
                             </li>
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
                                     @Html.ActionLink("My Applications", "MyApplications", "Home", null, new { })
                                 </li>
-                            }                           
+                            }
                             <li>
                                 @Html.ActionLink("Guidelines", "Guidelines", "Home", null, new { })
                             </li>
@@ -227,20 +231,24 @@
                 <a class="btn btn-sm fade-half back-to-top inner-link" href="#top">Top</a>
             </footer>*@
     </div>
-    <div class="modal-strip bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 overflow-hidden">
-                    <i class="ti-announcement icon icon-sm pull-left color-primary"></i>
-                    <p class="mb0 pull-left">
-                        With <strong>UBuild</strong> you can apply for a loan to build your dream house. Start now!.
-                    </p>
-                    @Html.ActionLink("Check your Eligibility", "Eligibility", "Loan", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="modal-strip bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 overflow-hidden">
+                        <i class="ti-announcement icon icon-sm pull-left color-primary"></i>
+                        <p class="mb0 pull-left">
+                            With <strong>UBuild</strong> you can apply for a loan to build your dream house. Start now!.
+                        </p>
+                        @Html.ActionLink("Check your Eligibility", "Eligibility", "Loan", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
 
-                </div>
-            </div><!--end of row-->
-        </div><!--end of container-->
-    </div><!--end modal strip-->
+                    </div>
+                </div><!--end of row-->
+            </div><!--end of container-->
+        </div>
+    <!--end modal strip-->
+    }
     @Html.Partial("_Scripts")
 </body>
 </html>

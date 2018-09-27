@@ -8,7 +8,7 @@
     'use strict';
 
     $(document).ready(function() {
-
+        $('.dropdown-toggle').dropdown();
         $('#rootwizard').bootstrapWizard({
             onTabShow: function(tab, navigation, index) {
                 var $total = navigation.find('li').length;
@@ -17,10 +17,24 @@
                 // If it's the last tab then hide the last button and show the finish instead
                 if ($current >= $total) {
                     $('#rootwizard').find('.pager .next').hide();
+                    $('#rootwizard').find('.pager .send-application').hide();
                     $('#rootwizard').find('.pager .finish').show().removeClass('disabled hidden');
                 } else {
                     $('#rootwizard').find('.pager .next').show();
                     $('#rootwizard').find('.pager .finish').hide();
+                    $('#rootwizard').find('.pager .send-application').hide();
+
+                    if ($current == 1) {
+                        $('#rootwizard').find('.pager .previous').hide();
+                    } else {
+                        $('#rootwizard').find('.pager .previous').show();
+                    }
+                    if ($current == 3) {
+                       
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .send-application').show();
+                    }
+                    
                 }
 
                 var li = navigation.find('li a.active').parent();
@@ -41,13 +55,13 @@
                     var nextIconClass = nextIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnNext);
-                    btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
+                   //  btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
 
                     var prevIcon = li.prev().find('.fa');
                     var prevIconClass = prevIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnPrev);
-                    btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
+                    //btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
                 } else if ($current == 1) {
                     // remove classes needed for button animations from previous button
                     btnPrev.removeClass('btn-animated from-left fa');

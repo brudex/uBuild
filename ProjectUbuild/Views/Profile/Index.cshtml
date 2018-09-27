@@ -5,8 +5,8 @@
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 33px">
             <div class="col-md-6">
                 <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Complete Your Profile</h2>
                 <p class="lead mb0">Please update your profile.</p>
@@ -41,9 +41,9 @@
                     </ul>
                     <!-- fieldsets -->
                     <fieldset>
-                     <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
-                        <div class="progress-circle-indeterminate progress-circle-master"></div>
-                    </div>
+                        <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
+                        </div>
                         <h2 class="fs-title">Check you account Status</h2>
 
                         <div class="m-b-10">
@@ -62,16 +62,16 @@
                             </div>
                             <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  !vm.profile.tokenSent">
                                 <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group">
+                                    <div class="form-group form-group-default input-group" ng-class="{'disabled',vm.ajax}">
                                         <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
-                                        <input autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                        <input ng-disabled="vm.ajax" autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                         <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.sendToken()">
                                             Verify
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  vm.profile.tokenSent" >
+                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  vm.profile.tokenSent">
                                 <div class="col-sm-6 col-md-offset-3">
                                     <div class="form-group form-group-default input-group">
                                         <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
@@ -92,8 +92,23 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
                                         <label>Title</label>
+                                        
+                                        @*<div class="cs-wrapper"><div class="cs-select cs-skin-slide" tabindex="0"><span class="cs-placeholder">Select Title</span><div class="cs-options">
+                                            <ul>
+                                                <li data-option="" data-value="Mr"><span>Mr</span></li>
+                                                <li data-option="" data-value="Mrs"><span>Mrs</span></li>
+                                                <li data-option="" data-value="Miss"><span>Miss</span></li>
+                                                <li data-option="" data-value="Dr"><span>Dr</span></li>
+                                            </ul>
+                                        </div><select class="cs-select cs-skin-slide" data-init-plugin="cs-select" data-ng-model="vm.profile.Title" name="Title" required="">
+                                            <option value="Mr">Mr.</option>
+                                            <option value="Mrs">Mrs.</option>
+                                            <option value="Miss">Miss</option>
+                                            <option value="Dr">Dr.</option>
+                                        </select><div class="cs-backdrop"></div></div></div>*@
+
                                         <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
-                                            <option value="">Select One..</option>
+                                            <option value="">--Select Title--</option>
                                             <option value="Mr">Mr.</option>
                                             <option value="Mrs">Mrs.</option>
                                             <option value="Miss">Miss</option>
@@ -165,9 +180,9 @@
                                     <label>Gender</label>
                                     <div class="form-group">
                                         <div class="radio radio-success">
-                                            <input type="radio" value="male" data-ng-model="vm.profile.Gender" name="Gender" aria-invalid="false">
+                                            <input type="radio" value="male" id="male" data-ng-model="vm.profile.Gender" name="Gender" aria-invalid="false">
                                             <label for="male">Male</label>
-                                            <input type="radio" checked="checked" data-ng-model="vm.profile.Gender" value="female" name="Gender">
+                                            <input type="radio" checked="checked" id="female" data-ng-model="vm.profile.Gender" value="female" name="Gender">
                                             <label for="female">Female</label>
                                         </div>
                                     </div>
@@ -389,7 +404,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
                                         <label>Employer Country </label>
-                                        <input type="text" class="form-control" name="EmployerCountry"  data-ng-model="vm.profile.EmployerCountry">
+                                        <input type="text" class="form-control" name="EmployerCountry" data-ng-model="vm.profile.EmployerCountry">
                                     </div>
                                 </div>
                             </div>
@@ -503,7 +518,7 @@
                         </div>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
 
-                        <input type="button" name="previous" style="width: 200px" class="previous action-button" value="Submit" />
+                        <input type="submit" name="previous" style="width: 200px" class="action-button" value="Submit" />
                     </fieldset>
                 </form>
             </div>

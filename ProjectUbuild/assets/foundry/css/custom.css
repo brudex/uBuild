@@ -95,19 +95,19 @@ input[type="submit"], button[type="submit"] {
         font-size: 13px;
     }*/
     /*buttons*/
-    #msform .action-button {
-        width: 145px;
+     .action-button {
+        width: auto;
         background: #a542409e;
         font-weight: bold;
          color: white; 
         border: 0 none;
         border-radius: 1px;
         cursor: pointer;
-        padding: 10px 5px;
+        padding: 10px 15px;
         margin: 10px 5px;
         border: none
     }
-        #msform .action-button[disabled] {
+        .action-button[disabled] {
             width: 100px;
             background: #a699999e;
             font-weight: bold;
@@ -120,10 +120,10 @@ input[type="submit"], button[type="submit"] {
             border: none
         }
 
-        #msform .action-button:hover, #msform .action-button:focus {
+        .action-button:hover,  .action-button:focus {
             box-shadow: 0 0 0 2px white, 0 0 0 3px #a542409e;
         }
-        #msform .action-button[disabled]:hover, #msform .action-button[disabled]:focus {
+        .action-button[disabled]:hover,  .action-button[disabled]:focus {
             box-shadow: none
         }
 /*headings*/
@@ -342,3 +342,197 @@ select.full-width + .select2-container {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background: #f3f3f3;
+     color: #2c2c2c; 
+}
+
+#house_selction_list li .card {
+    margin-top: 15px;
+}
+
+#house_selction_list li input[type="radio"] {
+    visibility: hidden
+}
+
+#house_selction_list li:hover {
+    background: antiquewhite
+}
+
+div.cs-skin-slide {
+    width: auto;
+    font-family: Arial, sans-serif;
+    color: #5e5e5e;
+}
+
+div.cs-skin-slide {
+    color: #fff;
+    /* font-size: 1.5em; */
+    width: 300px;
+}
+
+div.cs-select {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cs-select {
+    background-color: transparent;
+}
+    .cs-select .cs-placeholder {
+        width: 100%;
+    }
+
+div.cs-skin-slide > span {
+    height: 35px;
+    padding: 6px 33px 6px 17px;
+    line-height: 23px;
+    z-index: 1;
+}
+
+.cs-select span {
+    text-overflow: initial;
+}
+
+.cs-skin-slide > span {
+    height: 80px;
+    line-height: 32px;
+    -webkit-transition: text-indent 0.3s, opacity 0.3s;
+    transition: text-indent 0.3s, opacity 0.3s;
+}
+
+.cs-select > span {
+    padding-right: 3em;
+}
+
+.cs-select span {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+div.cs-skin-slide > span:after, div.cs-skin-slide.cs-active > span:after {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    color: #5e5e5e;
+}
+
+.cs-select > span::after {
+    content: '\25BE';
+    right: 1em;
+}
+
+.cs-select > span::after, .cs-select .cs-selected span::after {
+    speak: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+div.cs-skin-slide .cs-options {
+    height: auto;
+    padding: 9px 0;
+    width: auto;
+    padding: 10px;
+    max-height: 350px;
+    transform: translate3d(1, 1, 1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cs-skin-slide .cs-options {
+    background: transparent;
+    width: 70%;
+    height: 400%;
+    padding: 1.9em 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.cs-select .cs-options {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    visibility: hidden;
+}
+div.cs-skin-slide .cs-options ul {
+    width: 100%;
+    display: table;
+}
+
+.cs-select ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+div.cs-skin-slide .cs-options ul li {
+    display: table-row;
+}
+
+.cs-skin-slide .cs-options li {
+    opacity: 0;
+    -webkit-transform: translate3d(30%, 0, 0);
+    transform: translate3d(30%, 0, 0);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.cs-select select {
+    display: none;
+}
+
+.cs-select {
+    background-color: transparent;
+}
+
+label, input, button, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+.cs-backdrop {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+div.cs-skin-slide .cs-options ul li span {
+    display: table-cell;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    padding: 5px 0;
+    text-transform: none;
+    max-height: 350px;
+    overflow-y: auto;
+    color: #a17c7c;
+}
+

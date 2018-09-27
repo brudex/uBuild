@@ -6,11 +6,11 @@
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 33px">
             <div class="col-md-6">
                 <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Apply for Loan</h2>
-                <p class="lead mb0">Compete the form to apply for a loan.</p>
+                <p class="lead mb0">Complete the form to apply for a loan.</p>
             </div>
             <div class="col-md-6 text-right hidden-xs hidden-sm">
                 <ol class="breadcrumb breadcrumb-2">
@@ -34,13 +34,13 @@
             <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
 
                 <li class="nav-item">
-                    <a class="active" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-shopping-cart tab-icon"></i> <span>Check Eligibility </span></a>
+                    <a class="active" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-search tab-icon"></i> <span>Check Eligibility </span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="" data-toggle="tab" href="#tab3" role="tab"><i class="fa fa-truck tab-icon"></i> <span> Options Type</span></a>
+                    <a class="" data-toggle="tab" href="#tab3" role="tab"><i class="fa fa-gear tab-icon"></i> <span> Options Type</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-credit-card tab-icon"></i> <span>Complete Information</span></a>
+                    <a class="" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-file tab-icon"></i> <span>Complete Information</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="" data-toggle="tab" href="#tab5" role="tab"><i class="fa fa-check tab-icon"></i> <span>Thank You</span></a>
@@ -64,7 +64,7 @@
                                                     <li class="active">Choose Loan Type</li>
                                                     <li ng-if="builder.loanType=='Phase'">Choose Phase </li>
                                                     <li>Your Financials</li>
-                                                    <li>Results</li>
+                                                   
                                                 </ul>
                                                 <!-- fieldsets -->
                                                 <fieldset>
@@ -79,7 +79,7 @@
                                                             <label for="phase">Phase</label>
                                                         </span>
                                                     </div>
-                                                    <input type="button" name="next" class="next action-button" value="Next" title="Select a loan type to continue." ng-disabled="!builder.loanType" />
+                                                    <input type="button" name="next" class="msformnext action-button" value="Next" title="Select a loan type to continue." ng-disabled="!builder.loanType" />
                                                 </fieldset>
                                                 <fieldset ng-show="builder.loanType=='Phase'">
                                                     <h2 class="fs-title">Choose Phase</h2>
@@ -93,8 +93,8 @@
                                                             <option>Fittings and Fixtures</option>
                                                         </select>
                                                     </div>
-                                                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                                                    <input type="button" name="next" class="next action-button" value="Next" title="Complete form to continue." ng-disabled="!builder.phase" />
+                                                    <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                                                    <input type="button" name="next" class="msformnext action-button" value="Next" title="Complete form to continue." ng-disabled="!builder.phase" />
                                                 </fieldset>
                                                 <fieldset>
                                                     <h2 class="fs-title">Enter your financials</h2>
@@ -134,14 +134,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                                                    <input type="button" name="next" class="next action-button" value="Next" title="Please choose your currency to continue" ng-disabled="!builder.currency" />
-                                                </fieldset>
-                                                <fieldset>
+                                                    <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                                                    <input type="button" data-ng-click="checkEligibility()" ng-disabled="!builder.currency"  style="width: 200px" class="action-button" value="Check Eligibility" />
+                                                    
 
-                                                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                                                    <input type="button" data-ng-click="checkEligibility()" style="width: 200px" class="previous action-button" value="Check Eligibility" />
+                                                 
                                                 </fieldset>
+                                                
                                             </form>
                                         </div>
                                     </div>
@@ -161,7 +160,7 @@
                     <div class="row row-same-height">
                         <div class="col-md-8 b-r b-dashed b-grey ">
                             <div>
-                                <ul>
+                                <ul id="house_selction_list">
                                     <li class="row">
                                         <div class="col-md-7">
                                             <label >
@@ -535,9 +534,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary btn-cons btn-animated" type="button" data-ng-click="vm.submitLoanApplication()">
-                                    <span>Apply</span>
-                                </button>
+                                
                             </form>
                         </div>
                     </div>
@@ -549,23 +546,28 @@
                 <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
                     <ul class="pager wizard no-style">
                         <li class="next">
-                            <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+                            <button class="action-button" type="button" ng-show="vm.applyModel.eligible">
                                 <span>Next</span>
                             </button>
                         </li>
                         <li class="next finish hidden">
-                            <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                            <button class="action-button" type="button">
                                 <span>Finish</span>
                             </button>
                         </li>
                         <li class="previous first hidden">
-                            <button class="btn btn-default btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                            <button class="action-button" type="button">
                                 <span>First</span>
                             </button>
                         </li>
                         <li class="previous">
-                            <button class="btn btn-default btn-cons pull-right" type="button">
+                            <button class="action-button" type="button">
                                 <span>Previous</span>
+                            </button>
+                        </li>
+                        <li class="send-application">
+                            <button class="action-button" type="button" data-ng-click="vm.submitLoanApplication()">
+                                <span ><i class="fa fa-send"></i> Submit Application</span>
                             </button>
                         </li>
                     </ul>

@@ -130,11 +130,11 @@ namespace uBuildCore
             }
         }
 
-        public List<HouseDesignCustomizables> GetHouseDesignCustomizables()
+        public List<HouseDesignCustomizables> GetDesignCustomizablesByHouseId(int houseId)
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.GetList<HouseDesignCustomizables>().ToList();
+                var list = conn.Query<HouseDesignCustomizables>("select hd.RecordId,hd.FixturesAndFittingsId,hd.ItemCount , ff.ItemDescription,ff.UnitCost from HouseDesignCustomizables hd, FixturesAndFittings ff where hd.FixturesAndFittingsId=ff.RecordId and hd.HouseDesignId="+houseId).ToList();
                 return list;
             }
         }

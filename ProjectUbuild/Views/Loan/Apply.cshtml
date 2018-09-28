@@ -36,13 +36,13 @@
                 <li class="nav-item">
                     <a class="active" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-search tab-icon"></i> <span>Check Eligibility </span></a>
                 </li>
-                <li class="nav-item" ng-if="vm.applyModel.eligible">
+                <li class="nav-item">
                     <a class="" data-toggle="tab" href="#tab3" role="tab"><i class="fa fa-gear tab-icon"></i> <span> Options Type</span></a>
                 </li>
-                <li class="nav-item" ng-if="vm.applyModel.eligible">
+                <li class="nav-item">
                     <a class="" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-file tab-icon"></i> <span>Complete Information</span></a>
                 </li>
-                <li class="nav-item" ng-if="vm.applyModel.eligible">
+                <li class="nav-item">
                     <a class="" data-toggle="tab" href="#tab5" role="tab"><i class="fa fa-check tab-icon"></i> <span>Thank You</span></a>
                 </li>
             </ul>
@@ -350,7 +350,14 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <label>Repayment Method</label>
-                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod">
+                                        <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod">
+                                            <option value="1">Direct Payroll Deduction</option>
+                                            <option value="2">Direct Debit</option>
+                                            <option value="3">Standing Order</option>
+                                            <option value="4">Other (Please Specify)</option>
+                                             
+                                        </select>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label>Specify Other</label>
@@ -389,7 +396,7 @@
                 </div>
 
                 <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab5">
-                    <h1>Thank you for your loan application. Your ULAIN information is <b>1234</b> .</h1>
+                    <h1>Thank you for your loan application. Your ULAIN information is <b data-ng-bind="vm.ulain"></b> .</h1>
                 </div>
                 <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
                     <ul class="pager wizard no-style">

@@ -545,3 +545,23 @@ div.cs-skin-slide .cs-options ul li span {
     color: #a17c7c;
 }
 
+#houseDesignWrapper {
+    min-height: 700px;
+    margin-top: 20px;
+}
+
+#houseDesignWrapper .row { }
+
+#sidebar_design {
+   
+    height: -webkit-fill-available;
+}
+
+#customizationTable td {
+    margin-right: 5px
+}
+
+#customizationTable td img {
+    width: 125px;
+
+}

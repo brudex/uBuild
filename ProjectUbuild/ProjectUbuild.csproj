@@ -190,6 +190,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AccountApiController.cs" />
     <Compile Include="Controllers\Api\LoanApiController.cs" />
+    <Compile Include="Controllers\FullHouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -1357,6 +1358,9 @@
     <Content Include="assets\plugins\highlight\styles\vs.css" />
     <Content Include="assets\plugins\highlight\styles\xcode.css" />
     <Content Include="assets\plugins\highlight\styles\zenburn.css" />
+    <Content Include="assets\plugins\image-picker\image-picker.css" />
+    <Content Include="assets\plugins\image-picker\image-picker.js" />
+    <Content Include="assets\plugins\image-picker\image-picker.min.js" />
     <Content Include="assets\plugins\imagesloaded\imagesloaded.pkgd.min.js" />
     <Content Include="assets\plugins\interactjs\interact.min.js" />
     <Content Include="assets\plugins\ion-slider\css\ion.rangeSlider.css" />
@@ -1937,6 +1941,7 @@
     <Content Include="images\1.jpeg" />
     <Content Include="images\2.jpeg" />
     <Content Include="images\3.jpeg" />
+    <Content Include="images\saple.jpg" />
     <Content Include="pages\css\editor.css" />
     <Content Include="pages\css\pages-icons.css" />
     <Content Include="pages\css\pages.css" />
@@ -2023,6 +2028,7 @@
     <Content Include="pages\img\progress\progress-circle-primary.svg" />
     <Content Include="pages\img\progress\progress-circle-success.svg" />
     <Content Include="pages\img\progress\progress-circle-warning.svg" />
+    <Content Include="Scripts\app\HouseDesign.js" />
     <Content Include="pages\js\pages.calendar.js" />
     <Content Include="pages\js\pages.calendar.min.js" />
     <Content Include="pages\js\pages.email.js" />
@@ -2343,6 +2349,8 @@
     <Content Include="Views\Home\MyApplications.cshtml" />
     <Content Include="Views\Home\FaQs.cshtml" />
     <Content Include="Views\Home\Guidelines.cshtml" />
+    <Content Include="Views\FullHouse\Index.cshtml" />
+    <Content Include="Views\FullHouse\HouseDesign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

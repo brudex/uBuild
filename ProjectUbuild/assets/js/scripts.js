@@ -8,6 +8,8 @@
         // your logic to perform a search and display results
         $(".list-view-wrapper").scrollbar();
 
+        $(".image-picker").imagepicker();
+
         $('[data-pages="search"]').search({
             // Bind elements that are included inside search overlay
             searchField: '#overlay-search',

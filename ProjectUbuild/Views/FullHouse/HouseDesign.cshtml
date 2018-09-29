@@ -1,0 +1,174 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+
+<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 33px">
+            <div class="col-md-6">
+                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Home Design</h2>
+                <p class="lead mb0">You can customize your chosen home . </p>
+            </div>
+            <div class="col-md-6 text-right hidden-xs hidden-sm">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                    </li>
+                    <li class="active">Apply for Loan</li>
+                </ol>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+
+<section class="container-fluid" id="houseDesignWrapper" data-ng-controller="HouseDesignController as vm">
+    <div class="row" style="margin-top: -85px">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="panel panel-danger">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <img src="/images/1.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" style="width: 50%; height: auto">
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
+                                            <label class="">Select customizable component</label>
+                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true">
+                                                <option value="WA">Door type 1</option>
+                                                <option value="WA">Door type 2</option>
+                                                <option value="WA">Door type 3</option>
+                                            </select>
+                                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                <span class="selection">
+                                                    <span class="select2-selection select2-selection--single" role="combobox"
+                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                    </span>
+                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <select class="image-picker show-html" data-ng-model="vm.itemSelected">
+                                            <option data-img-src="/images/saple.jpg" data-img-class="first" data-img-alt="Page 1" value="1">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="3">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="4">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="5">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="6">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="7">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="9">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="10">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="11">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="12">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="13">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="14">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="15">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="26">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="17">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="28">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="19">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="27">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="29">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="30">  Page 2  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="21">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="22">  Page 2  </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3" id="sidebar_design">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3>Base house cost + Customizations</h3>
+                    <h3>= $ 130,000</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table cart mb48">
+                        <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </th>
+                            <td>
+                                <a href="#">
+                                    <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%"/>
+                                </a>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                            <td>
+                                <span>$49.95</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </th>
+                            <td>
+                                <a href="#">
+                                    <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
+                                </a>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                            <td>
+                                <span>$49.95</span>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                </th>
+                                <td>
+                                    <a href="#">
+                                        <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <span>$49.95</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

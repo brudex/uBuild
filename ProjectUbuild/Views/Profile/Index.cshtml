@@ -62,7 +62,7 @@
                             </div>
                             <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  !vm.profile.tokenSent">
                                 <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group" ng-class="{'disabled',vm.ajax}">
+                                    <div class="form-group form-group-default input-group" >
                                         <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
                                         <input ng-disabled="vm.ajax" autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                         <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.sendToken()">
@@ -75,7 +75,7 @@
                                 <div class="col-sm-6 col-md-offset-3">
                                     <div class="form-group form-group-default input-group">
                                         <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
-                                        <input autocomplete="off" data-ng-model="profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                        <input autocomplete="off" data-ng-model="vm.profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                         <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.validateToken()">
                                             Verify Token
                                         </span>
@@ -162,7 +162,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
                                         <label>Date of birth </label>
-                                        <input type="text" class="form-control" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth">
+                                        <input type="date" class="form-control" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -180,9 +180,9 @@
                                     <label>Gender</label>
                                     <div class="form-group">
                                         <div class="radio radio-success">
-                                            <input type="radio" value="male" id="male" data-ng-model="vm.profile.Gender" name="Gender" aria-invalid="false">
+                                            <input type="radio" value="M" id="male" data-ng-model="vm.profile.Gender" name="Gender">
                                             <label for="male">Male</label>
-                                            <input type="radio" checked="checked" id="female" data-ng-model="vm.profile.Gender" value="female" name="Gender">
+                                            <input type="radio"  id="female" data-ng-model="vm.profile.Gender" value="F" name="Gender">
                                             <label for="female">Female</label>
                                         </div>
                                     </div>
@@ -235,7 +235,7 @@
                             </div>
                         </div>
 
-                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Select a loan type to continue." />
+                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Select a loan type to continue." />
                     </fieldset>
                     <fieldset data-ng-disabled="vm.isReadonly">
                         <h2 class="fs-title">Residential Information</h2>
@@ -250,7 +250,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>Permit Issue Date</label>
-                                        <input type="text" class="form-control" name="PermitIssueDate" required="" data-ng-model="vm.profile.PermitIssueDate">
+                                        <input type="date" class="form-control" name="PermitIssueDate" required="" data-ng-model="vm.profile.PermitIssueDate">
                                     </div>
                                 </div>
                             </div>
@@ -265,8 +265,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
-                                        <label>PermitExpiryDate</label>
-                                        <input type="text" class="form-control" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate">
+                                        <label>Permit Expiry Date</label>
+                                        <input type="date" class="form-control" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate">
                                     </div>
                                 </div>
                             </div>
@@ -323,8 +323,8 @@
                             </div>
 
                         </div>
-                        <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Complete form to continue." />
+                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Complete form to continue." />
                     </fieldset>
                     <fieldset data-ng-disabled="vm.isReadonly">
                         <h2 class="fs-title">Identification</h2>
@@ -350,7 +350,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
                                         <label>ID Issue Date</label>
-                                        <input type="text" class="form-control" name="IdIssueDate" data-ng-model="vm.profile.IdIssueDate">
+                                        <input type="date" class="form-control" name="IdIssueDate" data-ng-model="vm.profile.IdIssueDate">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -366,14 +366,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-group-default required">
                                     <label>ID Expiry Date</label>
-                                    <input type="text" class="form-control" name="ResidentialAddress" required="" data-ng-model="vm.profile.ResidentialAddress">
+                                    <input type="date" class="form-control" name="IdExpiryDate" required="" data-ng-model="vm.profile.IdExpiryDate">
                                 </div>
                             </div>
 
                         </div>
 
-                        <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
                     </fieldset>
                     <fieldset data-ng-disabled="vm.isReadonly">
                         <h2 class="fs-title">Employment</h2>
@@ -450,11 +450,16 @@
                                         <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary" required="">
                                     </div>
                                 </div>
-
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Employer Street Address </label>
+                                        <input type="text" class="form-control" name="EmployerStreetAddress" data-ng-model="vm.profile.EmployerStreetAddress">
+                                    </div>
+                                </div> 
                             </div>
                         </div>
-                        <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" name="next" class="next action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
                     </fieldset>
                     <fieldset data-ng-disabled="vm.isReadonly">
                         <h2 class="fs-title">Emergency Contact</h2>
@@ -495,13 +500,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>Emergency Contact Address </label>
-                                        <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" data-ng-model="vm.profile.EmployerTypeOfBiz">
+                                        <input type="text" class="form-control" name="EmergencyContactAddress" required="" data-ng-model="vm.profile.EmergencyContactAddress">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>EEmergency Contact Email </label>
-                                        <input type="text" class="form-control" name="EmployerPhoneNo" required="" data-ng-model="vm.profile.EmployerPhoneNo">
+                                        <input type="text" class="form-control" name="EmergencyContactEmail" required="" data-ng-model="vm.profile.EmergencyContactEmail">
                                     </div>
                                 </div>
                             </div>
@@ -511,7 +516,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
                                         <label>Emergency Contact Relationship </label>
-                                        <input type="text" class="form-control" name="EmployerEmail" data-ng-model="vm.profile.EmployerEmail">
+                                        <input type="text" class="form-control" name="EmergencyContactRship" data-ng-model="vm.profile.EmergencyContactRship">
                                     </div>
                                 </div>
                             </div>

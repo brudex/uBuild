@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GHLService;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -61,7 +57,7 @@ namespace uBuildCore
             string acctNo = data["acctNo"].ToStringOrEmpty();
             try
             {
-
+                    
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
                 if (tclient != null)
                 {
@@ -95,12 +91,11 @@ namespace uBuildCore
              string acctNo = data["acctNo"].ToStringOrEmpty();
              string token = data["token"].ToStringOrEmpty();
              var validated = SoftTokenService.VerifyToken(token, acctNo);
-             if (validated)
+             if (!validated)
              {
                  response.Status = "00";
                  response.Message = "Token successfully validated";
-                 return response;
-                 
+                 return response; 
              }
              response.Status = "03";
              response.Message = "Invalid verification token";

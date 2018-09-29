@@ -9,6 +9,7 @@ namespace ProjectUbuild.Controllers
     public class ProfileController : Controller
     {
         // GET: Profile
+        [Authorize]
         public ActionResult Index()
         {
             return View();

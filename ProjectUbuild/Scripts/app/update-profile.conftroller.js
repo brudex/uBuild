@@ -29,8 +29,8 @@
                 vm.ajax = true;
                 services.submitProfile(vm.profile, function (response) {
                     console.log("Response from server >>", response);
-                    if (response.status === "00") {
-                        utils.alertSuccess(response.message);
+                    if (response.Status === "00") {
+                        utils.alertSuccess(response.Message);
                     }
                     vm.ajax = false;
                 });

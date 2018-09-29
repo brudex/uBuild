@@ -190,6 +190,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AccountApiController.cs" />
     <Compile Include="Controllers\Api\LoanApiController.cs" />
+    <Compile Include="Controllers\FullHouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -2343,6 +2344,7 @@
     <Content Include="Views\Home\MyApplications.cshtml" />
     <Content Include="Views\Home\FaQs.cshtml" />
     <Content Include="Views\Home\Guidelines.cshtml" />
+    <Content Include="Views\FullHouse\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

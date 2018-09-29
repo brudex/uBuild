@@ -122,14 +122,19 @@ namespace uBuildCore
             if (string.IsNullOrEmpty(mobile))
             {
                 mobile = string.Empty;
+                return mobile;
             }
-            if (mobile.IndexOf("233") == 0)
+            if (mobile.IndexOf("233", StringComparison.Ordinal) == 0)
             {
                 return mobile;
             }
             if (mobile[0] == '+')
             {
                 return mobile.Substring(1);
+            }
+            if (mobile.IndexOf("00", StringComparison.Ordinal) == 0)
+            {
+                return  mobile.Substring(2);
             }
             if (mobile[0] == '0')
             {

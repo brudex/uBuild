@@ -16,7 +16,7 @@
         vm.houseImages = [];
         vm.fixtureFittings = [];
         vm.customizables = [];
-        var fullHouseId = 1;
+        var fullHouseId = 4;
         vm.model = {};
         vm.model.calcuation = {};
         vm.model.selectedFixtures = {};

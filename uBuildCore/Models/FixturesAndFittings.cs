@@ -7,8 +7,6 @@ namespace uBuildCore.Models
         public int CustomizableFnFsId { get; set; }
         public decimal UnitCost { get; set; }
         public int CostCurrencyId { get; set; }
-        public string ItemImage { get; set; }  
-
-
+        public string ItemImage { get; set; }   
     }
 }

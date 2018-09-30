@@ -34,7 +34,7 @@
                 <div class="panel panel-danger">
                     <div class="panel-body">
                         <div class="col-md-12" style="height: 530px">
-                            <img src="/images/1.jpeg" class="img-responsive img-rounded" alt="Cinque Terre" 
+                            <img src="/images/1.jpeg" class="img-responsive img-rounded" alt="Cinque Terre"
                                  style="width: 50%; height: auto;transform: rotate(90deg) translateY(-177px) translateX(-185px)">
                         </div>
                     </div>
@@ -45,7 +45,6 @@
                                     <div class="col-md-3">
                                         <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
                                             <label class="">Customizable Items List</label>
-                                            
                                             <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2" tabindex="-1" aria-hidden="true" data-ng-options="item as item.ItemDescription for item in vm.customizables" data-ng-model="vm.model.selectedCustomizable">
                                                 <option value="">Select Customizable..</option>
                                             </select>
@@ -58,21 +57,21 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-9">
-                                        <select class="image-picker show-html" >
+                                    <div class="col-md-9" style="max-height: 310px; overflow: auto;">
+                                        <select class="image-picker show-html">
                                             <option data-ng-repeat="ff in vvm.fixtureFittings" data-img-src="/images/{{ff.ItemImage}}" data-img-alt="Page 1" value="1" data-ng-click="vm.fixtureSelected(ff)">{{ff.ItemDescription}}</option>
 
                                             <option data-img-src="/images/saple.jpg" data-img-class="first" data-img-alt="Page 1" value="1">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="3">  Page 2  </option>
-                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="4">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="4">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="5">  Page 2  </option>
-                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="6">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="6">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="7">  Page 2  </option>
-                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="9">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="9">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="10">  Page 2  </option>
-                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="11">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="11">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="12">  Page 2  </option>
-                                            <option data-img-src="/images/saple.jpg"  data-img-alt="Page 1" value="13">  Page 1  </option>
+                                            <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="13">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="14">  Page 2  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 1" value="15">  Page 1  </option>
                                             <option data-img-src="/images/saple.jpg" data-img-alt="Page 2" value="26">  Page 2  </option>
@@ -100,77 +99,77 @@
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3>Base house cost + Customizations</h3>
-                    <h3 >= $ 130,000</h3>
+                    <h3>= $ 130,000</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table cart mb48">
                         <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
-                            <th scope="row">
-                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(value.RecordId)">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </th>
-                            <td>
-                                <a href="#">
-                                    <img alt="Product" class="product-thumb" src="/images/{{value.ItemImage}}" style="width: 90%"/>
-                                </a>
-                            </td>
-                            <td>
-                                <span>1</span>
-                            </td>
-                            <td>
-                                <span data-ng-bind="item.UnitCost | currency:'GHS'"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </th>
-                            <td>
-                                <a href="#">
-                                    <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
-                                </a>
-                            </td>
-                            <td>
-                                <span>1</span>
-                            </td>
-                            <td>
-                                <span>$49.95</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </th>
-                            <td>
-                                <a href="#">
-                                    <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
-                                </a>
-                            </td>
-                            <td>
-                                <span>1</span>
-                            </td>
-                            <td>
-                                <span>$49.95</span>
-                            </td>
-                        </tr>
+                            <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
+                                <th scope="row">
+                                    <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(value.RecordId)">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                </th>
+                                <td>
+                                    <a href="#">
+                                        <img alt="Product" class="product-thumb" src="/images/{{value.ItemImage}}" style="width: 90%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <span data-ng-bind="item.UnitCost | currency:'GHS'"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                </th>
+                                <td>
+                                    <a href="#">
+                                        <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <span>$49.95</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                </th>
+                                <td>
+                                    <a href="#">
+                                        <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <span>$49.95</span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                    
-                    
+
+
 
                     <form>
                         <p>You may be elligible for a loan to own this house. </p>

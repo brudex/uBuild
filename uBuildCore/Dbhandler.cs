@@ -78,11 +78,11 @@ namespace uBuildCore
             }
         }
 
-        public List<FittingsFixtures> GetFittingsFixtures()
+        public List<FixturesAndFittings> GetFittingsFixtures()
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.GetList<FittingsFixtures>().ToList();
+                var list = conn.GetList<FixturesAndFittings>().ToList();
                 return list;
             }
         }

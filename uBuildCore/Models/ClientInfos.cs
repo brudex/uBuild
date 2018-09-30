@@ -10,23 +10,11 @@ namespace uBuildCore.Models
     {
 
         public int RecordId { get; set; }
-
-
         public int ClientId { get; set; }
-
-
         public string Title { get; set; }
-
-
         public string FirstName { get; set; }
-
-
         public string MiddleName { get; set; }
-
-
         public string LastName { get; set; }
-
-
         public string MaidenName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
@@ -70,17 +58,9 @@ namespace uBuildCore.Models
 
 
         public string ResidentialAddress { get; set; }
-
-
         public string PostalAddress { get; set; }
-
-
         public string CityOfResidence { get; set; }
-
-
         public string CountryOfResidence { get; set; }
-
-
         public string ResidentialPhone { get; set; }
 
 

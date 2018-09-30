@@ -22,13 +22,13 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
-        public List<FittingsFixtures> GetFittingsFixtures()
+        public List<FixturesAndFittings> GetFittingsFixtures()
         {
             return DbHandler.Instance.GetFittingsFixtures();
         }
 
         [System.Web.Mvc.HttpGet]
-        public List<FittingsFixtures> GetRepaymentMethods()
+        public List<FixturesAndFittings> GetRepaymentMethods()
         {
             return DbHandler.Instance.GetFittingsFixtures();
         }

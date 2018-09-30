@@ -6,7 +6,7 @@
     function DataService($http, $location,$window) {
         var baseUrl = "";      
         return {          
-            gitFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
+            getFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
             getInterestRates: getData('/api/LoanApi/GetLoanInterestRates'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
             checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility'),

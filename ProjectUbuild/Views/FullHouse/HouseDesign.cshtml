@@ -44,9 +44,9 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group form-group-default form-group-default-select2 " style="height: 60px">
-                                            <label class="">Select customizable </label>
+                                            <label class="">Customizable Items List</label>
                                             
-                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Door" data-init-plugin="select2" tabindex="-1" aria-hidden="true" data-ng-options="item as item.ItemDescription for item in vm.customizables" data-ng-model="vm.model.selectedCustomizable">
+                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2" tabindex="-1" aria-hidden="true" data-ng-options="item as item.ItemDescription for item in vm.customizables" data-ng-model="vm.model.selectedCustomizable">
                                                 <option value="">Select Customizable..</option>
                                             </select>
                                             <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
@@ -149,30 +149,38 @@
                                 <span>$49.95</span>
                             </td>
                         </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
-                                        <i class="ti-close"></i>
-                                    </a>
-                                </th>
-                                <td>
-                                    <a href="#">
-                                        <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
-                                    </a>
-                                </td>
-                                <td>
-                                    <span>1</span>
-                                </td>
-                                <td>
-                                    <span>$49.95</span>
-                                </td>
-                            </tr>
+                        <tr>
+                            <th scope="row">
+                                <a href="#" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </th>
+                            <td>
+                                <a href="#">
+                                    <img alt="Product" class="product-thumb" src="/images/saple.jpg" style="width: 90%" />
+                                </a>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                            <td>
+                                <span>$49.95</span>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
+                    
+                    
+
                     <form>
-                        <h4>You may be elligible for this loan</h4>
-                        <input type="text" class="form-control" value="Monthly Income" data-ng-model="vm.model.income"/>
-                        <input type="button" value="Check" class="btn btn-sm" data-ng-click="vm.checkEligibility()"/>
+                        <p>You may be elligible for a loan to own this house. </p>
+                        <div class="form-group form-group-default input-group">
+                            <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
+                            <input autocomplete="off" data-ng-model="vm.model.income" id="houseEligibility" placeholder="Monthly Income here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                            <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer;background: #ac5e81" data-ng-click="vm.checkEligibility()">
+                                Submit
+                            </span>
+                        </div>
                     </form>
                 </div>
             </div>

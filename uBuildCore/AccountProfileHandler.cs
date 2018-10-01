@@ -55,8 +55,7 @@ namespace uBuildCore
 
         public static ServiceResponse SendOtp(JObject data, ClientAuths client)
         {
-//            return new ServiceResponse() {Status = "00",Message = "Token sent"};
-//            //todo remove above
+ 
             T24Customer tclient = null;
             GHLService.Notification notificaiton = new Notification();
             var response = new ServiceResponse();

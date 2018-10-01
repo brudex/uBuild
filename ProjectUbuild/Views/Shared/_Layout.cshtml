@@ -36,8 +36,7 @@
                     }
                     else
                     {
-                        @Html.ActionLink("Sign Up", "Register", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
-                        @Html.ActionLink("Sign In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled" })
+                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled" })
                         @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
                     }
 
@@ -92,7 +91,10 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    @Html.ActionLink("My Applications", "MyApplications", "Home", null, new { })
+                                    @Html.ActionLink("My Applications", "MyApplications", "Home", null, new {})
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Register", "Index", "Profile", null, new { })
                                 </li>
                             }
                             <li>

@@ -32,16 +32,24 @@ namespace ProjectUbuild.Controllers.Api
 
         }
 
+
+        [Authorize]
         [System.Web.Mvc.HttpPost]
         public ServiceResponse AccountProfile([FromBody]JObject data)
         { 
             var clientAuth = User.GetUbuildClient();
             bool fullData = false;
+            string acctNo= String.Empty;
+            ;
             if (data != null)
             {
                 fullData = data["allData"] != null && data["allData"].ToBoolean();
+                if (fullData)
+                {
+                    acctNo = data["acctNo"].ToStringOrEmpty();
+                }
             }
-            return AccountProfileHandler.GetAccountProfile(clientAuth,fullData);
+            return AccountProfileHandler.GetAccountProfile(clientAuth,acctNo,fullData);
 
         }
 

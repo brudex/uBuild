@@ -8,14 +8,20 @@ namespace uBuildCore
 {
      public class AccountProfileHandler
     {
-         public static ServiceResponse GetAccountProfile(ClientAuths client,bool fullData= false)
+         public static ServiceResponse GetAccountProfile(ClientAuths client,string acctNo="",bool fullData= false)
          {
              T24Customer tclient = null;
              var dataResult = new JObject();
              try
              {
-                
-                 tclient = T24Customer.GetCustomerBYNumber(client.MobileNumber.FormatMobile());
+                 if (!string.IsNullOrEmpty(acctNo))
+                 {
+                      tclient = T24Customer.GetCustomerBYAccount(acctNo);
+                 }
+                 else
+                 {
+                    tclient = T24Customer.GetCustomerBYNumber(client.MobileNumber.FormatMobile());
+                 }              
                  if(fullData)
                  {
                     string tjson = JsonConvert.SerializeObject(tclient);

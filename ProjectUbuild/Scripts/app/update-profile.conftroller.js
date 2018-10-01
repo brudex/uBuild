@@ -72,10 +72,13 @@
             } 
         }
 
-        function getAccountInfo() {
+        function getAccountInfo(acctNo) {
             console.log('getting account information >>>');
             vm.ajax = true;
             var payload = { allData: true };
+            if (acctNo) {
+                payload.acctNo = acctNo;
+            }
             services.getAccountProfile(payload, function (response) {
                 console.log("Account information is >>", response);
                 if (response.Status === "00") {

@@ -20,8 +20,7 @@ namespace uBuildCore
             checkEligibilityRequest.LoanCurrencyId = currencyId;
             checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
             checkEligibilityRequest.MonthlyIncome = data["monthlyIncome"].ToObject<decimal>();
-            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
-            checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>();
+             checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>() *12;
             if (string.IsNullOrEmpty(data["phase"].ToStringOrEmpty()))
             {
                 checkEligibilityRequest.PhaseChecked = 1;

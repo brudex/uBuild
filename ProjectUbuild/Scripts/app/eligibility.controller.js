@@ -127,10 +127,7 @@
                         .then((value) => {
                             switch (value) {
                                 case "applyButton":
-                                    var newUrl = window.location.host + "/loan/apply";
-                                    console.log("newUrl", newUrl);
-                                    window.location.href = window.location.host + "/loan/apply";
-                                    
+                                    $window.location.href = "/loan/apply";
                                     break;
                             }
                         });

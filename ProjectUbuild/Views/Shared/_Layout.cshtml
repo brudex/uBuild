@@ -24,9 +24,7 @@
                 <div class="module right">
 
                     @if (Request.IsAuthenticated)
-                    {
-                        
-
+                    { 
                         <span>Welcome @User.Identity.Name </span>
                         using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
                         {

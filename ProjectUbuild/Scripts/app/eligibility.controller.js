@@ -9,6 +9,8 @@
         var isLoanApplication = false;
         var callbackFunc = null;
         var loading = false;
+        var interestRates = [];
+        var currencies = [];
         $scope.init = function (isLoanApp, callback) {
             if (isLoanApp) {
                 isLoanApplication = isLoanApp;
@@ -34,7 +36,8 @@
             function (phase) {
                 console.log("$scope.builder.phase", phase);
             });
-
+         
+       
         $scope.$watch("builder.currency",
             function (currency) {
                 if (typeof currency != 'undefined') {
@@ -91,7 +94,10 @@
                     $("#loan_amount").ionRangeSlider();
                     $("#loan_Irate").ionRangeSlider();
                     $("#loan_Tenure").ionRangeSlider();
-
+                    console.log("the selected currency is >>>", currency);
+                   
+                   var interestRate = getInterestRateByCurrency(currency);
+                    loanRateSliderOptions.from = interestRate[0].InterestRate;
                     //get slider instances
                     var monthlyIncomeSlider = $("#loan_monthly_income").data("ionRangeSlider");
                     var loanAmountSlider = $("#loan_amount").data("ionRangeSlider");
@@ -112,7 +118,6 @@
                 console.log("the response for eligibility >>", response);
                 loading = false;
                 if (response.Status === "00") {
-
                     swal({
                         title: "Congratulations",
                         text: response.Message,
@@ -124,7 +129,7 @@
                             }
                         }
                     })
-                        .then((value) => {
+                    .then((value) => {
                             switch (value) {
                                 case "applyButton":
                                     $window.location.href = "/loan/apply";
@@ -143,10 +148,32 @@
             });
         }
 
+        function getInterestRateByCurrency(currencyCode) {
+            var rate= null;
+            var selected = currencies.filter(function(item) {
+                return item.ISOCode === currencyCode;
+            });
+            if (selected.length) {
+                rate = interestRates.filter(function(item) {
+                    return Number(item.LoanCurrencyId) === Number(selected[0].RecordId);
+                });
+             }
+            return rate;
+        }
 
+        function getInterestRates() {
+            services.getInterestRates(function (response) {
+                interestRates = response;  
+            });
+        }
 
-
-
+        function getCurrencies() {
+            services.getCurrencies(function (response) {
+                currencies = response;
+             });
+        }
+        getInterestRates();
+        getCurrencies(); 
 
     }
 

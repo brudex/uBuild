@@ -130,6 +130,16 @@ namespace uBuildCore
             }
         }
 
+        public HouseDesigns GetHouseDesignById(int id)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<HouseDesigns>(f => f.RecordId, Operator.Eq, id);
+                var item = conn.GetList<HouseDesigns>(predicate).FirstOrDefault();
+                return item;
+            }
+        }
+
         public List<HouseDesignCustomizables> GetDesignCustomizablesByHouseId(int houseId)
         {
             using (var conn = GetOpenDefaultDbConnection())

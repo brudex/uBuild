@@ -1,8 +1,10 @@
-﻿@{
+﻿@model uBuildCore.Models.HouseDesigns
+@{
     Layout = "../Shared/_Layout.cshtml";
 }
 
-
+<input type="hidden" id="__selected_house_id" value="@Model.RecordId" />
+<input type="hidden" id="__selected_house_cost" value="@Model.BareDesignCost" />
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">

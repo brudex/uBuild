@@ -1,3 +1,5 @@
+using System;
+
 namespace uBuildCore.Models
 {
     public class HouseDesigns

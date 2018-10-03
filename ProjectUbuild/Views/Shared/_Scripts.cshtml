@@ -1,4 +1,15 @@
-﻿
+﻿@{
+    var route = Url.RouteUrl(ViewContext.RouteData.Values);
+    if (route != null)
+    {
+        route = route.ToLower();
+    }
+    else
+    {
+        route = string.Empty;
+    }
+}
+
 <script src="~/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script src="~/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
 <script src="~/assets/plugins/modernizr.custom.js" type="text/javascript"></script>
@@ -58,6 +69,7 @@
 <script src="~/assets/js/form_wizard.js"></script>
 <!-- END CORE TEMPLATE JS -->
 <!-- BEGIN PAGE LEVEL JS -->
+
 <script src="~/assets/js/dashboard.js" type="text/javascript"></script>
 <script src="~/assets/js/scripts.js" type="text/javascript"></script>
 <script src="~/Scripts/angular.min.js"></script>
@@ -66,7 +78,22 @@
 <script src="~/Scripts/app/app.module.js"></script>
 <script src="~/Scripts/app/services.factory.js"></script>
 <script src="~/Scripts/app/utilities.factory.js"></script>
-<script src="~/Scripts/app/eligibility.controller.js"></script>
-<script src="~/Scripts/app/update-profile.conftroller.js"></script>
-<script src="~/Scripts/app/loanapplication.controller.js"></script>
-<script src="~/Scripts/app/HouseDesign.js"></script>
+@if (route == "/loan/eligibility")
+{
+    <script src="~/Scripts/app/eligibility.controller.js"></script>
+}
+else if (route == "/profile/index")
+{
+
+    <script src="~/Scripts/app/update-profile.conftroller.js"></script>
+}
+else if (route == "/loan/apply")
+{
+    <script src="~/Scripts/app/loanapplication.controller.js"></script>
+}
+else if (route.IndexOf("/fullhouse/housedesign", StringComparison.Ordinal) >-1)
+{ 
+    <script src="~/Scripts/app/HouseDesign.js"></script>
+}
+
+

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using ProjectUbuild.Models;
+using uBuildCore;
 
 namespace ProjectUbuild.Controllers
 {
@@ -11,12 +13,19 @@ namespace ProjectUbuild.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new HouseDesignsModel();
+            model.GetData();
+            return View(model);
         }
 
-        public ActionResult HouseDesign()
+        public ActionResult HouseDesign(int id)
         {
-            return View();
+            var model = DbHandler.Instance.GetHouseDesignById(id);
+            if (model == null)
+            {
+                throw new HttpException(404, "Not found");
+            }
+            return View(model);
         }
     }
 }

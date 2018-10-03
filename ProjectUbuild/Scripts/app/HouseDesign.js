@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function ($) {
     'use strict';
 
     angular.module('ubuild')
@@ -7,20 +7,21 @@
 
     function HouseDesignController(services, location, $scope) {
         var vm = this;
-        vm.init = function () {
-
-        };
+         
         vm.errorMsg = [];
         vm.successMsg = [];
         vm.requests = [];
         vm.houseImages = [];
         vm.fixtureFittings = [];
         vm.customizables = [];
-        var fullHouseId = 4;
+        var fullHouseId = document.getElementById("__selected_house_id").value;
+        console.log('The __selected_house_id is ', fullHouseId);
+         
         vm.model = {};
         vm.model.calcuation = {};
         vm.model.selectedFixtures = {};
-        vm.model.houseCost = 0;
+        vm.model.houseCost = document.getElementById("__selected_house_cost").value;;
+        console.log('The __selected_house_cost is ', vm.model.houseCost);
 
         $scope.$watch("vm.model.itemSelected",
             function (newValue) {
@@ -96,4 +97,4 @@
     }
 
 
-})();
+})(jQuery);

@@ -40,8 +40,7 @@
        
         $scope.$watch("builder.currency",
             function (currency) {
-                if (typeof currency != 'undefined') {
-
+                if (typeof currency !== 'undefined') {
                     //slider options
                     var monthlyIncomeOptions = {
                         min: 1000,
@@ -173,11 +172,8 @@
              });
         }
         getInterestRates();
-        getCurrencies(); 
-
-    }
-
-
+        getCurrencies();  
+    } 
 
 })();
 

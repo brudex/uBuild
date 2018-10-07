@@ -2254,17 +2254,6 @@
     <Content Include="Scripts\jquery.inputmask.bundle.js" />
     <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
     <Content Include="Scripts\jquery.ui.widget.js" />
-    <Content Include="Scripts\ng-intl-tel-input\dist\ng-intl-tel-input.js" />
-    <Content Include="Scripts\ng-intl-tel-input\dist\ng-intl-tel-input.min.js" />
-    <Content Include="Scripts\ng-intl-tel-input\index.html" />
-    <Content Include="Scripts\ng-intl-tel-input\karma.conf.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.directive.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.directive.spec.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.e2e.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.module.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.provider.js" />
-    <Content Include="Scripts\ng-intl-tel-input\ng-intl-tel-input.provider.spec.js" />
-    <Content Include="Scripts\ng-intl-tel-input\protractor.conf.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\helpers\helpers.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\core\closecountrydropdownEvent.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\core\countrychangeEvent.js" />
@@ -2345,16 +2334,6 @@
     <Content Include="Views\Home\Guidelines.cshtml" />
     <Content Include="Views\FullHouse\Index.cshtml" />
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
-    <Content Include="Scripts\ng-intl-tel-input\.editorconfig" />
-    <Content Include="Scripts\ng-intl-tel-input\.jshintignore" />
-    <Content Include="Scripts\ng-intl-tel-input\.mversionrc" />
-    <Content Include="Scripts\ng-intl-tel-input\.npmignore" />
-    <Content Include="Scripts\ng-intl-tel-input\.travis.yml" />
-    <Content Include="Scripts\ng-intl-tel-input\bower.json" />
-    <Content Include="Scripts\ng-intl-tel-input\CONTRIBUTING.md" />
-    <Content Include="Scripts\ng-intl-tel-input\LICENSE" />
-    <Content Include="Scripts\ng-intl-tel-input\package.json" />
-    <Content Include="Scripts\ng-intl-tel-input\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

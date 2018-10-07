@@ -3,9 +3,9 @@
 
     angular.module('ubuild')
         .controller('HouseDesignController', HouseDesignController);
-    HouseDesignController.$inject = ['brudexservices', '$location', '$scope'];
+    HouseDesignController.$inject = ['brudexservices', '$location', '$scope', '$window'];
 
-    function HouseDesignController(services, location, $scope) {
+    function HouseDesignController(services, location, $scope, $window) {
         var vm = this;
          
         vm.errorMsg = [];
@@ -13,28 +13,31 @@
         vm.requests = [];
         vm.houseImages = [];
         vm.fixtureFittings = [];
+        vm.customizableFixtureFittings = [];
         vm.customizables = [];
         vm.loanLimits = [];
         vm.maxLoanTenure = 15;
         vm.minLoanTenure = 1;
         var currencyId = 1;
         var fullHouseId = document.getElementById("__selected_house_id").value;
-        console.log('The __selected_house_id is ', fullHouseId);
-         
+          
         vm.model = {};
         vm.model.calcuation = {};
         vm.model.selectedFixtures = {};
         vm.model.houseCost = document.getElementById("__selected_house_cost").value;
         vm.model.houseCostCurrency = document.getElementById("__selected_house_currency").value;
-        console.log('The __selected_house_cost is ', vm.model.houseCost);
-
-        $scope.$watch("vm.model.itemSelected",
+ 
+        $scope.$watch("vm.model.selectedFixture",
             function (newValue) {
-                console.log("vm.model.itemSelected", vm.itemSelected);
+                console.log("vm.model.selectedFixture", newValue);
+                if (newValue != null) {
+                     vm.fixtureSelected(newValue);
+                }
             });
 
         function loadCustomizables() {
             services.getHouseCustomizables(fullHouseId, function (response) {
+                console.log("the loaded customizables >>");
                 console.log(response);
                 vm.customizables = response;
             });
@@ -46,6 +49,7 @@
                 vm.fixtureFittings = response;
             });
         }
+
         function loadLoanAmountLimits() {
             services.getLoanAmountLimits(function (response) {
                 console.log("Loan amount limits >>>");
@@ -64,24 +68,34 @@
         function updateTotalCost() {
             for (var item in vm.model.selectedFixtures) {
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
-                    console.log("Item in update cost is >>", item);
-                    vm.model.houseCost += Number(vm.model.selectedFixtures[item].UnitCost);
+                    console.log("Item in update is >>", item);
+                    console.log("Item in update is >>", vm.model.selectedFixtures[item]);
+                    vm.model.houseCost = Number(vm.model.houseCost) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
         }
 
-        vm.fixtureSelected = function (fixture) {
-            vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId] = fixture;
-            updateTotalCost();
+        vm.fixtureSelected = function (fixtureId) {
+            console.log('The selected fixture >>', fixtureId);
+           var fixtures = vm.customizableFixtureFittings.filter(function(item) {
+                return Number(item.RecordId) === Number(fixtureId);
+           });
+            if (fixtures.length) {
+                vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId] = fixtures[0];
+                vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId].ItemCount = vm.model.selectedCustomizable.ItemCount;
+                console.log("vm.model.selectedFixtures", vm.model.selectedFixtures);
+                updateTotalCost();
+            } 
         }
 
         vm.deleteFixture = function (id) {
-            delete vm.model.selectedFixture["record" + id];
+            console.log('Deleting fixture >>>', id);
+            delete vm.model.selectedFixtures["record" + id];
             updateTotalCost();
         }
 
         vm.checkEligibility = function () {
-            var payload = { income: vm.model.income, amount: vm.model.houseCost, currency: "USD" };
+            var payload = {loanType :"Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure };
             console.log('the payload is >>>', payload);
             services.checkLoanEligibility(payload, function (response) {
                 console.log("the response for eligibility >>", response);
@@ -99,9 +113,7 @@
                     }).then((value) => {
                         switch (value) {
                             case "applyButton":
-                                var newUrl = window.location.host + "/loan/apply";
-                                console.log("newUrl", newUrl);
-                                window.location.href = window.location.host + "/loan/apply";
+                                $window.location.href = "/loan/apply";
                                 break;
                         }
                     });
@@ -109,6 +121,17 @@
                     utils.alertError("Sorry", response.Message);
                 }
             });
+        }
+
+        vm.getFixturesForCustomizable = function (customizable) {
+            console.log('Selected costomizable >>', customizable);
+            vm.customizableFixtureFittings = vm.fixtureFittings.filter(function (item) {
+                return Number(item.RecordId) === Number(customizable.FixturesAndFittingsId);
+            });
+            console.log('The customizable fixture fittings >>', vm.customizableFixtureFittings);
+            setTimeout(function() {
+                $(".image-picker").imagepicker();
+            }, 1000);
         }
 
         vm.getTenureRange = function () {

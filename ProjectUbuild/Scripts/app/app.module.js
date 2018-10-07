@@ -1,5 +1,5 @@
 ﻿(function () {
     angular
-        .module('ubuild', ['ngIntlTelInput']);
+        .module('ubuild',[]);
   
 })();

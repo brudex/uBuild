@@ -1883,6 +1883,16 @@
     <Content Include="images\1.jpeg" />
     <Content Include="images\2.jpeg" />
     <Content Include="images\3.jpeg" />
+    <Content Include="images\FixturesImages\20181007182735WASHBASIN.jpg" />
+    <Content Include="images\FixturesImages\20181007182817window2.png" />
+    <Content Include="images\FixturesImages\20181007182825window2.png" />
+    <Content Include="images\FixturesImages\20181007182932WC.jpg" />
+    <Content Include="images\FixturesImages\20181007182937WC.jpg" />
+    <Content Include="images\FixturesImages\20181007191147miror2.jpg" />
+    <Content Include="images\FixturesImages\20181007192015WASHBASIN.jpg" />
+    <Content Include="images\FixturesImages\fnf_door1.jpg" />
+    <Content Include="images\HouseImages\201810071747011bed.png" />
+    <Content Include="images\HouseImages\20181007175538tulip2br-652x370.jpg" />
     <Content Include="images\saple.jpg" />
     <Content Include="pages\css\editor.css" />
     <Content Include="pages\css\pages-icons.css" />

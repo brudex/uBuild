@@ -93,7 +93,7 @@ namespace uBuildCore
              string acctNo = data["acctNo"].ToStringOrEmpty();
              string token = data["token"].ToStringOrEmpty();
              var validated = SoftTokenService.VerifyToken(token, acctNo);
-             if (!validated)
+             if (validated)
              {
                  response.Status = "00";
                  response.Message = "Token successfully validated";

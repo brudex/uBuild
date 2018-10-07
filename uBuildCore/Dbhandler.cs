@@ -154,7 +154,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.Query<HouseDesignCustomizables>("select hd.RecordId,hd.FixturesAndFittingsId,hd.ItemCount , ff.ItemDescription,ff.UnitCost from HouseDesignCustomizables hd, FixturesAndFittings ff where hd.FixturesAndFittingsId=ff.RecordId and hd.HouseDesignId="+houseId).ToList();
+                var list = conn.Query<HouseDesignCustomizables>("select hd.HouseDesignId,hd.RecordId,hd.FixturesAndFittingsId,hd.ItemCount , ff.ItemDescription,ff.UnitCost from HouseDesignCustomizables hd, FixturesAndFittings ff where hd.FixturesAndFittingsId=ff.RecordId and hd.HouseDesignId=" + houseId).ToList();
                 return list;
             }
         }

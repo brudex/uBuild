@@ -10,6 +10,9 @@
 
         $(".image-picker").imagepicker();
 
+        $('.input-phone').intlInputPhone();
+
+
         $('[data-pages="search"]').search({
             // Bind elements that are included inside search overlay
             searchField: '#overlay-search',

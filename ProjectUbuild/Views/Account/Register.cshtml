@@ -24,7 +24,9 @@
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off" })
                         @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control", placeholder = "First name", autocomplete = "off" })
                         @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off" })
-                        @Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off" })
+                        @*@Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off",id="" })*@
+                        <div class="input-phone"></div>
+
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off" })
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
 

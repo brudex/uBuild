@@ -43,7 +43,7 @@ namespace ProjectUbuild.Controllers.Api
             ;
             if (data != null)
             {
-                fullData = data["allData"] != null && data["allData"].ToBoolean();
+                fullData = data["allData"].ToStringOrEmpty().Equals("true",StringComparison.InvariantCultureIgnoreCase);
                 if (fullData)
                 {
                     acctNo = data["acctNo"].ToStringOrEmpty();

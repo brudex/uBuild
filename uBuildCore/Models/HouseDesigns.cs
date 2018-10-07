@@ -9,6 +9,8 @@ namespace uBuildCore.Models
       public string FullDescription{ get; set; }
       public decimal BareDesignCost{ get; set; }
       public string DesignImage{ get; set; } 
+      public string ISOCode { get; set; }
+      public string ISOSign { get; set; }
 
     }
 }

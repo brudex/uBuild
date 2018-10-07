@@ -61,7 +61,7 @@
                         utils.alertSuccess(response.Message);
                         vm.isReadonly = false;
                         tokenValidated = true;
-                        getAccountInfo();
+                        getAccountInfo(payload.acctNo);
                     } else {
                         utils.alertError(response.Message);
                     }
@@ -86,6 +86,10 @@
                 }
                 vm.ajax = false;
             });
+        }
+
+        function formatProfileData () {
+            vm.profile.Gender = vm.profile.Gender.upper()[0];
         }
     }
 })();

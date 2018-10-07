@@ -82,6 +82,7 @@
     <Compile Include="Models\FixturesAndFittings.cs" />
     <Compile Include="Models\HouseDesignCustomizables.cs" />
     <Compile Include="Models\HouseDesigns.cs" />
+    <Compile Include="Models\LoanAmountCurrencyLimits.cs" />
     <Compile Include="Models\LoanAppls.cs" />
     <Compile Include="Models\LoanApplTypes.cs" />
     <Compile Include="Models\LoanInterestRates.cs" />

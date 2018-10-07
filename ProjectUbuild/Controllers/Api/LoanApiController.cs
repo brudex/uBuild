@@ -27,6 +27,13 @@ namespace ProjectUbuild.Controllers.Api
             return DbHandler.Instance.GetFittingsFixtures();
         }
 
+
+        [System.Web.Mvc.HttpGet]
+        public List<LoanAmountCurrencyLimits> GetLoanAmountCurrencyLimits()
+        {
+            return DbHandler.Instance.GetList<LoanAmountCurrencyLimits>();
+        }
+
         [System.Web.Mvc.HttpGet]
         public List<FixturesAndFittings> GetRepaymentMethods()
         {

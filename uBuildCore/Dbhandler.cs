@@ -87,6 +87,15 @@ namespace uBuildCore
             }
         }
 
+        public List<T> GetList<T>() where T :class
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<T>().ToList();
+                return list;
+            }
+        }
+
         public List<RepaymentMethods> GetRepaymentMethods()
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -125,7 +134,8 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.GetList<HouseDesigns>().ToList();
+                var sql ="SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join[sordii_ubdb].[dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
+                var list = conn.Query<HouseDesigns>(sql).ToList();
                 return list;
             }
         }
@@ -134,8 +144,8 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var predicate = Predicates.Field<HouseDesigns>(f => f.RecordId, Operator.Eq, id);
-                var item = conn.GetList<HouseDesigns>(predicate).FirstOrDefault();
+                 var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join[sordii_ubdb].[dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
+                var item = conn.Query<HouseDesigns>(sql,new {id}).FirstOrDefault();
                 return item;
             }
         }

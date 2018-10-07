@@ -47,7 +47,7 @@
                             <h3 style="margin-top: 15px">
                                 <a href="http://modern.realhomes.io/property/home-in-merrick-way/">@design.DesignName </a>
                             </h3>
-                            <p class="text-info">Enchanting One bedroom, three bath home with spacious one bedroom,…</p>
+                            <p class="text-info">@design.FullDescription</p>
                             <!-- /.rh_prop_card__excerpt -->
 
                             <div class="rh_prop_card__meta_wrap row">
@@ -118,13 +118,12 @@
                                 </h4>
                                 <!-- /.rh_prop_card__type -->
                                 <h3 class="rh_prop_card__price text-success">
-                                    $45,000
+                                    @design.ISOCode @design.BareDesignCost
                                 </h3>
                                 <!-- /.rh_prop_card__price -->
                                 @Html.ActionLink("Select", "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { @class = "btn btn-default" })
                             </div>
-                            <!-- /.rh_prop_card__priceLabel -->
-
+                            <!-- /.rh_prop_card__priceLabel --> 
                         </div>
                     </div>
                 </div>

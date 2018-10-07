@@ -18,7 +18,8 @@
             getCurrencies: getData('/api/LoanApi/GetCurrencies'),
             getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes'), 
             sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
-            validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo')
+            validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo'),
+            getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits')
         }; 
          
 

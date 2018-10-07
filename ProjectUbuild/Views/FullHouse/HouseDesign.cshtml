@@ -2,9 +2,9 @@
 @{
     Layout = "../Shared/_Layout.cshtml";
 }
-
 <input type="hidden" id="__selected_house_id" value="@Model.RecordId" />
 <input type="hidden" id="__selected_house_cost" value="@Model.BareDesignCost" />
+<input type="hidden" id="__selected_house_currency" value="@Model.ISOCode" />
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
@@ -80,7 +80,7 @@
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3>Base house cost + Customizations</h3>
-                    <h3>= $ 130,000</h3>
+                    <h3><span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.houseCost"></span></h3>
                 </div>
                 <div class="panel-body">
                     <table class="table cart mb48">
@@ -148,12 +148,16 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
-
-
-
+                    </table> 
                     <form>
                         <p>You may be elligible for a loan to own this house. </p>
+                        <div class="form-group form-group-default input-group">
+                            <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
+                            <select data-ng-model="vm.model.tenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                <option value="">Select Loan Tenure</option>
+                                <option data-ng-repeat="t in vm.getTenureRange()" value="{{t}}">{{t}}</option>
+                            </select> 
+                        </div>
                         <div class="form-group form-group-default input-group">
                             <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
                             <input autocomplete="off" data-ng-model="vm.model.income" id="houseEligibility" placeholder="Monthly Income here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">

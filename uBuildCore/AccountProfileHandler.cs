@@ -18,11 +18,7 @@ namespace uBuildCore
                  {
                       tclient = T24Customer.GetCustomerBYAccount(acctNo);
                  }
-                 else
-                 {
-                    tclient = T24Customer.GetCustomerBYNumber(client.MobileNumber.FormatMobile());
-                 }              
-                 if(fullData)
+                 if(fullData && tclient!=null)
                  {
                     string tjson = JsonConvert.SerializeObject(tclient);
                     dataResult = JObject.Parse(tjson);
@@ -66,10 +62,11 @@ namespace uBuildCore
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
                 if (tclient != null)
                 {
-                    string mobile = tclient.MobilePhone.FormatMobile();
+                    string mobile = tclient.MobilePhone;
                     var otp = SoftTokenService.GenerateSoftToken(acctNo);
                     string message = "Verification code : " + otp;
                     GHLService.Notification.SendSMS(mobile, message);
+                    GHLService.Notification.SendEmail(tclient.EmailAddress, "GHL Verification Code",message);
                     response.Status = "00";
                     response.Message = "Please enter verification code sent to your phone";
                 }

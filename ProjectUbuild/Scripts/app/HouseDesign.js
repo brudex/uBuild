@@ -14,13 +14,18 @@
         vm.houseImages = [];
         vm.fixtureFittings = [];
         vm.customizables = [];
+        vm.loanLimits = [];
+        vm.maxLoanTenure = 15;
+        vm.minLoanTenure = 1;
+        var currencyId = 1;
         var fullHouseId = document.getElementById("__selected_house_id").value;
         console.log('The __selected_house_id is ', fullHouseId);
          
         vm.model = {};
         vm.model.calcuation = {};
         vm.model.selectedFixtures = {};
-        vm.model.houseCost = document.getElementById("__selected_house_cost").value;;
+        vm.model.houseCost = document.getElementById("__selected_house_cost").value;
+        vm.model.houseCostCurrency = document.getElementById("__selected_house_currency").value;
         console.log('The __selected_house_cost is ', vm.model.houseCost);
 
         $scope.$watch("vm.model.itemSelected",
@@ -39,6 +44,20 @@
             services.getFixturesFittings(fullHouseId, function (response) {
                 console.log(response);
                 vm.fixtureFittings = response;
+            });
+        }
+        function loadLoanAmountLimits() {
+            services.getLoanAmountLimits(function (response) {
+                console.log("Loan amount limits >>>");
+                console.log(response);
+                vm.loanLimits = response;
+                var selected = response.filter(function(item) {
+                    return Number(item.RecordId) === currencyId;
+                });
+                if (selected.length) {
+                    vm.maxLoanTenure = Number(selected[0].MaxTenorMonths)/12;
+                    vm.minLoanTenure = Number(selected[0].MinLoanAmount)/12;
+                }
             });
         }
 
@@ -92,8 +111,17 @@
             });
         }
 
+        vm.getTenureRange = function () {
+            var ranges = [];
+            for (var k = 1; k <= vm.maxLoanTenure; k++) {
+                ranges.push(k);
+            }
+            return ranges;
+        }
+
         loadCustomizables();
         loadFittingsFixtures();
+        loadLoanAmountLimits(); 
     }
 
 

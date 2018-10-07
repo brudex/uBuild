@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using uBuildCore.Models;
 
@@ -29,11 +25,10 @@ namespace uBuildCore
             try
             {
                 var result = DbHandler.Instance.CheckLoanEligibility(checkEligibilityRequest);
-
                 response.Status = "00";
                 if (result.Qualified)
                 {
-                    response.Message = "You are qualified for a loan. \n";
+                    response.Message = "You are qualified for a loan.\n";
                     response.Message += "Your monthly repayment amount is "+ data["currency"].ToString()+" " + result.MonthlyRePmt+"\n";
                     response.Message += "Your have a borrowing capacity of  "+ data["currency"].ToString()+" " + result.BorrowingCap;
                 }
@@ -51,7 +46,6 @@ namespace uBuildCore
                 Logger.Error("Error checking eligiblity", ex);
             }
             return response; 
-
         }
 
         public static ServiceResponse ApplyForLoan(JObject data,ClientAuths client)

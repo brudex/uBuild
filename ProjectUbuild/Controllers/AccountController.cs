@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json.Linq;
 using Owin;
 using ProjectUbuild.Models;
 using uBuildCore;
@@ -30,7 +31,8 @@ namespace ProjectUbuild.Controllers
             UserManager = userManager;
         }
 
-        public ApplicationUserManager UserManager {
+        public ApplicationUserManager UserManager
+        {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -97,17 +99,27 @@ namespace ProjectUbuild.Controllers
                 if (result.Succeeded)
                 {
                     var ghlclient = new ClientAuths();
+                    JToken mobileNoInfo = JToken.Parse(model.intlInputPhone);
                     ghlclient.EmailAddress = user.Email;
                     ghlclient.FirstName = model.Firstname;
                     ghlclient.LastName = model.Lastname;
                     ghlclient.OtherNames = model.Othernames;
-                    ghlclient.MobileNumber = model.Phonenumber.FormatMobile();
+
+                    try
+                    {
+                        ghlclient.MobileNumber = mobileNoInfo["format"]["E164"].ToString();
+                    }
+                    catch (Exception e)
+                    {
+                        ghlclient.MobileNumber = model.Phonenumber.FormatMobile();
+                    }
+                   
                     ghlclient.EncPassword = user.Id;
                     ghlclient.AuthorizerName = "system";
                     ghlclient.CreatedDate = DateTime.Now;
                     ghlclient.LastLoginAt = DateTime.Now;
-                    
-                
+
+
                     DbHandler.Instance.SaveGhlClientProfile(ghlclient);
                     await SignInAsync(user, isPersistent: false);
 
@@ -133,7 +145,7 @@ namespace ProjectUbuild.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
@@ -176,10 +188,10 @@ namespace ProjectUbuild.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-//                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-//                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-//                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                //                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                //                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                //                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -193,13 +205,13 @@ namespace ProjectUbuild.Controllers
         {
             return View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return View("Error");
             }
@@ -427,13 +439,13 @@ namespace ProjectUbuild.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-                        
+
                         return RedirectToLocal(returnUrl);
                     }
                 }

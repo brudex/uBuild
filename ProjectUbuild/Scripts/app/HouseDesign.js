@@ -3,9 +3,9 @@
 
     angular.module('ubuild')
         .controller('HouseDesignController', HouseDesignController);
-    HouseDesignController.$inject = ['brudexservices', '$location', '$scope', '$window'];
+    HouseDesignController.$inject = ['brudexservices', '$location', '$scope', '$window', 'brudexutils'];
 
-    function HouseDesignController(services, location, $scope, $window) {
+    function HouseDesignController(services, location, $scope, $window,utils) {
         var vm = this;
          
         vm.errorMsg = [];
@@ -94,6 +94,8 @@
             updateTotalCost();
         }
 
+         
+
         vm.checkEligibility = function () {
             var payload = {loanType :"Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure };
             console.log('the payload is >>>', payload);
@@ -102,7 +104,7 @@
                 if (response.Status === "00") {
                     swal({
                         title: "Congratulations",
-                        text: "You are eligible for this loan",
+                        text: response.Message,
                         buttons: {
                             cancel: "OK",
                             catch: {
@@ -113,11 +115,15 @@
                     }).then((value) => {
                         switch (value) {
                             case "applyButton":
-                                $window.location.href = "/loan/apply";
-                                break;
+                                {
+                                    var qstring = $.param(payload);
+                                    console.log("Questring >>>", qstring);
+                                    $window.location.href = "/loan/apply?" + qstring;
+                                } 
+                            break;
                         }
                     });
-                } else if (response.Status === "01") {
+                } else {
                     utils.alertError("Sorry", response.Message);
                 }
             });

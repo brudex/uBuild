@@ -18,9 +18,9 @@
             <div class="col-md-6 text-right hidden-xs hidden-sm">
                 <ol class="breadcrumb breadcrumb-2">
                     <li>
-                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                        @Html.ActionLink("Home Choice", "Index", "FullHouse", new { }, null)
                     </li>
-                    <li class="active">Home Design</li>
+                    <li class="active">Home Customization</li>
                 </ol>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="panel panel-danger">
                     <div class="panel-body">
-                        <div class="col-md-12" style="height: 530px">
+                        <div class="col-md-12" >
                             <img src="~/images/HouseImages/@Model.DesignImage" class="img-responsive img-rounded" alt="Cinque Terre">
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-9" style="max-height: 310px; overflow: auto;">
+                                    <div class="col-md-9" style="max-height: 310px; overflow: auto;" data-ng-show="vm.customizableFixtureFittings.length>0">
                                         <select class="image-picker show-html" data-ng-model="vm.model.selectedFixture" >
                                             <option data-ng-repeat="ff in vm.customizableFixtureFittings" data-img-src="/images/FixturesImages/{{ff.ItemImage}}" data-img-alt="{{ff.ItemDescription}}" value="{{ff.RecordId}}" ></option>
                                         </select>

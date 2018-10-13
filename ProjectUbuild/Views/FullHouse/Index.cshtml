@@ -43,7 +43,8 @@
 
                             <img src="~/images/HouseImages/@design.DesignImage" class="img-responsive" style="width: 100%" />
                             <h3 style="margin-top: 15px">
-                                <a href="">@design.DesignName </a>
+                                @Html.ActionLink(design.DesignName, "HouseDesign", "FullHouse", new { @id = design.RecordId }, new {  })
+                          
                             </h3>
                             <p class="text-info">@design.FullDescription</p>
                             <!-- /.rh_prop_card__excerpt -->

@@ -77,7 +77,7 @@ namespace ProjectUbuild.Models
         
         [Required]
         [Display(Name = "Phone Number")]
-        [StringLength(10, ErrorMessage = "The {0} must be at 10 characters long(0244000111).", MinimumLength = 10)]
+        //[StringLength(10, ErrorMessage = "The {0} must be at 10 characters long(0244000111).", MinimumLength = 10)]
         public string Phonenumber { get; set; }
         public string intlInputPhone { get; set; }
 

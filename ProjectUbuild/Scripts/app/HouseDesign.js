@@ -94,15 +94,7 @@
             updateTotalCost();
         }
 
-        function objectToQuerystring(obj) {
-            return Object.keys.reduce(function (str, key, i) {
-                var delimiter, val;
-                delimiter = (i === 0) ? '?' : '&';
-                key = encodeURIComponent(key);
-                val = encodeURIComponent(obj[key]);
-                return [str, delimiter, key, '=', val].join('');
-            }, '');
-        }
+         
 
         vm.checkEligibility = function () {
             var payload = {loanType :"Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure };
@@ -124,7 +116,7 @@
                         switch (value) {
                             case "applyButton":
                                 {
-                                    var qstring = objectToQuerystring(payload);
+                                    var qstring = $.param(payload);
                                     console.log("Questring >>>", qstring);
                                     $window.location.href = "/loan/apply?" + qstring;
                                 } 

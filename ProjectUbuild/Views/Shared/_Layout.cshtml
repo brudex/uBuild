@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using ProjectUbuild.Models
+<!doctype html>
 <html lang="en" ng-app="ubuild">
 <head>
     <meta charset="utf-8">
@@ -14,60 +15,60 @@
                 <div class="module left hidden-sm hidden-xs">
                     <i class="fa fa-phone ">&nbsp;</i>
                     <span class="sub">Call Us Now : (+233) 0274121780</span>
-                  
+
                 </div>
                 <div class="module left hidden-sm hidden-xs">
-                        <i class="ti-email">&nbsp;</i>
-                        <span class="sub">info@ubuild.ghlbank.com</span>
-                    </div>
+                    <i class="ti-email">&nbsp;</i>
+                    <span class="sub">info@ubuild.ghlbank.com</span>
+                </div>
                 <div class="module right">
 
                     @if (Request.IsAuthenticated)
                     {
-                        @*<span>Welcome @User.Identity.Name </span>
-                            using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
-                            }*@
+                    @*<span>Welcome @User.Identity.Name </span>
+                        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
+                        }*@
 
-                        <div class="d-flex align-items-center">
-                            <!-- START User Info-->
-                            <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down">
-                                <span class="semi-bold">@User.Identity.Name</span>
-                            </div>
-                            <div class="dropdown pull-right hidden-md-down">
-                                <button class="profile-dropdown-toggle" type="button" style="padding-top: 5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="fa fa-user-circle fa-2x"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-                                    @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
-                                    <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
+                    <div class="d-flex align-items-center">
+                        <!-- START User Info-->
+                        <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down">
+                            <span class="semi-bold">@User.Identity.Name</span>
+                        </div>
+                        <div class="dropdown pull-right hidden-md-down">
+                            <button class="profile-dropdown-toggle" type="button" style="padding-top: 5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fa fa-user-circle fa-2x"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+                                @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
+                                <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
 
-                                    @*<a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>*@
+                                @*<a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>*@
 
 
-                                    @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
+                                @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
                                     {
-                                        @Html.AntiForgeryToken()
-                                        <button type="submit" value="Logout" style="height: 28px;line-height: 28px;padding:0 5px 0 5px">
-                                            <span class="pull-left">Logout</span>
-                                            <span class="pull-right"><i class="pg-power"></i></span>
-                                        </button>
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" value="Logout" style="height: 28px;line-height: 28px;padding:0 5px 0 5px">
+                                        <span class="pull-left">Logout</span>
+                                        <span class="pull-right"><i class="pg-power"></i></span>
+                                    </button>
                                     }
 
 
 
-                                </div>
                             </div>
-                            <!-- END User Info-->
-
                         </div>
+                        <!-- END User Info-->
+
+                    </div>
                     }
                     else
                     {
-                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled", style = "margin-right:5px" })
-                        @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
+                    @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled", style = "margin-right:5px" })
+                    @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
                     }
 
 
@@ -111,7 +112,7 @@
                 <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
                     <i class="ti-menu"></i>
                 </div>
-                <div class="module-group right"  }>
+                <div class="module-group right" }>
                     <div class="module right">
                         <ul class="menu">
                             <li>
@@ -253,7 +254,7 @@
                     <div class="col-sm-12 overflow-hidden">
                         <i class="ti-announcement icon icon-sm pull-left color-primary"></i>
                         <p class="mb0 pull-left">
-                            With <strong>UBuild</strong> you can apply for a loan to build your dream house. Start now!.
+                            With <strong>U-Build</strong> you can apply for a loan to build your dream house. Start now!.
                         </p>
                         @Html.ActionLink("Check your Eligibility", "Eligibility", "Loan", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
 
@@ -263,15 +264,15 @@
         </div>
     <!--end modal strip-->
     }
-    else
+    else if (Request.IsAuthenticated && !Request.Url.AbsoluteUri.ToLower().Contains("profile"))
     {
         <div class="modal-strip bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 overflow-hidden">
-                        <i class="ti-announcement icon icon-sm pull-left color-primary"></i>
+                        <i class="fa fa-info-circle pull-left color-primary" style="margin-top: 5px"></i>
                         <p class="mb0 pull-left">
-                            Welcome!. You are encouraged to provide all information needed to apply for a loan.
+                            Welcome @User.GetUbuildClient().FirstName . You are encouraged to provide all information needed to apply for a loan.
                         </p>
                         @Html.ActionLink("Update your profile", "Index", "Profile", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
 

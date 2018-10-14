@@ -733,3 +733,8 @@ svg:not(:root) {
 #accordion .card{
     margin-bottom: 10px
 }
+
+indows body, .windows p {
+    font-size: 15px;
+    letter-spacing: normal;
+}

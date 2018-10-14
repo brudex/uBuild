@@ -7,17 +7,33 @@ namespace uBuildCore
     public class LoanApplicationHandler
     {
 
-        public static ServiceResponse CheckEligibility(JObject data)
+        public static ServiceResponse CheckEligibility(JObject data,int clientId = 0,string customerNo = null)
         { 
             int currencyId = DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
             var checkEligibilityRequest = new CheckEligibilityRequest();
+            if (clientId > 0)
+            {
+                checkEligibilityRequest.ClientId = clientId;
+            }
+            if (customerNo!=null)
+            {
+                checkEligibilityRequest.CustomerNo = customerNo;
+            }
             checkEligibilityRequest.IncomeCurrencyId = currencyId;
             checkEligibilityRequest.TypeChecked = data["loanType"].ToStringOrEmpty().ToUpper() == "FULLHOUSE" ? 1 : 2;
             checkEligibilityRequest.LoanCurrencyId = currencyId;
             checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
             checkEligibilityRequest.MonthlyIncome = data["monthlyIncome"].ToObject<decimal>();
-             checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>() *12;
-            if (string.IsNullOrEmpty(data["phase"].ToStringOrEmpty()))
+            string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
+            if (loanTenureUnit == "Years")
+            {
+                checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>()*12;
+            }
+            else
+            {
+                checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>();
+            } 
+            if (checkEligibilityRequest.TypeChecked == 2)
             {
                 checkEligibilityRequest.PhaseChecked = 1;
             }
@@ -55,15 +71,15 @@ namespace uBuildCore
             loaApp.ClientId = client.RecordId;
             string ulain = DbHandler.Instance.GenerateUlain();
             int phaseId = 0; //todo get phaseId from ui
-            int currencyId = DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
+            int currencyId = 1;// DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
             loaApp.AmtSought = data["AmtSought"].ToDecimal();
-            loaApp.ApplFor = 1;// client.RecordId;//fkey applTypes
+            loaApp.LoanApplTypeId = 1;// client.RecordId;//fkey applTypes
             loaApp.ApplSubmitDate= DateTime.Now;
             loaApp.CustomerNo = null;//data["customerNo"].ToStringOrEmpty(); //fkey
             loaApp.ULAIN = ulain;
-            loaApp.ForPhase = null;
+            loaApp.BuildingPhaseId = null;
             loaApp.PurposeofLoan = data["PurposeofLoan"].ToStringOrEmpty();
-            loaApp.RepaymentMethod = 1;//data["RepaymentMethod"].ToInteger(); //fkey
+            loaApp.RepaymentMethodId = 1;//data["RepaymentMethod"].ToInteger(); //fkey
             loaApp.ProtectionCover = true;
             loaApp.ProtectionSecured = true;
             loaApp.ProtectionSecurityType = data["ProtectionSecurityType"].ToStringOrEmpty();

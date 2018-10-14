@@ -61,12 +61,27 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public ServiceResponse CheckLoanEligibility([FromBody]JObject data)
         {
-            return LoanApplicationHandler.CheckEligibility(data); 
+            var response = new ServiceResponse();
+            if (User.Identity.IsAuthenticated)
+            {
+                var clientAuth = User.GetUbuildClient();
+                var clientInfo = clientAuth.GetClientInfo();
+                string customerNo = clientInfo.CustomerNo;
+                response =LoanApplicationHandler.CheckEligibility(data,clientAuth.RecordId,customerNo);
+            }
+            else
+            {
+                response = LoanApplicationHandler.CheckEligibility(data);
+            }
+              return response;
+            
         }
 
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ApplyForLoan([FromBody]JObject data)
-        { 
+        {
+
+             
             var clientAuth = User.GetUbuildClient();
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }

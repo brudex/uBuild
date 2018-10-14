@@ -8,11 +8,11 @@ namespace uBuildCore.Models
 	public int ClientId { get; set; }
 	public string CustomerNo { get; set; }
 	public string ULAIN { get; set; }
-	public int ApplFor { get; set; }
-	public int? ForPhase { get; set; }
+	public int LoanApplTypeId { get; set; }
+	public int? BuildingPhaseId { get; set; }
 	public string PurposeofLoan { get; set; }
     public decimal AmtSought { get; set; }
-    public int RepaymentMethod { get; set; }
+    public int RepaymentMethodId { get; set; }
     public bool ProtectionCover { get; set; }
     public bool ProtectionSecured { get; set; }
     public string ProtectionSecurityType { get; set; }
@@ -24,11 +24,13 @@ namespace uBuildCore.Models
     public int CreatorId { get; set; }
     public string CreatorName { get; set; }
     public DateTime? CreatedDate { get; set; }
-    public int? AuthorizerId { get; set; }
-    public string AuthorizerName { get; set; }
-    public DateTime? AuthorizedDate { get; set; }
+    
 
 
 
     }
 }
+ 
+	 
+	 
+	 

@@ -56,6 +56,13 @@ namespace uBuildCore.Models
         {
            return FirstName + " " + LastName; 
         }
+
+        public ClientInfos GetClientInfo()
+        { 
+            var clietnInfo = DbHandler.Instance.GetGhlClientInfoByClientId(RecordId);
+            return clietnInfo;
+        
+        }
     }
  
 

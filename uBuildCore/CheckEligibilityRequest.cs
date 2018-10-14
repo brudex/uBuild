@@ -11,6 +11,7 @@ namespace uBuildCore
     {
 
         public string CustomerNo { get; set; }
+        public int? ClientId { get; set; }
         public int TypeChecked { get; set; }
         public int? PhaseChecked { get; set; }
         public decimal MonthlyIncome { get; set; } //from frontend

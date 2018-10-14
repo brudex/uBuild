@@ -16,7 +16,7 @@
 
                 // If it's the last tab then hide the last button and show the finish instead
                 if ($current >= $total) {
-                    $('#rootwizard').find('.pager .next').hide();
+                    //$('#rootwizard').find('.pager .next').hide();
                     $('#rootwizard').find('.pager .send-application').hide();
                     $('#rootwizard').find('.pager .finish').show().removeClass('disabled hidden');
                 } else {
@@ -31,7 +31,7 @@
                     }
                     if ($current == 3) {
                        
-                        $('#rootwizard').find('.pager .next').hide();
+                       // $('#rootwizard').find('.pager .next').hide();
                         $('#rootwizard').find('.pager .send-application').show();
                     }
                     

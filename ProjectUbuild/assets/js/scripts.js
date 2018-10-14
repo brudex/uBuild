@@ -12,6 +12,8 @@
 
         $('.input-phone').intlInputPhone();
 
+        //Date Pickers
+        $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
 
         $('[data-pages="search"]').search({
             // Bind elements that are included inside search overlay

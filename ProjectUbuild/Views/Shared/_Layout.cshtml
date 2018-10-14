@@ -111,7 +111,7 @@
                 <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
                     <i class="ti-menu"></i>
                 </div>
-                <div class="module-group right" style="">
+                <div class="module-group right"  }>
                     <div class="module right">
                         <ul class="menu">
                             <li>
@@ -262,6 +262,23 @@
             </div><!--end of container-->
         </div>
     <!--end modal strip-->
+    }
+    else
+    {
+        <div class="modal-strip bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 overflow-hidden">
+                        <i class="ti-announcement icon icon-sm pull-left color-primary"></i>
+                        <p class="mb0 pull-left">
+                            Welcome!. You are encouraged to provide all information needed to apply for a loan.
+                        </p>
+                        @Html.ActionLink("Update your profile", "Index", "Profile", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
+
+                    </div>
+                </div><!--end of row-->
+            </div><!--end of container-->
+        </div>
     }
     @Html.Partial("_Scripts")
 </body>

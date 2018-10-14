@@ -34,12 +34,12 @@
         <div class="progress-circle-indeterminate progress-circle-master"></div>
     </div>
     <div class="row" style="margin-top: -85px">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="row">
                 <div class="panel panel-danger">
                     <div class="panel-body">
                         <div class="col-md-12">
-                            <img src="~/images/HouseImages/@Model.DesignImage" class="img-responsive img-rounded" alt="Cinque Terre">
+                            <img src="~/images/HouseImages/@Model.DesignImage" class="img-responsive img-rounded" alt="House Image">
                         </div>
                     </div>
                     <div class="panel-footer">
@@ -76,11 +76,11 @@
 
         </div>
 
-        <div class="col-md-3" id="sidebar_design">
+        <div class="col-md-4" id="sidebar_design">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3>Base house cost + Customizations</h3>
-                    <h3>= <span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.houseCost"></span></h3>
+                    <h3>= <span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.totalLoanAmt | currency :''"></span></h3>
                 </div>
                 <div class="panel-body">
                     <table class="table cart mb48">
@@ -93,9 +93,27 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <tr>
+                                <th scope="row">
+                                    <button type="button" disabled="disabled" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" >
+                                        <i class="ti-close"></i>
+                                    </button>
+                                </th>
+                                <td>
+                                    <a href="#">
+                                        <img alt="House Image" class="product-thumb" src="~/images/HouseImages/@Model.DesignImage" style="width: 100%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <span>1</span>
+                                </td>
+                                <td>
+                                    <div data-ng-bind="vm.model.houseCostCurrency"><label></label></div><span data-ng-bind="vm.model.houseCost | currency:''"></span>
+                                </td>
+                        </tr>
                         <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
                             <th scope="row">
-                                <button type="button" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(value.RecordId)">
+                                <button type="button" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(key)">
                                     <i class="ti-close"></i>
                                 </button>
                             </th>
@@ -108,7 +126,7 @@
                                 <span data-ng-bind="value.ItemCount">1</span>
                             </td>
                             <td>
-                                <span data-ng-bind="value.UnitCost | currency:'GHS'"></span>
+                                <span data-ng-bind="vm.model.houseCostCurrency"></span><span data-ng-bind="value.UnitCost | currency:''"></span>
                             </td>
                         </tr>
 

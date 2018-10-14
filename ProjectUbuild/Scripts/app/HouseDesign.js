@@ -20,13 +20,12 @@
         vm.minLoanTenure = 1;
         var currencyId = 1;
         var fullHouseId = document.getElementById("__selected_house_id").value;
-          
         vm.model = {};
         vm.model.calcuation = {};
         vm.model.selectedFixtures = {};
         vm.model.houseCost = document.getElementById("__selected_house_cost").value;
         vm.model.houseCostCurrency = document.getElementById("__selected_house_currency").value;
- 
+        vm.model.totalLoanAmt = document.getElementById("__selected_house_cost").value;
         $scope.$watch("vm.model.selectedFixture",
             function (newValue) {
                 console.log("vm.model.selectedFixture", newValue);
@@ -73,11 +72,12 @@
 
         function updateTotalCost() {
             vm.ajax = true;
+            vm.model.totalLoanAmt = vm.model.houseCost;
             for (var item in vm.model.selectedFixtures) {
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
                     console.log("Item in update is >>", item);
                     console.log("Item in update is >>", vm.model.selectedFixtures[item]);
-                    vm.model.houseCost = Number(vm.model.houseCost) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
+                    vm.model.totalLoanAmt = Number(vm.model.houseCost) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
             vm.ajax = false;
@@ -88,7 +88,8 @@
            var fixtures = vm.customizableFixtureFittings.filter(function(item) {
                 return Number(item.RecordId) === Number(fixtureId);
            });
-            if (fixtures.length) {
+           if (fixtures.length) {
+               console.log("The fixtured selected added >>", "record" + vm.model.selectedCustomizable.RecordId);
                 vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId] = fixtures[0];
                 vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId].ItemCount = vm.model.selectedCustomizable.ItemCount;
                 console.log("vm.model.selectedFixtures", vm.model.selectedFixtures);
@@ -97,8 +98,9 @@
         }
 
         vm.deleteFixture = function (id) {
-            console.log('Deleting fixture >>>', id);
-            delete vm.model.selectedFixtures["record" + id];
+            console.log('Deleting fixture whold>>>', id);
+            console.log("The whole fixture  >>>", vm.model.selectedFixtures);
+            delete vm.model.selectedFixtures[id];
             updateTotalCost();
         }
 

@@ -30,12 +30,15 @@
 </section>
 
 <section class="container-fluid" id="houseDesignWrapper" data-ng-controller="HouseDesignController as vm">
+    <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+        <div class="progress-circle-indeterminate progress-circle-master"></div>
+    </div>
     <div class="row" style="margin-top: -85px">
         <div class="col-md-9">
             <div class="row">
                 <div class="panel panel-danger">
                     <div class="panel-body">
-                        <div class="col-md-12" >
+                        <div class="col-md-12">
                             <img src="~/images/HouseImages/@Model.DesignImage" class="img-responsive img-rounded" alt="Cinque Terre">
                         </div>
                     </div>
@@ -59,8 +62,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9" style="max-height: 310px; overflow: auto;" data-ng-show="vm.customizableFixtureFittings.length>0">
-                                        <select class="image-picker show-html" data-ng-model="vm.model.selectedFixture" >
-                                            <option data-ng-repeat="ff in vm.customizableFixtureFittings" data-img-src="/images/FixturesImages/{{ff.ItemImage}}" data-img-alt="{{ff.ItemDescription}}" value="{{ff.RecordId}}" ></option>
+                                        <select class="image-picker show-html" data-ng-model="vm.model.selectedFixture">
+                                            <option data-ng-repeat="ff in vm.customizableFixtureFittings" data-img-src="/images/FixturesImages/{{ff.ItemImage}}" data-img-alt="{{ff.ItemDescription}}" value="{{ff.RecordId}}"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -82,35 +85,35 @@
                 <div class="panel-body">
                     <table class="table cart mb48">
                         <thead>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th>Item</th>
-                                <th>Quantity</th>
-                                <th>Unit Cost</th>
-                            </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
-                                <th scope="row">
-                                    <button type="button" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(value.RecordId)">
-                                        <i class="ti-close"></i>
-                                    </button>
-                                </th>
-                                <td>
-                                    <a href="#">
-                                        <img alt="{{value.ItemDescription}}" class="product-thumb" src="/images/FixturesImages/{{value.ItemImage}}" style="width: 90%" />
-                                    </a>
-                                </td>
-                                <td>
-                                    <span data-ng-bind="value.ItemCount">1</span>
-                                </td>
-                                <td>
-                                    <span data-ng-bind="value.UnitCost | currency:'GHS'"></span>
-                                </td>
-                            </tr>
-                            
+                        <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
+                            <th scope="row">
+                                <button type="button" class="remove-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from cart" data-ng-click="vm.deleteFixture(value.RecordId)">
+                                    <i class="ti-close"></i>
+                                </button>
+                            </th>
+                            <td>
+                                <a href="#">
+                                    <img alt="{{value.ItemDescription}}" class="product-thumb" src="/images/FixturesImages/{{value.ItemImage}}" style="width: 90%"/>
+                                </a>
+                            </td>
+                            <td>
+                                <span data-ng-bind="value.ItemCount">1</span>
+                            </td>
+                            <td>
+                                <span data-ng-bind="value.UnitCost | currency:'GHS'"></span>
+                            </td>
+                        </tr>
+
                         </tbody>
-                    </table> 
+                    </table>
                     <form>
                         <h4>You may be elligible for a loan to own this house. </h4>
                         <div class="form-group form-group-default input-group">
@@ -118,7 +121,7 @@
                             <select data-ng-model="vm.model.tenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                 <option value="">Select Loan Tenure</option>
                                 <option data-ng-repeat="t in vm.getTenureRange()" value="{{t}}">{{t}}</option>
-                            </select> 
+                            </select>
                         </div>
                         <div class="form-group form-group-default input-group">
                             <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>

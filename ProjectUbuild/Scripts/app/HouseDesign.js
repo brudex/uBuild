@@ -7,7 +7,7 @@
 
     function HouseDesignController(services, location, $scope, $window,utils) {
         var vm = this;
-         
+        vm.ajax = false;
         vm.errorMsg = [];
         vm.successMsg = [];
         vm.requests = [];
@@ -36,7 +36,9 @@
             });
 
         function loadCustomizables() {
+            vm.ajax = true;
             services.getHouseCustomizables(fullHouseId, function (response) {
+                vm.ajax = false;
                 console.log("the loaded customizables >>");
                 console.log(response);
                 vm.customizables = response;
@@ -44,14 +46,18 @@
         }
 
         function loadFittingsFixtures() {
+            vm.ajax = true;
             services.getFixturesFittings(fullHouseId, function (response) {
+                vm.ajax = false;
                 console.log(response);
                 vm.fixtureFittings = response;
             });
         }
 
         function loadLoanAmountLimits() {
+            vm.ajax = true;
             services.getLoanAmountLimits(function (response) {
+                vm.ajax = false;
                 console.log("Loan amount limits >>>");
                 console.log(response);
                 vm.loanLimits = response;
@@ -66,6 +72,7 @@
         }
 
         function updateTotalCost() {
+            vm.ajax = true;
             for (var item in vm.model.selectedFixtures) {
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
                     console.log("Item in update is >>", item);
@@ -73,6 +80,7 @@
                     vm.model.houseCost = Number(vm.model.houseCost) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
+            vm.ajax = false;
         }
 
         vm.fixtureSelected = function (fixtureId) {
@@ -97,9 +105,11 @@
          
 
         vm.checkEligibility = function () {
+            vm.ajax = true;
             var payload = {loanType :"Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure };
             console.log('the payload is >>>', payload);
             services.checkLoanEligibility(payload, function (response) {
+                vm.ajax = false;
                 console.log("the response for eligibility >>", response);
                 if (response.Status === "00") {
                     swal({

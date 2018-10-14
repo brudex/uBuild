@@ -6,6 +6,7 @@
 
 .nav-utility {
     border-bottom: 1px solid #d53a3f;
+     overflow: visible; 
 }
 
 .text-tabs .tab-title:after {

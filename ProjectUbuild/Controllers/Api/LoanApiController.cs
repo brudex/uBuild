@@ -35,9 +35,9 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
-        public List<FixturesAndFittings> GetRepaymentMethods()
+        public List<RepaymentMethods> GetRepaymentMethods()
         {
-            return DbHandler.Instance.GetFittingsFixtures();
+            return DbHandler.Instance.GetRepaymentMethods();
         }
 
         [System.Web.Mvc.HttpGet]

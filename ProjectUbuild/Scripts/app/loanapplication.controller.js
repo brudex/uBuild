@@ -15,9 +15,13 @@
         vm.eligibilityCallback = getEligibilityValues;
         vm.submitLoanApplication = submitLoanApplication;
         vm.getHouseCustomizables = getHouseCustomizables;
+        vm.buildingPhases = [];
+        vm.repaymentMethods = [];
+        vm.currencies = [];
         vm.customizables = [];
         vm.applyModel.eligible = false;
         vm.ulain = "";
+        vm.applyModel.currency = 1;
 
         function getHouseImages(){
             var payload = { requestType :1};
@@ -88,15 +92,48 @@
             });
         }
 
-        
-
-        function translateVals() {
-            vm.applyModel.AmtSought = $window.loandVals.loanAmount;
-            vm.applyModel.loanTenure = $window.loandVals.loanTenure;
-            vm.applyModel.loanTenureUnit = "Years";
+        function getPhaseTypes() {
+            services.getBuildingPhases(function (response) {
+                console.log("Phase types >>", response);
+                vm.buildingPhases = response;
+            });
         }
 
+        function getRepaymentMethods() {
+            services.getRepaymentMethods(function (response) {
+                console.log('the repayment methods >>>', response);
+                 vm.repaymentMethods = response;
+            });
+        }
+
+        function getCurrencies() {
+            services.getCurrencies(function (response) {
+                console.log('the repayment methods >>>', response);
+                vm.currencies = response;
+            });
+        }
+         
+        
+        function translateVals() {
+            if ($window.loanVals) {
+                vm.applyModel.AmtSought = $window.loanVals.loanAmount;
+            vm.applyModel.loanTenure = $window.loanVals.loanTenure;
+            vm.applyModel.currency = Number($window.loanVals.currencyId);
+            console.log('The currency is >>>', vm.applyModel.currency);
+            vm.applyModel.loanTenureUnit = "Years";
+                if ($window.loanVals.loanType === "Fullhouse") {
+                    vm.applyModel.applyingFor = "1";
+                } else {
+                    vm.applyModel.applyingFor = "2";
+                }
+            }
+            
+        }
+
+        getRepaymentMethods();
         translateVals();
+        getPhaseTypes();
+        getCurrencies();
 
     }
 })();

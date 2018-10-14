@@ -29,7 +29,7 @@
         $scope.$watch("vm.model.selectedFixture",
             function (newValue) {
                 console.log("vm.model.selectedFixture", newValue);
-                if (newValue != null) {
+                if (newValue !== null) {
                      vm.fixtureSelected(newValue);
                 }
             });

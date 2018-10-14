@@ -11,26 +11,25 @@
         <a id="top"></a>
         <nav class="">
             <div class="nav-utility">
-                <div class="module left hidden-xs">
+                <div class="module left hidden-sm hidden-xs">
                     <i class="fa fa-phone ">&nbsp;</i>
                     <span class="sub">Call Us Now : (+233) 0274121780</span>
-                    <i class="ti-email ">&nbsp;</i>
-                    <span class="sub hidden-xs">info@ubuild.ghlbank.com</span>
+                  
                 </div>
-                @*<div class="module left hidden-sm hidden-xs">
-                    <i class="ti-email">&nbsp;</i>
-                    <span class="sub">info@ubuild.ghlbank.com</span>
-                </div>*@
+                <div class="module left hidden-sm hidden-xs">
+                        <i class="ti-email">&nbsp;</i>
+                        <span class="sub">info@ubuild.ghlbank.com</span>
+                    </div>
                 <div class="module right">
 
                     @if (Request.IsAuthenticated)
-                    { 
+                    {
                         @*<span>Welcome @User.Identity.Name </span>
-                        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
-                        }*@
+                            using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
+                            }*@
 
                         <div class="d-flex align-items-center">
                             <!-- START User Info-->
@@ -44,30 +43,30 @@
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
                                     @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
                                     <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
-                                   
-                                    @*<a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>*@
-                                    
-                                    <a class="clearfix  dropdown-item">
-                                        @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%" }))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" value="Logout"  style="height: 28px;line-height: 28px;padding:0 5px 0 5px">
-                                                <span class="pull-left">Logout</span>
-                                                <span class="pull-right"><i class="pg-power"></i></span>
-                                            </button>
-                                        }
-                                    </a>
 
-                           
+                                    @*<a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>*@
+
+
+                                    @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" value="Logout" style="height: 28px;line-height: 28px;padding:0 5px 0 5px">
+                                            <span class="pull-left">Logout</span>
+                                            <span class="pull-right"><i class="pg-power"></i></span>
+                                        </button>
+                                    }
+
+
+
                                 </div>
                             </div>
                             <!-- END User Info-->
-                            
+
                         </div>
                     }
                     else
                     {
-                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled" })
+                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled", style = "margin-right:5px" })
                         @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })
                     }
 
@@ -124,9 +123,9 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    @Html.ActionLink("My Applications", "MyApplications", "Home", null, new {})
+                                    @Html.ActionLink("My Applications", "MyApplications", "Home", null, new { })
                                 </li>
-                               
+
                             }
                             <li>
                                 @Html.ActionLink("Guidelines", "Guidelines", "Home", null, new { })
@@ -145,7 +144,7 @@
                     </div>
 
 
-                    
+
                 </div>
                 <!--end of module group-->
             </div>

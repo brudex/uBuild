@@ -6,14 +6,14 @@
 }
 
 
-<section class="cover fullscreen image-bg overlay" style="height: auto">
+<section class="cover fullscreen image-bg overlay" style="height: auto;min-height: 800px">
     <div class="background-image-holder">
         <img alt="image" class="background-image" src="~/assets/foundry/img/register.jpg" />
     </div>
-    <div class="container v-align-transform">
+    <div class="container v-align-transform" style="">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <div class="feature bordered text-center" style="margin-top:150px">
+                <div class="feature bordered text-center" style="margin-top:50px">
                     <h4 class="uppercase">Register Here</h4>
                     @Html.ValidationSummary("", new { @class = "text-danger" })
 

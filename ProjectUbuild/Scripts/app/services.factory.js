@@ -61,7 +61,7 @@
         function doPost(url,data, callback) {
              return $http.post(url, data)
                 .then(function (response) {
-                    if (response == null) {
+                    if (response === null) {
                        return callback(null, {status:"07",message :"Error in response"});
                     }
                     return callback(null, response);
@@ -76,7 +76,7 @@
             var url = baseUrl + endpoint;
             return $http.get(url)
                .then(function (response) {
-                   if (response == null) {
+                   if (response === null) {
                        return callback(null, { status: "07", message: "Error in response" });
                    }
                   return callback(null, response);

@@ -24,12 +24,15 @@ namespace ProjectUbuild.Controllers
         [Authorize]
         public ActionResult Apply(string loanamount)
         {
-            var info = User.GetUbuildClient();
+            var viewModel = new ApplyLoanViewModel();
             NameValueCollection n = Request.QueryString;
-            var dict = n.ToDictionary();
-            var json = new JavaScriptSerializer().Serialize(dict);
-            var viewModel = JsonConvert.DeserializeObject<ApplyLoanViewModel>(json);
-            viewModel.json = json;
+            if (n.Count > 1)
+            {
+                var dict = n.ToDictionary();
+                dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+                var json = new JavaScriptSerializer().Serialize(dict);
+                viewModel.json = json;
+            }
             return View(viewModel);
         }
 

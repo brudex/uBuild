@@ -11,74 +11,37 @@ namespace uBuildCore.Models
 
         public int RecordId { get; set; }
         public int ClientId { get; set; }
+        public string CustomerNo { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string MaidenName { get; set; }
-
         public DateTime DateOfBirth { get; set; }
-
-
         public string PlaceOfBirth { get; set; }
-
-
         public string MothersMaidenName { get; set; }
-
-
         public string Gender { get; set; }
-
-
         public string MaritalStatus { get; set; }
-
-
         public string Nationality { get; set; }
-
-
         public string Occupation { get; set; }
-
-
         public string MobilePhone { get; set; }
-
-
         public string EmailAddress { get; set; }
-
-
         public string ResidentPermitNo { get; set; }
-
         public DateTime PermitIssueDate { get; set; }
-
-
         public string PermitIssuePlace { get; set; }
-
         public DateTime PermitExpiryDate { get; set; }
-
-
         public string SocialSecurityNo { get; set; }
-
-
         public string ResidentialAddress { get; set; }
         public string PostalAddress { get; set; }
         public string CityOfResidence { get; set; }
         public string CountryOfResidence { get; set; }
         public string ResidentialPhone { get; set; }
-
-
         public string IdCardType { get; set; }
-
-
         public string IdCardNumber { get; set; }
-
         public DateTime IdIssueDate { get; set; }
-
-
         public string IdIssueCountry { get; set; }
-
         public DateTime IdExpiryDate { get; set; }
-
-
         public string EmploymentStatus { get; set; }
-
         public string EmployerName { get; set; }
         public string EmployerStreetAddress { get; set; }
         public string EmployerCity { get; set; }

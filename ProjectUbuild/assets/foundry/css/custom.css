@@ -191,7 +191,7 @@ input[type="submit"], button[type="submit"] {
         /*marking active/completed steps green*/
         /*The number of the step and the connector before it = green*/
         #progressbar li.active:before, #progressbar li.active:after {
-            background: #27AE60;
+            background: #e31d3b;
             color: white;
         }
 

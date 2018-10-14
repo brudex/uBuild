@@ -17,5 +17,7 @@ namespace ProjectUbuild.Models
             var clientAuth = DbHandler.Instance.GetClientAuthByEmail(email);
             return clientAuth;
         }
+
+        
     }
 }

@@ -117,10 +117,10 @@ namespace ProjectUbuild.Controllers
                     ghlclient.EncPassword = user.Id;
                     ghlclient.AuthorizerName = "system";
                     ghlclient.CreatedDate = DateTime.Now;
-                    ghlclient.LastLoginAt = DateTime.Now;
-
-
+                    ghlclient.LastLoginAt = DateTime.Now; 
                     DbHandler.Instance.SaveGhlClientProfile(ghlclient);
+                    string emailMessage = "Thank you for signing up for GHL UBuild.";
+                    GHLService.Notification.SendEmail(user.Email, "Welcome to UBuild", emailMessage);
                     await SignInAsync(user, isPersistent: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

@@ -1,10 +1,11 @@
-@model dynamic
+@using ProjectUbuild.Controllers
+@model ProjectUbuild.Models.ApplyLoanViewModel
 @{
     ViewBag.Title = "Check Load Eligibility";
 }
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
-        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
+        <img alt="Background Image" class="background-image" src="/img/home10.jpg" style="display: none;">
     </div>
     <div class="container-fluid">
         <div class="row" style="margin-top: 33px">
@@ -42,8 +43,6 @@
             <!-- Tab panes -->
 
             <div class="tab-content">
-                 
-
                 <div class="tab-pane slide-left active padding-20 sm-no-padding" id="tab4">
                     <div class="row">
                         <div class="col-md-5 b-r b-dashed b-grey ">
@@ -51,31 +50,39 @@
                             <form class="" role="form">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.FullName">
+                                    <input type="text" class="form-control"   data-ng-model="vm.applyModel.FullName">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>Account Number</label>
-                                            <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.accountNumber">
+                                            <input type="text" class="form-control"  data-ng-model="vm.applyModel.accountNumber">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer ID</label>
-                                            <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.customerNo">
+                                            <input type="text" class="form-control"  data-ng-model="vm.applyModel.customerNo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Applying For</label>
-                                    <input type="text" class="form-control" value="PHASE" readonly="" data-ng-model="vm.applyModel.applyingFor">
-                                </div>
-                                <div class="form-group">
-                                    <label>For Phase</label>
-                                    <input type="text" class="form-control" value="PHASE" readonly="" data-ng-model="vm.applyModel.forPhase">
-                                </div>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.loanType.ToUpper() == "FULLHOUSE")
+                                        {
+                                            <input type="radio" checked="checked" value="FULLHOUSE" data-ng-model="vm.applyModel.applyingFor">
+                                            <text>Full house</text>
 
+                                        }
+                                        else
+                                        {
+                                            <input type="text" class="form-control" value="PHASE" data-ng-model="vm.applyModel.forPhase">
+                                            <text>Phase</text>
+                                        }
+                                    } 
+                                </div> 
                             </form>
                         </div>
                         <div class="col-md-6">
@@ -84,17 +91,20 @@
 
                                 <div class="form-group">
                                     <label>Loan Amount</label>
-                                    <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.AmtSought">
+                                    <input type="text" value="@Model.loanAmount" class="form-control"  data-ng-model="vm.applyModel.AmtSought">
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Loan Tenure</label>
-                                            <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.loanTenure">
+                                            <input type="text" value="@Model.loanTenure" class="form-control"  data-ng-model="vm.applyModel.loanTenure">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Tenure Unit</label>
-                                            <input type="text" class="form-control" readonly="" data-ng-model="vm.applyModel.loanTenureUnit">
+                                            <select class="form-control" data-ng-model="vm.applyModel.loanTenureUnit">
+                                                <option value="Months">Month(s)</option>
+                                                <option value="Years">Year(s)</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -105,8 +115,7 @@
                                             <option value="1">Direct Payroll Deduction</option>
                                             <option value="2">Direct Debit</option>
                                             <option value="3">Standing Order</option>
-                                            <option value="4">Other (Please Specify)</option>
-                                             
+                                            <option value="4">Other (Please Specify)</option> 
                                         </select>
                                         
                                     </div>
@@ -139,7 +148,9 @@
                                         <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
                                     </div>
                                 </div>
-
+                                <button class="action-button" type="button" data-ng-click="vm.submitLoanApplication()">
+                                    <span><i class="fa fa-send"></i> Submit Application</span>
+                                </button>
 
                             </form>
                         </div>
@@ -189,4 +200,6 @@
     </div>
 </div>
 
-
+<script type="text/javascript">
+    window.loandVals = @Html.Raw(Model.json)
+</script>

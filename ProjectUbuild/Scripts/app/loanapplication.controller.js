@@ -3,8 +3,8 @@
     angular
         .module('ubuild')
         .controller('LoanApplicationController', LoanApplicationController);
-    LoanApplicationController.$inject = ['brudexservices','$location'];
-    function LoanApplicationController(services,location) {
+    LoanApplicationController.$inject = ['brudexservices', '$location', '$window', 'brudexutils'];
+    function LoanApplicationController(services,location,$window,utils) {
         var vm = this;
         vm.errorMsg = [];
         vm.successMsg = [];
@@ -79,15 +79,27 @@
 
         function submitLoanApplication() {
             var payload = vm.applyModel;
-            services.applyForLoan(payload, function (response) {
-                console.log("Response from applyForLoan >>", response);
-                if (response.Status === "00") {
-                    vm.ulain = response.Message;
-                }
-            });
+            utils.alertSuccess("Application submitted. Your ulain information is "+12345);
+//            services.applyForLoan(payload, function (response) {
+//                console.log("Response from applyForLoan >>", response);
+//                utils.alertSuccess(response.Message);
+////                if (response.Status === "00") {
+////
+////                    vm.ulain = response.Message;
+////                }
+//            });
         }
 
         
+
+        function translateVals() {
+            vm.applyModel.AmtSought = $window.loandVals.loanAmount;
+            vm.applyModel.loanTenure = $window.loandVals.loanTenure;
+            vm.applyModel.loanTenureUnit = "Years";
+        }
+
+        translateVals();
+
     }
 })();
  

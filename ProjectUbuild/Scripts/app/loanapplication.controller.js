@@ -50,8 +50,7 @@
             if (data.response.Status === "00") {
                 vm.applyModel.eligible = true;
                 services.getAccountProfile({}, function (response) {
-                    console.log("Response from getAccount >>", response);
-                    if (response.Status === "00") {
+                     if (response.Status === "00") {
                         console.log("response status is success >>");
                         vm.applyModel.FullName = response.data.fullName;
                         vm.applyModel.accountNumber = response.data.accountNumber;
@@ -79,15 +78,14 @@
 
         function submitLoanApplication() {
             var payload = vm.applyModel;
-            utils.alertSuccess("Application submitted. Your ulain information is "+12345);
-//            services.applyForLoan(payload, function (response) {
-//                console.log("Response from applyForLoan >>", response);
-//                utils.alertSuccess(response.Message);
-////                if (response.Status === "00") {
-////
-////                    vm.ulain = response.Message;
-////                }
-//            });
+            services.applyForLoan(payload, function (response) {
+                console.log("Response from applyForLoan >>", response);
+                if (response.Status === "00") {
+                    vm.ulain = response.Message;
+                } else {
+                    utils.alertError(response.Message);
+                }
+            });
         }
 
         

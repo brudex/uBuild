@@ -70,7 +70,7 @@
                                     <label>Applying For</label>
                                     @if (Model != null)
                                     {
-                                        if (Model.loanType.ToUpper() == "FULLHOUSE")
+                                        if (Model.loanType == "FULLHOUSE")
                                         {
                                             <input type="radio" checked="checked" value="FULLHOUSE" data-ng-model="vm.applyModel.applyingFor">
                                             <text>Full house</text>

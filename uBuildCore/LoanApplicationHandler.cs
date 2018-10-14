@@ -22,7 +22,7 @@ namespace uBuildCore
             checkEligibilityRequest.IncomeCurrencyId = currencyId;
             checkEligibilityRequest.TypeChecked = data["loanType"].ToStringOrEmpty().ToUpper() == "FULLHOUSE" ? 1 : 2;
             checkEligibilityRequest.LoanCurrencyId = currencyId;
-            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
+            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>(); 
             checkEligibilityRequest.MonthlyIncome = data["monthlyIncome"].ToObject<decimal>();
             string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
             if (loanTenureUnit == "Years")
@@ -35,7 +35,7 @@ namespace uBuildCore
             } 
             if (checkEligibilityRequest.TypeChecked == 2)
             {
-                checkEligibilityRequest.PhaseChecked = 1;
+                checkEligibilityRequest.PhaseChecked =  data["phase"].ToInteger();
             }
             var response = new ServiceResponse();
             try
@@ -84,6 +84,15 @@ namespace uBuildCore
             loaApp.ProtectionSecured = true;
             loaApp.ProtectionSecurityType = data["ProtectionSecurityType"].ToStringOrEmpty();
             loaApp.ProtectionSecurityDetails = data["ProtectionSecurityDetails"].ToStringOrEmpty();
+            string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
+            if (loanTenureUnit == "Years")
+            {
+                loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>() * 12;
+            }
+            else
+            {
+                loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>();
+            }
             loaApp.LoanTermMonths = data["loanTenure"].ToInteger()*12;
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;

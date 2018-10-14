@@ -121,6 +121,15 @@ namespace uBuildCore
                 return list;
             }
         }
+
+        public List<BuildingPhases> GetBuildingPhases()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<BuildingPhases>().OrderBy(f=>f.RecordId).ToList();
+                return list;
+            }
+        }
         public List<LoanInterestRates> GetLoanInterestRates()
         {
             using (var conn = GetOpenDefaultDbConnection())

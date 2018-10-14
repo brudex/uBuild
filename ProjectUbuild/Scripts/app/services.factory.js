@@ -17,6 +17,7 @@
             getRepaymentMethods: getData('/api/LoanApi/GetRepaymentMethods'),
             getCurrencies: getData('/api/LoanApi/GetCurrencies'),
             getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes'), 
+            getBuildingPhases: getData('/api/LoanApi/GetBuildingPhases'), 
             sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
             validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo'),
             getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits')

@@ -53,10 +53,19 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
+        public List<BuildingPhases> GetBuildingPhases()
+        {
+            return DbHandler.Instance.GetBuildingPhases();
+        }
+
+
+        [System.Web.Mvc.HttpGet]
         public List<LoanInterestRates> GetLoanInterestRates()
         {
             return DbHandler.Instance.GetLoanInterestRates();
         }
+
+        
 
         [System.Web.Mvc.HttpPost]
         public ServiceResponse CheckLoanEligibility([FromBody]JObject data)
@@ -79,9 +88,7 @@ namespace ProjectUbuild.Controllers.Api
 
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ApplyForLoan([FromBody]JObject data)
-        {
-
-
+        { 
             var clientAuth = User.GetUbuildClient();
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }

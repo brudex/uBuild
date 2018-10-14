@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Update your profile";
 }
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
@@ -160,10 +160,16 @@
                         <div class="form-group-attached m-b-10">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Date of birth </label>
-                                        <input type="date" class="form-control" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth">
+                                    <div class="form-group form-group-default input-group col-md-10">
+                                        <div class="form-input-group">
+                                            <label>Date of birth</label>
+                                            <input type="email" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
+                                        </div>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
@@ -248,10 +254,21 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Permit Issue Date</label>
-                                        <input type="date" class="form-control" name="PermitIssueDate" required="" data-ng-model="vm.profile.PermitIssueDate">
+                                    <div class="form-group form-group-default input-group">
+                                        <div class="form-input-group">
+                                            <label>Permit Issue Date</label>
+                                            <input type="email" 
+                                                   name="PermitIssueDate" 
+                                                   required="" 
+                                                   data-ng-model="vm.profile.PermitIssueDate" 
+                                                   class="form-control" 
+                                                   id="datepicker-component3">
+                                        </div>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -264,9 +281,14 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Permit Expiry Date</label>
-                                        <input type="date" class="form-control" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate">
+                                    <div class="form-group form-group-default input-group ">
+                                        <div class="form-input-group">
+                                            <label>Permit Expiry Date</label>
+                                            <input type="email" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate" class="form-control" placeholder="" id="datepicker-component4">
+                                        </div>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -348,10 +370,20 @@
                         <div class="form-group-attached m-b-10">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>ID Issue Date</label>
-                                        <input type="date" class="form-control" name="IdIssueDate" data-ng-model="vm.profile.IdIssueDate">
+                                    <div class="form-group form-group-default input-group">
+                                        <div class="form-input-group">
+                                            <label>ID Issue Date</label>
+                                            <input type="email"
+                                                   name="IdIssueDate" 
+                                                   data-ng-model="vm.profile.IdIssueDate"
+                                                   class="form-control"
+                                                   id="datepicker-component5">
+                                        </div>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default">
@@ -364,10 +396,21 @@
 
                         <div class="row clearfix">
                             <div class="col-sm-6">
-                                <div class="form-group form-group-default required">
-                                    <label>ID Expiry Date</label>
-                                    <input type="date" class="form-control" name="IdExpiryDate" required="" data-ng-model="vm.profile.IdExpiryDate">
+                                <div class="form-group form-group-default input-group">
+                                    <div class="form-input-group">
+                                        <label>ID Expiry Date</label>
+                                        <input type="email"
+                                               name="IdExpiryDate" 
+                                               required="" 
+                                               data-ng-model="vm.profile.IdExpiryDate"
+                                               class="form-control"
+                                               id="datepicker-component6">
+                                    </div>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
                                 </div>
+
                             </div>
 
                         </div>

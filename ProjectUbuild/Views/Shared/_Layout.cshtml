@@ -14,8 +14,8 @@
                 <div class="module left">
                     <i class="fa fa-phone">&nbsp;</i>
                     <span class="sub">Call Us Now : (+233) 0274121780</span>
-                    <i class="ti-email">&nbsp;</i>
-                    <span class="sub">info@ubuild.ghlbank.com</span>
+                    <i class="ti-email hidden-xs">&nbsp;</i>
+                    <span class="sub hidden-xs">info@ubuild.ghlbank.com</span>
                 </div>
                 @*<div class="module left hidden-sm hidden-xs">
                     <i class="ti-email">&nbsp;</i>
@@ -47,14 +47,16 @@
                                    
                                     @*<a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>*@
                                     
-                                    @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block" }))
-                                    {
-                                    @Html.AntiForgeryToken()
-                                        <button type="submit" value="Logout" class="clearfix bg-master-lighter dropdown-item" style="height: 28px;line-height: 28px">
-                                            <span class="pull-left">Logout</span>
-                                            <span class="pull-right"><i class="pg-power"></i></span>
-                                        </button>
-                                    }
+                                    <a class="clearfix  dropdown-item">
+                                        @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" value="Logout"  style="height: 28px;line-height: 28px;padding:0 5px 0 5px">
+                                                <span class="pull-left">Logout</span>
+                                                <span class="pull-right"><i class="pg-power"></i></span>
+                                            </button>
+                                        }
+                                    </a>
 
                            
                                 </div>
@@ -111,7 +113,7 @@
                     <i class="ti-menu"></i>
                 </div>
                 <div class="module-group right">
-                    <div class="module left">
+                    <div class="module right">
                         <ul class="menu">
                             <li>
                                 @Html.ActionLink("Get Started", "Index", "FullHouse", null, new { })

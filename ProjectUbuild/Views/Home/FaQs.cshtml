@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Frequently asked questions. ";
+    ViewBag.Title = "Frequently asked questions.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -32,19 +32,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-12">
-                
+
                 <div class="card-group horizontal" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="card card-default m-b-0">
                         <div class="card-header " role="tab" id="headingOne">
                             <h4 class="card-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="False" aria-controls="collapseOne">
-                                    1. Am I eligible to take a loan?
+                                    1. Do I need to create an account/profile to shop for my project?
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseOne" class="collapse" role="tabcard" aria-labelledby="headingOne">
                             <div class="card-block">
-                                You can check your eligibility here
+                                No
                             </div>
                         </div>
                     </div>
@@ -52,13 +52,13 @@
                         <div class="card-header " role="tab" id="headingTwo">
                             <h4 class="card-title">
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    2. What is the maximum amount of money I can take.?
+                                    2. How do I edit my profile?
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="collapse" role="tabcard" aria-labelledby="headingTwo">
                             <div class="card-block">
-                                You can take a loan up to $105,000
+                                Click @Html.ActionLink("here", "Index", "Profile") update your profile.
                             </div>
                         </div>
                     </div>
@@ -66,13 +66,163 @@
                         <div class="card-header " role="tab" id="headingThree">
                             <h4 class="card-title">
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    3. I am building the house myself , Can i take a loan to complete it?
+                                    3. How do I log in and out of my profile/account?
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseThree" class="collapse" role="tabcard" aria-labelledby="headingThree">
                             <div class="card-block">
+                                To login, it requires that you should have sign in first through the self-registered menu to acquire a user ID and a password. If you have already created a user ID and a password, you should
+                                go straight to the login tab and provide your login details to access the platform.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingFour">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                    4. What security verifications do I need?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="collapse" role="tabcard" aria-labelledby="headingFour">
+                            <div class="card-block">
+                                You need a unique User ID and an alphanumeric password to be able to access the platform.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingFive">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                    5. How do I get a vendor for my building project?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="collapse" role="tabcard" aria-labelledby="headingFive">
+                            <div class="card-block">
+                                All vendors and suppliers are on our market place portal.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingSix">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                                    6. Why does U-build need to verify my identity?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="collapse" role="tabcard" aria-labelledby="headingSix">
+                            <div class="card-block">
+                                U-Build will not directly verify your identity but U-Build will ensure that KYC is performed on customers who are ready to access a loan to purchase materials for any of the building stages.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingSeven">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+                                    7. Can I make multiple purchases?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="collapse" role="tabcard" aria-labelledby="headingSeven">
+                            <div class="card-block">
                                 Yes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingEight">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
+                                    8. Do I need a GHL Bank account to make a purchase?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseEight" class="collapse" role="tabcard" aria-labelledby="headingEight">
+                            <div class="card-block">
+                                No.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingNine">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseThree">
+                                    9. Can I make partial payments and request a loan to pay off?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseNine" class="collapse" role="tabcard" aria-labelledby="headingNine">
+                            <div class="card-block">
+                                Yes, but you will have to check on the @Html.ActionLink("loan calculator", "Eligibility", "Loan") whether you qualify to access the amount involved.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingTen">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseThree">
+                                    10. What are the requirements to apply for a loan?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTen" class="collapse" role="tabcard" aria-labelledby="headingTen">
+                            <div class="card-block">
+                                You need to check on the @Html.ActionLink("loan calculator", "Eligibility", "Loan") to determine whether you qualify for the loan amount you need. You can then proceed to apply for the loan, which will require you to submit some basic information for the credit team to access your application viability. In all these, you will
+                                receive a tracking number which would assist you track the progress of your loan application in the system.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingEleven">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseThree">
+                                    11. Can I schedule payments to be delivered on a future date or set up automatic monthly debits from my account?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseEleven" class="collapse" role="tabcard" aria-labelledby="headingEleven">
+                            <div class="card-block">
+                                This can only apply to customers who applied for a loan to purchase goods from a vendor. 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingTwelve">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseThree">
+                                    12. What do I do if I forget my log in and password?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwelve" class="collapse" role="tabcard" aria-labelledby="headingTwelve">
+                            <div class="card-block">
+                                You can reset your password yourself. Please follow the link @(Html.ActionLink("here","ForgotPassword","Account")).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingThirteen">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThree">
+                                    13. Who do I contact if I have concerns not addressed by this FAQ?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThirteen" class="collapse" role="tabcard" aria-labelledby="headingThirteen">
+                            <div class="card-block">
+                                Please call our 24hr contact experience center or call our toll free number on the U-Build portal.
                             </div>
                         </div>
                     </div>

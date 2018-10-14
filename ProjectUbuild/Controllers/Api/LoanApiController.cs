@@ -12,13 +12,13 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpGet]
         public List<HouseDesigns> GetHouseDesigns()
         {
-           return DbHandler.Instance.GetHouseDesigns();
+            return DbHandler.Instance.GetHouseDesigns();
         }
 
         [System.Web.Mvc.HttpGet]
         public List<HouseDesignCustomizables> GetHouseDesignCustomizibles(int id)
         {
-            return DbHandler.Instance.GetDesignCustomizablesByHouseId( id);
+            return DbHandler.Instance.GetDesignCustomizablesByHouseId(id);
         }
 
         [System.Web.Mvc.HttpGet]
@@ -39,7 +39,7 @@ namespace ProjectUbuild.Controllers.Api
         {
             return DbHandler.Instance.GetFittingsFixtures();
         }
-    
+
         [System.Web.Mvc.HttpGet]
         public List<Currencies> GetCurrencies()
         {
@@ -66,22 +66,22 @@ namespace ProjectUbuild.Controllers.Api
             {
                 var clientAuth = User.GetUbuildClient();
                 var clientInfo = clientAuth.GetClientInfo();
-                string customerNo = clientInfo.CustomerNo;
-                response =LoanApplicationHandler.CheckEligibility(data,clientAuth.RecordId,customerNo);
+                string customerNo = (clientInfo != null) ? clientInfo.CustomerNo : null;
+                response = LoanApplicationHandler.CheckEligibility(data, clientAuth.RecordId, customerNo);
             }
             else
             {
                 response = LoanApplicationHandler.CheckEligibility(data);
             }
-              return response;
-            
+            return response;
+
         }
 
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ApplyForLoan([FromBody]JObject data)
         {
 
-             
+
             var clientAuth = User.GetUbuildClient();
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }

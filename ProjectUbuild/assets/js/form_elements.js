@@ -15,14 +15,14 @@
     $(document).ready(function() {
 
         //Multiselect - Select2 plug-in
-        $("#multi").val(["Jim", "Lucy"]).select2();
+       // $("#multi").val(["Jim", "Lucy"]).select2();
 
         //Date Pickers
         $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
 
-        $('#datepicker-embeded').datepicker({
-            daysOfWeekDisabled: "0,1"
-        });
+        //$('#datepicker-embeded').datepicker({
+        //    daysOfWeekDisabled: "0,1"
+        //});
 
 
         //Typehead Sample Code
@@ -53,27 +53,27 @@
         });
 
         //Custom Template
-        $('#custom-templates .typeahead').typeahead(null, {
-              name: 'best-pictures',
-              display: 'value',
-              source: bestPictures,
-              templates: {
-                empty: [
-                  '<div class="empty-message">',
-                    'unable to find any Best Picture winners that match the current query',
-                  '</div>'
-                ].join('\n'),
-                suggestion: Handlebars.compile('<div>{{value}}– {{year}}</div>')
-              }
-        });
+        //$('#custom-templates .typeahead').typeahead(null, {
+        //      name: 'best-pictures',
+        //      display: 'value',
+        //      source: bestPictures,
+        //      templates: {
+        //        empty: [
+        //          '<div class="empty-message">',
+        //            'unable to find any Best Picture winners that match the current query',
+        //          '</div>'
+        //        ].join('\n'),
+        //        suggestion: Handlebars.compile('<div>{{value}}– {{year}}</div>')
+        //      }
+        //});
 
-        $('#daterangepicker').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            format: 'MM/DD/YYYY h:mm A'
-        }, function(start, end, label) {
-            console.log(start.toISOString(), end.toISOString(), label);
-        });
+        //$('#daterangepicker').daterangepicker({
+        //    timePicker: true,
+        //    timePickerIncrement: 30,
+        //    format: 'MM/DD/YYYY h:mm A'
+        //}, function(start, end, label) {
+        //    console.log(start.toISOString(), end.toISOString(), label);
+        //});
 
         /* Time picker
          * https://github.com/m3wolf/bootstrap3-timepicker

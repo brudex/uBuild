@@ -1,10 +1,10 @@
-﻿(function() {
+﻿(function () {
     'use strict';
     angular
         .module('ubuild')
         .controller('LoanApplicationController', LoanApplicationController);
     LoanApplicationController.$inject = ['brudexservices', '$location', '$window', 'brudexutils'];
-    function LoanApplicationController(services,location,$window,utils) {
+    function LoanApplicationController(services, location, $window, utils) {
         var vm = this;
         vm.errorMsg = [];
         vm.successMsg = [];
@@ -23,8 +23,8 @@
         vm.ulain = "";
         vm.applyModel.currency = 1;
 
-        function getHouseImages(){
-            var payload = { requestType :1};
+        function getHouseImages() {
+            var payload = { requestType: 1 };
             services.getHouseImages(payload, function (response) {
                 if (response.status === '00') {
                     vm.houseImages = response.data;
@@ -36,15 +36,15 @@
         function getHouseCustomizables(houseId) {
             services.getHouseCustomizables(houseId, function (response) {
                 console.log("Result from customizables >>", response);
-                vm.customizables = response; 
+                vm.customizables = response;
             });
         }
-          
+
         function getHouseFixtures() {
             var payload = { requestType: 1 };
             services.gitFixturesFittings(payload, function (response) {
                 if (response.status === '00') {
-                    vm.fixtureFittings  = response.data;
+                    vm.fixtureFittings = response.data;
                 }
             });
         }
@@ -54,7 +54,7 @@
             if (data.response.Status === "00") {
                 vm.applyModel.eligible = true;
                 services.getAccountProfile({}, function (response) {
-                     if (response.Status === "00") {
+                    if (response.Status === "00") {
                         console.log("response status is success >>");
                         vm.applyModel.FullName = response.data.fullName;
                         vm.applyModel.accountNumber = response.data.accountNumber;
@@ -71,9 +71,9 @@
                         vm.applyModel.ProtectionSecured = false;
                         vm.applyModel.ProtectionSecurityType = "";
                         vm.applyModel.ProtectionSecurityDetails = "";
-                        vm.applyModel.currency = data.request.currency; 
-                        console.log("The applyModel >> ",vm.applyModel);
-                    }                    
+                        vm.applyModel.currency = data.request.currency;
+                        console.log("The applyModel >> ", vm.applyModel);
+                    }
                 });
             } else {
                 vm.applyModel.eligible = false;
@@ -102,7 +102,7 @@
         function getRepaymentMethods() {
             services.getRepaymentMethods(function (response) {
                 console.log('the repayment methods >>>', response);
-                 vm.repaymentMethods = response;
+                vm.repaymentMethods = response;
             });
         }
 
@@ -112,22 +112,24 @@
                 vm.currencies = response;
             });
         }
-         
-        
+
+
         function translateVals() {
             if ($window.loanVals) {
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
-            vm.applyModel.loanTenure = $window.loanVals.loanTenure;
-            vm.applyModel.currency = Number($window.loanVals.currencyId);
-            console.log('The currency is >>>', vm.applyModel.currency);
-            vm.applyModel.loanTenureUnit = "Years";
+                vm.applyModel.loanTenure = $window.loanVals.loanTenure;
+                vm.applyModel.currency = Number($window.loanVals.currencyId);
+                console.log('The currency is >>>', vm.applyModel.currency);
+                vm.applyModel.loanTenureUnit = "Years";
                 if ($window.loanVals.loanType === "Fullhouse") {
                     vm.applyModel.applyingFor = "1";
                 } else {
                     vm.applyModel.applyingFor = "2";
+                    vm.applyModel.forPhase = Number($window.loanVals.phaseType);
+                    console.log("vm.applyModel.forPhase", vm.applyModel.forPhase);
                 }
             }
-            
+
         }
 
         getRepaymentMethods();
@@ -137,4 +139,3 @@
 
     }
 })();
- 

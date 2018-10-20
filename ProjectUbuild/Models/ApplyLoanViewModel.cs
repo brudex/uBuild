@@ -14,6 +14,7 @@ namespace ProjectUbuild.Models
         public int currencyId { get; set; }
         public int loanTenure { get; set; }
         public string json { get; set; }
+        public string phaseType { get; set; }
     }
     
 }

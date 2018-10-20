@@ -29,14 +29,16 @@ namespace ProjectUbuild.Controllers
             if (n.Count > 1)
             {
                 var dict = n.ToDictionary();
-                dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+
+                if (dict.ContainsKey("currency"))
+                    dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
                 var json = new JavaScriptSerializer().Serialize(dict);
                 viewModel.json = json;
             }
             return View(viewModel);
         }
 
-        
-        
+
+
     }
 }

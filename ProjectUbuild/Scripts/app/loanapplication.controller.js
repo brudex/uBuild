@@ -117,10 +117,10 @@
         function translateVals() {
             if ($window.loanVals) {
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
-            vm.applyModel.loanTenure = $window.loanVals.loanTenure;
-            vm.applyModel.currency = Number($window.loanVals.currencyId);
-            console.log('The currency is >>>', vm.applyModel.currency);
-            vm.applyModel.loanTenureUnit = "Years";
+                vm.applyModel.loanTenure = $window.loanVals.loanTenure;
+                vm.applyModel.currency = Number($window.loanVals.currencyId);
+                console.log('The currency is >>>', vm.applyModel.currency);
+                vm.applyModel.loanTenureUnit = "Years";
                 if ($window.loanVals.loanType === "Fullhouse") {
                     vm.applyModel.applyingFor = "1";
                 } else {

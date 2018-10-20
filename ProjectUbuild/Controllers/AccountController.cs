@@ -104,7 +104,7 @@ namespace ProjectUbuild.Controllers
                     ghlclient.FirstName = model.Firstname;
                     ghlclient.LastName = model.Lastname;
                     ghlclient.OtherNames = model.Othernames;
-
+                    ghlclient.IsActivated = true;
                     try
                     {
                         ghlclient.MobileNumber = mobileNoInfo["format"]["E164"].ToString();
@@ -188,9 +188,9 @@ namespace ProjectUbuild.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                //                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                //                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                //                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -211,11 +211,14 @@ namespace ProjectUbuild.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
+
             if (code == null)
             {
                 return View("Error");
             }
-            return View();
+            var model = new ResetPasswordViewModel();
+            model.Code = code;
+            return View(model);
         }
 
         //

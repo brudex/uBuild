@@ -121,6 +121,15 @@ namespace uBuildCore
                 return list;
             }
         }
+
+        public List<BuildingPhases> GetBuildingPhases()
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.GetList<BuildingPhases>().OrderBy(f=>f.RecordId).ToList();
+                return list;
+            }
+        }
         public List<LoanInterestRates> GetLoanInterestRates()
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -134,7 +143,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var sql ="SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join[sordii_ubdb].[dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
+                var sql ="SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join [dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
                 var list = conn.Query<HouseDesigns>(sql).ToList();
                 return list;
             }
@@ -144,7 +153,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                 var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join[sordii_ubdb].[dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
+                 var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join  [dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
                 var item = conn.Query<HouseDesigns>(sql,new {id}).FirstOrDefault();
                 return item;
             }

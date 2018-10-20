@@ -11,6 +11,7 @@ namespace ProjectUbuild.Models
         public decimal monthlyIncome { get; set; }
         public decimal loanAmount { get; set; }
         public string currency { get; set; }
+        public int currencyId { get; set; }
         public int loanTenure { get; set; }
         public string json { get; set; }
     }

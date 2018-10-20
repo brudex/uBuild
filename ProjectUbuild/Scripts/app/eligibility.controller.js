@@ -11,7 +11,8 @@
         var loading = false;
         var interestRates = [];
         var currencies = [];
-        $scope.init = function (isLoanApp, callback) {
+        $scope.buildingPhases = [];
+         $scope.init = function (isLoanApp, callback) {
             if (isLoanApp) {
                 isLoanApplication = isLoanApp;
                 callbackFunc = callback;
@@ -20,7 +21,8 @@
 
             $scope.builder = {
                 loanType: null,
-                phase: ""
+                phase: "",
+                loanTenureUnit : 'years'
             };
         };
         $scope.$watch("builder.loanType",
@@ -32,12 +34,29 @@
                 console.log("$scope.builder.loanAmount", loanAmount);
             });
 
+        $scope.$watch("builder.loanTenureUnit",
+            function (unit) {
+                var loanTenureSlider = $("#loan_Tenure").data("ionRangeSlider");
+                var loanTenureSliderOptions = {
+                    min: 1,
+                    max: 20,
+                    from: 12,
+                    type: 'single',
+                    step: 1,
+                    postfix: unit,
+                    maxPostfix: "+",
+                    prettify_enabled: true 
+                }
+                loanTenureSlider.update(loanTenureSliderOptions); 
+            });
+         
         $scope.$watch("builder.phase",
             function (phase) {
                 console.log("$scope.builder.phase", phase);
             });
-         
-       
+
+
+
         $scope.$watch("builder.currency",
             function (currency) {
                 if (typeof currency !== 'undefined') {
@@ -94,14 +113,15 @@
                     $("#loan_Irate").ionRangeSlider();
                     $("#loan_Tenure").ionRangeSlider();
                     console.log("the selected currency is >>>", currency);
-                   
+                    
                    var interestRate = getInterestRateByCurrency(currency);
                     loanRateSliderOptions.from = interestRate[0].InterestRate;
                     //get slider instances
+                    var loanTenureSlider = $("#loan_Tenure").data("ionRangeSlider");
                     var monthlyIncomeSlider = $("#loan_monthly_income").data("ionRangeSlider");
                     var loanAmountSlider = $("#loan_amount").data("ionRangeSlider");
                     var loanRateSlider = $("#loan_Irate").data("ionRangeSlider");
-                    var loanTenureSlider = $("#loan_Tenure").data("ionRangeSlider");
+                    
                     monthlyIncomeSlider.update(monthlyIncomeOptions);
                     loanAmountSlider.update(loanAmountSliderOptions);
                     loanRateSlider.update(loanRateSliderOptions);
@@ -171,8 +191,17 @@
                 currencies = response;
              });
         }
+
+
+        function getPhaseTypes() {
+            services.getBuildingPhases(function (response) {
+                console.log("Phase types >>", response);
+                $scope.buildingPhases = response;
+            });
+        }
         getInterestRates();
-        getCurrencies();  
+        getCurrencies();
+        getPhaseTypes();
     } 
 
 })();

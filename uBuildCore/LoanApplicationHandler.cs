@@ -22,7 +22,7 @@ namespace uBuildCore
             checkEligibilityRequest.IncomeCurrencyId = currencyId;
             checkEligibilityRequest.TypeChecked = data["loanType"].ToStringOrEmpty().ToUpper() == "FULLHOUSE" ? 1 : 2;
             checkEligibilityRequest.LoanCurrencyId = currencyId;
-            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
+            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>(); 
             checkEligibilityRequest.MonthlyIncome = data["monthlyIncome"].ToObject<decimal>();
             string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
             if (loanTenureUnit == "Years")
@@ -35,7 +35,7 @@ namespace uBuildCore
             } 
             if (checkEligibilityRequest.TypeChecked == 2)
             {
-                checkEligibilityRequest.PhaseChecked = 1;
+                checkEligibilityRequest.PhaseChecked =  data["phase"].ToInteger();
             }
             var response = new ServiceResponse();
             try
@@ -70,20 +70,30 @@ namespace uBuildCore
             var loaApp = new LoanAppls();
             loaApp.ClientId = client.RecordId;
             string ulain = DbHandler.Instance.GenerateUlain();
-            int phaseId = 0; //todo get phaseId from ui
-            int currencyId = 1;// DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
+             int currencyId = data["currency"].ToInteger();
             loaApp.AmtSought = data["AmtSought"].ToDecimal();
-            loaApp.LoanApplTypeId = 1;// client.RecordId;//fkey applTypes
+            loaApp.LoanApplTypeId = data["applyingFor"].ToInteger(); 
             loaApp.ApplSubmitDate= DateTime.Now;
-            loaApp.CustomerNo = null;//data["customerNo"].ToStringOrEmpty(); //fkey
+            string customerNo = data["customerNo"].ToStringOrEmpty();
+            loaApp.CustomerNo = string.IsNullOrEmpty(customerNo)?null:customerNo;  
             loaApp.ULAIN = ulain;
+            loaApp.BuildingPhaseId = data["forPhase"].ToInteger(); ;
             loaApp.BuildingPhaseId = null;
             loaApp.PurposeofLoan = data["PurposeofLoan"].ToStringOrEmpty();
-            loaApp.RepaymentMethodId = 1;//data["RepaymentMethod"].ToInteger(); //fkey
+            loaApp.RepaymentMethodId = data["RepaymentMethod"].ToInteger();  
             loaApp.ProtectionCover = true;
             loaApp.ProtectionSecured = true;
             loaApp.ProtectionSecurityType = data["ProtectionSecurityType"].ToStringOrEmpty();
             loaApp.ProtectionSecurityDetails = data["ProtectionSecurityDetails"].ToStringOrEmpty();
+            string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
+            if (loanTenureUnit == "Years")
+            {
+                loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>() * 12;
+            }
+            else
+            {
+                loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>();
+            }
             loaApp.LoanTermMonths = data["loanTenure"].ToInteger()*12;
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;

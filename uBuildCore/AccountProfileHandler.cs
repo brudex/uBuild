@@ -60,7 +60,7 @@ namespace uBuildCore
             {
                     
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
-                if (tclient != null)
+                if (tclient != null && tclient.MobilePhone!=null)
                 {
                     string mobile = tclient.MobilePhone;
                     var otp = SoftTokenService.GenerateSoftToken(acctNo);

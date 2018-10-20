@@ -74,6 +74,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="LoanApplicationHandler.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Models\BuildingPhases.cs" />
     <Compile Include="Models\ClientAuths.cs" />
     <Compile Include="Models\ClientInfos.cs" />
     <Compile Include="CheckEligibilityRequest.cs" />

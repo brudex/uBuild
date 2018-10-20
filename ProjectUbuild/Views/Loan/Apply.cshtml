@@ -1,4 +1,4 @@
-@using ProjectUbuild.Controllers
+
 @model ProjectUbuild.Models.ApplyLoanViewModel
 @{
     ViewBag.Title = "Loan Application";
@@ -50,54 +50,69 @@
                             <form class="" role="form">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control"   data-ng-model="vm.applyModel.FullName">
+                                    <input type="text" class="form-control" data-ng-model="vm.applyModel.FullName">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>Account Number</label>
-                                            <input type="text" class="form-control"  data-ng-model="vm.applyModel.accountNumber">
+                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.accountNumber" placeholder="GHL customers only">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer ID</label>
-                                            <input type="text" class="form-control"  data-ng-model="vm.applyModel.customerNo">
+                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.customerNo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Applying For</label>
-                                    @if (Model != null)
-                                    {
-                                        if (Model.loanType.ToUpper() == "FULLHOUSE")
-                                        {
-                                            <input type="radio" checked="checked" value="FULLHOUSE" data-ng-model="vm.applyModel.applyingFor">
-                                            <text>Full house</text>
+                                    <div class="radio radio-success">
+                                        <span title="Choose this loan type buy a full house">
+                                            <input type="radio" checked="checked" ng-model="vm.applyModel.applyingFor" name="loanType" value="1" id="fullhouse">
+                                            <label for="fullhouse">Full House</label>
+                                        </span>
+                                        <span style="display: inline-block" title="Choose this loan type to complete a particular phase of your building project ">
+                                            <input type="radio" ng-model="vm.applyModel.applyingFor" name="loanType" id="phase" value="2">
+                                            <label for="phase">Phase</label>
+                                        </span>
+                                    </div>
+                                </div>
 
-                                        }
-                                        else
-                                        {
-                                            <input type="text" class="form-control" value="PHASE" data-ng-model="vm.applyModel.forPhase">
-                                            <text>Phase</text>
-                                        }
-                                    } 
+                                <div class="form-group" data-ng-show="vm.applyModel.applyingFor == 2">
+                                    <label>Choose Phase</label>
+                                    <div>
+                                        <select class="" ng-model="vm.applyModel.forPhase" data-ng-options="item.RecordId as item.PhaseName for item in vm.buildingPhases">
+                                            <option value="">-Select Phase-</option>
+                                        </select>
+                                    </div>
                                 </div> 
+                                
                             </form>
                         </div>
                         <div class="col-md-6">
                             <h4>Complete Loan Form</h4>
-                            <form role="form">
-
+                            <form role="form"> 
                                 <div class="form-group">
-                                    <label>Loan Amount</label>
-                                    <input type="text" value="@Model.loanAmount" class="form-control"  data-ng-model="vm.applyModel.AmtSought">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Currency</label>
+                                            <select class="form-control" data-ng-model="vm.applyModel.currency" data-ng-options="item.RecordId as item.ISOCode for item in vm.currencies">
+
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>Loan Amount</label>
+                                            <input type="text"  class="form-control" data-ng-model="vm.applyModel.AmtSought">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Loan Tenure</label>
-                                            <input type="text" value="@Model.loanTenure" class="form-control"  data-ng-model="vm.applyModel.loanTenure">
+                                            <input type="text"  class="form-control" data-ng-model="vm.applyModel.loanTenure">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Tenure Unit</label>
@@ -109,20 +124,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-6">
+                                    
                                         <label>Repayment Method</label>
-                                        <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod">
-                                            <option value="1">Direct Payroll Deduction</option>
-                                            <option value="2">Direct Debit</option>
-                                            <option value="3">Standing Order</option>
-                                            <option value="4">Other (Please Specify)</option> 
+                                        <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
+                                            <option value="">-Select Repayment Method-</option>
                                         </select>
-                                        
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Specify Other</label>
-                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.RepaymentOther">
-                                    </div>
+                                    
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose of Loan</label>
@@ -201,5 +209,5 @@
 </div>
 
 <script type="text/javascript">
-    window.loandVals = @Html.Raw(Model.json)
+    window.loanVals = @Html.Raw(Model.json)
 </script>

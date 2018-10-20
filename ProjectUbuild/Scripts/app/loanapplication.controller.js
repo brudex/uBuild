@@ -15,9 +15,13 @@
         vm.eligibilityCallback = getEligibilityValues;
         vm.submitLoanApplication = submitLoanApplication;
         vm.getHouseCustomizables = getHouseCustomizables;
+        vm.buildingPhases = [];
+        vm.repaymentMethods = [];
+        vm.currencies = [];
         vm.customizables = [];
         vm.applyModel.eligible = false;
         vm.ulain = "";
+        vm.applyModel.currency = 1;
 
         function getHouseImages(){
             var payload = { requestType :1};
@@ -50,8 +54,7 @@
             if (data.response.Status === "00") {
                 vm.applyModel.eligible = true;
                 services.getAccountProfile({}, function (response) {
-                    console.log("Response from getAccount >>", response);
-                    if (response.Status === "00") {
+                     if (response.Status === "00") {
                         console.log("response status is success >>");
                         vm.applyModel.FullName = response.data.fullName;
                         vm.applyModel.accountNumber = response.data.accountNumber;
@@ -79,26 +82,58 @@
 
         function submitLoanApplication() {
             var payload = vm.applyModel;
-            utils.alertSuccess("Application submitted. Your ulain information is "+12345);
-//            services.applyForLoan(payload, function (response) {
-//                console.log("Response from applyForLoan >>", response);
-//                utils.alertSuccess(response.Message);
-////                if (response.Status === "00") {
-////
-////                    vm.ulain = response.Message;
-////                }
-//            });
+            services.applyForLoan(payload, function (response) {
+                console.log("Response from applyForLoan >>", response);
+                if (response.Status === "00") {
+                    vm.ulain = response.Message;
+                } else {
+                    utils.alertError(response.Message);
+                }
+            });
         }
 
+        function getPhaseTypes() {
+            services.getBuildingPhases(function (response) {
+                console.log("Phase types >>", response);
+                vm.buildingPhases = response;
+            });
+        }
+
+        function getRepaymentMethods() {
+            services.getRepaymentMethods(function (response) {
+                console.log('the repayment methods >>>', response);
+                 vm.repaymentMethods = response;
+            });
+        }
+
+        function getCurrencies() {
+            services.getCurrencies(function (response) {
+                console.log('the repayment methods >>>', response);
+                vm.currencies = response;
+            });
+        }
+         
         
-
         function translateVals() {
-            vm.applyModel.AmtSought = $window.loandVals.loanAmount;
-            vm.applyModel.loanTenure = $window.loandVals.loanTenure;
+            if ($window.loanVals) {
+                vm.applyModel.AmtSought = $window.loanVals.loanAmount;
+            vm.applyModel.loanTenure = $window.loanVals.loanTenure;
+            vm.applyModel.currency = Number($window.loanVals.currencyId);
+            console.log('The currency is >>>', vm.applyModel.currency);
             vm.applyModel.loanTenureUnit = "Years";
+                if ($window.loanVals.loanType === "Fullhouse") {
+                    vm.applyModel.applyingFor = "1";
+                } else {
+                    vm.applyModel.applyingFor = "2";
+                }
+            }
+            
         }
 
+        getRepaymentMethods();
         translateVals();
+        getPhaseTypes();
+        getCurrencies();
 
     }
 })();

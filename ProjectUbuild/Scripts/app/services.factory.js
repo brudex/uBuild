@@ -17,6 +17,7 @@
             getRepaymentMethods: getData('/api/LoanApi/GetRepaymentMethods'),
             getCurrencies: getData('/api/LoanApi/GetCurrencies'),
             getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes'), 
+            getBuildingPhases: getData('/api/LoanApi/GetBuildingPhases'), 
             sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
             validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo'),
             getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits')
@@ -60,7 +61,7 @@
         function doPost(url,data, callback) {
              return $http.post(url, data)
                 .then(function (response) {
-                    if (response == null) {
+                    if (response === null) {
                        return callback(null, {status:"07",message :"Error in response"});
                     }
                     return callback(null, response);
@@ -75,7 +76,7 @@
             var url = baseUrl + endpoint;
             return $http.get(url)
                .then(function (response) {
-                   if (response == null) {
+                   if (response === null) {
                        return callback(null, { status: "07", message: "Error in response" });
                    }
                   return callback(null, response);

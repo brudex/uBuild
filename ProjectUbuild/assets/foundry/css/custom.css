@@ -547,7 +547,7 @@ div.cs-skin-slide .cs-options ul li span {
 }
 
 #houseDesignWrapper {
-    min-height: 700px;
+    /*min-height: 700px;*/
     margin-top: 20px;
 }
 
@@ -734,7 +734,7 @@ svg:not(:root) {
     margin-bottom: 10px
 }
 
-indows body, .windows p {
+windows body, .windows p {
     font-size: 15px;
     letter-spacing: normal;
 }

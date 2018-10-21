@@ -21,9 +21,7 @@ namespace ProjectUbuild.Controllers
         public ActionResult MyApplications()
         {
             var clientAuth = User.GetUbuildClient();
-            List<LoanAppls> list = DbHandler.Instance.GetMyLoanApplications(clientAuth.RecordId);
-            var vm = new MyApplicationsViewModel();
-            vm.loanApplications = list;
+            var vm = new MyApplicationsViewModel(clientAuth.RecordId);
             return View(vm);
         }
 

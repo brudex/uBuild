@@ -247,7 +247,7 @@ namespace uBuildCore
         /// Get ulains of loans applied
         /// </summary>
         /// <param name="clientId">User ClientAuth Id</param>
-        /// <param name="procStage">A=All	 /C=Completed/	U=Uncompleted</param>
+        /// <param name="procStage">A=All /C=Completed/	U=Uncompleted</param>
         /// <returns></returns>
         public List<string> GetClientLoanProcStages(int clientId ,string procStage)
         {
@@ -255,13 +255,11 @@ namespace uBuildCore
             {
                 var results = conn.Query<dynamic>("spGetClientLoansProcStage", new {ClientId = clientId ,ProcState =procStage}, commandType: CommandType.StoredProcedure);
                 return results.Select(o => o.ULAIN).Cast<string>().ToList();
-                
             }
         }
+         
 
-
-
-        public List<LoanProcessStages> GetCurrentLoanProcessStage(List<string> ulains)
+        public List<LoanProcessStages> GetLoanProcStagesByUlains(List<string> ulains)
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
@@ -277,9 +275,11 @@ namespace uBuildCore
                          sb.Append(string.Format(",'{0}'", ulains[0]));
                     }
                 }
-                  
-                var list = conn.GetList<LoanProcessStages>(string.Format(@"SELECT 
-               `la.[RecordId] 
+
+                if (ulains.Count > 0)
+                {
+                    var list = conn.GetList<LoanProcessStages>(string.Format(@"SELECT 
+               la.[RecordId] 
               ,la.[CustomerNo]
               ,la.[ULAIN]
               ,la.[LoanApplTypeId]
@@ -306,8 +306,10 @@ namespace uBuildCore
               ,ls.[ProcessComment]
               ,ls.[LastProcessDate] 
 	          FROM [dbo].[LoanAppls] la inner join [dbo].[LoanProcStages] ls on la.ULAIN = ls.ULAIN inner join Currencies c on 
-	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})",sb.ToString() ));
-                return list.ToList();
+	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})", sb.ToString()));
+                    return list.ToList();
+                }
+               return new List<LoanProcessStages>();
             }
         }
     }

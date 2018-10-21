@@ -2346,6 +2346,7 @@
     <Content Include="Views\Home\Guidelines.cshtml" />
     <Content Include="Views\FullHouse\Index.cshtml" />
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
+    <Content Include="Views\Loan\LoanDocs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,6 +23,8 @@ namespace uBuildCore
                 ConnectionString;
         }
 
+        
+
         public static DbHandler Instance
         {
             get

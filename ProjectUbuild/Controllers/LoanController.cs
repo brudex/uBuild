@@ -19,6 +19,12 @@ namespace ProjectUbuild.Controllers
             return View();
         }
 
+        public ActionResult LoanDocs()
+        {
+            var DocTypesList = DbHandler.Instance.GetDocTypes();
+            return View();
+        }
+
         // GET: Loan
 
         [Authorize]

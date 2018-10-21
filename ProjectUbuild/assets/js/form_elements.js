@@ -18,8 +18,11 @@
        // $("#multi").val(["Jim", "Lucy"]).select2();
 
         //Date Pickers
-        $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
+      //  $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
 
+        //Date Pickers
+        $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5',
+            '#datepicker-component6').datepicker();
         //$('#datepicker-embeded').datepicker({
         //    daysOfWeekDisabled: "0,1"
         //});
@@ -35,6 +38,7 @@
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           prefetch: 'http://pages.revox.io/json/countries-list.json'
         });
+
 
           var bestPictures = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),

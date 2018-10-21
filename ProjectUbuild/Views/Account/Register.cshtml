@@ -28,7 +28,7 @@
                         <div class="input-phone"></div>
 
                         @Html.PasswordFor(m => m.Password,
-                            new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p> be at least 6 characters, have upper and lower case letters and special characters." })
+                            new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
 
                         <input type="submit" value="Register" />

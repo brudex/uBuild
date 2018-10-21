@@ -250,28 +250,28 @@
         });
 
         // Disable scroll to zoom
-        setTimeout(function() {
-            location.hash = "#usa";
-            $('.mapplic-layer').unbind('mousewheel DOMMouseScroll');
-        }, 1000);
+        //setTimeout(function() {
+        //    location.hash = "#usa";
+        //    $('.mapplic-layer').unbind('mousewheel DOMMouseScroll');
+        //}, 1000);
 
 
-        $('.widget-13 a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-            var target = $(e.target).text().trim();
-            var hash;
-            if (target == 'fb') {
-                hash = '#usa';
-            } else if (target == 'sa') {
-                hash = '#af';
-            } else if (target == 'js') {
-                hash = '#ru';
-            }
-            window.location.hash = hash;
-        });
+        //$('.widget-13 a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        //    var target = $(e.target).text().trim();
+        //    var hash;
+        //    if (target == 'fb') {
+        //        hash = '#usa';
+        //    } else if (target == 'sa') {
+        //        hash = '#af';
+        //    } else if (target == 'js') {
+        //        hash = '#ru';
+        //    }
+        //    window.location.hash = hash;
+        //});
 
         // tiles
-        $(".widget-3 .metro").liveTile();
-        $(".widget-7 .metro").liveTile();
+        //$(".widget-3 .metro").liveTile();
+        //$(".widget-7 .metro").liveTile();
 
 //
 //        //NVD3 Charts

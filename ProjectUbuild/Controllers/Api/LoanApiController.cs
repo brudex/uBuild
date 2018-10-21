@@ -93,6 +93,7 @@ namespace ProjectUbuild.Controllers.Api
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }
 
+         
 
 
     }

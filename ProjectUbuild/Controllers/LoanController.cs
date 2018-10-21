@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +9,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using ProjectUbuild.Models;
 using uBuildCore;
+using uBuildCore.Models;
 
 namespace ProjectUbuild.Controllers
 {
@@ -45,6 +47,21 @@ namespace ProjectUbuild.Controllers
         }
 
 
+
+        [Authorize]
+        public ActionResult PostLoanDoc(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the filename
+                var fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                file.SaveAs(path);
+            }
+            // redirect back to the index action to show the form once again
+            return RedirectToAction("Index");
+         } 
 
     }
 }

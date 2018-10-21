@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using ProjectUbuild.Models;
+using uBuildCore;
+using uBuildCore.Models;
 
 namespace ProjectUbuild.Controllers
 {
@@ -15,7 +20,11 @@ namespace ProjectUbuild.Controllers
 
         public ActionResult MyApplications()
         {
-            return View();
+            var clientAuth = User.GetUbuildClient();
+            List<LoanAppls> list = DbHandler.Instance.GetMyLoanApplications(clientAuth.RecordId);
+            var vm = new MyApplicationsViewModel();
+            vm.loanApplications = list;
+            return View(vm);
         }
 
         public ActionResult Guidelines()

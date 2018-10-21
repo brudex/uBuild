@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using Dapper;
 using DapperExtensions;
 using uBuildCore.Models;
@@ -218,14 +219,7 @@ namespace uBuildCore
                 return id;
             }
         }
-
-        //
-        //        public decimal GetInterestRateByCurrency(int currencyId)
-        //        {
-        //            
-        //            
-        //        }
-
+         
 
         public string GenerateUlain()
         {
@@ -237,6 +231,85 @@ namespace uBuildCore
                      return item.newULAIN;
                 }
                 return string.Empty;
+            }
+        }
+
+        public List<LoanAppls> GetMyLoanApplications(int recordId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<LoanAppls>(f => f.ClientId, Operator.Eq, recordId);
+                var list = conn.GetList<LoanAppls>(predicate);
+                return list.ToList();
+            }
+        }
+
+
+        /// <summary>
+        /// Get ulains of loans applied
+        /// </summary>
+        /// <param name="clientId">User ClientAuth Id</param>
+        /// <param name="procStage">A=All	 /C=Completed/	U=Uncompleted</param>
+        /// <returns></returns>
+        public List<string> GetClientLoanProcStages(int clientId ,string procStage)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var results = conn.Query<dynamic>("spGetClientLoansProcStage", new {ClientId = clientId ,ProcState =procStage}, commandType: CommandType.StoredProcedure);
+                return results.Select(o => o.ULAIN).Cast<string>().ToList();
+                
+            }
+        }
+
+
+
+        public List<LoanProcessStages> GetCurrentLoanProcessStage(List<string> ulains)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var sb = new StringBuilder();
+                for (int k = 0; k < ulains.Count; k++)
+                {
+                    if (k == 0)
+                    {
+                        sb.Append(string.Format("'{0}'", ulains[0]));
+                    }
+                    else
+                    {
+                         sb.Append(string.Format(",'{0}'", ulains[0]));
+                    }
+                }
+                  
+                var list = conn.GetList<LoanProcessStages>(string.Format(@"SELECT 
+               `la.[RecordId] 
+              ,la.[CustomerNo]
+              ,la.[ULAIN]
+              ,la.[LoanApplTypeId]
+              ,la.[BuildingPhaseId]
+              ,la.[PurposeofLoan]
+              ,la.[AmtSought]
+              ,la.[CurrencyId]
+	          ,c.IsoCode as 'CurrencyCode'
+	          ,rm.Method as 'RepaymentMethod'
+              ,la.[LoanTermMonths]
+              ,la.[RepaymentMethodId]
+              ,la.[ProtectionCover]
+              ,la.[ProtectionSecured]
+              ,la.[ProtectionSecurityType]
+              ,la.[ProtectionSecurityDetails]
+              ,la.[ApplSubmitted]
+              ,la.[ApplSubmitDate]
+	          ,ls.[LPS01InitialReview]
+              ,ls.[LPS02CreditAssessment]
+              ,ls.[LPS03RiskAssessment]
+              ,ls.[LPS04CreditApproval]
+              ,ls.[LPS05ClientConfirmation]
+              ,ls.[LPS06LoanDisbursement]
+              ,ls.[ProcessComment]
+              ,ls.[LastProcessDate] 
+	          FROM [dbo].[LoanAppls] la inner join [dbo].[LoanProcStages] ls on la.ULAIN = ls.ULAIN inner join Currencies c on 
+	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})",sb.ToString() ));
+                return list.ToList();
             }
         }
     }

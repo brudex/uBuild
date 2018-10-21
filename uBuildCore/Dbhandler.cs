@@ -178,6 +178,17 @@ namespace uBuildCore
             }
         }
 
+
+        public ClientInfos GetClientInfoByEmail(int clientId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<ClientInfos>(f => f.ClientId, Operator.Eq, clientId);
+                var item = conn.GetList<ClientInfos>(predicate).FirstOrDefault();
+                return item;
+            }
+        }
+
         public EligibilityChecks CheckLoanEligibility(CheckEligibilityRequest checkEligibilityRequest)
         {
             using (var conn = GetOpenDefaultDbConnection())

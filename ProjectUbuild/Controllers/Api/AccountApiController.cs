@@ -22,6 +22,8 @@ namespace ProjectUbuild.Controllers.Api
             var infos = JsonConvert.DeserializeObject<ClientInfos>(value.ToString());
             infos.CreatedDate = DateTime.Now;
             infos.ClientId = clientAuth.RecordId;
+            infos.CreatorId = 0;
+            infos.CreatorName = "SYSTEM";
              DbHandler.Instance.SaveGhlClientInfos(infos);
             var response = new ServiceResponse
             {
@@ -40,7 +42,6 @@ namespace ProjectUbuild.Controllers.Api
             var clientAuth = User.GetUbuildClient();
             bool fullData = false;
             string acctNo= String.Empty;
-            ;
             if (data != null)
             {
                 fullData = data["allData"].ToStringOrEmpty().Equals("true",StringComparison.InvariantCultureIgnoreCase);
@@ -49,8 +50,7 @@ namespace ProjectUbuild.Controllers.Api
                     acctNo = data["acctNo"].ToStringOrEmpty();
                 }
             }
-            return AccountProfileHandler.GetAccountProfile(clientAuth,acctNo,fullData);
-
+            return AccountProfileHandler.GetAccountProfile(clientAuth,acctNo,fullData); 
         }
 
 
@@ -60,6 +60,7 @@ namespace ProjectUbuild.Controllers.Api
             var clientAuth = User.GetUbuildClient();
             return AccountProfileHandler.SendOtp(data, clientAuth);
         }
+
 
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ValidateOtpByAcctNo([FromBody]JObject data)

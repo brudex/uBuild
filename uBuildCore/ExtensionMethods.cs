@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,15 @@ namespace uBuildCore
             int.TryParse(str, out v);
             return v;
         }
+
+
+        internal static decimal ToDecimal(this object jt)
+        {
+            decimal v = 00;
+            var str = jt.ToString();
+            decimal.TryParse(str, out v);
+            return v;
+        }
         internal static string ToStringOrEmpty(this JToken jt)
         {
             try
@@ -49,6 +59,24 @@ namespace uBuildCore
 
                 return "";
             }
+
+        }
+
+        public static DateTime? FromIsoDateString(this string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return DateTime.Now;
+            }
+            DateTime  d = DateTime.Now;
+
+            bool parsed = DateTime.TryParseExact(text, "yyyyMMdd", CultureInfo.CurrentCulture,
+                DateTimeStyles.None, out d);
+            if (parsed)
+            {
+                return d;
+            }
+            return null;
 
         }
         internal static string ToStringOrEmpty(this JObject jt)

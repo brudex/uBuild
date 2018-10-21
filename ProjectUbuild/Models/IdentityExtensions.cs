@@ -18,6 +18,12 @@ namespace ProjectUbuild.Models
             return clientAuth;
         }
 
+        public static ClientInfos GetClientInfos(this ClientAuths user)
+        {
+            var clientAuth = DbHandler.Instance.GetClientInfoByEmail(user.RecordId);
+            return clientAuth;
+        }
+
         
     }
 }

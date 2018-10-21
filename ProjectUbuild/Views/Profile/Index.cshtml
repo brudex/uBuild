@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ProjectUbuild.Models
+@model ProfileViewModel
+@{
     ViewBag.Title = "Update your profile";
 }
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
@@ -25,8 +27,43 @@
     <!--end of container-->
 </section>
 
-<section style="padding-top: 0" data-ng-controller="UpdateProfileController as vm">
-    <div class="container">
+@if (Model.ProfileSubmitted)
+{
+    <section style="padding-top: 0" >
+        <div class="container">
+            @if (Model.AccountVerified!=null && Model.AccountVerified==true)
+                
+            {
+                <p>
+                    <div class="alert alert-info">
+                        <h4>
+                            Your account profile has already been <span class="badge">verified</span>. Please contact GHL for additional updates.
+
+                        </h4>
+                    </div>  
+                </p>
+                
+            }
+            else
+            {
+                <p>
+                    <div class="alert alert-info">
+                        <h4>
+                            Your account profile has already been submitted pending verification. Please contact GHL for additional updates.
+                        </h4>
+                    </div>
+                </p>
+                
+            }
+            
+        </div>
+    </section>
+}
+else
+{
+    
+    <section style="padding-top: 0" data-ng-controller="UpdateProfileController as vm">
+    <div class="container" data-ng-show="vm.accountNotVerified">
         <div class="row">
             <div class="col-md-12 col-sm-12 text-center">
                 <form id="msform" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
@@ -45,7 +82,6 @@
                             <div class="progress-circle-indeterminate progress-circle-master"></div>
                         </div>
                         <h2 class="fs-title">Check you account Status</h2>
-
                         <div class="m-b-10">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -163,7 +199,7 @@
                                     <div class="form-group form-group-default input-group col-md-10">
                                         <div class="form-input-group">
                                             <label>Date of birth</label>
-                                            <input type="email" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
+                                            <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
                                         </div>
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -172,7 +208,7 @@
 
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
+                                    <div class="form-group form-group-default required">
                                         <label>Place of birth</label>
                                         <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
                                     </div>
@@ -248,18 +284,18 @@
                         <div class="form-group-attached m-b-10">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
+                                    <div class="form-group form-group-default ">
                                         <label>Resident Permit No</label>
-                                        <input type="text" class="form-control" name="ResidentPermitNo" required="" data-ng-model="vm.profile.ResidentPermitNo">
+                                        <input type="text" class="form-control" name="ResidentPermitNo" data-ng-model="vm.profile.ResidentPermitNo">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default input-group">
                                         <div class="form-input-group">
                                             <label>Permit Issue Date</label>
-                                            <input type="email" 
+                                            <input type="text" 
                                                    name="PermitIssueDate" 
-                                                   required="" 
+                                                   
                                                    data-ng-model="vm.profile.PermitIssueDate" 
                                                    class="form-control" 
                                                    id="datepicker-component3">
@@ -284,7 +320,7 @@
                                     <div class="form-group form-group-default input-group ">
                                         <div class="form-input-group">
                                             <label>Permit Expiry Date</label>
-                                            <input type="email" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate" class="form-control" placeholder="" id="datepicker-component4">
+                                            <input type="text" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate" class="form-control" placeholder="" id="datepicker-component4">
                                         </div>
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -373,7 +409,7 @@
                                     <div class="form-group form-group-default input-group">
                                         <div class="form-input-group">
                                             <label>ID Issue Date</label>
-                                            <input type="email"
+                                            <input type="text"
                                                    name="IdIssueDate" 
                                                    data-ng-model="vm.profile.IdIssueDate"
                                                    class="form-control"
@@ -399,7 +435,7 @@
                                 <div class="form-group form-group-default input-group">
                                     <div class="form-input-group">
                                         <label>ID Expiry Date</label>
-                                        <input type="email"
+                                        <input type="text"
                                                name="IdExpiryDate" 
                                                required="" 
                                                data-ng-model="vm.profile.IdExpiryDate"
@@ -425,8 +461,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>Employment Status</label>
-                                        <input type="text" class="form-control" name="EmploymentStatus" required="" data-ng-model="vm.profile.EmploymentStatus">
-                                    </div>
+                                        <select class="form-control" data-ng-model="vm.profile.EmploymentStatus" name="EmploymentStatus" required="">
+                                            <option value="">--Select Title--</option>
+                                            <option value="Employed">Self Employed</option>
+                                            <option value="Self Employed">Self Employed</option>
+                                            <option value="Unemployed">Unemployed</option>
+                                        </select>
+                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
@@ -461,7 +502,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
+                                    <div class="form-group form-group-default">
                                         <label>Employer Phone .No </label>
                                         <input type="text" class="form-control" name="EmployerPhoneNo" required="" data-ng-model="vm.profile.EmployerPhoneNo">
                                     </div>
@@ -490,7 +531,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>Monthly Salary </label>
-                                        <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary" required="">
+                                        <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary" >
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -511,8 +552,15 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
                                         <label>Emergency Contact Title </label>
-                                        <input type="text" class="form-control" name="EmergencyContactTitle" required="" data-ng-model="vm.profile.EmergencyContactTitle">
-                                    </div>
+                                        <select class="form-control" data-ng-model="vm.profile.EmergencyContactTitle" name="Title" required="">
+                                            <option value="">--Select Title--</option>
+                                            <option value="Mr">Mr.</option>
+                                            <option value="Mrs">Mrs.</option>
+                                            <option value="Miss">Miss</option>
+                                            <option value="Dr">Dr.</option>
+                                            <option value="Prof">Prof.</option>
+                                        </select>
+                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
@@ -531,7 +579,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
+                                    <div class="form-group form-group-default required">
                                         <label>Emergency Conact Phone  </label>
                                         <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone">
                                     </div>
@@ -541,14 +589,14 @@
                         <div class="form-group-attached m-b-10">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
+                                    <div class="form-group form-group-default ">
                                         <label>Emergency Contact Address </label>
-                                        <input type="text" class="form-control" name="EmergencyContactAddress" required="" data-ng-model="vm.profile.EmergencyContactAddress">
+                                        <input type="text" class="form-control" name="EmergencyContactAddress"  data-ng-model="vm.profile.EmergencyContactAddress">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default required">
-                                        <label>EEmergency Contact Email </label>
+                                        <label>Emergency Contact Email </label>
                                         <input type="text" class="form-control" name="EmergencyContactEmail" required="" data-ng-model="vm.profile.EmergencyContactEmail">
                                     </div>
                                 </div>
@@ -573,9 +621,14 @@
         </div>
         <!--end of row-->
     </div>
-    <!--end of container-->
+        <div class="container" data-ng-hide="vm.accountNotVerified">
+            <h4>Thank you. You acount has been verified</h4>
+        </div>
+        <!--end of container-->
 </section>
 
+
+}
 
 
 

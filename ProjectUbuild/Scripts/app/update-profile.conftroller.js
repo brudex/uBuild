@@ -14,6 +14,7 @@
         vm.profile.tokenSent = false;
         var tokenValidated = false;
         vm.ajax = false;
+        vm.accountNotVerified = true;
         $scope.$watch("vm.profile.IsAccountHolder",
             function(newValue) {
                 if (newValue == "No")
@@ -35,6 +36,22 @@
                     vm.ajax = false;
                 });
             } 
+        }
+
+        vm.saveAndNext = function (formValid,pageNo) {
+            console.log('form is valid', formValid);
+             
+            if (formValid) {
+                vm.ajax = true;
+                var payload = {data:vm.profile,pageNo :pageNo}
+                services.submitProfile(vm.profile, function (response) {
+                    console.log("Response from server >>", response);
+                    if (response.Status === "00") {
+                        utils.alertSuccess(response.Message);
+                    }
+                    vm.ajax = false;
+                });
+            }
         }
 
         vm.sendToken = function () {
@@ -61,7 +78,8 @@
                         utils.alertSuccess(response.Message);
                         vm.isReadonly = false;
                         tokenValidated = true;
-                        getAccountInfo(payload.acctNo);
+                        vm.accountNotVerified = false;
+                        //getAccountInfo(payload.acctNo);
                     } else {
                         utils.alertError(response.Message);
                     }
@@ -71,7 +89,7 @@
                 alert("Click continue");
             } 
         }
-
+ 
         function getAccountInfo(acctNo) {
             console.log('getting account information >>>');
             vm.ajax = true;
@@ -83,10 +101,13 @@
                 console.log("Account information is >>", response);
                 if (response.Status === "00") {
                     Object.assign(vm.profile, response.data);
+                    formatProfileData();
                 }
                 vm.ajax = false;
             });
         }
+
+
 
         function formatProfileData () {
             vm.profile.Gender = vm.profile.Gender.upper()[0];

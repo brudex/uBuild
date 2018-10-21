@@ -29,10 +29,10 @@
 
 @if (Model.ProfileSubmitted)
 {
-    <section style="padding-top: 0" >
+    <section style="padding-top: 0">
         <div class="container">
-            @if (Model.AccountVerified!=null && Model.AccountVerified==true)
-                
+            @if (Model.AccountVerified != null && Model.AccountVerified == true)
+
             {
                 <p>
                     <div class="alert alert-info">
@@ -40,9 +40,9 @@
                             Your account profile has already been <span class="badge">verified</span>. Please contact GHL for additional updates.
 
                         </h4>
-                    </div>  
+                    </div>
                 </p>
-                
+
             }
             else
             {
@@ -53,367 +53,417 @@
                         </h4>
                     </div>
                 </p>
-                
+
             }
-            
+
         </div>
     </section>
 }
 else
 {
-    
+
     <section style="padding-top: 0" data-ng-controller="UpdateProfileController as vm">
-    <div class="container" data-ng-show="vm.accountNotVerified">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 text-center">
-                <form id="msform" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
-                    <!-- progressbar -->
-                    <ul id="progressbar" style="width: 850px">
-                        <li class="active">GHL Account Status</li>
-                        <li>Basic Information</li>
-                        <li>Residential Info. </li>
-                        <li>Identification</li>
-                        <li>Employment</li>
-                        <li>Emergency contact</li>
-                    </ul>
-                    <!-- fieldsets -->
-                    <fieldset>
-                        <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
-                            <div class="progress-circle-indeterminate progress-circle-master"></div>
-                        </div>
-                        <h2 class="fs-title">Check you account Status</h2>
-                        <div class="m-b-10">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>Are you a GHL Account holder?</label>
-                                        <div class="radio radio-success">
-                                            <input type="radio" value="Yes" id="accountHolderYes" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck" aria-invalid="false">
-                                            <label for="accountHolderYes">Yes</label>
-                                            <input type="radio" value="No" id="accountHolderNo" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck">
-                                            <label for="accountHolderNo">No</label>
+        <div class="container" data-ng-show="vm.accountNotVerified">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <form id="msform" name="profileForm" role="form" autocomplete="off" novalidate="novalidate" data-ng-submit="vm.submitProfile(profileForm.$valid)">
+                        <!-- progressbar -->
+                        <ul id="progressbar" style="width: 850px">
+                            <li class="active">GHL Account Status</li>
+                            <li>Basic Information</li>
+                            <li>Residential Info. </li>
+                            <li>Identification</li>
+                            <li>Employment</li>
+                            <li>Emergency contact</li>
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
+                            <h2 class="fs-title">Check you account Status</h2>
+                            <div class="m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Are you a GHL Account holder?</label>
+                                            <div class="radio radio-success">
+                                                <input type="radio" value="Yes" id="accountHolderYes" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck" aria-invalid="false">
+                                                <label for="accountHolderYes">Yes</label>
+                                                <input type="radio" value="No" id="accountHolderNo" data-ng-model="vm.profile.IsAccountHolder" name="accountHolderCheck">
+                                                <label for="accountHolderNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  !vm.profile.tokenSent">
+                                    <div class="col-sm-6 col-md-offset-3">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
+                                            <input ng-disabled="vm.ajax" autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                            <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.sendToken()">
+                                                Verify
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  vm.profile.tokenSent">
+                                    <div class="col-sm-6 col-md-offset-3">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
+                                            <input autocomplete="off" data-ng-model="vm.profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                            <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.validateToken()">
+                                                Verify Token
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  !vm.profile.tokenSent">
-                                <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group" >
-                                        <label for="AccountNumberBox" class="ng-binding">Please enter Account number</label>
-                                        <input ng-disabled="vm.ajax" autocomplete="off" data-ng-model="vm.profile.AccountNumber" id="AccountNumberBox" placeholder="Account number here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.sendToken()">
-                                            Verify
-                                        </span>
+                            <input type="button" name="next" data-ng-disabled="vm.isReadonly" class="msformnext action-button" value="Continue" title="Select a loan type to continue." />
+                        </fieldset>
+                        <fieldset data-ng-disabled="vm.isReadonly">
+                            <h2 class="fs-title">Basic Information</h2>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
+                                            <label>Title</label>
+
+                                            @*<div class="cs-wrapper"><div class="cs-select cs-skin-slide" tabindex="0"><span class="cs-placeholder">Select Title</span><div class="cs-options">
+                                                    <ul>
+                                                        <li data-option="" data-value="Mr"><span>Mr</span></li>
+                                                        <li data-option="" data-value="Mrs"><span>Mrs</span></li>
+                                                        <li data-option="" data-value="Miss"><span>Miss</span></li>
+                                                        <li data-option="" data-value="Dr"><span>Dr</span></li>
+                                                    </ul>
+                                                </div><select class="cs-select cs-skin-slide" data-init-plugin="cs-select" data-ng-model="vm.profile.Title" name="Title" required="">
+                                                    <option value="Mr">Mr.</option>
+                                                    <option value="Mrs">Mrs.</option>
+                                                    <option value="Miss">Miss</option>
+                                                    <option value="Dr">Dr.</option>
+                                                </select><div class="cs-backdrop"></div></div></div>*@
+
+                                            <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
+                                                <option value="">--Select Title--</option>
+                                                <option value="Mr">Mr.</option>
+                                                <option value="Mrs">Mrs.</option>
+                                                <option value="Miss">Miss</option>
+                                                <option value="Dr">Dr.</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
+                                            <label>First name</label>
+                                            <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.profile.IsAccountHolder=='Yes' &&  vm.profile.tokenSent">
-                                <div class="col-sm-6 col-md-offset-3">
-                                    <div class="form-group form-group-default input-group">
-                                        <label for="tokenSMSBox" class="ng-binding">Confirm Token SMS</label>
-                                        <input autocomplete="off" data-ng-model="vm.profile.TokenSMS" id="tokenSMSBox" placeholder="Enter SMS Token here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                        <span class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer" data-ng-click="vm.validateToken()">
-                                            Verify Token
-                                        </span>
+
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
+                                            <label>Middle name</label>
+                                            <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
+                                            <label>Last name</label>
+                                            <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <input type="button" name="next" data-ng-disabled="vm.isReadonly" class="msformnext action-button" value="Continue" title="Select a loan type to continue." />
-                    </fieldset>
-                    <fieldset data-ng-disabled="vm.isReadonly">
-                        <h2 class="fs-title">Basic Information</h2>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
-                                        <label>Title</label>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default ">
+                                            <label>Maiden name</label>
+                                            <input type="text" class="form-control" name="maidenName" required="" data-ng-model="vm.profile.MaidenName">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Mothers Maiden name</label>
+                                            <input type="text" class="form-control" name="motherMaidenName" data-ng-model="vm.profile.MothersMaidenName" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default input-group col-md-10">
+                                            <div class="form-input-group">
+                                                <label>Date of birth</label>
+                                                <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Place of birth</label>
+                                            <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Gender</label>
+                                        <div class="form-group">
+                                            <div class="radio radio-success">
+                                                <input type="radio" value="M" id="male" data-ng-model="vm.profile.Gender" name="Gender">
+                                                <label for="male">Male</label>
+                                                <input type="radio" id="female" data-ng-model="vm.profile.Gender" value="F" name="Gender">
+                                                <label for="female">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Marital Status</label>
+                                        <div class="form-group">
+                                            <div class="radio radio-success">
+                                                <input type="radio" value="Single" data-ng-model="vm.profile.MaritalStatus" name="maritalStatus" id="singleStatus" aria-invalid="false">
+                                                <label for="singleStatus">Single</label>
+                                                <input type="radio" checked="checked" data-ng-model="vm.profile.MaritalStatus" value="Married" name="maritalStatus" id="marriedStatus">
+                                                <label for="marriedStatus">Married</label>
+                                                <input type="radio" checked="checked" data-ng-model="vm.profile.MaritalStatus" value="Divorced" name="maritalStatus" id="divorcedStatus">
+                                                <label for="divorcedStatus">Divorced</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
                                         
-                                        @*<div class="cs-wrapper"><div class="cs-select cs-skin-slide" tabindex="0"><span class="cs-placeholder">Select Title</span><div class="cs-options">
-                                            <ul>
-                                                <li data-option="" data-value="Mr"><span>Mr</span></li>
-                                                <li data-option="" data-value="Mrs"><span>Mrs</span></li>
-                                                <li data-option="" data-value="Miss"><span>Miss</span></li>
-                                                <li data-option="" data-value="Dr"><span>Dr</span></li>
-                                            </ul>
-                                        </div><select class="cs-select cs-skin-slide" data-init-plugin="cs-select" data-ng-model="vm.profile.Title" name="Title" required="">
-                                            <option value="Mr">Mr.</option>
-                                            <option value="Mrs">Mrs.</option>
-                                            <option value="Miss">Miss</option>
-                                            <option value="Dr">Dr.</option>
-                                        </select><div class="cs-backdrop"></div></div></div>*@
-
-                                        <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
-                                            <option value="">--Select Title--</option>
-                                            <option value="Mr">Mr.</option>
-                                            <option value="Mrs">Mrs.</option>
-                                            <option value="Miss">Miss</option>
-                                            <option value="Dr">Dr.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
-                                        <label>First name</label>
-                                        <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
-                                        <label>Middle name</label>
-                                        <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
-                                        <label>Last name</label>
-                                        <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default ">
-                                        <label>Maiden name</label>
-                                        <input type="text" class="form-control" name="maidenName" required="" data-ng-model="vm.profile.MaidenName">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Mothers Maiden name</label>
-                                        <input type="text" class="form-control" name="motherMaidenName" data-ng-model="vm.profile.MothersMaidenName" required="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default input-group col-md-10">
-                                        <div class="form-input-group">
-                                            <label>Date of birth</label>
-                                            <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 80px">
+                                            <label class="">Nationality</label>
+                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
+                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" data-ng-model="vm.profile.Nationality">
+                                                <option value="">Select Nationality..</option>
+                                            </select>
+                                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                <span class="selection">
+                                                    <span class="select2-selection select2-selection--single" role="combobox"
+                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                    </span>
+                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                            </span>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Place of birth</label>
-                                        <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Gender</label>
-                                    <div class="form-group">
-                                        <div class="radio radio-success">
-                                            <input type="radio" value="M" id="male" data-ng-model="vm.profile.Gender" name="Gender">
-                                            <label for="male">Male</label>
-                                            <input type="radio"  id="female" data-ng-model="vm.profile.Gender" value="F" name="Gender">
-                                            <label for="female">Female</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Marital Status</label>
-                                    <div class="form-group">
-                                        <div class="radio radio-success">
-                                            <input type="radio" value="Single" data-ng-model="vm.profile.MaritalStatus" name="maritalStatus" id="singleStatus" aria-invalid="false">
-                                            <label for="singleStatus">Single</label>
-                                            <input type="radio" checked="checked" data-ng-model="vm.profile.MaritalStatus" value="Married" name="maritalStatus" id="marriedStatus">
-                                            <label for="marriedStatus">Married</label>
-                                            <input type="radio" checked="checked" data-ng-model="vm.profile.MaritalStatus" value="Divorced" name="maritalStatus" id="divorcedStatus">
-                                            <label for="divorcedStatus">Divorced</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Occupation</label>
+                                            <input type="text" class="form-control" name="Occupation" data-ng-model="vm.profile.Occupation" required="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Nationality</label>
-                                        <input type="text" class="form-control" name="Nationality" data-ng-model="vm.profile.Nationality" required="">
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Mobile Phone</label>
+                                            <input type="text" class="form-control" name="MobilePhone" data-ng-model="vm.profile.MobilePhone">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Occupation</label>
-                                        <input type="text" class="form-control" name="Occupation" data-ng-model="vm.profile.Occupation" required="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Mobile Phone</label>
-                                        <input type="text" class="form-control" name="MobilePhone" data-ng-model="vm.profile.MobilePhone">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Email Address</label>
-                                        <input type="text" class="form-control" name="EmailAddress" data-ng-model="vm.profile.EmailAddress">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Email Address</label>
+                                            <input type="text" class="form-control" name="EmailAddress" data-ng-model="vm.profile.EmailAddress">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Select a loan type to continue." />
-                    </fieldset>
-                    <fieldset data-ng-disabled="vm.isReadonly">
-                        <h2 class="fs-title">Residential Information</h2>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default ">
-                                        <label>Resident Permit No</label>
-                                        <input type="text" class="form-control" name="ResidentPermitNo" data-ng-model="vm.profile.ResidentPermitNo">
+                            <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Select a loan type to continue." />
+                        </fieldset>
+                        <fieldset data-ng-disabled="vm.isReadonly">
+                            <h2 class="fs-title">Residential Information</h2>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default ">
+                                            <label>Resident Permit No</label>
+                                            <input type="text" class="form-control" name="ResidentPermitNo" data-ng-model="vm.profile.ResidentPermitNo">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <div class="form-input-group">
+                                                <label>Permit Issue Date</label>
+                                                <input type="text"
+                                                       name="PermitIssueDate"
+                                                       data-ng-model="vm.profile.PermitIssueDate"
+                                                       class="form-control"
+                                                       id="datepicker-component3">
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Permit Issue Place</label>
+                                            <input type="text" class="form-control" name="PermitIssuePlace" data-ng-model="vm.profile.PermitIssuePlace">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default input-group ">
+                                            <div class="form-input-group">
+                                                <label>Permit Expiry Date</label>
+                                                <input type="text" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate" class="form-control" placeholder="" id="datepicker-component4">
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Residential Address</label>
+                                            <input type="text" class="form-control" name="ResidentialAddress" required="" data-ng-model="vm.profile.ResidentialAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Social Security No</label>
+                                            <input type="text" class="form-control" name="SocialSecurityNo" required="" data-ng-model="vm.profile.SocialSecurityNo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Postal Address</label>
+                                            <input type="text" class="form-control" name="PostalAddress" data-ng-model="vm.profile.PostalAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>City Of Residence</label>
+                                            <input type="text" class="form-control" name="CityOfResidence" data-ng-model="vm.profile.CityOfResidence">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                       
+                                        
+                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 80px">
+                                            <label class="">Country Of Residence</label>
+                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
+                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" 
+                                                    data-ng-model="vm.profile.CountryOfResidence">
+                                                <option value="">Select Nationality..</option>
+                                            </select>
+                                            <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
+                                                <span class="selection">
+                                                    <span class="select2-selection select2-selection--single" role="combobox"
+                                                          aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u1vf-container">
+                                                    </span>
+                                                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Residential Phone</label>
+                                            <input type="text" class="form-control" name="ResidentialPhone" required="" data-ng-model="vm.profile.ResidentialPhone">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                            <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Complete form to continue." />
+                        </fieldset>
+                        <fieldset data-ng-disabled="vm.isReadonly">
+                            <h2 class="fs-title">Identification</h2>
+
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>ID Card Type</label>
+                                            <input type="text" class="form-control" name="IdCardType" required="" data-ng-model="vm.profile.IdCardType">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>ID Card Number </label>
+                                            <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.profile.IdCardNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <div class="form-input-group">
+                                                <label>ID Issue Date</label>
+                                                <input type="text"
+                                                       name="IdIssueDate"
+                                                       data-ng-model="vm.profile.IdIssueDate"
+                                                       class="form-control"
+                                                       id="datepicker-component5">
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>ID Issue Country</label>
+                                            <input type="text" class="form-control" name="IdIssueCountry" data-ng-model="vm.profile.IdIssueCountry">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group form-group-default input-group">
                                         <div class="form-input-group">
-                                            <label>Permit Issue Date</label>
-                                            <input type="text" 
-                                                   name="PermitIssueDate" 
-                                                   
-                                                   data-ng-model="vm.profile.PermitIssueDate" 
-                                                   class="form-control" 
-                                                   id="datepicker-component3">
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Permit Issue Place</label>
-                                        <input type="text" class="form-control" name="PermitIssuePlace" data-ng-model="vm.profile.PermitIssuePlace">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default input-group ">
-                                        <div class="form-input-group">
-                                            <label>Permit Expiry Date</label>
-                                            <input type="text" name="PermitExpiryDate" data-ng-model="vm.profile.PermitExpiryDate" class="form-control" placeholder="" id="datepicker-component4">
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Residential Address</label>
-                                        <input type="text" class="form-control" name="ResidentialAddress" required="" data-ng-model="vm.profile.ResidentialAddress">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Social Security No</label>
-                                        <input type="text" class="form-control" name="SocialSecurityNo" required="" data-ng-model="vm.profile.SocialSecurityNo">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Postal Address</label>
-                                        <input type="text" class="form-control" name="PostalAddress" data-ng-model="vm.profile.PostalAddress">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>City Of Residence</label>
-                                        <input type="text" class="form-control" name="CityOfResidence" data-ng-model="vm.profile.CityOfResidence">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Country Of Residence</label>
-                                        <input type="text" class="form-control" name="CountryOfResidence" required="" data-ng-model="vm.profile.CountryOfResidence">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Residential Phone</label>
-                                        <input type="text" class="form-control" name="ResidentialPhone" required="" data-ng-model="vm.profile.ResidentialPhone">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Complete form to continue." />
-                    </fieldset>
-                    <fieldset data-ng-disabled="vm.isReadonly">
-                        <h2 class="fs-title">Identification</h2>
-
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>ID Card Type</label>
-                                        <input type="text" class="form-control" name="IdCardType" required="" data-ng-model="vm.profile.IdCardType">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>ID Card Number </label>
-                                        <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.profile.IdCardNumber">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default input-group">
-                                        <div class="form-input-group">
-                                            <label>ID Issue Date</label>
+                                            <label>ID Expiry Date</label>
                                             <input type="text"
-                                                   name="IdIssueDate" 
-                                                   data-ng-model="vm.profile.IdIssueDate"
+                                                   name="IdExpiryDate"
+                                                   required=""
+                                                   data-ng-model="vm.profile.IdExpiryDate"
                                                    class="form-control"
-                                                   id="datepicker-component5">
+                                                   id="datepicker-component6">
                                         </div>
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -421,211 +471,184 @@ else
                                     </div>
 
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>ID Issue Country</label>
-                                        <input type="text" class="form-control" name="IdIssueCountry" data-ng-model="vm.profile.IdIssueCountry">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-group-default input-group">
-                                    <div class="form-input-group">
-                                        <label>ID Expiry Date</label>
-                                        <input type="text"
-                                               name="IdExpiryDate" 
-                                               required="" 
-                                               data-ng-model="vm.profile.IdExpiryDate"
-                                               class="form-control"
-                                               id="datepicker-component6">
-                                    </div>
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                </div>
 
                             </div>
 
-                        </div>
+                            <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                            <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                        </fieldset>
+                        <fieldset data-ng-disabled="vm.isReadonly">
+                            <h2 class="fs-title">Employment</h2>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Employment Status</label>
+                                            <select class="form-control" data-ng-model="vm.profile.EmploymentStatus" name="EmploymentStatus" required="">
+                                                <option value="">--Select Title--</option>
+                                                <option value="Employed">Self Employed</option>
+                                                <option value="Self Employed">Self Employed</option>
+                                                <option value="Unemployed">Unemployed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Employer Name </label>
+                                            <input type="text" class="form-control" name="EmployerName" required="" data-ng-model="vm.profile.EmployerName">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Employer City </label>
+                                            <input type="text" class="form-control" name="EmployerCity" data-ng-model="vm.profile.EmployerCity">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Employer Country </label>
+                                            <input type="text" class="form-control" name="EmployerCountry" data-ng-model="vm.profile.EmployerCountry">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Employer Type Of Business </label>
+                                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" data-ng-model="vm.profile.EmployerTypeOfBiz">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Employer Phone .No </label>
+                                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" data-ng-model="vm.profile.EmployerPhoneNo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Employer Email </label>
+                                            <input type="text" class="form-control" name="EmployerEmail" data-ng-model="vm.profile.EmployerEmail">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Years at current Employment </label>
+                                            <input type="text" class="form-control" name="CurrentEmplLength" data-ng-model="vm.profile.CurrentEmplLength">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
-                    </fieldset>
-                    <fieldset data-ng-disabled="vm.isReadonly">
-                        <h2 class="fs-title">Employment</h2>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Employment Status</label>
-                                        <select class="form-control" data-ng-model="vm.profile.EmploymentStatus" name="EmploymentStatus" required="">
-                                            <option value="">--Select Title--</option>
-                                            <option value="Employed">Self Employed</option>
-                                            <option value="Self Employed">Self Employed</option>
-                                            <option value="Unemployed">Unemployed</option>
-                                        </select>
-                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Employer Name </label>
-                                        <input type="text" class="form-control" name="EmployerName" required="" data-ng-model="vm.profile.EmployerName">
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Monthly Salary </label>
+                                            <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Employer Street Address </label>
+                                            <input type="text" class="form-control" name="EmployerStreetAddress" data-ng-model="vm.profile.EmployerStreetAddress">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Employer City </label>
-                                        <input type="text" class="form-control" name="EmployerCity" data-ng-model="vm.profile.EmployerCity">
+                            <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
+                            <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
+                        </fieldset>
+                        <fieldset data-ng-disabled="vm.isReadonly">
+                            <h2 class="fs-title">Emergency Contact</h2>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Emergency Contact Title </label>
+                                            <select class="form-control" data-ng-model="vm.profile.EmergencyContactTitle" name="Title" required="">
+                                                <option value="">--Select Title--</option>
+                                                <option value="Mr">Mr.</option>
+                                                <option value="Mrs">Mrs.</option>
+                                                <option value="Miss">Miss</option>
+                                                <option value="Dr">Dr.</option>
+                                                <option value="Prof">Prof.</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Employer Country </label>
-                                        <input type="text" class="form-control" name="EmployerCountry" data-ng-model="vm.profile.EmployerCountry">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Employer Type Of Business </label>
-                                        <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" data-ng-model="vm.profile.EmployerTypeOfBiz">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Employer Phone .No </label>
-                                        <input type="text" class="form-control" name="EmployerPhoneNo" required="" data-ng-model="vm.profile.EmployerPhoneNo">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Emergency Contact FirstName </label>
+                                            <input type="text" class="form-control" name="EmergencyContactFirstName" required="" data-ng-model="vm.profile.EmergencyContactFirstName">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Employer Email </label>
-                                        <input type="text" class="form-control" name="EmployerEmail" data-ng-model="vm.profile.EmployerEmail">
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Emergency Contact LastName </label>
+                                            <input type="text" class="form-control" name="EmergencycontactLastName" data-ng-model="vm.profile.EmergencycontactLastName">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Years at current Employment </label>
-                                        <input type="text" class="form-control" name="CurrentEmplLength" data-ng-model="vm.profile.CurrentEmplLength">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Emergency Conact Phone  </label>
+                                            <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default ">
+                                            <label>Emergency Contact Address </label>
+                                            <input type="text" class="form-control" name="EmergencyContactAddress" data-ng-model="vm.profile.EmergencyContactAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default required">
+                                            <label>Emergency Contact Email </label>
+                                            <input type="text" class="form-control" name="EmergencyContactEmail" required="" data-ng-model="vm.profile.EmergencyContactEmail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Emergency Contact Relationship </label>
+                                            <input type="text" class="form-control" name="EmergencyContactRship" data-ng-model="vm.profile.EmergencyContactRship">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
 
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Monthly Salary </label>
-                                        <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary" >
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Employer Street Address </label>
-                                        <input type="text" class="form-control" name="EmployerStreetAddress" data-ng-model="vm.profile.EmployerStreetAddress">
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                        <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
-                    </fieldset>
-                    <fieldset data-ng-disabled="vm.isReadonly">
-                        <h2 class="fs-title">Emergency Contact</h2>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Emergency Contact Title </label>
-                                        <select class="form-control" data-ng-model="vm.profile.EmergencyContactTitle" name="Title" required="">
-                                            <option value="">--Select Title--</option>
-                                            <option value="Mr">Mr.</option>
-                                            <option value="Mrs">Mrs.</option>
-                                            <option value="Miss">Miss</option>
-                                            <option value="Dr">Dr.</option>
-                                            <option value="Prof">Prof.</option>
-                                        </select>
-                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Emergency Contact FirstName </label>
-                                        <input type="text" class="form-control" name="EmergencyContactFirstName" required="" data-ng-model="vm.profile.EmergencyContactFirstName">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Emergency Contact LastName </label>
-                                        <input type="text" class="form-control" name="EmergencycontactLastName" data-ng-model="vm.profile.EmergencycontactLastName">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Emergency Conact Phone  </label>
-                                        <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default ">
-                                        <label>Emergency Contact Address </label>
-                                        <input type="text" class="form-control" name="EmergencyContactAddress"  data-ng-model="vm.profile.EmergencyContactAddress">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default required">
-                                        <label>Emergency Contact Email </label>
-                                        <input type="text" class="form-control" name="EmergencyContactEmail" required="" data-ng-model="vm.profile.EmergencyContactEmail">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group-attached m-b-10">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Emergency Contact Relationship </label>
-                                        <input type="text" class="form-control" name="EmergencyContactRship" data-ng-model="vm.profile.EmergencyContactRship">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-
-                        <input type="submit" name="previous" style="width: 200px"  value="Submit" />
-                    </fieldset>
-                </form>
+                            <input type="submit" name="previous" style="width: 200px" value="Submit" />
+                        </fieldset>
+                    </form>
+                </div>
             </div>
+            <!--end of row-->
         </div>
-        <!--end of row-->
-    </div>
         <div class="container" data-ng-hide="vm.accountNotVerified">
             <h4>Thank you. You acount has been verified</h4>
         </div>
         <!--end of container-->
-</section>
+    </section>
 
 
 }

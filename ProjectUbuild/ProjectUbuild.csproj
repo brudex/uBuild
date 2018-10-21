@@ -202,7 +202,9 @@
     <Compile Include="Models\HouseDesignsModel.cs" />
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoadDocsViewModel.cs" />
     <Compile Include="Models\LoanApplicationModels.cs" />
+    <Compile Include="Models\MyApplicationsViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2348,7 +2350,7 @@
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

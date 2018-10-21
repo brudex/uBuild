@@ -86,7 +86,10 @@
     <Compile Include="Models\LoanAmountCurrencyLimits.cs" />
     <Compile Include="Models\LoanAppls.cs" />
     <Compile Include="Models\LoanApplTypes.cs" />
+    <Compile Include="Models\LoanDocType.cs" />
+    <Compile Include="Models\LoanDocuments.cs" />
     <Compile Include="Models\LoanInterestRates.cs" />
+    <Compile Include="Models\LoanProcessStages.cs" />
     <Compile Include="Models\LoanProcStages.cs" />
     <Compile Include="Models\RepaymentMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

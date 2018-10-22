@@ -1,23 +1,23 @@
-﻿
+﻿@model ProjectUbuild.Models.MyApplicationsViewModel
 @{
     ViewBag.Title = "MyApplications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+<section class="page-title page-title-2 image-bg overlay parallax" style="height: 125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
     <div class="container-fluid">
         <div class="row" style="margin-top: 33px">
             <div class="col-md-6">
-                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">My Applications</h2>
+                <h2 class="uppercase mb8" style="font-size: 25px; line-height: 25px">My Applications</h2>
                 <p class="lead mb0">A list of all your applications.</p>
             </div>
             <div class="col-md-6 text-right hidden-xs hidden-sm">
                 <ol class="breadcrumb breadcrumb-2">
                     <li>
-                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                        @Html.ActionLink("Home", "Index", "Home", new {}, null)
                     </li>
                     <li class="active">My Applications</li>
                 </ol>
@@ -34,9 +34,9 @@
             <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
                 @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;">
 
-                    
-                </a>*@
-               @* @Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })*@
+
+            </a>*@
+                @* @Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })*@
                 <div class="tabbed-content text-tabs">
                     <ul class="tabs">
                         <li class="active">
@@ -55,14 +55,161 @@
                         <li class="active">
                             <div class="tab-content">
                                 <p>
-                                    List of Pending applications
+                                    <h4>
+                                        List of Pending applications
+                                    </h4>
+
+                                    @if (Model.currentLoanApplication != null)
+                                    {
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">ULAIN</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.ULAIN</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Loan Application Type</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.GetApplTypeName()</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Loan Tenure(Months)</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LoanTermMonths</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Loan Amount</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.CurrencyCode @Model.currentLoanApplication.AmtSought</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Purpose of Loan </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.PurposeofLoan</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Repayment Method </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.RepaymentMethod</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Initial Review</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS01InitialReviewDesc()</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Credit Assessment </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS02CreditAssessmentDesc()</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Risk Assessment </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS03RiskAssessmentDesc()</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"> Credit Approval </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS04CreditApprovalDesc()</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"> Client Confirmation </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS05ClientConfirmationDesc()</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"> Loan Disbursement </label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.LPS06LoanDisbursementDesc()</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Application Date</label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">@Model.currentLoanApplication.ApplSubmitDate.ToString("yyyy-MM-dd")</p>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    }else
+                                    {
+                                        <h4>
+                                            <div class="alert alert-info ">
+                                                You have no pending loan application 
+                                            </div>
+                                        </h4>
+                                    }
+
                                 </p>
                             </div>
                         </li>
                         <li class="">
                             <div class="tab-content">
                                 <p>
-                                    List of completed applications
+                                    <h4> List of completed applications</h4>
+                                    @if (Model.loanApplications != null && Model.loanApplications.Count > 0)
+                                    {
+
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <td>ULain</td>
+                                                    <td>Loan Application Type </td>
+                                                    <td>Loan Tenure(Months) </td>
+                                                    <td>Purpose of Loan </td>
+                                                    <td>Repayment Method </td>
+                                                    <td>Loan Amount</td>
+                                                    <td>Application Date</td>
+                                                    <td>Process Comment</td>
+                                                    <td>Status</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                @for (var k = 0; k < Model.loanApplications.Count; k++)
+                                                {
+                                                    <tr>
+                                                        <td>@Model.loanApplications[k].ULAIN</td>
+                                                        <td>@Model.loanApplications[k].LoanApplTypeId==1?"Full House":"Phase" </td>
+                                                        <td>@Model.loanApplications[k].LoanTermMonths </td>
+                                                        <td>@Model.loanApplications[k].PurposeofLoan</td>
+                                                        <td>@Model.loanApplications[k].RepaymentMethod</td>
+                                                        <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
+                                                        <td>@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
+                                                        <td>@Model.loanApplications[k].ProcessComment</td>
+                                                        <td>@Model.loanApplications[k].GetFinalStatus()</td>
+                                                    </tr>
+                                                }
+
+
+                                            </tbody>
+
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <h4>
+                                            <div class="alert alert-info ">
+                                                You have no loan application history
+                                            </div>
+                                        </h4>
+                                    }
+
                                 </p>
                             </div>
                         </li>

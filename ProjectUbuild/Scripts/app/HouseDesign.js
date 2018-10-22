@@ -77,7 +77,7 @@
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
                     console.log("Item in update is >>", item);
                     console.log("Item in update is >>", vm.model.selectedFixtures[item]);
-                    vm.model.totalLoanAmt = Number(vm.model.houseCost) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
+                    vm.model.totalLoanAmt = Number(vm.model.totalLoanAmt) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
             vm.ajax = false;
@@ -124,7 +124,7 @@
                                 value: "applyButton"
                             }
                         }
-                    }).then((value) => {
+                    }).then(function(value) {
                         switch (value) {
                             case "applyButton":
                                 {
@@ -154,7 +154,7 @@
 
         vm.getTenureRange = function () {
             var ranges = [];
-            for (var k = 1; k <= vm.maxLoanTenure; k++) {
+            for (var k = 1; k <= 15; k++) {
                 ranges.push(k);
             }
             return ranges;

@@ -12,7 +12,7 @@
         vm.houseImages = [];
         vm.fixtureFittings = [];
         vm.applyModel = {}
-        vm.eligibilityCallback = getEligibilityValues;
+//        vm.eligibilityCallback = getEligibilityValues;
         vm.submitLoanApplication = submitLoanApplication;
         vm.getHouseCustomizables = getHouseCustomizables;
         vm.buildingPhases = [];
@@ -56,9 +56,9 @@
             });
         }
 
-        function getEligibilityValues(data) {
-            console.log("eligibility callback >>", data);
-            if (data.response.Status === "00") {
+        function getEligibilityValues() {
+            
+//            if (data.response.Status === "00") {
                 vm.applyModel.eligible = true;
                 services.getAccountProfile({}, function (response) {
                     if (response.Status === "00") {
@@ -66,25 +66,25 @@
                         vm.applyModel.FullName = response.data.fullName;
                         vm.applyModel.accountNumber = response.data.accountNumber;
                         vm.applyModel.customerNo = response.data.customerNo;
-                        vm.applyModel.applyingFor = data.request.loanType;
-                        vm.applyModel.forPhase = data.request.loanType;
-                        vm.applyModel.AmtSought = data.response.data.LoanAmount;
-                        vm.applyModel.RepaymentMethod = "";
-                        vm.applyModel.RepaymentOther = "";
-                        vm.applyModel.PurposeofLoan = "";
-                        vm.applyModel.loanTenure = data.request.loanTenure;
-                        vm.applyModel.loanTenureUnit = "years";
-                        vm.applyModel.ProtectionCover = false;
-                        vm.applyModel.ProtectionSecured = false;
-                        vm.applyModel.ProtectionSecurityType = "";
-                        vm.applyModel.ProtectionSecurityDetails = "";
-                        vm.applyModel.currency = data.request.currency;
+//                        vm.applyModel.applyingFor = data.request.loanType;
+//                        vm.applyModel.forPhase = data.request.loanType;
+//                        vm.applyModel.AmtSought = data.response.data.LoanAmount;
+//                        vm.applyModel.RepaymentMethod = "";
+//                        vm.applyModel.RepaymentOther = "";
+//                        vm.applyModel.PurposeofLoan = "";
+//                        vm.applyModel.loanTenure = data.request.loanTenure;
+//                        vm.applyModel.loanTenureUnit = "years";
+//                        vm.applyModel.ProtectionCover = false;
+//                        vm.applyModel.ProtectionSecured = false;
+//                        vm.applyModel.ProtectionSecurityType = "";
+//                        vm.applyModel.ProtectionSecurityDetails = "";
+//                        vm.applyModel.currency = data.request.currency;
                         console.log("The applyModel >> ", vm.applyModel);
                     }
                 });
-            } else {
-                vm.applyModel.eligible = false;
-            }
+//            } else {
+//                vm.applyModel.eligible = false;
+//            }
         }
 
         function submitLoanApplication() {
@@ -107,7 +107,7 @@
                                 }
                             }
                         })
-                        .then((value) => {
+                        .then(function(value) {
                             switch (value) {
                                 case "submitDocs":
                                     $window.location.href = "/loan/LoanDocs?clientUlain=" + vm.ulain;
@@ -144,6 +144,7 @@
 
 
         function translateVals() {
+            getEligibilityValues();
             if ($window.loanVals) {
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
                 vm.applyModel.loanTenure = $window.loanVals.loanTenure;

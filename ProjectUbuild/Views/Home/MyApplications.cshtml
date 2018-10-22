@@ -140,7 +140,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Application Date</label>
                                                 <div class="col-sm-10">
-                                                    <p class="form-control-static">@Model.currentLoanApplication.ApplSubmitDate.ToShortDateString()</p>
+                                                    <p class="form-control-static">@Model.currentLoanApplication.ApplSubmitDate.ToString("yyyy-MM-dd")</p>
                                                 </div>
                                             </div>
 
@@ -163,37 +163,38 @@
                                     <h4> List of completed applications</h4>
                                     @if (Model.loanApplications != null && Model.loanApplications.Count > 0)
                                     {
-                                        <table>
+
+                                        <table class="table ">
                                             <thead>
-                                            <tr>
-                                                <td>ULain</td>
-                                                <td>Loan Application Type </td>
-                                                <td>Loan Tenure(Months) </td>
-                                                <td>Purpose of Loan </td>
-                                                <td>Repayment Method </td>
-                                                <td>Loan Amount</td>
-                                                <td>Application Date</td>
-                                                <td>Process Comment</td>
-                                                <td>Status</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>ULain</td>
+                                                    <td>Loan Application Type </td>
+                                                    <td>Loan Tenure(Months) </td>
+                                                    <td>Purpose of Loan </td>
+                                                    <td>Repayment Method </td>
+                                                    <td>Loan Amount</td>
+                                                    <td>Application Date</td>
+                                                    <td>Process Comment</td>
+                                                    <td>Status</td>
+                                                </tr>
                                             </thead>
                                             <tbody>
 
 
-                                            @for (var k = 0; k < Model.loanApplications.Count; k++)
-                                            {
-                                                <tr>
-                                                    <td>@Model.loanApplications[k].ULAIN</td>
-                                                    <td>@Model.loanApplications[k].LoanApplTypeId==1?"Full House":"Phase" </td>
-                                                    <td>@Model.loanApplications[k].LoanTermMonths </td>
-                                                    <td>@Model.loanApplications[k].PurposeofLoan</td>
-                                                    <td>@Model.loanApplications[k].RepaymentMethod</td>
-                                                    <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
-                                                    <td>@Model.loanApplications[k].ApplSubmitDate.ToShortDateString()</td>
-                                                    <td>@Model.loanApplications[k].ProcessComment</td>
-                                                    <td>@Model.loanApplications[k].GetFinalStatus()</td>
-                                                </tr>
-                                            }
+                                                @for (var k = 0; k < Model.loanApplications.Count; k++)
+                                                {
+                                                    <tr>
+                                                        <td>@Model.loanApplications[k].ULAIN</td>
+                                                        <td>@Model.loanApplications[k].LoanApplTypeId==1?"Full House":"Phase" </td>
+                                                        <td>@Model.loanApplications[k].LoanTermMonths </td>
+                                                        <td>@Model.loanApplications[k].PurposeofLoan</td>
+                                                        <td>@Model.loanApplications[k].RepaymentMethod</td>
+                                                        <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
+                                                        <td>@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
+                                                        <td>@Model.loanApplications[k].ProcessComment</td>
+                                                        <td>@Model.loanApplications[k].GetFinalStatus()</td>
+                                                    </tr>
+                                                }
 
 
                                             </tbody>

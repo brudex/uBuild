@@ -278,7 +278,7 @@ namespace uBuildCore
 
                 if (ulains.Count > 0)
                 {
-                    var list = conn.GetList<LoanProcessStages>(string.Format(@"SELECT 
+                    var list = conn.Query<LoanProcessStages>(string.Format(@"SELECT 
                la.[RecordId] 
               ,la.[CustomerNo]
               ,la.[ULAIN]
@@ -307,6 +307,11 @@ namespace uBuildCore
               ,ls.[LastProcessDate] 
 	          FROM [dbo].[LoanAppls] la inner join [dbo].[LoanProcStages] ls on la.ULAIN = ls.ULAIN inner join Currencies c on 
 	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})", sb.ToString()));
+//                    var loanProcs = new List<LoanProcessStages>();
+//                    foreach (var o in list)
+//                    {
+//                        loanProcs.Add(new LoanProcessStages(o));
+//                    }
                     return list.ToList();
                 }
                return new List<LoanProcessStages>();

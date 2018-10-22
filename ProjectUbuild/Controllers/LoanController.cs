@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -23,8 +24,9 @@ namespace ProjectUbuild.Controllers
 
         public ActionResult LoanDocs()
         {
-            var DocTypesList = DbHandler.Instance.GetDocTypes();
-            return View();
+            var vm = new LoadDocsViewModel();
+            
+            return View(vm);
         }
 
         // GET: Loan
@@ -61,7 +63,9 @@ namespace ProjectUbuild.Controllers
             }
             // redirect back to the index action to show the form once again
             return RedirectToAction("Index");
-         } 
+        }
+
+        
 
     }
 }

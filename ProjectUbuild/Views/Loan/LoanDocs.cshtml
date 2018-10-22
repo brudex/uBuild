@@ -1,0 +1,139 @@
+﻿@using ProjectUbuild.Models
+@model LoadDocsViewModel
+@{
+    ViewBag.Title = "Upload Supporting Documents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+        <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 33px">
+            <div class="col-md-6">
+                <h2 class="uppercase mb8" style="font-size:25px;line-height:25px">Documents Upload</h2>
+                <p class="lead mb0">Upload Supporting Documents for your loan</p>
+            </div>
+            <div class="col-md-6 text-right hidden-xs hidden-sm">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
+                    </li>
+                    <li class="active">Documents Upload</li>
+                </ol>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+
+<section style="top:-80px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <button type="button" class="btn btn-sm btn-filled mb0" data-toggle="modal" data-target="#uploadModal">Upload Document</button>
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>File Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>passport.jpg</td>
+                            <td>Passport Document</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>passport.jpg</td>
+                            <td>Passport Document</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>passport.jpg</td>
+                            <td>Passport Document</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>passport.jpg</td>
+                            <td>Passport Document</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>passport.jpg</td>
+                            <td>Passport Document</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document" style="margin-top: 100px">
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding: 15px">
+                            <h3 class="modal-title">Add new Document</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" name="uploadForm" id="uploadForm" onsubmit="SubmitDocs()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="select-option">
+                                            <i class="ti-angle-down"></i>
+                                            @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"))
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea name="DocDescription" placeholder="Document Description" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group form-group-default required">
+                                                <label>Select Document</label>
+                                                <span class="btn btn-success fileinput-button">
+                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                    <span>Select files...</span>
+                                                    <!-- The file input field used as target for the file upload widget -->
+                                                    <input id="fileupload" type="file" name="files[]" multiple>
+                                                </span>
+                                                <br>
+                                                <br>
+                                                <!-- The global progress bar -->
+                                                <div id="progress" class="progress">
+                                                    <div class="progress-bar progress-bar-success"></div>
+                                                </div>
+                                                <!-- The container for the uploaded files -->
+                                                <div id="files" class="files"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Upload Document</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of container-->
+</section>
+
+

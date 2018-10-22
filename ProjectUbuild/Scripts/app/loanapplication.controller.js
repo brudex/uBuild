@@ -21,11 +21,14 @@
         vm.customizables = [];
         vm.applyModel.eligible = false;
         vm.ulain = "";
+        vm.ajax = false;
         vm.applyModel.currency = 1;
 
         function getHouseImages() {
+            vm.ajax = true;
             var payload = { requestType: 1 };
             services.getHouseImages(payload, function (response) {
+                vm.ajax = false;
                 if (response.status === '00') {
                     vm.houseImages = response.data;
                 }
@@ -34,15 +37,19 @@
 
 
         function getHouseCustomizables(houseId) {
+            vm.ajax = true;
             services.getHouseCustomizables(houseId, function (response) {
+                vm.ajax = false;
                 console.log("Result from customizables >>", response);
                 vm.customizables = response;
             });
         }
 
         function getHouseFixtures() {
+            vm.ajax = true;
             var payload = { requestType: 1 };
             services.gitFixturesFittings(payload, function (response) {
+                vm.ajax = false;
                 if (response.status === '00') {
                     vm.fixtureFittings = response.data;
                 }
@@ -81,11 +88,33 @@
         }
 
         function submitLoanApplication() {
+            vm.ajax = true;
             var payload = vm.applyModel;
             services.applyForLoan(payload, function (response) {
                 console.log("Response from applyForLoan >>", response);
+                vm.ajax = false;
                 if (response.Status === "00") {
                     vm.ulain = response.Message;
+
+                    swal({
+                            title: "Congratulations",
+                            text: "Your application has been received </br> Your ULAIN is : " + vm.ulain,
+                            buttons: {
+                                cancel: "OK",
+                                catch: {
+                                    text: "Submit Supported Documents",
+                                    value: "submitDocs"
+                                }
+                            }
+                        })
+                        .then((value) => {
+                            switch (value) {
+                                case "submitDocs":
+                                    $window.location.href = "/loan/LoanDocs?clientUlain=" + vm.ulain;
+                                break;
+                            }
+                        });
+
                 } else {
                     utils.alertError(response.Message);
                 }

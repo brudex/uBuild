@@ -14,7 +14,7 @@ namespace uBuildCore.Models
       public int DocTypeId{get;set;}
       public string Description{get;set;}
       public string DocumentPath{get;set;}
-      public string DateUploaded{get;set;}
+      public DateTime DateUploaded{get;set;}
       public int CreatorId{get;set;}
       public string CreatorName{get;set;}
       public DateTime CreatedDate{get;set;}

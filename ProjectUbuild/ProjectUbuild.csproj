@@ -199,6 +199,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplyLoanViewModel.cs" />
+    <Compile Include="Models\DocUploadModel.cs" />
     <Compile Include="Models\HouseDesignsModel.cs" />
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -206,7 +207,13 @@
     <Compile Include="Models\LoanApplicationModels.cs" />
     <Compile Include="Models\MyApplicationsViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\UploadDocModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1751,9 +1758,25 @@
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_nl.min.js" />
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_pt.js" />
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_pt.min.js" />
+    <Content Include="assets\plugins\jquery.fileupload.js" />
     <Content Include="assets\plugins\jquery.sieve.min.js" />
     <Content Include="assets\plugins\jquery\jquery-1.11.1.min.js" />
     <Content Include="assets\plugins\jquery\jquery-easy.js" />
+    <Content Include="assets\plugins\jquery-fileupload\app.js" />
+    <Content Include="assets\plugins\jquery-fileupload\cors\jquery.postmessage-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\cors\jquery.xdr-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-angular.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-audio.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-image.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-process.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-ui.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-validate.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-video.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.iframe-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\main.js" />
+    <Content Include="assets\plugins\jquery-fileupload\vendor\jquery.ui.widget.js" />
     <Content Include="assets\plugins\lodash\lodash.min.js" />
     <Content Include="assets\plugins\mapplic\css\images\alpha20.png" />
     <Content Include="assets\plugins\mapplic\css\images\alpha50.png" />
@@ -2255,6 +2278,10 @@
     <Content Include="assets\foundry\video\video2.ogg" />
     <Content Include="assets\foundry\video\video2.webm" />
     <None Include="Properties\PublishProfiles\ubuild.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\app\update-profile.conftroller.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

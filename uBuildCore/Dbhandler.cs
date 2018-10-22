@@ -312,5 +312,23 @@ namespace uBuildCore
                 return list.ToList();
             }
         }
+
+        public int SaveClientDoc(LoanDocuments loanDocuments)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var id = conn.Insert(loanDocuments);
+                return id;
+            }
+        }
+
+        //public int GetClientDocs(string ULAIN)
+        //{
+        //    using (var conn = GetOpenDefaultDbConnection())
+        //    {
+        //        var id = conn.Query<List<LoanDocuments>>();
+        //        return id;
+        //    }
+        //}
     }
 }

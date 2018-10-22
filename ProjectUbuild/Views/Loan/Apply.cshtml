@@ -28,8 +28,9 @@
 </section>
 
 <div data-ng-app="ubuild">
-
+    
     <div class="container-fluid container-fixed-lg" data-ng-controller="LoanApplicationController as vm">
+       
         <div id="rootwizard" class="m-t-50">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
@@ -43,8 +44,12 @@
             <!-- Tab panes -->
 
             <div class="tab-content">
+                
                 <div class="tab-pane slide-left active padding-20 sm-no-padding" id="tab4">
                     <div class="row">
+                        <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
+                        </div>
                         <div class="col-md-5 b-r b-dashed b-grey ">
                             <h4>Account Info</h4>
                             <form class="" role="form">
@@ -87,13 +92,13 @@
                                             <option value="">-Select Phase-</option>
                                         </select>
                                     </div>
-                                </div> 
-                                
+                                </div>
+
                             </form>
                         </div>
                         <div class="col-md-6">
                             <h4>Complete Loan Form</h4>
-                            <form role="form"> 
+                            <form role="form">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -104,7 +109,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <label>Loan Amount</label>
-                                            <input type="text"  class="form-control" data-ng-model="vm.applyModel.AmtSought">
+                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.AmtSought">
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Loan Tenure</label>
-                                            <input type="text"  class="form-control" data-ng-model="vm.applyModel.loanTenure">
+                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.loanTenure">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Tenure Unit</label>
@@ -124,13 +129,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    
-                                        <label>Repayment Method</label>
-                                        <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
-                                            <option value="">-Select Repayment Method-</option>
-                                        </select>
-                                    
-                                    
+
+                                    <label>Repayment Method</label>
+                                    <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
+                                        <option value="">-Select Repayment Method-</option>
+                                    </select>
+
+
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose of Loan</label>

@@ -24,7 +24,7 @@ namespace uBuildCore
                 ConnectionString;
         }
 
-        
+
 
         public static DbHandler Instance
         {
@@ -44,7 +44,7 @@ namespace uBuildCore
             }
         }
 
-       
+
 
         public DbConnection GetOpenDefaultDbConnection()
         {
@@ -90,7 +90,7 @@ namespace uBuildCore
             }
         }
 
-        public List<T> GetList<T>() where T :class
+        public List<T> GetList<T>() where T : class
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
@@ -129,7 +129,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var list = conn.GetList<BuildingPhases>().OrderBy(f=>f.RecordId).ToList();
+                var list = conn.GetList<BuildingPhases>().OrderBy(f => f.RecordId).ToList();
                 return list;
             }
         }
@@ -146,7 +146,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var sql ="SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join [dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
+                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join [dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
                 var list = conn.Query<HouseDesigns>(sql).ToList();
                 return list;
             }
@@ -156,8 +156,8 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                 var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join  [dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
-                var item = conn.Query<HouseDesigns>(sql,new {id}).FirstOrDefault();
+                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join  [dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
+                var item = conn.Query<HouseDesigns>(sql, new { id }).FirstOrDefault();
                 return item;
             }
         }
@@ -196,7 +196,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var item = conn.Query<EligibilityChecks>("spCheckEligibility", checkEligibilityRequest,commandType:CommandType.StoredProcedure).FirstOrDefault();
+                var item = conn.Query<EligibilityChecks>("spCheckEligibility", checkEligibilityRequest, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return item;
             }
         }
@@ -219,7 +219,7 @@ namespace uBuildCore
                 return id;
             }
         }
-         
+
 
         public string GenerateUlain()
         {
@@ -228,7 +228,7 @@ namespace uBuildCore
                 var item = conn.Query("spGenerateULAIN", commandType: CommandType.StoredProcedure).FirstOrDefault();
                 if (item != null)
                 {
-                     return item.newULAIN;
+                    return item.newULAIN;
                 }
                 return string.Empty;
             }
@@ -251,15 +251,15 @@ namespace uBuildCore
         /// <param name="clientId">User ClientAuth Id</param>
         /// <param name="procStage">A=All /C=Completed/	U=Uncompleted</param>
         /// <returns></returns>
-        public List<string> GetClientLoanProcStages(int clientId ,string procStage)
+        public List<string> GetClientLoanProcStages(int clientId, string procStage)
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var results = conn.Query<dynamic>("spGetClientLoansProcStage", new {ClientId = clientId ,ProcState =procStage}, commandType: CommandType.StoredProcedure);
+                var results = conn.Query<dynamic>("spGetClientLoansProcStage", new { ClientId = clientId, ProcState = procStage }, commandType: CommandType.StoredProcedure);
                 return results.Select(o => o.ULAIN).Cast<string>().ToList();
             }
         }
-         
+
 
         public List<LoanProcessStages> GetLoanProcStagesByUlains(List<string> ulains)
         {
@@ -274,7 +274,7 @@ namespace uBuildCore
                     }
                     else
                     {
-                         sb.Append(string.Format(",'{0}'", ulains[0]));
+                        sb.Append(string.Format(",'{0}'", ulains[0]));
                     }
                 }
 
@@ -309,14 +309,14 @@ namespace uBuildCore
               ,ls.[LastProcessDate] 
 	          FROM [dbo].[LoanAppls] la inner join [dbo].[LoanProcStages] ls on la.ULAIN = ls.ULAIN inner join Currencies c on 
 	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})", sb.ToString()));
-//                    var loanProcs = new List<LoanProcessStages>();
-//                    foreach (var o in list)
-//                    {
-//                        loanProcs.Add(new LoanProcessStages(o));
-//                    }
+                    //                    var loanProcs = new List<LoanProcessStages>();
+                    //                    foreach (var o in list)
+                    //                    {
+                    //                        loanProcs.Add(new LoanProcessStages(o));
+                    //                    }
                     return list.ToList();
                 }
-               return new List<LoanProcessStages>();
+                return new List<LoanProcessStages>();
             }
         }
 
@@ -329,13 +329,13 @@ namespace uBuildCore
             }
         }
 
-        //public int GetClientDocs(string ULAIN)
-        //{
-        //    using (var conn = GetOpenDefaultDbConnection())
-        //    {
-        //        var id = conn.Query<List<LoanDocuments>>();
-        //        return id;
-        //    }
-        //}
+        public List<LoanDocuments> GetClientDocs(string ULAIN)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.Query<LoanDocuments>(string.Format("select * from LoanDocuments where ULAIN=@ULAIN"), new { ULAIN }).ToList();
+                return list;
+            }
+        }
     }
 }

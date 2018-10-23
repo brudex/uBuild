@@ -62,7 +62,7 @@
 else
 {
 
-    <section style="padding-top: 0" data-ng-controller="UpdateProfileController as vm">
+    <section style="padding-top: 0" id="profileWrapper" data-ng-controller="UpdateProfileController as vm">
         <div class="container" data-ng-show="vm.accountNotVerified">
             <div class="row">
                 <div class="col-md-12 col-sm-12 text-center">
@@ -196,16 +196,17 @@ else
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group form-group-default input-group col-md-10">
-                                            <div class="form-input-group">
+                                        <div class="form-group form-group-default input-group col-md-10"  >
+                                            <div class="form-input-group" >
                                                 <label>Date of birth</label>
-                                                <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" placeholder="" id="datepicker-component2">
+                                                <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
                                             </div>
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
                                         </div>
-
+                                        
+                                        
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-group-default required">
@@ -248,7 +249,7 @@ else
                                 <div class="row">
                                     <div class="col-sm-6">
                                         
-                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 80px">
+                                        <div class="form-group form-group-default form-group-default-select2 ">
                                             <label class="">Nationality</label>
                                             <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
                                                     tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" data-ng-model="vm.profile.Nationality">
@@ -377,7 +378,7 @@ else
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group form-group-default form-group-default-select2 " style="height: 80px">
+                                        <div class="form-group form-group-default form-group-default-select2 " >
                                             <label class="">Country Of Residence</label>
                                             <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
                                                     tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" 

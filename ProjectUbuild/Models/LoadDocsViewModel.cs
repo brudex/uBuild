@@ -7,13 +7,17 @@ using uBuildCore.Models;
 
 namespace ProjectUbuild.Models
 {
-    public class LoadDocsViewModel    
+    public class LoadDocsViewModel
     {
-        public LoadDocsViewModel()
+        public LoadDocsViewModel(string ULAIN = "")
         {
             loanDocs = DbHandler.Instance.GetList<DocTypes>();
+            loanDocuments = DbHandler.Instance.GetClientDocs(ULAIN);
+
         }
-        public List<DocTypes> loanDocs { get; set; } 
+        public List<DocTypes> loanDocs { get; set; }
+
+        public List<LoanDocuments> loanDocuments { get; set; }
 
     }
 }

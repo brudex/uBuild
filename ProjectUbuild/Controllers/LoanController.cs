@@ -17,9 +17,9 @@ namespace ProjectUbuild.Controllers
             return View();
         }
 
-        public ActionResult LoanDocs()
+        public ActionResult LoanDocs(string clientUlain)
         {
-            var vm = new LoadDocsViewModel();
+            var vm = new LoadDocsViewModel(clientUlain);
             
             return View(vm);
         }

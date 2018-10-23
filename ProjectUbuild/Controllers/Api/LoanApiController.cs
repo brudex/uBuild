@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
@@ -99,20 +100,30 @@ namespace ProjectUbuild.Controllers.Api
                         }
                         else
                         {
-                           // var filePath = HttpContext.Current.Server.MapPath(Settings.Default.DocUploadUrl + "/" + clientUlain + "/" + tstamp + postedFile.FileName);
+                            try
+                            {
+                                var ulainPath =
+                                    HttpContext.Current.Server.MapPath(Settings.Default.DocUploadUrl + "/" + clientUlain);
+                                Directory.CreateDirectory(ulainPath);
 
-                            //postedFile.SaveAs(filePath);
+                                var filePath = HttpContext.Current.Server.MapPath(Settings.Default.DocUploadUrl + "/" + clientUlain + "/" + tstamp + postedFile.FileName);
+                                postedFile.SaveAs(filePath);
 
-                            var data = new LoanDocuments();
-                            data.ULAIN = clientUlain;
-                            data.Description = formValues["DocDescription"];
-                            data.DocumentPath = tstamp + postedFile.FileName;
-                            data.CreatedDate = DateTime.Now;
-                            data.DateUploaded = DateTime.Now;
-                            data.CreatorId = User.GetUbuildClient().CreatorId;
-                            data.DocTypeId = Convert.ToInt32(formValues["DocType"]);
+                                var data = new LoanDocuments();
+                                data.ULAIN = clientUlain;
+                                data.Description = formValues["DocDescription"];
+                                data.DocumentPath = tstamp + postedFile.FileName;
+                                data.CreatedDate = DateTime.Now;
+                                data.DateUploaded = DateTime.Now;
+                                data.CreatorId = User.GetUbuildClient().CreatorId;
+                                data.DocTypeId = Convert.ToInt32(formValues["DocType"]);
 
-                            DbHandler.Instance.SaveClientDoc(data);
+                                DbHandler.Instance.SaveClientDoc(data);
+                            }
+                            catch (Exception e)
+                            {
+                                Logger.Debug(this, e.Message);
+                            }
 
                         }
                     }

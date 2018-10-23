@@ -775,3 +775,7 @@ windows body, .windows p {
         height: 100%;
     }
 }
+#profileWrapper input[type="text"], #profileWrapper input[type="password"], #loanForm input[type="text"] {
+    margin-bottom: 0
+}
+

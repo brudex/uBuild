@@ -39,6 +39,12 @@ function SubmitDocs(e) {
         $(".list-view-wrapper").scrollbar();
 
         $(".image-picker").imagepicker();
+       
+
+        $('#datepicker-component2,#datepicker-component3,#datepicker-component4,#datepicker-component5,#datepicker-component6').datepicker(
+            {
+               
+            });
 
         $('.input-phone').intlInputPhone();
 

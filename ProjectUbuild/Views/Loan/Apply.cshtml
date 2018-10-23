@@ -16,7 +16,7 @@
             <div class="col-md-6 text-right hidden-xs hidden-sm">
                 <ol class="breadcrumb breadcrumb-2">
                     <li>
-                        @Html.ActionLink("Home", "Index", "Home", new {}, null)
+                        @Html.ActionLink("Home", "Index", "Home", new { }, null)
                     </li>
                     <li class="active">Apply for Loan</li>
                 </ol>
@@ -28,9 +28,9 @@
 </section>
 
 <div data-ng-app="ubuild">
-    
-    <div class="container-fluid container-fixed-lg" data-ng-controller="LoanApplicationController as vm">
-       
+
+    <div class="container-fluid container-fixed-lg" id="loanForm" data-ng-controller="LoanApplicationController as vm">
+
         <div id="rootwizard" class="m-t-50">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
@@ -44,7 +44,7 @@
             <!-- Tab panes -->
 
             <div class="tab-content">
-                
+
                 <div class="tab-pane slide-left active padding-20 sm-no-padding" id="tab4">
                     <div class="row">
                         <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
@@ -53,10 +53,12 @@
                         <div class="col-md-5 b-r b-dashed b-grey ">
                             <h4>Account Info</h4>
                             <form class="" role="form">
-                                <div class="form-group">
+
+                                <div class="form-group form-group-default required">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control" data-ng-model="vm.applyModel.FullName">
+                                    <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.applyModel.FullName">
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group ">
@@ -102,29 +104,35 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Currency</label>
-                                            <select class="form-control" data-ng-model="vm.applyModel.currency" data-ng-options="item.RecordId as item.ISOCode for item in vm.currencies">
-
-                                            </select>
+                                            <div class="form-group form-group-default required">
+                                                <label>Currency</label>
+                                                <select class="form-control" data-ng-model="vm.applyModel.currency" data-ng-options="item.RecordId as item.ISOCode for item in vm.currencies"></select>
+                                            </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <label>Loan Amount</label>
-                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.AmtSought">
+                                            <div class="form-group form-group-default required">
+                                                <label>Loan Amount</label>
+                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.AmtSought">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Loan Tenure</label>
-                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.loanTenure">
+                                            <div class="form-group form-group-default required">
+                                                <label>Loan Tenure</label>
+                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.loanTenure">
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Tenure Unit</label>
-                                            <select class="form-control" data-ng-model="vm.applyModel.loanTenureUnit">
-                                                <option value="Months">Month(s)</option>
-                                                <option value="Years">Year(s)</option>
-                                            </select>
+                                            <div class="form-group form-group-default required">
+                                                <label>Tenure Unit</label>
+                                                <select class="form-control" data-ng-model="vm.applyModel.loanTenureUnit">
+                                                    <option value="Months">Month(s)</option>
+                                                    <option value="Years">Year(s)</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -134,12 +142,12 @@
                                     <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
                                         <option value="">-Select Repayment Method-</option>
                                     </select>
-
-
                                 </div>
                                 <div class="form-group">
-                                    <label>Purpose of Loan</label>
-                                    <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.PurposeofLoan">
+                                    <div class="form-group form-group-default required">
+                                        <label>Purpose of Loan</label>
+                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.PurposeofLoan">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>
@@ -153,12 +161,18 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <label>Protection Security Type </label>
-                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityType">
+
+                                        <div class="form-group form-group-default required">
+                                            <label>Protection Security Type </label>
+                                            <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityType">
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Protection Security Details</label>
-                                        <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
+
+                                        <div class="form-group form-group-default required">
+                                            <label>Protection Security Details</label>
+                                            <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="action-button" type="button" data-ng-click="vm.submitLoanApplication()">
@@ -176,9 +190,9 @@
                 <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
                     <ul class="pager wizard no-style">
                         <li class="next">
-                            <button class="action-button" type="button" ng-show="vm.applyModel.eligible">
-                                <span>Next</span>
-                            </button>
+                            @*<button class="action-button" type="button" >
+                                    <span>Next</span>
+                                </button>*@
                         </li>
                         <li class="next finish hidden">
                             <button class="action-button" type="button">

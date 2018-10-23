@@ -113,6 +113,8 @@
             vm.profile.Gender = vm.profile.Gender.upper()[0];
         }
 
+        
+
         vm.countriesList = {
             BD: "Bangladesh",
             BE: "Belgium",

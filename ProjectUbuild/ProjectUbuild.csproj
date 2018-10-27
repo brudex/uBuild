@@ -881,6 +881,7 @@
     <Content Include="assets\js\notifications.js" />
     <Content Include="assets\js\scripts.js" />
     <Content Include="assets\js\slider.js" />
+    <Content Include="assets\js\sweetalert.min.js" />
     <Content Include="assets\js\tables.js" />
     <Content Include="assets\js\timeline.js" />
     <Content Include="assets\js\tree_view.js" />

@@ -93,11 +93,14 @@
 <script src="~/Scripts/app/app.module.js"></script>
 <script src="~/Scripts/app/services.factory.js"></script>
 <script src="~/Scripts/app/utilities.factory.js"></script>
-@if (route == "/loan/eligibility")
+@*@if (route == "/loan/eligibility")
 {
     <script src="~/Scripts/app/eligibility.controller.js"></script>
-}
-else if (route.IndexOf("/profile", StringComparison.Ordinal) > -1)
+}*@
+
+<script src="~/Scripts/app/eligibility.controller.js"></script>
+
+@if (route.IndexOf("/profile", StringComparison.Ordinal) > -1)
 {
 
     <script src="~/Scripts/app/update-profile.conftroller.js"></script>

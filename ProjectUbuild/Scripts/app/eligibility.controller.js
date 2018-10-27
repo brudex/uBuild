@@ -8,7 +8,7 @@
     function EligibilityCtrl($scope, $http, $timeout, $rootScope, services, utils, $window) {
         var isLoanApplication = false;
         var callbackFunc = null;
-        var loading = false;
+        $scope.loading = false;
         var interestRates = [];
         var currencies = [];
         $scope.buildingPhases = [];
@@ -16,7 +16,7 @@
             if (isLoanApp) {
                 isLoanApplication = isLoanApp;
                 callbackFunc = callback;
-                loading = false;
+                $scope.loading = false;
             }
 
             $scope.builder = {
@@ -52,7 +52,7 @@
          
         $scope.$watch("builder.phase",
             function (phase) {
-                console.log("$scope.builder.phase", phase);
+                $scope.builder.phaseType = $scope.builder.phase;
             });
 
 
@@ -130,12 +130,12 @@
             });
 
         $scope.checkEligibility = function () {
-            loading = true;
+            $scope.loading = true;
             var payload = Object.assign({}, $scope.builder);
             console.log('the payload is >>>', payload);
             services.checkLoanEligibility(payload, function (response) {
                 console.log("the response for eligibility >>", response);
-                loading = false;
+                $scope.loading = false;
                 if (response.Status === "00") {
                     swal({
                         title: "Congratulations",
@@ -151,16 +151,18 @@
                     .then((value) => {
                             switch (value) {
                                 case "applyButton":
-                                    $window.location.href = "/loan/apply";
+                                    var qstring = $.param(payload);
+                                    console.log("Questring >>>", qstring);
+                                    $window.location.href = "/loan/apply?" + qstring;
                                     break;
                             }
                         });
                 } else if (response.Status === "01") {
-                    loading = false;
+                    $scope.loading = false;
                     utils.alertError("Sorry", response.Message);
                 }
                 if (isLoanApplication && callbackFunc) {
-                    loading = false;
+                    $scope.loading = false;
                     var obj = { request: payload, response: response };
                     callbackFunc(obj);
                 }
@@ -184,6 +186,14 @@
             services.getInterestRates(function (response) {
                 interestRates = response;  
             });
+        }
+
+        $scope.getTenureRange = function () {
+            var ranges = [];
+            for (var k = 1; k <= 15; k++) {
+                ranges.push(k);
+            }
+            return ranges;
         }
 
         function getCurrencies() {

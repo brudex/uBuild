@@ -1,7 +1,7 @@
 ﻿@model ProjectUbuild.Models.HouseDesignsModel
 
 @{
-    ViewBag.Title = "House selection";
+    ViewBag.Title = "Get Started";
     Layout = "../Shared/_Layout.cshtml";
 }
 
@@ -96,7 +96,7 @@
                         Kindly choose the phase type and complete the form to check your eligibility and start your application process.
                     </p>
 
-                    <div class="row" ng-init="">
+                    <div class="row">
                         <div class="col-md-6">
                             <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
                             <div>
@@ -108,12 +108,27 @@
                     </div>
                     <div class="row" style="margin-top: 15px">
                         <div class="col-md-6">
-                            <div class="form-group form-group-default input-group">
-                                <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
-                                <select data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                    <option value="">Select Loan Tenure</option>
-                                    <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
-                                </select>
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
+                                            <select data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <option value="">Select Loan Tenure</option>
+                                                <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
+                                            <select data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <option selected="selected" value="Years">Year(s)</option>
+                                                <option value="Months">Months</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

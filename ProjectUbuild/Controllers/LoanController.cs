@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;using ProjectUbuild.Models;
+using System.Web.Script.Serialization;
+using ProjectUbuild.Models;
 using uBuildCore;
 
 namespace ProjectUbuild.Controllers
@@ -16,11 +17,14 @@ namespace ProjectUbuild.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult LoanDocs(string clientUlain)
         {
+            if (string.IsNullOrEmpty(clientUlain))
+               return Redirect("/Home/MyApplications");
+
             var vm = new LoadDocsViewModel(clientUlain);
-            
+
             return View(vm);
         }
 
@@ -60,7 +64,7 @@ namespace ProjectUbuild.Controllers
             return RedirectToAction("Index");
         }
 
-        
+
 
     }
 }

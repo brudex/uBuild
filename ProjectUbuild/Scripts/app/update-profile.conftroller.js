@@ -27,14 +27,19 @@
             console.log('form is valid', formValid);
             vm.formSubmitted = true;
             if (formValid) {
-                vm.ajax = true;
-                services.submitProfile(vm.profile, function (response) {
-                    console.log("Response from server >>", response);
-                    if (response.Status === "00") {
-                        utils.alertSuccess(response.Message);
-                    }
-                    vm.ajax = false;
-                });
+                try {
+                    vm.ajax = true;
+                    services.submitProfile(vm.profile,
+                        function(response) {
+                            console.log("Response from server >>", response);
+                            if (response.Status === "00") {
+                                utils.alertSuccess(response.Message);
+                            }
+                            vm.ajax = false;
+                        });
+                } catch (e) {
+                    utils.alertError("An error occured. Please try again");
+                }
             }
         }
 

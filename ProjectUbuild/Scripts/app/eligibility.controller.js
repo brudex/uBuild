@@ -20,9 +20,9 @@
             }
 
             $scope.builder = {
-                loanType: null,
+                loanType: "",
                 phase: "",
-                loanTenureUnit : 'years'
+                loanTenureUnit : 'Years'
             };
         };
         $scope.$watch("builder.loanType",

@@ -78,7 +78,7 @@
                     vm.ulain = response.Message;
                     swal({
                             title: "Congratulations",
-                            text: "Your application has been received </br> Your ULAIN is : " + vm.ulain,
+                            text: "Your application has been received . Your ULAIN is : " + vm.ulain,
                             buttons: {
                                 cancel: "OK",
                                 catch: {

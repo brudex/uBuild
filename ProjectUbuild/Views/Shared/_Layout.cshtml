@@ -2,7 +2,13 @@
 <!doctype html>
 <html lang="en" ng-app="ubuild">
 <head>
-    <meta charset="utf-8">
+    
+    <meta charset="UTF-8">
+    <meta name="description" content="The U-Build project will be undertaken in 5 phases namely; land purchase, foundation, blockwork to roofing, finishing, and fittings & fixtures. There is the flexibility for you to opt for which phase of the project you will like to apply for.
+          U-Build: Your Build, Your Way">
+    <meta name="keywords" content="UBuild, You Build, Mortgage,GHL bank, Ghana home loans, best mortgage company in ghana, loan to build house ,
+          purchase land in ghana, build a house in ghana">
+    <meta name="author" content="Inspierra . contact +233542141878,+233244964816">
     <title>uBuild - @ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Html.Partial("_Head")
@@ -31,9 +37,10 @@
                                 @Html.AntiForgeryToken()
                                 <input type="submit" value="Logout" class="btn btn-sm btn-filled" style="height: 28px;line-height: 28px" />
                             }*@
-
+                        
                         <div class="d-flex align-items-center">
                             <!-- START User Info-->
+                            
                             <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down">
                                 <span class="semi-bold">@User.Identity.Name</span>
                             </div>
@@ -61,7 +68,7 @@
                                 </div>
                             </div>
                             <!-- END User Info-->
-
+                           
                         </div>
                     }
                     else
@@ -136,6 +143,8 @@
                             </li>
                             <li>
                                 @Html.ActionLink("FaQs", "FaQs", "Home", null, new { })
+                            </li><li>
+                                     <a href="https://www.directpay.online/login" class="btn btn-sm" style="border:1px solid #f35958">Market Place</a>
                             </li>
                             <li class="hidden-lg">
                                 <i class="ti-email">&nbsp;</i>

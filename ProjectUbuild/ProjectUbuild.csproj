@@ -877,8 +877,11 @@
     <Content Include="assets\js\gallery.js" />
     <Content Include="assets\js\google_map.js" />
     <Content Include="assets\js\icon.js" />
+    <Content Include="assets\js\jquery.easing.min.js" />
+    <Content Include="assets\js\main.js" />
     <Content Include="assets\js\nestables.js" />
     <Content Include="assets\js\notifications.js" />
+    <Content Include="assets\js\pages.min.js" />
     <Content Include="assets\js\scripts.js" />
     <Content Include="assets\js\slider.js" />
     <Content Include="assets\js\sweetalert.min.js" />

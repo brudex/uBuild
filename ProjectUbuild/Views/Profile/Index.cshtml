@@ -122,6 +122,9 @@ else
                             <input type="button" name="next" data-ng-disabled="vm.isReadonly" class="msformnext action-button" value="Continue" title="Select a loan type to continue." />
                         </fieldset>
                         <fieldset data-ng-disabled="vm.isReadonly">
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
                             <h2 class="fs-title">Basic Information</h2>
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
@@ -196,8 +199,8 @@ else
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group form-group-default input-group col-md-10"  >
-                                            <div class="form-input-group" >
+                                        <div class="form-group form-group-default input-group col-md-10">
+                                            <div class="form-input-group">
                                                 <label>Date of birth</label>
                                                 <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
                                             </div>
@@ -205,8 +208,8 @@ else
                                                 <i class="fa fa-calendar"></i>
                                             </div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-group-default required">
@@ -248,7 +251,7 @@ else
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        
+
                                         <div class="form-group form-group-default form-group-default-select2 ">
                                             <label class="">Nationality</label>
                                             <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
@@ -292,6 +295,9 @@ else
                             <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Select a loan type to continue." />
                         </fieldset>
                         <fieldset data-ng-disabled="vm.isReadonly">
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
                             <h2 class="fs-title">Residential Information</h2>
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
@@ -378,10 +384,10 @@ else
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group form-group-default form-group-default-select2 " >
+                                        <div class="form-group form-group-default form-group-default-select2 ">
                                             <label class="">Country Of Residence</label>
                                             <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
-                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" 
+                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList"
                                                     data-ng-model="vm.profile.CountryOfResidence">
                                                 <option value="">Select Nationality..</option>
                                             </select>
@@ -407,6 +413,9 @@ else
                             <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Complete form to continue." />
                         </fieldset>
                         <fieldset data-ng-disabled="vm.isReadonly">
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
                             <h2 class="fs-title">Identification</h2>
 
                             <div class="form-group-attached m-b-10">
@@ -477,6 +486,9 @@ else
                             <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
                         </fieldset>
                         <fieldset data-ng-disabled="vm.isReadonly">
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
                             <h2 class="fs-title">Employment</h2>
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
@@ -568,6 +580,9 @@ else
                             <input type="button" name="next" class="msformnext action-button" value="Save and Continue" title="Please choose your currency to continue" />
                         </fieldset>
                         <fieldset data-ng-disabled="vm.isReadonly">
+                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
+                            </div>
                             <h2 class="fs-title">Emergency Contact</h2>
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
@@ -602,7 +617,7 @@ else
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-group-default required">
-                                            <label>Emergency Conact Phone  </label>
+                                            <label>Emergency Conact Phone </label>
                                             <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone">
                                         </div>
                                     </div>

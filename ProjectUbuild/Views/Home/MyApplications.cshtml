@@ -32,11 +32,8 @@
     <div class="container">
         <div class="row" style="margin-top: -40px">
             <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
-                @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;">
-
-
-            </a>*@
-                @* @Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })*@
+                @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;"></a>*@
+                @*@Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })*@
                 <div class="tabbed-content text-tabs">
                     <ul class="tabs">
                         <li class="active">
@@ -119,24 +116,31 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label"> Credit Approval </label>
+                                                <label class="col-sm-2 control-label">Credit Approval </label>
                                                 <div class="col-sm-10">
                                                     <p class="form-control-static">@Model.currentLoanApplication.LPS04CreditApprovalDesc()</p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label"> Client Confirmation </label>
+                                                <label class="col-sm-2 control-label">Client Confirmation</label>
                                                 <div class="col-sm-10">
                                                     <p class="form-control-static">@Model.currentLoanApplication.LPS05ClientConfirmationDesc()</p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label"> Loan Disbursement </label>
+                                                <label class="col-sm-2 control-label">Loan Disbursement</label>
                                                 <div class="col-sm-10">
                                                     <p class="form-control-static">@Model.currentLoanApplication.LPS06LoanDisbursementDesc()</p>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Agreed to <a href="/terms">Terms</a></label>
+                                                <div class="col-sm-10">
+                                                    <p class="form-control-static">
+                                                        <input type="checkbox" name="name" value="agreed"/>
+                                                    </p>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Application Date</label>
                                                 <div class="col-sm-10">
@@ -145,7 +149,8 @@
                                             </div>
 
                                         </form>
-                                    }else
+                                    }
+                                    else
                                     {
                                         <h4>
                                             <div class="alert alert-info ">
@@ -153,7 +158,6 @@
                                             </div>
                                         </h4>
                                     }
-
                                 </p>
                             </div>
                         </li>
@@ -178,10 +182,8 @@
                                                     <td>Status</td>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-
-
-                                                @for (var k = 0; k < Model.loanApplications.Count; k++)
+                                            <tbody>  
+                                                @for(var k = 0; k < Model.loanApplications.Count; k++)
                                                 {
                                                     <tr>
                                                         <td>@Model.loanApplications[k].ULAIN</td>

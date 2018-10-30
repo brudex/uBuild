@@ -40,8 +40,7 @@
 
         vm.saveAndNext = function (formValid, pageNo) {
             console.log('form is valid', formValid);
-
-            if (formValid) {
+            if (true) {
                 vm.ajax = true;
                 var payload = { data: vm.profile, pageNo: pageNo }
                 services.submitProfile(vm.profile, function (response) {

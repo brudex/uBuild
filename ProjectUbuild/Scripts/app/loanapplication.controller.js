@@ -91,6 +91,9 @@
                             switch (value) {
                                 case "submitDocs":
                                     $window.location.href = "/loan/LoanDocs?clientUlain=" + vm.ulain;
+                                    break;
+                                default:
+                                    $window.location.href = "/Home/MyApplications";
                                 break;
                             }
                         });

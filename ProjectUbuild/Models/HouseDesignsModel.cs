@@ -24,7 +24,7 @@ namespace ProjectUbuild.Models
             var row = new HouseDesignRow();
             for (var i = 0; i < designs.Count; i++)
             { 
-                if (row.Designs.Count < 4)
+                if (row.Designs.Count < 5)
                 {
                     row.Designs.Add(designs[i]);
                 }

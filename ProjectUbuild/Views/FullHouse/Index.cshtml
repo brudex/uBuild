@@ -29,7 +29,7 @@
     <!--end of container-->
 </section>
 
-<section class="container" id="houseDesignWrapper">
+<section class="container" id="houseDesignWrapper" style="width: 92%">
 
 
     <div class="card card-transparent ">
@@ -46,7 +46,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tab-fillup1">
                 <div class="row column-seperation">
-                    @for (int k = 0; k < Model.DesignRows.Count; k++)
+                    @for(var k = 0; k < Model.DesignRows.Count; k++)
                     {
 
                         foreach (var design in Model.DesignRows[k].Designs)

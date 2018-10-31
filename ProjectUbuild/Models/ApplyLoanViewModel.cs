@@ -15,6 +15,7 @@ namespace ProjectUbuild.Models
         public int loanTenure { get; set; }
         public string json { get; set; }
         public string phaseType { get; set; }
+        public MyApplicationsViewModel MyAppsViewModel { get; set; }
     }
     
 }

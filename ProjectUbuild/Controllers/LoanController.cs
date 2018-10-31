@@ -35,6 +35,11 @@ namespace ProjectUbuild.Controllers
         {
             var viewModel = new ApplyLoanViewModel();
             NameValueCollection n = Request.QueryString;
+
+            var clientAuth = User.GetUbuildClient();
+            var vm = new MyApplicationsViewModel(clientAuth.RecordId);
+            viewModel.MyAppsViewModel = vm;
+
             if (n.Count > 1)
             {
                 var dict = n.ToDictionary();

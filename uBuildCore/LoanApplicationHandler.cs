@@ -74,11 +74,15 @@ namespace uBuildCore
             loaApp.AmtSought = data["AmtSought"].ToDecimal();
             loaApp.LoanApplTypeId = data["applyingFor"].ToInteger(); 
             loaApp.ApplSubmitDate= DateTime.Now;
+            
             string customerNo = data["customerNo"].ToStringOrEmpty();
             loaApp.CustomerNo = string.IsNullOrEmpty(customerNo)?null:customerNo;  
             loaApp.ULAIN = ulain;
-            loaApp.BuildingPhaseId = data["forPhase"].ToInteger(); ;
-            loaApp.BuildingPhaseId = null;
+            if (loaApp.LoanApplTypeId != 1)
+            {
+              loaApp.BuildingPhaseId = data["forPhase"].ToInteger(); ;
+
+            }
             loaApp.PurposeofLoan = data["PurposeofLoan"].ToStringOrEmpty();
             loaApp.RepaymentMethodId = data["RepaymentMethod"].ToInteger();  
             loaApp.ProtectionCover = true;

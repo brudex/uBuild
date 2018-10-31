@@ -32,14 +32,7 @@
     <div class="container-fluid container-fixed-lg" data-ng-controller="LoanApplicationController as vm">
         <div id="rootwizard" class="m-t-50">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" role="tablist" data-init-reponsive-tabs="dropdownfx">
-                <li class="nav-item">
-                    <a class="active" data-toggle="tab" href="#tab4" role="tab"><i class="fa fa-file tab-icon"></i> <span>Complete Information</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="" data-toggle="tab" href="#tab5" role="tab"><i class="fa fa-check tab-icon"></i> <span>Thank You</span></a>
-                </li>
-            </ul>
+             
             <!-- Tab panes -->
 
             <div class="tab-content">
@@ -62,7 +55,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer ID</label>
-                                            <input type="text" class="form-control" data-ng-model="vm.applyModel.customerNo">
+                                            <input type="text" class="form-control"  disabled data-ng-model="vm.applyModel.customerNo">
                                         </div>
                                     </div>
                                 </div>
@@ -124,13 +117,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    
                                         <label>Repayment Method</label>
                                         <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
                                             <option value="">-Select Repayment Method-</option>
-                                        </select>
-                                    
-                                    
+                                        </select> 
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose of Loan</label>
@@ -168,39 +158,10 @@
                 <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab5">
                     <h1>Thank you for your loan application. Your ULAIN information is <b data-ng-bind="vm.ulain"></b> .</h1>
                 </div>
-                <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
-                    <ul class="pager wizard no-style">
-                        <li class="next">
-                            <button class="action-button" type="button" ng-show="vm.applyModel.eligible">
-                                <span>Next</span>
-                            </button>
-                        </li>
-                        <li class="next finish hidden">
-                            <button class="action-button" type="button">
-                                <span>Finish</span>
-                            </button>
-                        </li>
-                        <li class="previous first hidden">
-                            <button class="action-button" type="button">
-                                <span>First</span>
-                            </button>
-                        </li>
-                        <li class="previous">
-                            <button class="action-button" type="button">
-                                <span>Previous</span>
-                            </button>
-                        </li>
-                        <li class="send-application">
-                            <button class="action-button" type="button" data-ng-click="vm.submitLoanApplication()">
-                                <span><i class="fa fa-send"></i> Submit Application</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+                 
                 <div class="wizard-footer padding-20 bg-master-light">
                     <p class="small hint-text pull-left no-margin">
                     </p>
-
                     <div class="clearfix"></div>
                 </div>
             </div>

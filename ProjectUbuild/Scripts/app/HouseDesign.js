@@ -43,6 +43,7 @@
                 vm.customizables = response;
             });
         }
+		
 
         function loadFittingsFixtures() {
             vm.ajax = true;

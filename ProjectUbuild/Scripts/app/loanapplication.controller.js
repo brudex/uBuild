@@ -22,6 +22,7 @@
         vm.applyModel.eligible = false;
         vm.ulain = "";
         vm.applyModel.currency = 1;
+        vm.applyModel.loanTenureUnit = "Years";
 
         function getHouseImages(){
             var payload = { requestType :1};
@@ -86,6 +87,7 @@
                 console.log("Response from applyForLoan >>", response);
                 if (response.Status === "00") {
                     vm.ulain = response.Message;
+                    utils.alertSuccess("Loan successfully submitted. Your ULAIN information is " + response.Message);
                 } else {
                     utils.alertError(response.Message);
                 }

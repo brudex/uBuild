@@ -30,47 +30,65 @@
 </section>
 
 
-<section ng-controller="EligibilityCtrl" ng-init="init()" style="padding-top: 0">
+<section ng-controller="EligibilityCtrl" ng-init="init()" style="margin-top: -60px">
+    <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+        <div class="progress-circle-indeterminate progress-circle-master"></div>
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-8  col-sm-12 text-center">
-                <form id="msform">
-                    <!-- progressbar -->
-                    <ul id="progressbar">
-                        <li class="active">Choose Loan Type</li>
-                        <li ng-if="builder.loanType=='Phase'">Choose Phase </li>
-                        <li>Your Status</li>
-                    </ul>
-                    <!-- fieldsets -->
-                    <fieldset>
-                        <h2 class="fs-title">Choose Loan Type</h2>
-                        <div class="radio radio-success">
-                            <span title="Choose this loan type buy a full house">
-                                <input type="radio" checked="checked" ng-model="builder.loanType" name="loanType" value="Fullhouse" id="fullhouse">
-                                <label for="fullhouse">Full House</label>
-                            </span>
-                            <span style="display: inline-block" title="Choose this loan type to complete a particular phase of your building project ">
-                                <input type="radio" ng-model="builder.loanType" name="loanType" id="phase" value="Phase">
-                                <label for="phase">Phase</label>
-                            </span>
+            <div class="col-md-8  col-sm-12 ">
+                <form novalidate="">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h2 class="fs-title" title="Choose Fullhouse or Phase to proceed to loan applications" style="margin-bottom: 0">Choose Loan Type</h2>
+                            <div>
+                                <select class="" data-ng-model="builder.loanType">
+                                    <option value="">-Select Loan Type-</option>
+                                    <option value="Fullhouse">Full house</option>
+                                    <option value="Phase">Phase</option>
+                                </select>
+                            </div>
                         </div>
-                        <input type="button" name="next" class="msformnext action-button" value="Next" title="Select a loan type to continue." ng-disabled="!builder.loanType"/>
-                    </fieldset>
-                    <fieldset ng-show="builder.loanType=='Phase'">
-                        <h2 class="fs-title">Choose Phase</h2>
-                        <div>
-                            <select class="" ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
-                                <option value="">-Select Phase-</option>
-                                
-                            </select>
+                    </div>
+                    <div class="row" ng-show="builder.loanType=='Phase'">
+                        <div class="col-md-10">
+                            <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
+                            <div>
+                                <select class="" data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
+                                    <option value="">-Select Phase-</option>
+                                </select>
+                            </div>
                         </div>
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                        <input type="button" name="next" class="msformnext action-button" value="Next" title="Complete form to continue." ng-disabled="!builder.phase"/>
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="fs-title">Enter your financials</h2>
-                        <div>
-                            <div class="form-group">
+                    </div>
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-10">
+                            <div class="form-group-attached m-b-10">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
+                                            <select data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <option value="">Select Loan Tenure</option>
+                                                <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default input-group">
+                                            <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
+                                            <select data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <option selected="selected" value="Years">Year(s)</option>
+                                                <option value="Months">Months</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group form-group-default ">
                                 <label>Choose Currency</label>
                                 <div class="radio radio-success">
                                     <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
@@ -79,49 +97,29 @@
                                     <label for="currencyUSD">USD</label>
                                 </div>
                             </div>
-                            <div class="form-group form-group-default" ng-show="builder.currency" title="How much do you earn monthly?">
-                                <label>Enter your Monthly Income</label>
-                                <div class="irs-wrapper danger">
-                                    <input type="text" name="" ng-model="builder.monthlyIncome" value="0" id="loan_monthly_income" />
-                                </div>
-                            </div>
-                            <div class="form-group form-group-default" ng-show="builder.currency">
-                                <label>Loan Amount</label>
-                                <div class="irs-wrapper danger">
-                                    <input type="text" name="" ng-model="builder.loanAmount" value="0" id="loan_amount" />
-                                </div>
-                            </div>
-                            <div class="form-group form-group-default" ng-show="builder.currency">
-                                <label>Interest Rate (Fixed)</label>
-                                <div class="irs-wrapper danger">
-                                    <input type="text" name="" ng-model="builder.loanInterestRate" value="0;100" id="loan_Irate" />
-                                </div>
-                            </div>
-                            <div class="radio radio-success" ng-show="builder.currency">
-                                <span title="Choose this loan type buy a full house">
-                                    <input type="radio" checked="checked" ng-model="builder.loanTenureUnit"  id="tenureYears" name="tenureYears" value="Years">
-                                    <label for="tenureYears">Years</label>
-                                </span>
-                                <span style="display: inline-block" >
-                                    <input type="radio" ng-model="builder.loanTenureUnit" name="tenureMonths" id="tenureMonths" value="Months">
-                                    <label for="tenureMonths">Months</label>
-                                </span>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group form-group-default input-group">
+                                <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
+                                <input autocomplete="off" data-ng-model="builder.loanAmount" id="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
-                            <div class="form-group form-group-default" ng-show="builder.currency">
-                                <label>Enter Loan Tenure (<span data-ng-bind="builder.loanTenureUnit"></span>)</label>
-                                <div class="irs-wrapper danger">
-                                    <input type="text" name="" ng-model="builder.loanTenure" value="12,24" id="loan_Tenure" />
-                                </div>
                             </div>
                         </div>
-                        <input type="button" name="previous" class="msformprevious action-button" value="Previous" />
-                        <input type="button" data-ng-show="builder.currency" data-ng-click="checkEligibility()" style="width: 200px" class="action-button" value="Check Eligibility" />
-                        <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
-                            <div class="progress-circle-indeterminate progress-circle-master"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group form-group-default input-group">
+                                <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
+                                <input autocomplete="off" data-ng-model="builder.monthlyIncome" id="houseEligibility" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                <span data-ng-show="builder.loanTenure && builder.monthlyIncome && builder.loanType" class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer; background: #ac5e81" data-ng-click="checkEligibility()">
+                                    Submit
+                                </span>
+                            </div>
                         </div>
-                    </fieldset>
-                   
+                    </div>
+
                 </form>
             </div>
         </div>

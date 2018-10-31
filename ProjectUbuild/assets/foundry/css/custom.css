@@ -547,8 +547,8 @@ div.cs-skin-slide .cs-options ul li span {
 }
 
 #houseDesignWrapper {
-    min-height: 700px;
-    margin-top: 20px;
+    /*min-height: 700px;*/
+    margin-top: -55px
 }
 
 #houseDesignWrapper .row { }
@@ -743,7 +743,57 @@ svg:not(:root) {
     margin-bottom: 10px
 }
 
-indows body, .windows p {
+windows body, .windows p {
     font-size: 15px;
     letter-spacing: normal;
+}
+
+
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+    .fileinput-button input {
+        filter: alpha(opacity=0);
+        font-size: 100%;
+        height: 100%;
+    }
+}
+#profileWrapper input[type="text"], #profileWrapper input[type="password"], #loanForm input[type="text"] {
+    margin-bottom: 0
+}
+
+.nav-tabs-fillup > li > a:after {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: none repeat scroll 0 0 #ce122e;
+    border: none;
+    content: "";
+    height: calc(100% + 1px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transform: translate3d(0, 100%, 0px);
+    transform: translate3d(0, 100%, 0px);
+    -webkit-transition: -webkit-transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s;
+    width: 100%;
+    z-index: -1;
 }

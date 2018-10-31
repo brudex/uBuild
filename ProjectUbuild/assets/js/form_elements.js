@@ -18,8 +18,10 @@
        // $("#multi").val(["Jim", "Lucy"]).select2();
 
         //Date Pickers
-        $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
+      //  $('#datepicker-component2', '#datepicker-component3', '#datepicker-component4', '#datepicker-component5', '#datepicker-component6').datepicker();
 
+        //Date Pickers
+       
         //$('#datepicker-embeded').datepicker({
         //    daysOfWeekDisabled: "0,1"
         //});
@@ -35,6 +37,7 @@
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           prefetch: 'http://pages.revox.io/json/countries-list.json'
         });
+
 
           var bestPictures = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -78,12 +81,7 @@
         /* Time picker
          * https://github.com/m3wolf/bootstrap3-timepicker
          */
-        $('#timepicker').timepicker().on('show.timepicker', function(e) {
-            var widget = $('.bootstrap-timepicker-widget');
-            widget.find('.glyphicon-chevron-up').removeClass().addClass('pg-arrow_maximize');
-            widget.find('.glyphicon-chevron-down').removeClass().addClass('pg-arrow_minimize');
-        });
-
+  
 
 
         // disabling dates

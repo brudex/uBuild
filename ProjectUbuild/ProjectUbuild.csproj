@@ -199,11 +199,21 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplyLoanViewModel.cs" />
+    <Compile Include="Models\DocUploadModel.cs" />
     <Compile Include="Models\HouseDesignsModel.cs" />
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoadDocsViewModel.cs" />
     <Compile Include="Models\LoanApplicationModels.cs" />
+    <Compile Include="Models\MyApplicationsViewModel.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\UploadDocModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -867,10 +877,14 @@
     <Content Include="assets\js\gallery.js" />
     <Content Include="assets\js\google_map.js" />
     <Content Include="assets\js\icon.js" />
+    <Content Include="assets\js\jquery.easing.min.js" />
+    <Content Include="assets\js\main.js" />
     <Content Include="assets\js\nestables.js" />
     <Content Include="assets\js\notifications.js" />
+    <Content Include="assets\js\pages.min.js" />
     <Content Include="assets\js\scripts.js" />
     <Content Include="assets\js\slider.js" />
+    <Content Include="assets\js\sweetalert.min.js" />
     <Content Include="assets\js\tables.js" />
     <Content Include="assets\js\timeline.js" />
     <Content Include="assets\js\tree_view.js" />
@@ -1748,9 +1762,25 @@
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_nl.min.js" />
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_pt.js" />
     <Content Include="assets\plugins\jquery-validation\js\localization\methods_pt.min.js" />
+    <Content Include="assets\plugins\jquery.fileupload.js" />
     <Content Include="assets\plugins\jquery.sieve.min.js" />
     <Content Include="assets\plugins\jquery\jquery-1.11.1.min.js" />
     <Content Include="assets\plugins\jquery\jquery-easy.js" />
+    <Content Include="assets\plugins\jquery-fileupload\app.js" />
+    <Content Include="assets\plugins\jquery-fileupload\cors\jquery.postmessage-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\cors\jquery.xdr-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-angular.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-audio.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-image.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-process.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-ui.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-validate.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload-video.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.fileupload.js" />
+    <Content Include="assets\plugins\jquery-fileupload\jquery.iframe-transport.js" />
+    <Content Include="assets\plugins\jquery-fileupload\main.js" />
+    <Content Include="assets\plugins\jquery-fileupload\vendor\jquery.ui.widget.js" />
     <Content Include="assets\plugins\lodash\lodash.min.js" />
     <Content Include="assets\plugins\mapplic\css\images\alpha20.png" />
     <Content Include="assets\plugins\mapplic\css\images\alpha50.png" />
@@ -1877,6 +1907,7 @@
     <Content Include="assets\plugins\velocity\velocity.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2251,9 +2282,24 @@
     <Content Include="assets\foundry\video\video.webm" />
     <Content Include="assets\foundry\video\video2.ogg" />
     <Content Include="assets\foundry\video\video2.webm" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ubuild.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\app\update-profile.conftroller.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jQuery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-intl-tel-input\css\intlInputPhone.css" />
@@ -2301,6 +2347,10 @@
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\defaults.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\getCountryData.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\loadUtils.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Views\Loan\Apply.cshtml" />
     <Content Include="Views\tes.html" />
@@ -2345,9 +2395,10 @@
     <Content Include="Views\Home\Guidelines.cshtml" />
     <Content Include="Views\FullHouse\Index.cshtml" />
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
+    <Content Include="Views\Loan\LoanDocs.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
     <Folder Include="logs\" />
   </ItemGroup>
   <ItemGroup>

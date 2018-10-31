@@ -1,4 +1,8 @@
-﻿<section class="cover fullscreen image-slider slider-all-controls controls-inside parallax">
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="cover fullscreen image-slider slider-all-controls controls-inside parallax">
     <ul class="slides">
         <li class="vid-bg image-bg overlay pt240 pb240">
             <div class="background-image-holder">
@@ -54,11 +58,11 @@
                 <div class="row">
                     <div class="col-sm-offset-1 text-center col-sm-10">
                         <h1 class="mb40 mb-xs-16 large">Your Land</h1>
-                        <h6 class="uppercase mb16">Let us help you own a land</h6>
+                        <h6 class="uppercase mb16">Get a loan to finance your Land</h6>
                         @*<p class="lead mb40">
                             Slider 3
                         </p>*@
-                        <a class="btn btn-lg btn-filled" href="/fullhouse/index">Apply now</a>
+                        <a class="btn btn-lg btn-filled" href="/loan/apply?loanType=Phase&phaseType=1">Apply now</a>
                     </div>
                 </div>
                 <!--end of row-->
@@ -73,11 +77,11 @@
                 <div class="row">
                     <div class="col-sm-offset-1 text-center col-sm-10">
                         <h1 class="mb40 mb-xs-16 large">Your Foundation</h1>
-                        <h6 class="uppercase mb16">Get help to complete your foundation</h6>
+                        <h6 class="uppercase mb16">Get a Loan to finance your 'Foundation'</h6>
                         @*<p class="lead mb40">
                             Slider 3
                         </p>*@
-                        <a class="btn btn-lg btn-filled" href="#">Start Exploring</a>
+                        <a class="btn btn-lg btn-filled" href="/fullhouse/index">Start Exploring</a>
                     </div>
                 </div>
                 <!--end of row-->
@@ -91,8 +95,8 @@
             <div class="container v-align-transform">
                 <div class="row">
                     <div class="col-sm-offset-1 text-center col-sm-10">
-                        <h1 class="mb40 mb-xs-16 large">Your Walling</h1>
-                        <h6 class="uppercase mb16">Let us help you put up your walls</h6>
+                        <h1 class="mb40 mb-xs-16 large">Your Block Work to Roofing</h1>
+                        <h6 class="uppercase mb16">Get a loan to finance your building, from block work to roofing</h6>
                         @*<p class="lead mb40">
                             Slider 3
                         </p>*@
@@ -110,8 +114,8 @@
             <div class="container v-align-transform">
                 <div class="row">
                     <div class="col-sm-offset-1 text-center col-sm-10">
-                        <h1 class="mb40 mb-xs-16 large">Your Roofing</h1>
-                        <h6 class="uppercase mb16">Get help to roof your house</h6>
+                        <h1 class="mb40 mb-xs-16 large">Your Finishing</h1>
+                        <h6 class="uppercase mb16">Get a loan to finance your home finishing</h6>
                         @*<p class="lead mb40">
                             Slider 3
                         </p>*@
@@ -130,7 +134,7 @@
                 <div class="row">
                     <div class="col-sm-offset-1 text-center col-sm-10">
                         <h1 class="mb40 mb-xs-16 large">Fixtures and Fittings</h1>
-                        <h6 class="uppercase mb16">Get a loan to finance your Fixtures and fittings  </h6>
+                        <h6 class="uppercase mb16">Get a loan to finance your home Fixtures and Fittings</h6>
                         @*<p class="lead mb40">
                             Slider 3
                         </p>*@

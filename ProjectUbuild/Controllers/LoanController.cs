@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using ProjectUbuild.Models;
 using uBuildCore;
 
@@ -18,6 +17,16 @@ namespace ProjectUbuild.Controllers
         {
             return View();
         }
+        [Authorize]
+        public ActionResult LoanDocs(string clientUlain)
+        {
+            if (string.IsNullOrEmpty(clientUlain))
+               return Redirect("/Home/MyApplications");
+
+            var vm = new LoadDocsViewModel(clientUlain);
+
+            return View(vm);
+        }
 
         // GET: Loan
 
@@ -29,14 +38,33 @@ namespace ProjectUbuild.Controllers
             if (n.Count > 1)
             {
                 var dict = n.ToDictionary();
-                dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+
+                if (dict.ContainsKey("currency"))
+                    dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
                 var json = new JavaScriptSerializer().Serialize(dict);
                 viewModel.json = json;
             }
             return View(viewModel);
         }
 
-        
-        
+
+
+        [Authorize]
+        public ActionResult PostLoanDoc(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the filename
+                var fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                file.SaveAs(path);
+            }
+            // redirect back to the index action to show the form once again
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

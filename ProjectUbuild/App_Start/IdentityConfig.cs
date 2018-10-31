@@ -60,6 +60,7 @@ namespace ProjectUbuild
     {
         public Task SendAsync(IdentityMessage message)
         {
+            GHLService.Notification.SendEmail(message.Destination,message.Subject, message.Body);
             // Plug in your email service here to send an email.
             return Task.FromResult(0);
         }
@@ -69,6 +70,7 @@ namespace ProjectUbuild
     {
         public Task SendAsync(IdentityMessage message)
         {
+            GHLService.Notification.SendSMS(message.Destination, message.Body);
             // Plug in your sms service here to send a text message.
             return Task.FromResult(0);
         }

@@ -7,35 +7,35 @@ namespace uBuildCore
     public class LoanApplicationHandler
     {
 
-        public static ServiceResponse CheckEligibility(JObject data,int clientId = 0,string customerNo = null)
-        { 
+        public static ServiceResponse CheckEligibility(JObject data, int clientId = 0, string customerNo = null)
+        {
             int currencyId = DbHandler.Instance.GetCurrencyId(data["currency"].ToString());
             var checkEligibilityRequest = new CheckEligibilityRequest();
             if (clientId > 0)
             {
                 checkEligibilityRequest.ClientId = clientId;
             }
-            if (customerNo!=null)
+            if (customerNo != null)
             {
                 checkEligibilityRequest.CustomerNo = customerNo;
             }
             checkEligibilityRequest.IncomeCurrencyId = currencyId;
             checkEligibilityRequest.TypeChecked = data["loanType"].ToStringOrEmpty().ToUpper() == "FULLHOUSE" ? 1 : 2;
             checkEligibilityRequest.LoanCurrencyId = currencyId;
-            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>(); 
+            checkEligibilityRequest.LoanAmount = data["loanAmount"].ToObject<decimal>();
             checkEligibilityRequest.MonthlyIncome = data["monthlyIncome"].ToObject<decimal>();
             string loanTenureUnit = data["loanTenureUnit"].ToStringOrEmpty();
             if (loanTenureUnit == "Years")
             {
-                checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>()*12;
+                checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>() * 12;
             }
             else
             {
                 checkEligibilityRequest.LoanTenorMonths = data["loanTenure"].ToObject<int>();
-            } 
+            }
             if (checkEligibilityRequest.TypeChecked == 2)
             {
-                checkEligibilityRequest.PhaseChecked =  data["phase"].ToInteger();
+                checkEligibilityRequest.PhaseChecked = data["phase"].ToInteger();
             }
             var response = new ServiceResponse();
             try
@@ -45,8 +45,8 @@ namespace uBuildCore
                 if (result.Qualified)
                 {
                     response.Message = "You are qualified for a loan.\n";
-                    response.Message += "Your monthly repayment amount is "+ data["currency"].ToString()+" " + result.MonthlyRePmt+"\n";
-                    response.Message += "Your have a borrowing capacity of  "+ data["currency"].ToString()+" " + result.BorrowingCap;
+                    response.Message += "Your monthly repayment amount is " + data["currency"].ToString() + " " + result.MonthlyRePmt + "\n";
+                    response.Message += "Your have a borrowing capacity of  " + data["currency"].ToString() + " " + result.BorrowingCap;
                 }
                 else
                 {
@@ -61,30 +61,30 @@ namespace uBuildCore
                 response.Message = "Error checking eligibility";
                 Logger.Error("Error checking eligiblity", ex);
             }
-            return response; 
+            return response;
         }
 
-        public static ServiceResponse ApplyForLoan(JObject data,ClientAuths client)
+        public static ServiceResponse ApplyForLoan(JObject data, ClientAuths client)
         {
             var response = new ServiceResponse();
             var loaApp = new LoanAppls();
             loaApp.ClientId = client.RecordId;
             string ulain = DbHandler.Instance.GenerateUlain();
-             int currencyId = data["currency"].ToInteger();
+            int currencyId = data["currency"].ToInteger();
             loaApp.AmtSought = data["AmtSought"].ToDecimal();
-            loaApp.LoanApplTypeId = data["applyingFor"].ToInteger(); 
-            loaApp.ApplSubmitDate= DateTime.Now;
-            
+            loaApp.LoanApplTypeId = data["applyingFor"].ToInteger();
+            loaApp.ApplSubmitDate = DateTime.Now;
             string customerNo = data["customerNo"].ToStringOrEmpty();
-            loaApp.CustomerNo = string.IsNullOrEmpty(customerNo)?null:customerNo;  
+            loaApp.CustomerNo = string.IsNullOrEmpty(customerNo) ? null : customerNo;
             loaApp.ULAIN = ulain;
+            loaApp.BuildingPhaseId = null;
             if (loaApp.LoanApplTypeId != 1)
             {
-              loaApp.BuildingPhaseId = data["forPhase"].ToInteger(); ;
-
+                loaApp.BuildingPhaseId = data["forPhase"].ToInteger(); ;
             }
+
             loaApp.PurposeofLoan = data["PurposeofLoan"].ToStringOrEmpty();
-            loaApp.RepaymentMethodId = data["RepaymentMethod"].ToInteger();  
+            loaApp.RepaymentMethodId = data["RepaymentMethod"].ToInteger();
             loaApp.ProtectionCover = true;
             loaApp.ProtectionSecured = true;
             loaApp.ProtectionSecurityType = data["ProtectionSecurityType"].ToStringOrEmpty();
@@ -98,7 +98,7 @@ namespace uBuildCore
             {
                 loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>();
             }
-            loaApp.LoanTermMonths = data["loanTenure"].ToInteger()*12;
+            
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;
             loaApp.ApplSubmitDate = DateTime.Now;
@@ -108,10 +108,10 @@ namespace uBuildCore
             DbHandler.Instance.SaveLoanApplication(loaApp);
             response.Status = "00";
             response.Message = ulain;
-            return response;  
+            return response;
 
         }
 
-       
+
     }
 }

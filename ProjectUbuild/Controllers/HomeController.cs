@@ -17,7 +17,7 @@ namespace ProjectUbuild.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult MyApplications()
         {
             var clientAuth = User.GetUbuildClient();

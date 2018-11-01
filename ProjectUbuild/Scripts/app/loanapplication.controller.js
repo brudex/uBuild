@@ -126,12 +126,17 @@
         }
 
         function translateVals() {
-            getEligibilityValues();
+            
             if ($window.loanVals) {
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
                 vm.applyModel.loanTenure = $window.loanVals.loanTenure;
+                if ($window.loanVals.customerNo) {
+                    vm.applyModel.customerNo = $window.loanVals.customerNo;
+                }
+                vm.applyModel.FullName = $window.loanVals.fullName;
+                vm.applyModel.accountNumber = $window.loanVals.accountNumber;
+                vm.applyModel.customerNo = $window.loanVals.customerNo;
                 vm.applyModel.currency = Number($window.loanVals.currencyId);
-                console.log('The currency is >>>', vm.applyModel.currency);
                 vm.applyModel.loanTenureUnit = "Years";
                 if ($window.loanVals.loanType === "Fullhouse") {
                     vm.applyModel.applyingFor = "1";
@@ -140,7 +145,8 @@
                     vm.applyModel.forPhase = Number($window.loanVals.phaseType);
                     console.log("vm.applyModel.forPhase", vm.applyModel.forPhase);
                 }
-            } 
+            }
+             
         }
 
         getRepaymentMethods();

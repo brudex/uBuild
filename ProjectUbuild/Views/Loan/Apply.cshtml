@@ -77,13 +77,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group ">
                                                 <label>Account Number</label>
-                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.accountNumber" placeholder="GHL customers only">
+                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.accountNumber" placeholder="GHL customers only" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Customer ID</label>
-                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.customerNo">
+                                                <input type="text" class="form-control" data-ng-model="vm.applyModel.customerNo" readonly="" placeholder="GHL customers only">
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@
 
                                         <label>Repayment Method</label>
                                         <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
-                                           <option value="">-Select Repayment Method-</option>
+                                            <option value="">-Select Repayment Method-</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -207,6 +207,10 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+
+                <script type="text/javascript">
+                     window.loanVals = @Html.Raw(Model.json);
+                </script>
             }
 
            
@@ -214,6 +218,3 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    window.loanVals = @Html.Raw(Model.json)
-</script>

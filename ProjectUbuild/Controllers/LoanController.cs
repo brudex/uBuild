@@ -39,13 +39,23 @@ namespace ProjectUbuild.Controllers
             var ulains = DbHandler.Instance.GetClientLoanProcStages(clientAuth.RecordId, "U");
             if (ulains.Count == 0)
             {
+
                 viewModel.hasApplied = false;
                 if (n.Count > 1)
                 {
+                    
                     var dict = n.ToDictionary();
-
                     if (dict.ContainsKey("currency"))
+                    {
                         dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+                    }
+                    var clientInfo = clientAuth.GetClientInfo();
+                    if (clientInfo != null)
+                    {
+                        dict["fullName"] = clientInfo.FirstName + " "+clientInfo.LastName;
+                        dict["accountNumber"] = clientInfo.CustomerNo; //todo get acct number
+                        dict["customerNo"] = clientInfo.CustomerNo; 
+                    } 
                     var json = new JavaScriptSerializer().Serialize(dict);
                     viewModel.json = json;
                 }
@@ -53,8 +63,7 @@ namespace ProjectUbuild.Controllers
             else
             {
                 viewModel.hasApplied = true;
-            }
-            
+            } 
             return View(viewModel);
         }
 

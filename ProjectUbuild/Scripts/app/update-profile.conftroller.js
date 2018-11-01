@@ -26,7 +26,7 @@
         vm.submitProfile = function (formValid) {
             console.log('form is valid', formValid);
             vm.formSubmitted = true;
-            if (formValid) {
+            //if (true) {
                 try {
                     vm.ajax = true;
                     services.submitProfile(vm.profile,
@@ -40,7 +40,7 @@
                 } catch (e) {
                     utils.alertError("An error occured. Please try again");
                 }
-            }
+         //   }
         }
 
         vm.saveAndNext = function (formValid, pageNo) {

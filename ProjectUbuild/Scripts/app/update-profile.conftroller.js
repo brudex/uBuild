@@ -27,42 +27,45 @@
             console.log('form is valid', formValid);
             vm.formSubmitted = true;
             //if (true) {
-                try {
-                    vm.ajax = true;
-                    services.submitProfile(vm.profile,
-                        function (response) {
-                            console.log("Response from server >>", response);
-                            if (response.Status === "00") {
-                                utils.alertSuccess(response.Message);
-                            }
-                            vm.ajax = false;
-                        });
-                } catch (e) {
-                    utils.alertError("An error occured. Please try again");
-                }
-         //   }
+            try {
+                vm.ajax = true;
+                services.submitProfile(vm.profile,
+                    function (response) {
+                        console.log("Response from server >>", response);
+                        if (response.Status === "00") {
+                            utils.alertSuccess(response.Message);
+                        }
+                        vm.ajax = false;
+                    });
+            } catch (e) {
+                utils.alertError("An error occured. Please try again");
+            }
+            //   }
         }
 
         vm.saveAndNext = function (formValid, pageNo) {
             console.log('form is valid', formValid);
-            if (true) {
+            if (formValid) {
                 vm.ajax = true;
                 var payload = { data: vm.profile, pageNo: pageNo }
-                services.submitProfile(vm.profile, function (response) {
-                    console.log("Response from server >>", response);
-                    if (response.Status === "00") {
-                        utils.alertSuccess(response.Message);
-                        swal({
-                            title: "Profile update Successful",
-                            text: response.Message,
-                            type: "success"
-                        }).then(function () {
-                            window.location.reload();
-                        });
+                services.submitProfile(vm.profile,
+                    function(response) {
+                        console.log("Response from server >>", response);
+                        if (response.Status === "00") {
+                            utils.alertSuccess(response.Message);
+                            swal({
+                                title: "Profile update Successful",
+                                text: response.Message,
+                                type: "success"
+                            }).then(function() {
+                                window.location.reload();
+                            });
 
-                    }
-                    vm.ajax = false;
-                });
+                        }
+                        vm.ajax = false;
+                    });
+            } else {
+                utils.alertError("Please complete this section to continue.");
             }
         }
 
@@ -432,7 +435,29 @@
             onNext: function (tab, navigation, index) {
                 console.log("Showing next tab");
 
-                //vm.saveAndNext();
+                var formId = "";
+
+                switch (index) {
+                    case 1:
+                        formId = "";
+                        break;
+                    case 2:
+                        formId = "basicInfoForm";
+                        break;
+                    case 3:
+                        formId = "residenceInfoForm";
+                        break;
+                    case 4:
+                        formId = "identificationForm";
+                        break;
+                    case 5:
+                        formId = "employmentForm";
+                        break;
+                }
+
+                //use
+                if (formId != "")
+                    $('#rootwizard').find("form[name*='" + formId + "']").trigger('submit');
             },
             onPrevious: function (tab, navigation, index) {
                 console.log("Showing previous tab");
@@ -440,7 +465,7 @@
             onInit: function () {
                 $('#rootwizard ul').removeClass('nav-pills');
             },
-            onFinish:function() {
+            onFinish: function () {
                 console.log("finished");
             }
 
@@ -452,6 +477,11 @@
             });
         });
 
-       
+        //handle finish button here
+        $('#rootwizard .finish').click(function () {
+
+            $('#rootwizard').find("a[href*='tab1']").trigger('click');
+        });
+
     }
 })();

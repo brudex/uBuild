@@ -142,7 +142,7 @@ else
                             <!--basic info tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab2">
                                 <div class="row row-same-height">
-                                    <form name="basicInfoForm" novalidate>
+                                    <form name="basicInfoForm" novalidate id="basicInfoForm" data-ng-submit="vm.saveAndNext(basicInfoForm.$valid)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
@@ -306,7 +306,7 @@ else
                             <!--residence info tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab3">
                                 <div class="row row-same-height">
-                                    <form name="residenceInfoForm" novalidate="">
+                                    <form name="residenceInfoForm" id="residenceInfoForm" novalidate="" data-ng-submit="vm.saveAndNext(residenceInfoForm.$valid)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
@@ -428,7 +428,7 @@ else
                             <!--identification tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab4">
                                 <div class="row row-same-height">
-                                    <form name="identificationForm">
+                                    <form name="identificationForm" id="identificationForm" novalidate="" data-ng-submit="vm.saveAndNext(identificationForm.$valid)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
@@ -504,7 +504,7 @@ else
                             <!--employment tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab5">
                                 <div class="row row-same-height">
-                                    <form name="employmentForm" novalidate>
+                                    <form name="employmentForm" id="employmentForm" novalidate data-ng-submit="vm.saveAndNext(employmentForm.$valid)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
@@ -603,7 +603,7 @@ else
                             <!--emergency tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab6">
                                 <div class="row row-same-height">
-                                    <form name="emergencyForm" novalidate>
+                                    <form name="emergencyForm" novalidate id="emergencyForm" data-ng-submit="vm.submitProfile(emergencyForm.$valid)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>

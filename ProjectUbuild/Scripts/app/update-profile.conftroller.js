@@ -52,6 +52,14 @@
                     console.log("Response from server >>", response);
                     if (response.Status === "00") {
                         utils.alertSuccess(response.Message);
+                        swal({
+                            title: "Profile update Successful",
+                            text: response.Message,
+                            type: "success"
+                        }).then(function () {
+                            window.location.reload();
+                            });
+
                     }
                     vm.ajax = false;
                 });

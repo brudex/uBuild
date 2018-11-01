@@ -16,6 +16,7 @@ namespace ProjectUbuild.Models
         public string json { get; set; }
         public string phaseType { get; set; }
         public bool hasApplied { get; set; }
+
     }
     
 }

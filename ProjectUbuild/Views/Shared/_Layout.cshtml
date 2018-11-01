@@ -52,7 +52,7 @@
                                     @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
                                     <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
 
-                                    <a href="https://www.directpay.online/login" class="dropdown-item" style="border:1px solid #f35958"><i class="fa fa-money"></i>Market Place</a>
+                                   
 
                                     @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
                                     {
@@ -74,7 +74,7 @@
                     else
                     {
                         @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-sm btn-filled", style = "margin-right:5px" })
-                        <a href="https://www.directpay.online/login" class="btn btn-sm" style="border:1px solid #f35958">Market Place</a>
+                        <a href="https://www.directpay.online/login" target="_blank" class="btn btn-sm" style="border:1px solid #f35958">Market Place</a>
                         @*                    @Html.ActionLink("Market Place", "Login", "Account", null, new { @class = "btn btn-sm ", style = "border:1px solid #f35958" })*@
                     }
 
@@ -147,7 +147,7 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    <a href="https://www.directpay.online/login" class="btn btn-sm" style="border: 1px solid #f35958">Market Place</a>
+                                    <a href="https://www.directpay.online/login" target="_blank" class="btn btn-sm" style="border: 1px solid #f35958">Market Place</a>
                                 </li>
                             }
                             <li class="hidden-lg">

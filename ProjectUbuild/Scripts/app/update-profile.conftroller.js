@@ -43,7 +43,8 @@
             //   }
         }
 
-        vm.saveAndNext = function (formValid, pageNo) {
+        vm.saveAndNext = function (formValid, pageNo, e) {
+            e.preventDefault();
             console.log('form is valid', formValid);
             if (formValid) {
                 vm.ajax = true;

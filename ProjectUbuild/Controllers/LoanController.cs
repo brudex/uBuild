@@ -35,15 +35,26 @@ namespace ProjectUbuild.Controllers
         {
             var viewModel = new ApplyLoanViewModel();
             NameValueCollection n = Request.QueryString;
-            if (n.Count > 1)
+            var clientAuth = User.GetUbuildClient();
+            var ulains = DbHandler.Instance.GetClientLoanProcStages(clientAuth.RecordId, "U");
+            if (ulains.Count == 0)
             {
-                var dict = n.ToDictionary();
+                viewModel.hasApplied = false;
+                if (n.Count > 1)
+                {
+                    var dict = n.ToDictionary();
 
-                if (dict.ContainsKey("currency"))
-                    dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
-                var json = new JavaScriptSerializer().Serialize(dict);
-                viewModel.json = json;
+                    if (dict.ContainsKey("currency"))
+                        dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+                    var json = new JavaScriptSerializer().Serialize(dict);
+                    viewModel.json = json;
+                }
             }
+            else
+            {
+                viewModel.hasApplied = true;
+            }
+            
             return View(viewModel);
         }
 

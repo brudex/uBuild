@@ -3,7 +3,11 @@
     ViewBag.Title = "MyApplications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .form-group label {
+        font-size: 1.1em!important;
+    }
+</style>
 <section class="page-title page-title-2 image-bg overlay parallax" style="height: 125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
@@ -51,114 +55,109 @@
                     <ul class="content">
                         <li class="active">
                             <div class="tab-content">
-
                                 <h4>
                                     Status of Recent Loan application.
                                 </h4>
-
                                 @if (Model.currentLoanApplication != null)
                                 {
                                     <form class="form-horizontal">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">ULAIN</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">ULAIN</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.ULAIN</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.ActionLink("","","")
-                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new {clientUlain = Model.currentLoanApplication.ULAIN})
+                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new { clientUlain = Model.currentLoanApplication.ULAIN })
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Loan Application Type</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Loan Application Type</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.GetApplTypeName()</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Loan Tenure(Months)</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Loan Tenure(Months)</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LoanTermMonths</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Loan Amount</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Loan Amount</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.CurrencyCode @Model.currentLoanApplication.AmtSought</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Purpose of Loan </label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Purpose of Loan </label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.PurposeofLoan</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Repayment Method </label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Repayment Method </label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.RepaymentMethod</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Initial Review</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Initial Review</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS01InitialReviewDesc()</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Credit Assessment </label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Credit Assessment </label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS02CreditAssessmentDesc()</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Risk Assessment </label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Risk Assessment </label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS03RiskAssessmentDesc()</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Credit Approval </label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Credit Approval </label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS04CreditApprovalDesc()</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Client Confirmation</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Client Confirmation</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS05ClientConfirmationDesc()</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Loan Disbursement</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Loan Disbursement</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.LPS06LoanDisbursementDesc()</p>
                                             </div>
                                         </div>
+                                         
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Agreed to <a href="/terms">Terms</a></label>
-                                            <div class="col-sm-10">
-                                                <p class="form-control-static">
-                                                    <input type="checkbox" name="name" value="agreed" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Application Date</label>
-                                            <div class="col-sm-10">
+                                            <label class="col-sm-4 control-label">Application Date</label>
+                                            <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.ApplSubmitDate.ToString("yyyy-MM-dd")</p>
                                             </div>
                                         </div>
 
+                                        <h4 class="col-sm-12 control-label">
+                                            <input type="checkbox" name="name" value="agreed" style="width: 25px" /> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a>  of this loan application
+                                            
+                                        </h4>
                                     </form>
                                 }
                                 else
                                 {
                                     <h4>
                                         <div class="alert alert-info ">
-                                            You have no pending loan application
+                                            You have no pending loan applications
+                                            <p><a class="btn btn-primary btn-lg" href="/loan/apply" style="color:white">Apply for loan</a></p>
                                         </div>
                                     </h4>
                                 }

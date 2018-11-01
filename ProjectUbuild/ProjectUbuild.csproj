@@ -2396,6 +2396,7 @@
     <Content Include="Views\FullHouse\Index.cshtml" />
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
     <Content Include="Views\Loan\LoanDocs.cshtml" />
+    <Content Include="Views\Profile\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

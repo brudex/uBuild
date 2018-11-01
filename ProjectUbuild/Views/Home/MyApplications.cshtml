@@ -190,7 +190,7 @@
                                                 {
                                                     <tr>
                                                         <td>@Model.loanApplications[k].ULAIN</td>
-                                                        <td>@Model.loanApplications[k].LoanApplTypeId==1?"Full House":"Phase" </td>
+                                                        <td>@(Model.loanApplications[k].LoanApplTypeId == 1 ? "Full House" : "Phase" )</td>
                                                         <td>@Model.loanApplications[k].LoanTermMonths </td>
                                                         <td>@Model.loanApplications[k].PurposeofLoan</td>
                                                         <td>@Model.loanApplications[k].RepaymentMethod</td>

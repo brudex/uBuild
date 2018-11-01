@@ -51,122 +51,128 @@
 
                         foreach (var design in Model.DesignRows[k].Designs)
                         {
-                            <div class="col-md-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-body rh_prop_card">
-                                        <div class="rh_prop_card__details row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body rh_prop_card">
+                                <div class="rh_prop_card__details row">
 
-                                            <img src="~/images/HouseImages/@design.DesignImage" class="img-responsive" style="width: 100%" />
-                                            <h3 style="margin-top: 15px">
-                                                @Html.ActionLink(design.DesignName, "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { })
+                                    <img src="~/images/HouseImages/@design.DesignImage" class="img-responsive" style="width: 100%;height: 210px" />
+                                    <h3 style="margin-top: 15px">
+                                        @Html.ActionLink(design.DesignName, "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { })
 
-                                            </h3>
-                                            <p class="text-info">@design.FullDescription</p>
+                                    </h3>
+                                    <p class="text-info">@design.FullDescription</p>
 
-                                            <div class="rh_prop_card__priceLabel row text-center">
+                                    <div class="rh_prop_card__priceLabel row text-center">
 
-                                                @*<h4 class="rh_prop_card__status">
-                                                        For Sale
-                                                    </h4>*@
-                                                <!-- /.rh_prop_card__type -->
-                                                <h3 class="rh_prop_card__price text-success">
-                                                    @design.ISOCode @design.BareDesignCost
-                                                </h3>
-                                                <!-- /.rh_prop_card__price -->
-                                                @Html.ActionLink("Select", "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { @class = "btn btn-default" })
-                                            </div>
-                                            <!-- /.rh_prop_card__priceLabel -->
-                                        </div>
+                                        @*<h4 class="rh_prop_card__status">
+                                                For Sale
+                                            </h4>*@
+                                        <!-- /.rh_prop_card__type -->
+                                        <h3 class="rh_prop_card__price text-success">
+                                            @design.ISOCode @design.BareDesignCost
+                                        </h3>
+                                        <!-- /.rh_prop_card__price -->
+                                        @Html.ActionLink("Select", "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { @class = "btn btn-default" })
                                     </div>
+                                    <!-- /.rh_prop_card__priceLabel -->
                                 </div>
                             </div>
+                        </div>
+                    </div>
                         }
 
                     }
                 </div>
             </div>
             <div class="tab-pane" id="tab-fillup2">
-               
+
                 <div class="row" ng-controller="EligibilityCtrl" ng-init="init()">
-                    <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
-                        <div class="progress-circle-indeterminate progress-circle-master"></div>
-                    </div>
-                    <p>
-                        <strong>U-Build</strong> <span class="text-master">Phase Option</span> helps you get a loan to complete a particular phase in your building project.<br/>
-                        Kindly choose the phase type and complete the form to check your eligibility and start your application process.
-                    </p>
+                    <form novalidate="" name="eligibilityForm" id="eligibilityForm">
+                        <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
+                        </div>
+                        <p>
+                            <strong>U-Build</strong> <span class="text-master">Phase Option</span> helps you get a loan to complete a particular phase in your building project.<br />
+                            Kindly choose the phase type and complete the form to check your eligibility and start your application process.
+                        </p>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
-                            <div>
-                                <select class="" data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
-                                    <option value="">-Select Phase-</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
+                                <div>
+                                    <select name="phaseType" class="" data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
+                                        <option value="">-Select Phase-</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-top: 15px">
-                        <div class="col-md-6">
-                            <div class="form-group-attached m-b-10">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default input-group">
-                                            <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
-                                            <select data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                                <option value="">Select Loan Tenure</option>
-                                                <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
-                                            </select>
+                        <div class="row" style="margin-top: 15px">
+                            <div class="col-md-6">
+                                <div class="form-group-attached m-b-10">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default input-group">
+                                                <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
+                                                <select data-ng-model="builder.loanTenure" name="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                    <option value="">Select Loan Tenure</option>
+                                                    <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default input-group">
-                                            <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
-                                            <select data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                                <option selected="selected" value="Years">Year(s)</option>
-                                                <option value="Months">Months</option>
-                                            </select>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default input-group">
+                                                <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
+                                                <select data-ng-model="builder.loanTenureUnit" name="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                    <option selected="selected" value="Years">Year(s)</option>
+                                                    <option value="Months">Months</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group form-group-default ">
-                                <label>Choose Currency</label>
-                                <div class="radio radio-success">
-                                    <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
-                                    <label for="currencyGHS">GHS</label>
-                                    <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
-                                    <label for="currencyUSD">USD</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-default ">
+                                    <label>Choose Currency</label>
+                                    <div class="radio radio-success">
+                                        <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
+                                        <label for="currencyGHS">GHS</label>
+                                        <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
+                                        <label for="currencyUSD">USD</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group form-group-default input-group">
-                                <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
-                                <input autocomplete="off" data-ng-model="builder.loanAmount" id="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-default input-group">
+                                    <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
+                                    <input autocomplete="off" data-ng-model="builder.loanAmount" name="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group form-group-default input-group">
-                                <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
-                                <input autocomplete="off" data-ng-model="builder.monthlyIncome" id="houseEligibility" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                <span data-ng-show="builder.loanTenure && builder.monthlyIncome" class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer; background: #ac5e81" data-ng-click="checkEligibility()">
-                                    Submit
-                                </span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-default input-group">
+                                    <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
+                                    <input autocomplete="off" data-ng-model="builder.monthlyIncome" name="monthlyIncome" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
+                        <div class="row">
+                            <button title="Complete the form to enable the button for submission"  ng-disabled="!eligibilityForm.$valid" class="btn btn-danger" style="cursor: pointer; background: #ac5e81" data-ng-click="checkEligibility()">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
                 </div>
+
+
             </div>
 
         </div>

@@ -31,29 +31,29 @@
     <div class="container-fluid container-fixed-lg" id="loanForm" data-ng-controller="LoanApplicationController as vm">
 
         <div id="rootwizard" class="m-t-50">
- 
+
             @if (Model.hasApplied)
             {
-            <div class="row" style="margin-top: 120px">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h4>Sorry , You cannot submit another application at this time.</h4>
-                    <h5>Go to the current application @Html.ActionLink("here.", "MyApplications", "Home", null, null)</h5>
+                <div class="row" style="margin-top: 120px">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <h4>Sorry , You cannot submit another application at this time.</h4>
+                        <h5>Go to the current application @Html.ActionLink("here.", "MyApplications", "Home", null, null)</h5>
+                    </div>
                 </div>
-            </div>
                 <div class="row">
                     <div class="text-center">
                         <h4>
                             <div class="alert alert-info ">
                                 You already have a loan application in queue. You cannot submit another application at this time.
                                 <p>
-                                    @Html.ActionLink("View My Loan Application.", "MyApplications", "Home",new {@class= "btn btn-primary btn-lg",style= "color: white" } ,null)
+                                    @Html.ActionLink("View My Loan Application.", "MyApplications", "Home", null, new { @class = "btn btn-primary btn-lg", style = "color: white" })
                                 </p>
                             </div>
                         </h4>
                     </div>
-                    
+
                 </div>
-                
+
             }
             else
             {
@@ -213,7 +213,7 @@
                 </script>
             }
 
-           
+
         </div>
     </div>
 </div>

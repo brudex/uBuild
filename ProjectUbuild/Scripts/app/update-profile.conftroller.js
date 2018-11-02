@@ -30,23 +30,24 @@
             console.log('form is valid', formValid);
             if (formValid) {
                 vm.ajax = true;
+                vm.profile.isFinalUpate = false;
                 if (pageNo === 5) {
                     vm.profile.isFinalUpate = true;
                 }
-                
                 services.submitProfile(vm.profile,
                     function(response) {
                         console.log("Response from server >>", response);
                         if (response.Status === "00") {
-                            utils.alertSuccess(response.Message);
-                            swal({
-                                title: "Profile update Successful",
-                                text: response.Message,
-                                type: "success"
-                            }).then(function() {
-                                window.location.reload();
-                            });
-
+                            if (pageNo === 5) {
+                                utils.alertSuccess(response.Message);
+                                swal({
+                                    title: "Profile update Successful",
+                                    text: response.Message,
+                                    type: "success"
+                                }).then(function() {
+                                    window.location.reload();
+                                });
+                            } 
                         }
                         vm.ajax = false;
                     });

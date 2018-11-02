@@ -342,8 +342,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var predicate = Predicates.Field<UncompletedProfile>(f => f.ClientId, Operator.Eq, uncompleted.ClientId);
-                conn.Delete(predicate);
+                conn.Execute("DELETE FROM [dbo].[UncompletedProfile] WHERE  clientId = @clientId",new {clientId=uncompleted.ClientId});
                 var id = conn.Insert(uncompleted);
                 return id;
             }

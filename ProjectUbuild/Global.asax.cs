@@ -23,16 +23,11 @@ namespace ProjectUbuild
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Logger.EnsureInitialized();
-            initializeDb();
+            
             
         }
 
-        public void initializeDb()
-        {
-            Bcf<UncompletedProfile>.Migrate();
-            BrudexCodeFirst.RunMigrations("DefaultConnection",true);
-        }
-
+     
         
     }
 }

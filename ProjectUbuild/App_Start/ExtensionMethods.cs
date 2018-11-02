@@ -101,7 +101,7 @@ namespace ProjectUbuild
 
         internal static bool ToBoolean(this JToken jt)
         {
-            var str = jt.ToString();
+            var str = jt.ToStringOrEmpty().ToLower();
             return str.Equals("true");
         }
 

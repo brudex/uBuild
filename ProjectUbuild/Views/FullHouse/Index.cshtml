@@ -101,7 +101,7 @@
                             <div class="col-md-6">
                                 <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
                                 <div>
-                                    <select name="phaseType" class="" data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
+                                    <select name="phaseType" required="" class="" data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
                                         <option value="">-Select Phase-</option>
                                     </select>
                                 </div>
@@ -114,7 +114,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group form-group-default input-group">
                                                 <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
-                                                <select data-ng-model="builder.loanTenure" name="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <select required="" data-ng-model="builder.loanTenure" name="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                                     <option value="">Select Loan Tenure</option>
                                                     <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
                                                 </select>
@@ -123,7 +123,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group form-group-default input-group">
                                                 <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
-                                                <select data-ng-model="builder.loanTenureUnit" name="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <select required="" data-ng-model="builder.loanTenureUnit" name="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                                     <option selected="selected" value="Years">Year(s)</option>
                                                     <option value="Months">Months</option>
                                                 </select>
@@ -150,7 +150,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-group-default input-group">
                                     <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
-                                    <input autocomplete="off" data-ng-model="builder.loanAmount" name="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                    <input  required autocomplete="off" data-ng-model="builder.loanAmount" name="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-group-default input-group">
                                     <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
-                                    <input autocomplete="off" data-ng-model="builder.monthlyIncome" name="monthlyIncome" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                    <input required="" autocomplete="off" data-ng-model="builder.monthlyIncome" name="monthlyIncome" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
                                 </div>
                             </div>

@@ -11,6 +11,7 @@
             submitProfile: postData('/api/AccountApi/SaveProfile'),
             checkLoanEligibility: postData('/api/LoanApi/CheckLoanEligibility'),
             getAccountProfile: postData('/api/AccountApi/AccountProfile'),
+            getUncompletedProfile: getData('/api/AccountApi/GetUncompletedProfile'),
             applyForLoan: postData('/api/LoanApi/ApplyForLoan'),
             getHouseDesigns: getData('/api/LoanApi/GetHouseDesigns'),
             getHouseCustomizables: getData('/api/LoanApi/GetHouseDesignCustomizibles'),

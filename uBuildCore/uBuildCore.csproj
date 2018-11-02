@@ -97,6 +97,7 @@
     <Compile Include="RestHandler.cs" />
     <Compile Include="ServiceResponse.cs" />
     <Compile Include="SoftTokenService.cs" />
+    <Compile Include="Models\UncompletedProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

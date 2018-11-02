@@ -23,32 +23,17 @@
                     vm.isReadonly = true;
             });
 
-        vm.submitProfile = function (formValid) {
-            console.log('form is valid', formValid);
-            vm.formSubmitted = true;
-            //if (true) {
-            try {
-                vm.ajax = true;
-                services.submitProfile(vm.profile,
-                    function (response) {
-                        console.log("Response from server >>", response);
-                        if (response.Status === "00") {
-                            utils.alertSuccess(response.Message);
-                        }
-                        vm.ajax = false;
-                    });
-            } catch (e) {
-                utils.alertError("An error occured. Please try again");
-            }
-            //   }
-        }
+       
 
         vm.saveAndNext = function (formValid, pageNo, e) {
             e.preventDefault();
             console.log('form is valid', formValid);
             if (formValid) {
                 vm.ajax = true;
-                var payload = { data: vm.profile, pageNo: pageNo }
+                if (pageNo === 5) {
+                    vm.profile.isFinalUpate = true;
+                }
+                
                 services.submitProfile(vm.profile,
                     function(response) {
                         console.log("Response from server >>", response);
@@ -106,18 +91,12 @@
             }
         }
 
-        function getAccountInfo(acctNo) {
-            console.log('getting account information >>>');
+        function getUncompletedProfile() {
             vm.ajax = true;
-            var payload = { allData: true };
-            if (acctNo) {
-                payload.acctNo = acctNo;
-            }
-            services.getAccountProfile(payload, function (response) {
-                console.log("Account information is >>", response);
+             services.getUncompletedProfile(function (response) {
+                console.log("Uncompleted profile is >>", response);
                 if (response.Status === "00") {
-                    Object.assign(vm.profile, response.data);
-                    formatProfileData();
+                    Object.assign(vm.profile, response.data); 
                 }
                 vm.ajax = false;
             });
@@ -479,10 +458,9 @@
         });
 
         //handle finish button here
-        $('#rootwizard .finish').click(function () {
-
-            $('#rootwizard').find("a[href*='tab1']").trigger('click');
+        $('#rootwizard .finish button').click(function () {
+            $('#rootwizard').find("form[name*='emergencyForm']").trigger('submit');
         });
-
+        getUncompletedProfile();
     }
 })();

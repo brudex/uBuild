@@ -603,7 +603,7 @@ else
                             <!--emergency tab-->
                             <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab6">
                                 <div class="row row-same-height">
-                                    <form name="emergencyForm" novalidate id="emergencyForm" data-ng-submit="vm.submitProfile(emergencyForm.$valid,5,$event)">
+                                    <form name="emergencyForm" novalidate id="emergencyForm" data-ng-submit="vm.saveAndNext(emergencyForm.$valid,5,$event)">
                                         <fieldset data-ng-disabled="vm.isReadonly">
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>

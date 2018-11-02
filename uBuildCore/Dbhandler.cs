@@ -337,5 +337,25 @@ namespace uBuildCore
                 return list;
             }
         }
+
+        public int SaveUnCompletedProfile(UncompletedProfile uncompleted)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<UncompletedProfile>(f => f.ClientId, Operator.Eq, uncompleted.ClientId);
+                conn.Delete(predicate);
+                var id = conn.Insert(uncompleted);
+                return id;
+            }
+        }
+
+        public UncompletedProfile GetUncompletedProfile(int clientId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var predicate = Predicates.Field<UncompletedProfile>(f => f.ClientId, Operator.Eq,clientId);
+                 return conn.GetList<UncompletedProfile>(predicate).FirstOrDefault();
+            }
+        }
     }
 }

@@ -663,6 +663,7 @@
     <Content Include="assets\foundry\variant\theme\js\ytplayer.min.js" />
     <Content Include="assets\foundry\video\video.mp4" />
     <Content Include="assets\foundry\video\video2.mp4" />
+    <Content Include="assets\foundry\video\videoUBuild.mp4" />
     <Content Include="assets\img\dashboard\pages_hero.jpg" />
     <Content Include="assets\img\demo\1.svg" />
     <Content Include="assets\img\demo\2.svg" />
@@ -1980,6 +1981,7 @@
     <Content Include="pages\img\editor_tray.png" />
     <Content Include="pages\img\editor_tray_2x.png" />
     <Content Include="pages\img\ghl-logo.jpg" />
+    <Content Include="pages\img\ghl-logox.jpg" />
     <Content Include="pages\img\icons\noti-cross-2x.png" />
     <Content Include="pages\img\icons\noti-cross.png" />
     <Content Include="pages\img\icons\sort_asc.png" />

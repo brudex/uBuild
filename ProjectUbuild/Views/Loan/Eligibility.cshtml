@@ -50,13 +50,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" ng-if="builder.loanType=='Phase'">
+                    <div class="row" ng-if="builder.loanType=='Phase'" style="margin-top: 15px">
                         <div class="col-md-10">
                             <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
                             <div>
-                                <select class=""  required data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
+                                <select class="" required data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
                                     <option value="">-Select Phase-</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-10">
+                            <div class="form-group form-group-default ">
+                                <label>Choose Currency</label>
+                                <div class="radio radio-success">
+                                    <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
+                                    <label for="currencyGHS">GHS</label>
+                                    <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
+                                    <label for="currencyUSD">USD</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,7 +89,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-group-default input-group">
                                             <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
-                                            <select required="" data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                            <select required="" data-ng-disabled="builder.loanType=='Phase'" data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                                 <option selected="selected" value="Years">Year(s)</option>
                                                 <option value="Months">Months</option>
                                             </select>
@@ -86,19 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group form-group-default ">
-                                <label>Choose Currency</label>
-                                <div class="radio radio-success">
-                                    <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
-                                    <label for="currencyGHS">GHS</label>
-                                    <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
-                                    <label for="currencyUSD">USD</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group form-group-default input-group">

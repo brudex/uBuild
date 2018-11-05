@@ -46,10 +46,9 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tab-fillup1">
                 <div class="row column-seperation">
-                    @for(var k = 0; k < Model.DesignRows.Count; k++)
-                    {
+                    
 
-                        foreach (var design in Model.DesignRows[k].Designs)
+                        @foreach (var design in Model.DesignRows)
                         {
                         <div class="col-md-4">
                             <div class="panel panel-default">
@@ -82,7 +81,7 @@
                         </div>
                         }
 
-                    }
+                    
                 </div>
             </div>
             <div class="tab-pane" id="tab-fillup2">

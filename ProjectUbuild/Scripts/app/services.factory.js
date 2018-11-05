@@ -21,7 +21,8 @@
             getBuildingPhases: getData('/api/LoanApi/GetBuildingPhases'), 
             sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
             validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo'),
-            getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits')
+            getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits'),
+            getPhaseLoanTenorLimits: getData('/api/LoanApi/GetPhaseLoanTenorLimits')
         }; 
          
 

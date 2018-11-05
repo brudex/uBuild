@@ -14,18 +14,16 @@
         vm.loanLimitsPhase = [];
         $scope.buildingPhases = [];
 
-        $scope.init = function(isLoanApp, callback) {
-            if (isLoanApp) {
-                isLoanApplication = isLoanApp;
-                callbackFunc = callback;
-                $scope.loading = false;
-            }
-
+        $scope.init = function(loanType, callback) {
+             
             $scope.builder = {
                 loanType: "",
                 phase: "",
                 loanTenureUnit : 'Years'
             };
+            if (loanType) {
+                $scope.builder.loanType = loanType;
+            }
          };
 
         $scope.$watch("builder.loanType",

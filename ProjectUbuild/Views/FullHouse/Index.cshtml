@@ -86,7 +86,7 @@
             </div>
             <div class="tab-pane" id="tab-fillup2">
 
-                <div class="row" ng-controller="EligibilityCtrl" ng-init="init()">
+                <div class="row" ng-controller="EligibilityCtrl" ng-init="init('Phase')">
                     <form novalidate="" name="eligibilityForm" id="eligibilityForm">
                         <div class="card-progress" data-ng-show="loading" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
                             <div class="progress-circle-indeterminate progress-circle-master"></div>
@@ -106,33 +106,9 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="row" style="margin-top: 15px">
-                            <div class="col-md-6">
-                                <div class="form-group-attached m-b-10">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-group-default input-group">
-                                                <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
-                                                <select required="" data-ng-model="builder.loanTenure" name="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                                    <option value="">Select Loan Tenure</option>
-                                                    <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-group-default input-group">
-                                                <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
-                                                <select required="" data-ng-model="builder.loanTenureUnit" name="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                                                    <option selected="selected" value="Years">Year(s)</option>
-                                                    <option value="Months">Months</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group form-group-default ">
                                     <label>Choose Currency</label>
@@ -145,10 +121,38 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row" style="margin-top: 15px">
+                            <div class="col-md-6">
+                                <div class="form-group-attached m-b-10">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default input-group">
+                                                <label   class="ng-binding">Please enter Loan Tenure.</label>
+                                                <select required="" data-ng-model="builder.loanTenure" name="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                    <option value="">Select Loan Tenure</option>
+                                                    <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default input-group">
+                                                <label   class="ng-binding">Tenure Unit.</label>
+                                                <select required="" data-ng-disabled="builder.loanType=='Phase'" data-ng-model="builder.loanTenureUnit" name="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                    <option selected="selected" value="Years">Year(s)</option>
+                                                    <option value="Months">Months</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group form-group-default input-group">
-                                    <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
+                                    <label   class="ng-binding">Please enter Loan Amount.</label>
                                     <input  required autocomplete="off" data-ng-model="builder.loanAmount" name="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
                                 </div>

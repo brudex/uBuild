@@ -396,13 +396,13 @@
                     var nextIconClass = nextIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnNext);
-                    btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
+                   // btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
 
                     var prevIcon = li.prev().find('.fa');
                     var prevIconClass = prevIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnPrev);
-                    btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
+                   // btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
                 } else if ($current == 1) {
                     // remove classes needed for button animations from previous button
                     btnPrev.removeClass('btn-animated from-left fa');

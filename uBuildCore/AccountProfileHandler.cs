@@ -33,7 +33,7 @@ namespace uBuildCore
                 if (tclient != null)
                 {
                     dataResult["customerNo"] = tclient.CustomerNo;
-                    dataResult["accountNumber"] = tclient.CustomerNo;
+                    dataResult["accountNumber"] = string.Format("XXX{0}XXXX",tclient.CustomerNo);
                 }
             }
             catch (Exception ex)

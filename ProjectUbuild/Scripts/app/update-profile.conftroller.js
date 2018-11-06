@@ -56,7 +56,7 @@
                     });
             } else {
                 wizard.bootstrapWizard('previous');
-                utils.alertError("Please complete this section to continue.");
+                utils.alertError("Please complete all required fields in this section to continue.");
             }
         }
 

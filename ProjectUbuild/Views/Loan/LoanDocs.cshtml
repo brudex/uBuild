@@ -7,7 +7,7 @@
 
 
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
-    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
+    <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px);  top: -100px;">
         <img alt="Background Image" class="background-image" src="img/home10.jpg" style="display: none;">
     </div>
     <div class="container-fluid">
@@ -33,7 +33,7 @@
 <section style="top:-80px">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <button type="button" class="btn btn-sm btn-filled mb0" data-toggle="modal" data-target="#uploadModal">Upload Document</button>
                 <table class="table table-responsive table-striped">
                     <thead>
@@ -42,6 +42,7 @@
                             <th>File Name</th>
                             <th>Description</th>
                             <th>Upload Date</th>
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,7 @@
                             <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
                             <td>@r.Description</td>
                             <td>@r.CreatedDate.ToLongDateString()</td>
+                            <td><button class="fa fa-remove"></button></td>
                         </tr>
                     }
                     </tbody>
@@ -80,24 +82,24 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea name="DocDescription" placeholder="Document Description" rows="3"></textarea>
+                                        <textarea name="DocDescription" required="" placeholder="Document Description" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="form-group form-group-default required">
+                                            <div class="form-group required">
                                                 <label>Select Document</label>
                                                 <span class="btn btn-success fileinput-button">
                                                     <i class="glyphicon glyphicon-plus"></i>
                                                     <span>Select files...</span>
                                                     <!-- The file input field used as target for the file upload widget -->
-                                                    <input id="fileupload" type="file" name="files[]" multiple>
+                                                    <input  id="fileupload" type="file" name="files[]" multiple>
                                                 </span>
                                                 <br>
                                                 <br>
                                                 <!-- The global progress bar -->
-                                                <div id="progress" class="progress">
+                                                <div id="progress" class="progress" style="clear: both;height: 5px">
                                                     <div class="progress-bar progress-bar-success"></div>
                                                 </div>
                                                 <!-- The container for the uploaded files -->

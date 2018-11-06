@@ -151,7 +151,7 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error': basicInfoForm.Title.$invalid && basicInfoForm.Title.$touched}">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error': basicInfoForm.Title.$invalid}">
                                                             <label>Title</label>
                                                             <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
                                                                 <option value="">--Select Title--</option>
@@ -164,7 +164,7 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : (basicInfoForm.FirstName.$touched  && basicInfoForm.FirstName.$invalid)  }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.FirstName.$invalid  }">
                                                             <label>First name</label>
                                                             <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="">
                                                         </div>
@@ -175,13 +175,13 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : basicInfoForm.MiddleName.$invalid && basicInfoForm.MiddleName.$touched}">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : basicInfoForm.MiddleName.$invalid }">
                                                             <label>Middle name</label>
                                                             <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.LastName.$invalid && basicInfoForm.LastName.$touched }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.LastName.$invalid  }">
                                                             <label>Last name</label>
                                                             <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
                                                         </div>
@@ -191,13 +191,13 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.maidenName.$invalid && basicInfoForm.maidenName.$touched }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.maidenName.$invalid  }">
                                                             <label>Maiden name</label>
                                                             <input type="text" class="form-control" name="maidenName" required="" data-ng-model="vm.profile.MaidenName">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.motherMaidenName.$invalid && basicInfoForm.motherMaidenName.$touched }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.motherMaidenName.$invalid  }">
                                                             <label>Mothers Maiden name</label>
                                                             <input type="text" class="form-control" name="motherMaidenName" data-ng-model="vm.profile.MothersMaidenName" required="">
                                                         </div>
@@ -208,7 +208,7 @@ else
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default input-group col-md-10">
-                                                            <div class="form-input-group required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid && basicInfoForm.DateOfBirth.$touched }">
+                                                            <div class="form-input-group required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid  }">
                                                                 <label>Date of birth</label>
                                                                 <input type="text" name="DateOfBirth" required="" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
                                                             </div>
@@ -220,7 +220,7 @@ else
 
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.PlaceOfBirth.$invalid && basicInfoForm.PlaceOfBirth.$touched }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.PlaceOfBirth.$invalid  }">
                                                             <label>Place of birth</label>
                                                             <input type="text" class="form-control" required="" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
                                                         </div>
@@ -260,9 +260,9 @@ else
                                                 <div class="row">
                                                     <div class="col-sm-6">
 
-                                                        <div class="form-group form-group-default form-group-default-select2 ">
+                                                        <div class="form-group form-group-default form-group-default-select2 required">
                                                             <label class="">Nationality</label>
-                                                            <select class="full-width select2-hidden-accessible" data-placeholder="Select Item" data-init-plugin="select2"
+                                                            <select class="full-width select2-hidden-accessible" required="" data-placeholder="Select Item" data-init-plugin="select2"
                                                                     tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" data-ng-model="vm.profile.Nationality">
                                                                 <option value="">Select Nationality..</option>
                                                             </select>
@@ -276,7 +276,7 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.Occupation.$invalid  }">
                                                             <label>Occupation</label>
                                                             <input type="text" class="form-control" name="Occupation" data-ng-model="vm.profile.Occupation" required="">
                                                         </div>
@@ -286,9 +286,9 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.MobilePhone.$invalid  }">
                                                             <label>Mobile Phone</label>
-                                                            <input type="text" class="form-control" name="MobilePhone" data-ng-model="vm.profile.MobilePhone">
+                                                            <input type="text" class="form-control" name="MobilePhone" required="" data-ng-model="vm.profile.MobilePhone">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -365,7 +365,7 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : residenceInfoForm.ResidentialAddress.$invalid  }">
                                                             <label>Residential Address</label>
                                                             <input type="text" class="form-control" name="ResidentialAddress" required="" data-ng-model="vm.profile.ResidentialAddress">
                                                         </div>
@@ -437,15 +437,15 @@ else
                                            <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : identificationForm.IdCardType.$invalid  }">
                                                             <label>ID Card Type</label>
                                                             <input type="text" class="form-control" name="IdCardType" required="" data-ng-model="vm.profile.IdCardType">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : identificationForm.IdCardType.$invalid  }">
                                                             <label>ID Card Number </label>
-                                                            <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.profile.IdCardNumber">
+                                                            <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.IdCardNumber.IdCardNumber">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -514,7 +514,7 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.EmploymentStatus.$invalid  }">
                                                             <label>Employment Status</label>
                                                             <select class="form-control" data-ng-model="vm.profile.EmploymentStatus" name="EmploymentStatus" required="">
                                                                 <option value="">--Select Title--</option>
@@ -525,7 +525,7 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.EmployerName.$invalid  }">
                                                             <label>Employer Name </label>
                                                             <input type="text" class="form-control" name="EmployerName" required="" data-ng-model="vm.profile.EmployerName">
                                                         </div>
@@ -551,7 +551,7 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.EmployerTypeOfBiz.$invalid  }">
                                                             <label>Employer Type Of Business </label>
                                                             <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" data-ng-model="vm.profile.EmployerTypeOfBiz">
                                                         </div>
@@ -584,9 +584,9 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.MonthlySalary.$invalid  }">
                                                             <label>Monthly Salary </label>
-                                                            <input type="text" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary">
+                                                            <input type="number" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">

@@ -42,6 +42,12 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
+        public List<PhaseLoanTenorLimits> GetPhaseLoanTenorLimits()
+        {
+            return DbHandler.Instance.GetList<PhaseLoanTenorLimits>();
+        }
+
+        [System.Web.Mvc.HttpGet]
         public List<RepaymentMethods> GetRepaymentMethods()
         {
             return DbHandler.Instance.GetRepaymentMethods();

@@ -10,49 +10,50 @@ namespace ProjectUbuild.Models
 {
     public class HouseDesignsModel
     {
-        public  List<HouseDesignRow> DesignRows { get; set; }
+        public  List<HouseDesigns> DesignRows { get; set; }
 
         public HouseDesignsModel()
         {
-            DesignRows = new List<HouseDesignRow>();
+            DesignRows = new List<HouseDesigns>();
         }
 
         public void GetData()
         { 
             var designs= DbHandler.Instance.GetHouseDesigns();
             designs = designs.OrderByDescending(x => x.RecordId).ToList();
-            var row = new HouseDesignRow();
-            for (var i = 0; i < designs.Count; i++)
-            { 
-                if (row.Designs.Count < 5)
-                {
-                    row.Designs.Add(designs[i]);
-                }
-                else
-                {
-                    DesignRows.Add(row);
-                    row = new HouseDesignRow();
-                }
-                if (i == designs.Count - 1)
-                {
-                    DesignRows.Add(row);
-                }
-            }
+            DesignRows.AddRange(designs);
+//            var row = new HouseDesignRow();
+//            for (var i = 0; i < designs.Count; i++)
+//            { 
+//                if (row.Designs.Count < 5)
+//                {
+//                    row.Designs.Add(designs[i]);
+//                }
+//                else
+//                {
+//                    DesignRows.Add(row);
+//                    row = new HouseDesignRow();
+//                }
+//                if (i == designs.Count - 1)
+//                {
+//                    DesignRows.Add(row);
+//                }
+//            }
 
         }
     }
 
 
-    public class HouseDesignRow
-    {
+    //public class HouseDesignRow
+    //{
 
-        public HouseDesignRow()
-        {
-            Designs = new List<HouseDesigns>();
-        }
-        public List<HouseDesigns> Designs { get; set; }
+    //    public HouseDesignRow()
+    //    {
+    //        Designs = new List<HouseDesigns>();
+    //    }
+    //    public List<HouseDesigns> Designs { get; set; }
 
         
 
-    }
+    //}
 }

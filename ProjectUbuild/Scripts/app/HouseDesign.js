@@ -66,7 +66,7 @@
                 });
                 if (selected.length) {
                     vm.maxLoanTenure = Number(selected[0].MaxTenorMonths)/12;
-                    vm.minLoanTenure = Number(selected[0].MinLoanAmount)/12;
+                    vm.minLoanTenure = 1; // Number(selected[0].MinLoanAmount)/12;
                 }
             });
         }
@@ -103,6 +103,9 @@
             console.log("The whole fixture  >>>", vm.model.selectedFixtures);
             delete vm.model.selectedFixtures[id];
             updateTotalCost();
+            vm.model.selectedFixture = null;
+            vm.getFixturesForCustomizable(vm.model.selectedCustomizable);
+           
         }
 
          
@@ -155,15 +158,17 @@
 
         vm.getTenureRange = function () {
             var ranges = [];
-            for (var k = 1; k <= 15; k++) {
+            for (var k = vm.minLoanTenure; k <= vm.maxLoanTenure; k++) {
                 ranges.push(k);
             }
             return ranges;
-        }
-
+        }    
+        
+        loadLoanAmountLimits(); 
         loadCustomizables();
         loadFittingsFixtures();
-        loadLoanAmountLimits(); 
+      
+         
     }
 
 

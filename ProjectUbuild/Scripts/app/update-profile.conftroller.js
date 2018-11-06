@@ -15,6 +15,8 @@
         var tokenValidated = false;
         vm.ajax = false;
         vm.accountNotVerified = true;
+        vm.isCurrentFormValid = true;
+        var wizard = null;
         $scope.$watch("vm.profile.IsAccountHolder",
             function (newValue) {
                 if (newValue == "No")
@@ -23,11 +25,12 @@
                     vm.isReadonly = true;
             });
 
-       
+
 
         vm.saveAndNext = function (formValid, pageNo, e) {
             e.preventDefault();
             console.log('form is valid', formValid);
+            vm.isCurrentFormValid = formValid;
             if (formValid) {
                 vm.ajax = true;
                 vm.profile.isFinalUpate = false;
@@ -35,7 +38,7 @@
                     vm.profile.isFinalUpate = true;
                 }
                 services.submitProfile(vm.profile,
-                    function(response) {
+                    function (response) {
                         console.log("Response from server >>", response);
                         if (response.Status === "00") {
                             if (pageNo === 5) {
@@ -44,14 +47,15 @@
                                     title: "Profile update Successful",
                                     text: response.Message,
                                     type: "success"
-                                }).then(function() {
+                                }).then(function () {
                                     window.location.reload();
                                 });
-                            } 
+                            }
                         }
                         vm.ajax = false;
                     });
             } else {
+                wizard.bootstrapWizard('previous');
                 utils.alertError("Please complete this section to continue.");
             }
         }
@@ -94,10 +98,10 @@
 
         function getUncompletedProfile() {
             vm.ajax = true;
-             services.getUncompletedProfile(function (response) {
+            services.getUncompletedProfile(function (response) {
                 console.log("Uncompleted profile is >>", response);
                 if (response.Status === "00") {
-                    Object.assign(vm.profile, response.data); 
+                    Object.assign(vm.profile, response.data);
                 }
                 vm.ajax = false;
             });
@@ -364,7 +368,7 @@
             MZ: "Mozambique"
         }
 
-        $('#rootwizard').bootstrapWizard({
+        wizard = $('#rootwizard').bootstrapWizard({
             onTabShow: function (tab, navigation, index) {
                 var $total = navigation.find('li').length;
                 var $current = index + 1;
@@ -396,13 +400,13 @@
                     var nextIconClass = nextIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnNext);
-                   // btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
+                    // btnNext.addClass(nextIconClass + ' btn-animated from-left fa');
 
                     var prevIcon = li.prev().find('.fa');
                     var prevIconClass = prevIcon.attr('class').match(/fa-[\w-]*/).join();
 
                     removeIcons(btnPrev);
-                   // btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
+                    // btnPrev.addClass(prevIconClass + ' btn-animated from-left fa');
                 } else if ($current == 1) {
                     // remove classes needed for button animations from previous button
                     btnPrev.removeClass('btn-animated from-left fa');
@@ -436,18 +440,18 @@
                         break;
                 }
 
-                //use
-                if (formId != "")
-                    $('#rootwizard').find("form[name*='" + formId + "']").trigger('submit');
+                
+                if (formId !== "") {
+                        $('#rootwizard').find("form[name*='" + formId + "']").trigger('submit');
+                }
+
+
             },
             onPrevious: function (tab, navigation, index) {
                 console.log("Showing previous tab");
             },
             onInit: function () {
                 $('#rootwizard ul').removeClass('nav-pills');
-            },
-            onFinish: function () {
-                console.log("finished");
             }
 
         });
@@ -463,5 +467,9 @@
             $('#rootwizard').find("form[name*='emergencyForm']").trigger('submit');
         });
         getUncompletedProfile();
+    }
+
+    function getFormStatus(isFormValid) {
+        return
     }
 })();

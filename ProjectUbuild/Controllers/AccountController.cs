@@ -113,14 +113,17 @@ namespace ProjectUbuild.Controllers
                     {
                         ghlclient.MobileNumber = model.Phonenumber.FormatMobile();
                     }
-                   
+
                     ghlclient.EncPassword = user.Id;
                     ghlclient.AuthorizerName = "system";
                     ghlclient.CreatedDate = DateTime.Now;
-                    ghlclient.LastLoginAt = DateTime.Now; 
+                    ghlclient.LastLoginAt = DateTime.Now;
                     DbHandler.Instance.SaveGhlClientProfile(ghlclient);
                     string emailMessage = "Thank you for signing up for GHL UBuild.";
+
                     GHLService.Notification.SendEmail(user.Email, "Welcome to UBuild", emailMessage);
+                    GHLService.Notification.SendSMS(ghlclient.MobileNumber, "Welcome to UBuild");
+
                     await SignInAsync(user, isPersistent: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -189,8 +192,8 @@ namespace ProjectUbuild.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 

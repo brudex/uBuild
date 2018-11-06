@@ -118,7 +118,7 @@ namespace ProjectUbuild.Controllers.Api
                                 var data = new LoanDocuments();
                                 data.ULAIN = clientUlain;
                                 data.Description = formValues["DocDescription"];
-                                data.DocumentPath = tstamp + postedFile.FileName;
+                                data.DocumentPath = clientUlain + "/" + tstamp + postedFile.FileName;
                                 data.CreatedDate = DateTime.Now;
                                 data.DateUploaded = DateTime.Now;
                                 data.CreatorId = User.GetUbuildClient().CreatorId;

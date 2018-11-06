@@ -151,7 +151,7 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error': profileForm.Title.$invalid && vm.formSubmitted}">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error': basicInfoForm.Title.$invalid && basicInfoForm.Title.$touched}">
                                                             <label>Title</label>
                                                             <select class="form-control" data-ng-model="vm.profile.Title" name="Title" required="">
                                                                 <option value="">--Select Title--</option>
@@ -159,11 +159,12 @@ else
                                                                 <option value="Mrs">Mrs.</option>
                                                                 <option value="Miss">Miss</option>
                                                                 <option value="Dr">Dr.</option>
+                                                                <option value="Prof">Prof.</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.FirstName.$invalid && vm.formSubmitted }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : (basicInfoForm.FirstName.$touched  && basicInfoForm.FirstName.$invalid)  }">
                                                             <label>First name</label>
                                                             <input type="text" class="form-control" data-ng-model="vm.profile.FirstName" name="FirstName" required="">
                                                         </div>
@@ -174,13 +175,13 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : profileForm.MiddleName.$invalid && vm.formSubmitted }">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : basicInfoForm.MiddleName.$invalid && basicInfoForm.MiddleName.$touched}">
                                                             <label>Middle name</label>
                                                             <input type="text" class="form-control" data-ng-model="vm.profile.MiddleName" name="MiddleName">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : profileForm.LastName.$invalid && vm.formSubmitted }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.LastName.$invalid && basicInfoForm.LastName.$touched }">
                                                             <label>Last name</label>
                                                             <input type="text" required class="form-control" name="LastName" data-ng-model="vm.profile.LastName">
                                                         </div>
@@ -190,13 +191,13 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default ">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.maidenName.$invalid && basicInfoForm.maidenName.$touched }">
                                                             <label>Maiden name</label>
                                                             <input type="text" class="form-control" name="maidenName" required="" data-ng-model="vm.profile.MaidenName">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.motherMaidenName.$invalid && basicInfoForm.motherMaidenName.$touched }">
                                                             <label>Mothers Maiden name</label>
                                                             <input type="text" class="form-control" name="motherMaidenName" data-ng-model="vm.profile.MothersMaidenName" required="">
                                                         </div>
@@ -207,9 +208,9 @@ else
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default input-group col-md-10">
-                                                            <div class="form-input-group">
+                                                            <div class="form-input-group required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid && basicInfoForm.DateOfBirth.$touched }">
                                                                 <label>Date of birth</label>
-                                                                <input type="text" name="DateOfBirth" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
+                                                                <input type="text" name="DateOfBirth" required="" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
                                                             </div>
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
@@ -219,9 +220,9 @@ else
 
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : basicInfoForm.PlaceOfBirth.$invalid && basicInfoForm.PlaceOfBirth.$touched }">
                                                             <label>Place of birth</label>
-                                                            <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
+                                                            <input type="text" class="form-control" required="" name="PlaceOfBirth" data-ng-model="vm.profile.PlaceOfBirth">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -370,9 +371,9 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default">
                                                             <label>Social Security No</label>
-                                                            <input type="text" class="form-control" name="SocialSecurityNo" required="" data-ng-model="vm.profile.SocialSecurityNo">
+                                                            <input type="text" class="form-control" name="SocialSecurityNo"  data-ng-model="vm.profile.SocialSecurityNo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -414,9 +415,9 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default">
                                                             <label>Residential Phone</label>
-                                                            <input type="text" class="form-control" name="ResidentialPhone" required="" data-ng-model="vm.profile.ResidentialPhone">
+                                                            <input type="text" class="form-control" name="ResidentialPhone"  data-ng-model="vm.profile.ResidentialPhone">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -618,7 +619,7 @@ else
                                                                 <option value="">--Select Title--</option>
                                                                 <option value="Mr">Mr.</option>
                                                                 <option value="Mrs">Mrs.</option>
-                                                                <option value="Miss">Miss</option>
+                                                                <option value="Miss">Miss.</option>
                                                                 <option value="Dr">Dr.</option>
                                                                 <option value="Prof">Prof.</option>
                                                             </select>
@@ -635,14 +636,14 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default">
+                                                        <div class="form-group form-group-default required">
                                                             <label>Emergency Contact LastName </label>
-                                                            <input type="text" class="form-control" name="EmergencycontactLastName" data-ng-model="vm.profile.EmergencycontactLastName">
+                                                            <input type="text" class="form-control" required="" name="EmergencycontactLastName" data-ng-model="vm.profile.EmergencycontactLastName">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default required">
-                                                            <label>Emergency Conact Phone </label>
+                                                            <label>Emergency Contact Phone </label>
                                                             <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone">
                                                         </div>
                                                     </div>
@@ -657,9 +658,9 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default">
                                                             <label>Emergency Contact Email </label>
-                                                            <input type="text" class="form-control" name="EmergencyContactEmail" required="" data-ng-model="vm.profile.EmergencyContactEmail">
+                                                            <input type="text" class="form-control" name="EmergencyContactEmail" data-ng-model="vm.profile.EmergencyContactEmail">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -687,7 +688,7 @@ else
                                     </li>
                                     <li class="next">
                                         <button class="btn btn-danger btn-cons   pull-right" data-ng-disabled="vm.isReadonly" type="button">
-                                            <span>Next</span>
+                                            <span>Save and Continue</span>
                                         </button>
                                     </li>
                                     <li class="next finish hidden" style="display: inline-block!important">

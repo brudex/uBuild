@@ -49,7 +49,7 @@
                     {
                         <tr>
                             <td>@r.RecordId</td>
-                            <td>@r.DocumentPath.Split('\\').LastOrDefault()</td>
+                            <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
                             <td>@r.Description</td>
                             <td>@r.CreatedDate.ToLongDateString()</td>
                         </tr>

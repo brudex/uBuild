@@ -342,7 +342,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                conn.Execute("DELETE FROM [dbo].[UncompletedProfile] WHERE  clientId = @clientId",new {clientId=uncompleted.ClientId});
+                conn.Execute("DELETE FROM [dbo].[UncompletedProfile] WHERE  clientId = @clientId", new { clientId = uncompleted.ClientId });
                 var id = conn.Insert(uncompleted);
                 return id;
             }
@@ -352,9 +352,20 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var predicate = Predicates.Field<UncompletedProfile>(f => f.ClientId, Operator.Eq,clientId);
-                 return conn.GetList<UncompletedProfile>(predicate).FirstOrDefault();
+                var predicate = Predicates.Field<UncompletedProfile>(f => f.ClientId, Operator.Eq, clientId);
+                return conn.GetList<UncompletedProfile>(predicate).FirstOrDefault();
             }
         }
+
+        public int RemoveClientDocs(string ULAIN, int Id)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                return conn.Execute(string.Format("delete from LoanDocuments where ULAIN=@ULAIN and RecordId=@Id"), new { ULAIN, Id });
+
+            }
+        }
+
+       
     }
 }

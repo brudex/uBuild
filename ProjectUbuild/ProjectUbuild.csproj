@@ -219,8 +219,6 @@
   <ItemGroup>
     <Content Include="assets\css\animate.css" />
     <Content Include="assets\css\flexslider.css" />
-    <Content Include="assets\css\jquery-ui-demo-ie8.css" />
-    <Content Include="assets\css\jquery-ui-demo.css" />
     <Content Include="assets\css\jquery.fileupload-noscript.css" />
     <Content Include="assets\css\jquery.fileupload-ui-noscript.css" />
     <Content Include="assets\css\jquery.fileupload-ui.css" />

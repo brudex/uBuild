@@ -46,16 +46,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach (var r in Model.loanDocuments)
-                    {
-                        <tr>
-                            <td>@r.RecordId</td>
-                            <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
-                            <td>@r.Description</td>
-                            <td>@r.CreatedDate.ToLongDateString()</td>
-                            <td><button class="fa fa-remove"></button></td>
-                        </tr>
-                    }
+                        @foreach (var r in Model.loanDocuments)
+                        {
+                            <tr>
+                                <td>@r.RecordId</td>
+                                <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
+                                <td>@r.Description</td>
+                                <td>@r.CreatedDate.ToLongDateString()</td>
+                                <td>
+                                    @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -94,7 +96,7 @@
                                                     <i class="glyphicon glyphicon-plus"></i>
                                                     <span>Select files...</span>
                                                     <!-- The file input field used as target for the file upload widget -->
-                                                    <input  id="fileupload" type="file" name="files[]" multiple>
+                                                    <input id="fileupload" type="file" name="files[]" multiple>
                                                 </span>
                                                 <br>
                                                 <br>
@@ -114,7 +116,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -122,5 +124,3 @@
     </div>
     <!--end of container-->
 </section>
-
-

@@ -4,7 +4,6 @@
     angular.module('ubuild')
         .controller('HouseDesignController', HouseDesignController);
     HouseDesignController.$inject = ['brudexservices', '$location', '$scope', '$window', 'brudexutils'];
-
     function HouseDesignController(services, location, $scope, $window,utils) {
         var vm = this;
         vm.ajax = false;
@@ -30,6 +29,7 @@
             function (newValue) {
                 console.log("vm.model.selectedFixture", newValue);
                 if (newValue !== null) {
+                    console.log("callig fixtureSelected >>>", newValue);
                      vm.fixtureSelected(newValue);
                 }
             });
@@ -51,6 +51,7 @@
                 vm.ajax = false;
                 console.log(response);
                 vm.fixtureFittings = response;
+                
             });
         }
 
@@ -76,8 +77,6 @@
             vm.model.totalLoanAmt = vm.model.houseCost;
             for (var item in vm.model.selectedFixtures) {
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
-                    console.log("Item in update is >>", item);
-                    console.log("Item in update is >>", vm.model.selectedFixtures[item]);
                     vm.model.totalLoanAmt = Number(vm.model.totalLoanAmt) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
@@ -86,10 +85,11 @@
 
         vm.fixtureSelected = function (fixtureId) {
             console.log('The selected fixture >>', fixtureId);
+            console.log('vm.customizableFixtureFittings length >>', vm.customizableFixtureFittings.length);
            var fixtures = vm.customizableFixtureFittings.filter(function(item) {
                 return Number(item.RecordId) === Number(fixtureId);
            });
-           if (fixtures.length) {
+           if(fixtures.length){
                console.log("The fixtured selected added >>", "record" + vm.model.selectedCustomizable.RecordId);
                 vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId] = fixtures[0];
                 vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId].ItemCount = vm.model.selectedCustomizable.ItemCount;
@@ -104,8 +104,7 @@
             delete vm.model.selectedFixtures[id];
             updateTotalCost();
             vm.model.selectedFixture = null;
-            vm.getFixturesForCustomizable(vm.model.selectedCustomizable);
-           
+            vm.getFixturesForCustomizable(vm.model.selectedCustomizable); 
         }
 
          
@@ -164,11 +163,28 @@
             return ranges;
         }    
         
+        function loadDefaults() { 
+            for (var k = 0, len = vm.customizables.length;k<len; k++) {
+                var customizable = vm.customizables[k];
+                var fixtures = vm.fixtureFittings.filter(function (item) {
+                    return Number(customizable.FixturesAndFittingsId) === Number(item.RecordId) && item.IsDefault;
+                });
+                console.log('Load defaults fixturs >>>', fixtures);
+                console.log('Load defaults vm.model.selectedFixtures >>>', customizable.RecordId);
+                if (fixtures.length) {
+                        vm.model.selectedFixtures["record" + customizable.RecordId] = fixtures[0];
+                        vm.model.selectedFixtures["record" + customizable.RecordId].ItemCount = customizable.ItemCount;
+                }  
+            }
+            updateTotalCost();
+            $scope.$digest();
+        } 
         loadLoanAmountLimits(); 
         loadCustomizables();
         loadFittingsFixtures();
-      
-         
+        setTimeout(function() {
+            loadDefaults();
+        }, 3000);  
     }
 
 

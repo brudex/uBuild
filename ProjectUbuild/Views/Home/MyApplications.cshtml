@@ -34,6 +34,9 @@
 
 <section>
     <div class="container" ng-controller="myApplicationsCtrl as vm">
+        <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+            <div class="progress-circle-indeterminate progress-circle-master"></div>
+        </div>
         <div class="row" style="margin-top: -40px">
             <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
                 @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;"></a>*@
@@ -60,15 +63,16 @@
                                 </h4>
                                 @if (Model.currentLoanApplication != null)
                                 {
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" ng-init="vm.init(@Json.Encode(@Model.currentLoanApplication))">
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">ULAIN</label>
                                             <div class="col-sm-8">
                                                 <p class="form-control-static">@Model.currentLoanApplication.ULAIN</p>
+
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new { clientUlain = Model.currentLoanApplication.ULAIN }, null)
+                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new {clientUlain = Model.currentLoanApplication.ULAIN}, null)
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Loan Application Type</label>
@@ -160,7 +164,7 @@
                                     <h4>
                                         <div class="alert alert-info ">
                                             You have no pending loan applications
-                                            <p><a class="btn btn-primary btn-lg" href="/loan/apply" style="color:white">Apply for loan</a></p>
+                                            <p><a class="btn btn-primary btn-lg" href="/loan/apply" style="color: white">Apply for loan</a></p>
                                         </div>
                                     </h4>
                                 }
@@ -176,33 +180,33 @@
 
                                         <table class="table ">
                                             <thead>
-                                                <tr>
-                                                    <td>ULain</td>
-                                                    <td>Loan Application Type </td>
-                                                    <td>Loan Tenure(Months) </td>
-                                                    <td>Purpose of Loan </td>
-                                                    <td>Repayment Method </td>
-                                                    <td>Loan Amount</td>
-                                                    <td>Application Date</td>
-                                                    <td>Process Comment</td>
-                                                    <td>Status</td>
-                                                </tr>
+                                            <tr>
+                                                <td>ULain</td>
+                                                <td>Loan Application Type </td>
+                                                <td>Loan Tenure(Months) </td>
+                                                <td>Purpose of Loan </td>
+                                                <td>Repayment Method </td>
+                                                <td>Loan Amount</td>
+                                                <td>Application Date</td>
+                                                <td>Process Comment</td>
+                                                <td>Status</td>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                @for (var k = 0; k < Model.loanApplications.Count; k++)
-                                                {
-                                                    <tr>
-                                                        <td>@Model.loanApplications[k].ULAIN</td>
-                                                        <td>@(Model.loanApplications[k].LoanApplTypeId == 1 ? "Full House" : "Phase" )</td>
-                                                        <td>@Model.loanApplications[k].LoanTermMonths </td>
-                                                        <td>@Model.loanApplications[k].PurposeofLoan</td>
-                                                        <td>@Model.loanApplications[k].RepaymentMethod</td>
-                                                        <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
-                                                        <td>@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
-                                                        <td>@Model.loanApplications[k].ProcessComment</td>
-                                                        <td>@Model.loanApplications[k].GetFinalStatus()</td>
-                                                    </tr>
-                                                }
+                                            @for (var k = 0; k < Model.loanApplications.Count; k++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.loanApplications[k].ULAIN</td>
+                                                    <td>@(Model.loanApplications[k].LoanApplTypeId == 1 ? "Full House" : "Phase")</td>
+                                                    <td>@Model.loanApplications[k].LoanTermMonths </td>
+                                                    <td>@Model.loanApplications[k].PurposeofLoan</td>
+                                                    <td>@Model.loanApplications[k].RepaymentMethod</td>
+                                                    <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
+                                                    <td>@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
+                                                    <td>@Model.loanApplications[k].ProcessComment</td>
+                                                    <td>@Model.loanApplications[k].GetFinalStatus()</td>
+                                                </tr>
+                                            }
 
 
                                             </tbody>

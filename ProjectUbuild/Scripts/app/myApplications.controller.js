@@ -6,10 +6,14 @@
 
     function myApplicationsCtrl($scope, $http, $timeout, $rootScope, services, utils, $window) {
         var vm = this;
+        vm.ajax = false;
+        vm.init = function (data) {
+            vm.uLain = data.ULAIN;
+        }
 
         $scope.$watch("vm.model.acceptTerms",
             function (acceptTerms) {
-
+                console.log(vm.model);
                 if (acceptTerms) {
                     swal({
                         title: "Accept Terms and Conditions",
@@ -25,9 +29,11 @@
                         .then((value) => {
                             switch (value) {
                                 case "applyButton":
+                                    vm.ajax = true;
                                     services.saveClientConfirmation({
-                                        uLain: "UB1810310421"
+                                        uLain: vm.uLain 
                                     }, function (response) {
+                                        vm.ajax = false;
                                         if (response.Status == "True") {
 
                                             swal({

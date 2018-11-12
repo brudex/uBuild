@@ -175,7 +175,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                return conn.Execute("update LoanProcStages set LPS05ClientConfirmation=2 where ULAIN=@uLain", new { uLain });
+                return conn.Execute("update LoanProcStages set LPS05ClientConfirmation=3 where ULAIN=@uLain", new { uLain });
             }
 
         }

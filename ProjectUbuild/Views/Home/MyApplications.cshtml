@@ -33,7 +33,7 @@
 </section>
 
 <section>
-    <div class="container">
+    <div class="container" ng-controller="myApplicationsCtrl as vm">
         <div class="row" style="margin-top: -40px">
             <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
                 @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;"></a>*@
@@ -149,7 +149,7 @@
                                         @if (@Model.currentLoanApplication.LPS05ClientConfirmation == 2)
                                         {
                                             <h4 class="col-sm-12 control-label">
-                                                <input type="checkbox" name="name" value="agreed" style="width: 25px"/> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a> of this loan application
+                                                <input ng-model="vm.model.acceptTerms" type="checkbox" name="name" value="agreed" style="width: 25px"/> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a> of this loan application
 
                                             </h4>
                                         }

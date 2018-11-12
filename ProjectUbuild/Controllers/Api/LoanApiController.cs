@@ -200,12 +200,12 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ClientConfirmation([FromBody]JObject data)
         {
-            var clientAuth = User.GetUbuildClient();
-            return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
+            var ulain = data["uLain"];
+            return LoanApplicationHandler.ClientConfirm(ulain.ToString());
         }
 
 
 
-        
+
     }
 }

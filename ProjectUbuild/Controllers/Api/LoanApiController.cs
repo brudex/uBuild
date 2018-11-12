@@ -29,6 +29,13 @@ namespace ProjectUbuild.Controllers.Api
         }
 
         [System.Web.Mvc.HttpGet]
+        public List<CustomizableFnFs> GetCustomizableFnFs()
+        {
+            return DbHandler.Instance.GetList<CustomizableFnFs>();
+        }
+
+
+        [System.Web.Mvc.HttpGet]
         public List<FixturesAndFittings> GetFittingsFixtures()
         {
             return DbHandler.Instance.GetFittingsFixtures();

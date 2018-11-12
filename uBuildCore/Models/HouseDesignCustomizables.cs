@@ -10,10 +10,13 @@ namespace uBuildCore.Models
     {
       public int RecordId{ get; set; }
       public string ItemDescription{ get; set; }
+      public int CustomizableFnFsId { get; set; }
       public int HouseDesignId{ get; set; }
       public int FixturesAndFittingsId { get; set; }
       public int ItemCount{ get; set; }
       public decimal UnitCost { get; set; }
-         
+        public string ItemImage { get; set; }
+        public bool IsDefault { get; set; }
+
     }
 }

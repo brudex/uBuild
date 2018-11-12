@@ -163,7 +163,8 @@
             return ranges;
         }    
         
-        function loadDefaults() { 
+        function loadDefaults() {
+            vm.ajax = true;
             for (var k = 0, len = vm.customizables.length;k<len; k++) {
                 var customizable = vm.customizables[k];
                 var fixtures = vm.fixtureFittings.filter(function (item) {
@@ -178,6 +179,7 @@
             }
             updateTotalCost();
             $scope.$digest();
+            vm.ajax = false;
         } 
         loadLoanAmountLimits(); 
         loadCustomizables();

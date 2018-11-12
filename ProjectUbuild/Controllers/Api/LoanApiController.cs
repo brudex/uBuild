@@ -190,8 +190,15 @@ namespace ProjectUbuild.Controllers.Api
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }
 
+        [System.Web.Mvc.HttpPost]
+        public ServiceResponse ClientConfirmation([FromBody]JObject data)
+        {
+            var clientAuth = User.GetUbuildClient();
+            return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
+        }
 
 
 
+        
     }
 }

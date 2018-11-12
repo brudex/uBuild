@@ -98,7 +98,7 @@ namespace uBuildCore
             {
                 loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>();
             }
-            
+
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;
             loaApp.ApplSubmitDate = DateTime.Now;
@@ -112,6 +112,14 @@ namespace uBuildCore
 
         }
 
-
+        public static ServiceResponse ClientConfirm(string uLain)
+        {
+            var result = DbHandler.Instance.SaveClientConfirm(uLain);
+            return new ServiceResponse()
+            {
+                data = result,
+                Status = (result == 1).ToString()
+            };
+        }
     }
 }

@@ -171,6 +171,14 @@ namespace uBuildCore
             }
         }
 
+        internal int SaveClientConfirm(string uLain)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                return conn.Execute("update LoanProcStages set LPS05ClientConfirmation=2 where ULAIN=@uLain", new { uLain });
+            }
+
+        }
         public ClientAuths GetClientAuthByEmail(string email)
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -366,6 +374,6 @@ namespace uBuildCore
             }
         }
 
-       
+
     }
 }

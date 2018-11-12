@@ -1,6 +1,6 @@
 ﻿@model ProjectUbuild.Models.MyApplicationsViewModel
 @{
-    ViewBag.Title = "MyApplications";
+    ViewBag.Title = "My loan Applications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -146,10 +146,13 @@
                                             </div>
                                         </div>
 
-                                        <h4 class="col-sm-12 control-label">
-                                            <input type="checkbox" name="name" value="agreed" style="width: 25px" /> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a>  of this loan application
+                                        @if (@Model.currentLoanApplication.LPS05ClientConfirmation == 2)
+                                        {
+                                            <h4 class="col-sm-12 control-label">
+                                                <input type="checkbox" name="name" value="agreed" style="width: 25px"/> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a> of this loan application
 
-                                        </h4>
+                                            </h4>
+                                        }
                                     </form>
                                 }
                                 else

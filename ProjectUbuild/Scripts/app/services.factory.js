@@ -15,6 +15,7 @@
             applyForLoan: postData('/api/LoanApi/ApplyForLoan'),
             getHouseDesigns: getData('/api/LoanApi/GetHouseDesigns'),
             getHouseCustomizables: getData('/api/LoanApi/GetHouseDesignCustomizibles'),
+            getCustomizableFnFs: getData('/api/LoanApi/GetCustomizableFnFs'),
             getRepaymentMethods: getData('/api/LoanApi/GetRepaymentMethods'),
             getCurrencies: getData('/api/LoanApi/GetCurrencies'),
             getLoanApplTypes: getData('/api/LoanApi/GetLoanApplTypes'), 

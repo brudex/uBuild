@@ -79,6 +79,7 @@
     <Compile Include="Models\ClientInfos.cs" />
     <Compile Include="CheckEligibilityRequest.cs" />
     <Compile Include="Models\Currencies.cs" />
+    <Compile Include="Models\CustomizableFnFs.cs" />
     <Compile Include="Models\EligibilityChecks.cs" />
     <Compile Include="Models\FixturesAndFittings.cs" />
     <Compile Include="Models\HouseDesignCustomizables.cs" />

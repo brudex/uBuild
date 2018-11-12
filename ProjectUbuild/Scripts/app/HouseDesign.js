@@ -36,22 +36,22 @@
 
         function loadCustomizables() {
             vm.ajax = true;
-            services.getHouseCustomizables(fullHouseId, function (response) {
+            services.getCustomizableFnFs(function (response) {
                 vm.ajax = false;
                 console.log("the loaded customizables >>");
                 console.log(response);
                 vm.customizables = response;
             });
         }
-		
+		 
 
         function loadFittingsFixtures() {
             vm.ajax = true;
-            services.getFixturesFittings(fullHouseId, function (response) {
+            services.getHouseCustomizables(fullHouseId, function (response) {
                 vm.ajax = false;
                 console.log(response);
                 vm.fixtureFittings = response;
-                
+
             });
         }
 
@@ -73,14 +73,27 @@
         }
 
         function updateTotalCost() {
-            vm.ajax = true;
             vm.model.totalLoanAmt = vm.model.houseCost;
             for (var item in vm.model.selectedFixtures) {
+                console.log('the item is <<<', item);
                 if (vm.model.selectedFixtures.hasOwnProperty(item)) {
+                    console.log('The vm.model.selectedFixtures[item].ItemCount >>', vm.model.selectedFixtures[item]);
                     vm.model.totalLoanAmt = Number(vm.model.totalLoanAmt) + (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
                 }
             }
+            console.log('the house cost is >>>', vm.model.houseCost);
+        }
+
+        function updateInitialTotalCost() {
+            vm.ajax = true;
+           var initialHouseCost = vm.model.houseCost;
+            for (var item in vm.model.selectedFixtures) {
+                if (vm.model.selectedFixtures.hasOwnProperty(item)) {
+                    initialHouseCost = Number(initialHouseCost) - (Number(vm.model.selectedFixtures[item].ItemCount) * Number(vm.model.selectedFixtures[item].UnitCost));
+                }
+            }
             vm.ajax = false;
+            vm.model.houseCost = initialHouseCost;
         }
 
         vm.fixtureSelected = function (fixtureId) {
@@ -92,8 +105,7 @@
            if(fixtures.length){
                console.log("The fixtured selected added >>", "record" + vm.model.selectedCustomizable.RecordId);
                 vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId] = fixtures[0];
-                vm.model.selectedFixtures["record" + vm.model.selectedCustomizable.RecordId].ItemCount = vm.model.selectedCustomizable.ItemCount;
-                console.log("vm.model.selectedFixtures", vm.model.selectedFixtures);
+                 console.log("vm.model.selectedFixtures", vm.model.selectedFixtures);
                 updateTotalCost();
             } 
         }
@@ -146,8 +158,9 @@
 
         vm.getFixturesForCustomizable = function (customizable) {
             console.log('Selected costomizable >>', customizable);
+            console.log('Selected costomizable >>', vm.fixtureFittings);
             vm.customizableFixtureFittings = vm.fixtureFittings.filter(function (item) {
-                return Number(item.RecordId) === Number(customizable.FixturesAndFittingsId);
+                return Number(item.CustomizableFnFsId) === Number(customizable.RecordId);
             });
             console.log('The customizable fixture fittings >>', vm.customizableFixtureFittings);
             setTimeout(function() {
@@ -166,19 +179,18 @@
         function loadDefaults() { 
             for (var k = 0, len = vm.customizables.length;k<len; k++) {
                 var customizable = vm.customizables[k];
+                console.log('The customizable is >>>', customizable);
                 var fixtures = vm.fixtureFittings.filter(function (item) {
-                    return Number(customizable.FixturesAndFittingsId) === Number(item.RecordId) && item.IsDefault;
+                    return Number(customizable.RecordId) === Number(item.CustomizableFnFsId) && item.IsDefault;
                 });
-                console.log('Load defaults fixturs >>>', fixtures);
-                console.log('Load defaults vm.model.selectedFixtures >>>', customizable.RecordId);
-                if (fixtures.length) {
-                        vm.model.selectedFixtures["record" + customizable.RecordId] = fixtures[0];
-                        vm.model.selectedFixtures["record" + customizable.RecordId].ItemCount = customizable.ItemCount;
+               if (fixtures.length) {
+                    vm.model.selectedFixtures["record" + customizable.RecordId] = fixtures[0];
                 }  
             }
-            updateTotalCost();
+            updateInitialTotalCost();
             $scope.$digest();
-        } 
+        }
+
         loadLoanAmountLimits(); 
         loadCustomizables();
         loadFittingsFixtures();

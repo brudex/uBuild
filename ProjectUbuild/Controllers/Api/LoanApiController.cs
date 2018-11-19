@@ -197,13 +197,21 @@ namespace ProjectUbuild.Controllers.Api
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }
 
-        [Authorize]
         [System.Web.Mvc.HttpPost]
-        public ServiceResponse AcceptRejectLoanTerms([FromBody]JObject data)
+        public ServiceResponse ClientConfirmation([FromBody]JObject data)
         {
-            return LoanApplicationHandler.UpdatedUserAcceptedTerms(data);
+            var ulain = data["uLain"];
+            var accepted = data["accepted"].ToBoolean();
+            return LoanApplicationHandler.ClientConfirm(ulain.ToString(),accepted);
         }
 
+        
+        //[Authorize]
+        //[System.Web.Mvc.HttpPost]
+        //public ServiceResponse AcceptRejectLoanTerms([FromBody]JObject data)
+        //{
+        //    return LoanApplicationHandler.UpdatedUserAcceptedTerms(data);
+        //}
 
 
 

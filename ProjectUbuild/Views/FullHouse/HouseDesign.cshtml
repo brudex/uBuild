@@ -80,18 +80,18 @@
         <div class="col-md-4" id="sidebar_design" style="overflow: auto">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3>Base house cost + Customizations</h3>
+                    <h4>Base house cost + Customizations</h4>
                     <h3>= <span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.totalLoanAmt | currency :''"></span></h3>
                 </div>
                 <div class="panel-body">
-                    <h3>Base house cost  : <span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.totalLoanAmt | currency :''"></span></h3>
+                    <h4>Base house cost  : <span data-ng-bind="vm.model.houseCostCurrency"></span> <span>@Model.BareDesignCost</span></h4>
                     <table class="table cart mb48">
                         <thead>
                         <tr>
                              
                             <th>Item</th>
                             <th>Quantity</th>
-                            <th>Unit Cost</th>
+                            <th>Unit Cost ({{vm.model.houseCostCurrency}})</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -107,7 +107,7 @@
                                 <span data-ng-bind="value.ItemCount">1</span>
                             </td>
                             <td>
-                                <span data-ng-bind="vm.model.houseCostCurrency"></span><span data-ng-bind="value.UnitCost | currency:''"></span>
+                                <span data-ng-bind="value.UnitCost | currency:''"></span>
                             </td>
                         </tr>
                         </tbody>

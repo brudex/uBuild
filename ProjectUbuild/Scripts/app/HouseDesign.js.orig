@@ -190,9 +190,13 @@
             }
             updateInitialTotalCost();
             $scope.$digest();
+<<<<<<< HEAD
             vm.ajax = false;
+        } 
+=======
         }
 
+>>>>>>> 27d6154f5c02e4cd2d23529425099e2e25767e79
         loadLoanAmountLimits(); 
         loadCustomizables();
         loadFittingsFixtures();

@@ -98,7 +98,7 @@ namespace uBuildCore
             {
                 loaApp.LoanTermMonths = data["loanTenure"].ToObject<int>();
             }
-            
+
             loaApp.CurrencyId = currencyId;
             loaApp.ApplSubmitted = true;
             loaApp.ApplSubmitDate = DateTime.Now;
@@ -112,6 +112,18 @@ namespace uBuildCore
 
         }
 
+        public static ServiceResponse ClientConfirm(string uLain,bool accepted)
+        {
+            var result = DbHandler.Instance.SaveClientConfirm(uLain,accepted);
+            return new ServiceResponse()
+            {
+                data = result,
+                Status = (result == 1).ToString(),
+                Message =  "Data successfully updated"
+            };
+        }
+        
+        
         public static ServiceResponse UpdatedUserAcceptedTerms(JObject data)
         {var response = new ServiceResponse();
             bool acceptedTerms = data["termsAccepted"].ToBoolean();
@@ -130,7 +142,5 @@ namespace uBuildCore
             return response;
 
         }
-
-
     }
 }

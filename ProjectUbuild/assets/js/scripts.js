@@ -23,33 +23,23 @@ function SubmitDocs(e) {
         function (e, data) {
             location.reload(true);
         });
-
-
 }
 
 (function ($) {
 
     'use strict';
-
-
     $(document).ready(function () {
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with 
         // your logic to perform a search and display results
         $(".list-view-wrapper").scrollbar();
-
         $(".image-picker").imagepicker();
-       
-
         $('#datepicker-component2,#datepicker-component3,#datepicker-component4,#datepicker-component5,#datepicker-component6').datepicker(
             {
                
             });
-
         $('.input-phone').intlInputPhone();
-
         $('[data-toggle="tooltip"]').tooltip({ boundary: 'scrollParent' })
-
         var ulain = getParameterByName("clientUlain");
         $('#fileupload').fileupload({
             url: "/api/LoanApi/UploadDocument?clientUlain=" + ulain,
@@ -83,12 +73,12 @@ function SubmitDocs(e) {
             suggestions: '#overlay-suggestions',
             brand: '.brand',
             // Callback that will be run when you hit ENTER button on search box
-            onSearchSubmit: function (searchString) {
+            onSearchSubmit: function(searchString) {
                 console.log("Search for: " + searchString);
             },
             // Callback that will be run whenever you enter a key into search box. 
             // Perform any live search here.  
-            onKeyEnter: function (searchString) {
+            onKeyEnter: function(searchString) {
                 console.log("Live search for: " + searchString);
                 var searchField = $('#overlay-search');
                 var searchResults = $('.search-results');
@@ -103,9 +93,9 @@ function SubmitDocs(e) {
                 // Timeout is used for DEMO purpose only to simulate an AJAX call
                 clearTimeout($.data(this, 'timer'));
                 searchResults.fadeOut("fast"); // hide previously returned results until server returns new results
-                var wait = setTimeout(function () {
+                var wait = setTimeout(function() {
 
-                    searchResults.find('.result-name').each(function () {
+                    searchResults.find('.result-name').each(function() {
                         if (searchField.val().length != 0) {
                             $(this).html(searchField.val());
                             searchResults.fadeIn("fast"); // reveal updated results
@@ -115,13 +105,13 @@ function SubmitDocs(e) {
                 $(this).data('timer', wait);
 
             }
-        })
+        });
 
     });
 
 
-    $('.panel-collapse label').on('click', function (e) {
+    $('.panel-collapse label').on('click', function(e) {
         e.stopPropagation();
-    })
+    });
 
 })(window.jQuery);

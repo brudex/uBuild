@@ -112,6 +112,25 @@ namespace uBuildCore
 
         }
 
+        public static ServiceResponse UpdatedUserAcceptedTerms(JObject data)
+        {var response = new ServiceResponse();
+            bool acceptedTerms = data["termsAccepted"].ToBoolean();
+            int recordId = data["recordId"].ToInteger();
+            var updated = DbHandler.Instance.UpdateLoanTermsAccepted(recordId, acceptedTerms);
+            response.Status = updated? "00" :"03";
+            if (updated)
+            {
+                response.Message = "Data successfully updated ";
+            }
+            else
+            {
+                response.Message = "There was an error please try again later";
+            }
+            
+            return response;
+
+        }
+
 
     }
 }

@@ -2233,14 +2233,13 @@
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app\account-activity.controller.js" />
-    <Content Include="Scripts\app\account-summary.controller.js" />
     <Content Include="Scripts\app\account.controller.js" />
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\bootstrap-select.js" />
     <Content Include="Scripts\app\eligibility.controller.js" />
     <Content Include="Scripts\app\loanapplication.controller.js" />
     <Content Include="Scripts\app\custom.currency.filter.js" />
+    <Content Include="Scripts\app\myapplication.controller.js" />
     <Content Include="Scripts\app\utilities.factory.js" />
     <Content Include="Scripts\app\services.factory.js" />
     <Content Include="Scripts\app\title.case.filter.js" />

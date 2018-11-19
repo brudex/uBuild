@@ -23,7 +23,8 @@
             sendTokenByAcctNo: postData('/api/AccountApi/SendOtpByAcctNo'),
             validateTokenByAcctNo: postData('/api/AccountApi/ValidateOtpByAcctNo'),
             getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits'),
-            getPhaseLoanTenorLimits: getData('/api/LoanApi/GetPhaseLoanTenorLimits')
+            getPhaseLoanTenorLimits: getData('/api/LoanApi/GetPhaseLoanTenorLimits'),
+            acceptRejectLoanTerms: postData('/api/LoanApi/AcceptRejectLoanTerms')
         }; 
          
 

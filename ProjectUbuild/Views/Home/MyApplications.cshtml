@@ -145,11 +145,12 @@
                                                 <p class="form-control-static">@Model.currentLoanApplication.ApplSubmitDate.ToString("yyyy-MM-dd")</p>
                                             </div>
                                         </div>
-
-                                        <h4 class="col-sm-12 control-label">
-                                            <input type="checkbox" name="name" value="agreed" style="width: 25px" /> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a>  of this loan application
-
-                                        </h4>
+                                        <div data-ng-app="ubuild">
+                                            <h4 class="col-sm-12 control-label" data-ng-controller="MyApplicationController as vm" ng-init="vm.init(@Model.currentLoanApplication.LPS05ClientConfirmation)">
+                                                <input type="checkbox" name="name" data-ng-model="vm.agreedToTerms" style="width: 25px" data-ng-change="vm.termsAgreedChanged(@Model.currentLoanApplication.RecordId)"/> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a>  of this loan application
+                                            </h4>
+                                        </div>
+                                        
                                     </form>
                                 }
                                 else
@@ -200,8 +201,6 @@
                                                         <td>@Model.loanApplications[k].GetFinalStatus()</td>
                                                     </tr>
                                                 }
-
-
                                             </tbody>
 
                                         </table>

@@ -197,6 +197,13 @@ namespace ProjectUbuild.Controllers.Api
             return LoanApplicationHandler.ApplyForLoan(data, clientAuth);
         }
 
+        [Authorize]
+        [System.Web.Mvc.HttpPost]
+        public ServiceResponse AcceptRejectLoanTerms([FromBody]JObject data)
+        {
+            return LoanApplicationHandler.UpdatedUserAcceptedTerms(data);
+        }
+
 
 
 

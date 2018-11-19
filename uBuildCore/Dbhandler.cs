@@ -309,11 +309,7 @@ namespace uBuildCore
               ,ls.[LastProcessDate] 
 	          FROM [dbo].[LoanAppls] la inner join [dbo].[LoanProcStages] ls on la.ULAIN = ls.ULAIN inner join Currencies c on 
 	          la.CurrencyId = c.RecordId inner join RepaymentMethods rm on la.RepaymentMethodId = rm.RecordId where la.ULAIN in ({0})", sb.ToString()));
-                    //                    var loanProcs = new List<LoanProcessStages>();
-                    //                    foreach (var o in list)
-                    //                    {
-                    //                        loanProcs.Add(new LoanProcessStages(o));
-                    //                    }
+                   
                     return list.ToList();
                 }
                 return new List<LoanProcessStages>();
@@ -348,6 +344,8 @@ namespace uBuildCore
             }
         }
 
+       
+
         public UncompletedProfile GetUncompletedProfile(int clientId)
         {
             using (var conn = GetOpenDefaultDbConnection())
@@ -366,6 +364,23 @@ namespace uBuildCore
             }
         }
 
-       
+        public bool UpdateLoanTermsAccepted(int recordId,bool accepted)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var sql = string.Empty;
+                if (accepted)
+                {
+                    sql ="update [dbo].[LoanProcStages] set LPS05ClientConfirmation=3 ,LPS06LoanDisbursement=2 where recordId = @recordId";
+                }
+                else
+                {
+                    sql = "update [dbo].[LoanProcStages] set LPS05ClientConfirmation=4 where recordId = @recordId";
+                }
+                var affected = conn.Execute(sql,new {recordId});
+                return affected >0;
+            }
+        }
+
     }
 }

@@ -26,10 +26,7 @@
             getPhaseLoanTenorLimits: getData('/api/LoanApi/GetPhaseLoanTenorLimits'),
             saveClientConfirmation: postData('/api/LoanApi/ClientConfirmation'),
             acceptRejectLoanTerms: postData('/api/LoanApi/AcceptRejectLoanTerms')
-        }; 
-        }; 
-         
-
+        };  
 
         function postData(endpoint) {
             return function (data, callback) {

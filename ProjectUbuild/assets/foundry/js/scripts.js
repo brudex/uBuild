@@ -292,9 +292,23 @@ $(document).ready(function() {
     if($('.slider-all-controls, .slider-paging-controls, .slider-arrow-controls, .slider-thumb-controls, .logo-carousel').length){
         $('.slider-all-controls').flexslider({
             start: function(slider){
-                if(slider.find('.slides li:first-child').find('.fs-vid-background video').length){
-                   slider.find('.slides li:first-child').find('.fs-vid-background video').get(0).play(); 
-                }
+                if (slider.find('.slides li:first-child').find('.fs-vid-background video').length) {
+                    slider.find('.slides li:first-child').find('.fs-vid-background video').get(0).play();
+                } 
+
+
+                var ubuild_Video = $("#ubuild_Video");
+
+                ubuild_Video.on('ended',
+                    function () {
+                       
+                        slider.flexslider('play');
+                    });
+
+                ubuild_Video.on('play',
+                    function () {
+                        slider.flexslider('stop');
+                    });
             },
             after: function(slider){
                 if(slider.find('.fs-vid-background video').length){
@@ -335,6 +349,10 @@ $(document).ready(function() {
             directionNav: false,
             controlNav: false
         });
+
+
+        //check videos playing
+
     }
     
     // Lightbox gallery titles
@@ -517,6 +535,7 @@ $(document).ready(function() {
     	jQuery(this).closest('.modal-strip').removeClass('reveal-modal');
     	return false;
     });
+
 
 
     // Video Modals

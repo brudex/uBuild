@@ -2360,10 +2360,13 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Views\Loan\Apply.cshtml" />
     <Content Include="Views\tes.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

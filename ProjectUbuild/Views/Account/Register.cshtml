@@ -21,9 +21,9 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off" })
-                        @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control", placeholder = "First name", autocomplete = "off" })
-                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off",title="Please enter a email address here" , data_toggle="tooltip" })
+                        @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control", placeholder = "First name", autocomplete = "off", title = "Please enter your first name here", data_toggle = "tooltip" })
+                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off", title = "Please enter a last name here", data_toggle = "tooltip" })
                         @*@Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off",id="" })*@
                         <div class="input-phone"></div>
 

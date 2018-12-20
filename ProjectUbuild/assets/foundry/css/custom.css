@@ -677,3 +677,10 @@ windows body, .windows p {
 .pager li {
     display: inline-block;
 }
+
+.tooltip.top .tooltip-inner {
+    background-color:red;
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: red;
+}

@@ -60,7 +60,7 @@ namespace uBuildCore
             {
 
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
-                string s = JsonConvert.SerializeObject(tclient);
+                //string s = JsonConvert.SerializeObject(tclient);
                 if (tclient != null && tclient.MobilePhone != null)
                 {
                     string mobile = tclient.MobilePhone;

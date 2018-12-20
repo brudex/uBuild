@@ -7,10 +7,11 @@
     function myApplicationsCtrl($scope, $http, $timeout, $rootScope, services, utils, $window) {
         var vm = this;
         vm.ajax = false;
+        vm.model = { acceptTerms :false};
         vm.init = function (data) {
+            console.log('The data is >>>', data);
             vm.uLain = data.ULAIN;
-            vm.model.acceptTerms = false;
-            if (data.LPS05ClientConfirmation === 3) {
+             if (data.LPS05ClientConfirmation === 3) {
                 vm.model.acceptTerms = true;
             }
            
@@ -69,13 +70,16 @@
                             
                         });
                 } else {
-                    var payload = { ulain: vm.uLain, accepted :false}
-                    console.log('the payload for agreed to terms >>>', payload);
-                    services.saveClientConfirmation(payload, function (response) {
-                        if (response.Status !== "00") {
-                            swal(response.Message);
-                        }
-                    });
+                    if (vm.uLain) {
+                        var payload = { ulain: vm.uLain, accepted :false}
+                        console.log('the payload for agreed to terms >>>', payload);
+                        services.saveClientConfirmation(payload, function (response) {
+                            if (response.Status !== "00") {
+                                swal(response.Message);
+                            }
+                        });
+                    }
+                    
                 }
             });
 

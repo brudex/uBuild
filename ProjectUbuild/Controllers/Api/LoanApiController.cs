@@ -200,7 +200,7 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public ServiceResponse ClientConfirmation([FromBody]JObject data)
         {
-            var ulain = data["uLain"];
+            var ulain = data["ulain"];
             var accepted = data["accepted"].ToBoolean();
             return LoanApplicationHandler.ClientConfirm(ulain.ToString(),accepted);
         }

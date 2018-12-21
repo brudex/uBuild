@@ -207,8 +207,8 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default input-group col-md-10">
-                                                            <div class="form-input-group required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid  }">
+                                                        <div class="form-group form-group-default input-group col-md-10 required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid  }">
+                                                            <div class="form-input-group " >
                                                                 <label>Date of birth</label>
                                                                 <input type="text" name="DateOfBirth" required="" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
                                                             </div>
@@ -260,10 +260,10 @@ else
                                                 <div class="row">
                                                     <div class="col-sm-6">
 
-                                                        <div class="form-group form-group-default form-group-default-select2 required">
+                                                        <div class="form-group form-group-default form-group-default-select2 required" data-ng-class="{'has-error'  : basicInfoForm.Nationality.$invalid  }">
                                                             <label class="">Nationality</label>
-                                                            <select class="full-width select2-hidden-accessible" required="" data-placeholder="Select Item" data-init-plugin="select2"
-                                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" data-ng-model="vm.profile.Nationality">
+                                                            <select class="full-width select2-hidden-accessible" name="Nationality" required="" data-placeholder="Select Item" data-init-plugin="select2"
+                                                                    tabindex="-1" aria-hidden="true" data-ng-options="key as value for (key , value) in vm.countriesList" data-ng-model="vm.basicInfoForm.Nationality">
                                                                 <option value="">Select Nationality..</option>
                                                             </select>
                                                             <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 334px;">
@@ -443,9 +443,9 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : identificationForm.IdCardType.$invalid  }">
+                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : identificationForm.IdCardNumber.$invalid  }">
                                                             <label>ID Card Number </label>
-                                                            <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.IdCardNumber.IdCardNumber">
+                                                            <input type="text" class="form-control" name="IdCardNumber" required="" data-ng-model="vm.profile.IdCardNumber">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -453,11 +453,12 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default input-group">
+                                                        <div class="form-group form-group-default input-group required" data-ng-class="{'has-error'  : identificationForm.IdIssueDate.$invalid  }">
                                                             <div class="form-input-group">
                                                                 <label>ID Issue Date</label>
                                                                 <input type="text"
                                                                        name="IdIssueDate"
+                                                                       required=""
                                                                        data-ng-model="vm.profile.IdIssueDate"
                                                                        class="form-control"
                                                                        id="datepicker-component5">
@@ -484,7 +485,6 @@ else
                                                             <label>ID Expiry Date</label>
                                                             <input type="text"
                                                                    name="IdExpiryDate"
-                                                                   required=""
                                                                    data-ng-model="vm.profile.IdExpiryDate"
                                                                    class="form-control"
                                                                    id="datepicker-component6">

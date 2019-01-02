@@ -1,5 +1,4 @@
 ﻿@model ProjectUbuild.Models.HouseDesignsModel
-
 @{
     ViewBag.Title = "Get Started";
     Layout = "../Shared/_Layout.cshtml";
@@ -30,8 +29,7 @@
 </section>
 
 <section class="container" id="houseDesignWrapper" style="width: 92%">
-
-
+     
     <div class="card card-transparent ">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-tabs-fillup hidden-sm-down">
@@ -48,22 +46,19 @@
                 <div class="row column-seperation">
                     
 
-                        @foreach (var design in Model.DesignRows)
-                        {
+                @foreach (var design in Model.DesignRows)
+                {
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-body rh_prop_card">
                                     <div class="rh_prop_card__details row">
 
-                                        <img src="~/images/HouseImages/@design.DesignImage" class="img-responsive" style="width: 100%;height: 210px" />
+                                        <img src="~/images/HouseImages/@design.HouseImage" class="img-responsive" style="width: 100%;height: 210px" />
                                         <h3 style="margin-top: 15px">
                                             @Html.ActionLink(design.DesignName, "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { })
-
                                         </h3>
                                         <p class="text-info">@design.FullDescription</p>
-
                                         <div class="rh_prop_card__priceLabel row text-center">
-
                                             @*<h4 class="rh_prop_card__status">
                                                     For Sale
                                                 </h4>*@
@@ -79,7 +74,7 @@
                                 </div>
                             </div>
                         </div>
-                        }
+                  }
 
                     
                 </div>

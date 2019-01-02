@@ -26,7 +26,9 @@
             getLoanAmountLimits: getData('/api/LoanApi/GetLoanAmountCurrencyLimits'),
             getPhaseLoanTenorLimits: getData('/api/LoanApi/GetPhaseLoanTenorLimits'),
             saveClientConfirmation: postData('/api/LoanApi/ClientConfirmation'),
-            acceptRejectLoanTerms: postData('/api/LoanApi/AcceptRejectLoanTerms')
+            acceptRejectLoanTerms: postData('/api/LoanApi/AcceptRejectLoanTerms'),
+            saveCustomization: postData('/api/HouseDesignApi/SaveHouseCustomization'),
+            retrieveSavedCustomization: postData('/api/HouseDesignApi/RetrievedSavedCustomization')
         };
 
         function postData(endpoint) {

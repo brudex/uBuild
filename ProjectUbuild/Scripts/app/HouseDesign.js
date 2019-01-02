@@ -119,7 +119,16 @@
             vm.getFixturesForCustomizable(vm.model.selectedCustomizable); 
         }
 
-         
+        vm.saveCustomization = function () {
+            var payload = vm.model;
+            payload.houseId = fullHouseId;
+            services.saveCustomization(payload, function(response) {
+                if (response.status === "00") {
+                    utils.alertSuccess("Saved", response.Message);
+                }
+            });
+        }
+
 
         vm.checkEligibility = function () {
             vm.ajax = true;
@@ -192,12 +201,25 @@
             $scope.$digest();
             vm.ajax = false;
         }
+        function retrieveSavedCustomizations () {
+            var payload = {};
+            payload.houseId = fullHouseId;
+            services.retrieveSavedCustomization(payload, function (response) {
+                if (response.status === "00") {
+                    vm.model = response.data;
+                }
+            });
+        } 
+        
 
         loadLoanAmountLimits(); 
         loadCustomizables();
-        loadFittingsFixtures();
+        loadFittingsFixtures(); 
+
+
         setTimeout(function() {
             loadDefaults();
+            retrieveSavedCustomization();
         }, 3000);  
     }
 

@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json.Linq;
-using Owin;
 using ProjectUbuild.Models;
 using uBuildCore;
 using uBuildCore.Models;
@@ -45,7 +40,7 @@ namespace ProjectUbuild.Controllers
         }
 
         //
-        // GET: /Account/Login
+        //GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -59,9 +54,7 @@ namespace ProjectUbuild.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-
-
+        { 
             if (model.Email.IndexOf('@') > -1)
             {
                 //Validate email format
@@ -94,8 +87,7 @@ namespace ProjectUbuild.Controllers
                     user = await UserManager.FindByEmailAsync(model.Email); 
                 }
                 else
-                {
-                    
+                { 
                     user = await UserManager.FindAsync(userName, model.Password);
                 } 
                 if (user != null)

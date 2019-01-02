@@ -95,6 +95,7 @@
     <Compile Include="Models\LoanProcStageStates.cs" />
     <Compile Include="Models\PhaseLoanTenorLimits.cs" />
     <Compile Include="Models\RepaymentMethods.cs" />
+    <Compile Include="Models\SavedHouseCustomiztions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestHandler.cs" />
     <Compile Include="ServiceResponse.cs" />

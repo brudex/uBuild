@@ -18,7 +18,7 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpPost]
         public  ServiceResponse SaveProfile([FromBody]JObject value)
         {
-            var email = User.Identity.Name;
+            var email = User.Identity.GetEmailAdress();
             var clientAuth = DbHandler.Instance.GetClientAuthByEmail(email);
              
             if (value["isFinalUpate"].ToBoolean() == true)
@@ -52,7 +52,7 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpGet]
         public ServiceResponse GetUncompletedProfile()
         {
-            var email = User.Identity.Name;
+            var email = User.Identity.GetEmailAdress();
             var clientAuth = DbHandler.Instance.GetClientAuthByEmail(email);
             var response = new ServiceResponse();
             var uncompleted = DbHandler.Instance.GetUncompletedProfile(clientAuth.RecordId);

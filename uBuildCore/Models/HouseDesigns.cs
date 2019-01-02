@@ -11,6 +11,7 @@ namespace uBuildCore.Models
       public string DesignImage{ get; set; } 
       public string ISOCode { get; set; }
       public string ISOSign { get; set; }
+      public string HouseImage { get; set; }
 
     }
 }

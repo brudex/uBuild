@@ -146,7 +146,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join [dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
+                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],hd.HouseImage,c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join [dbo].Currencies c on hd.CostCurrencyId=c.RecordId";
                 var list = conn.Query<HouseDesigns>(sql).ToList();
                 return list;
             }
@@ -156,7 +156,7 @@ namespace uBuildCore
         {
             using (var conn = GetOpenDefaultDbConnection())
             {
-                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join  [dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
+                var sql = "SELECT  hd.[RecordId], hd.[DesignName],hd.HouseImage,hd.[FullDescription],hd.[BareDesignCost],hd.[CostCurrencyId],hd.[DesignImage],c.ISOCode,c.ISOSign FROM [HouseDesigns] hd inner join  [dbo].Currencies c on hd.CostCurrencyId=c.RecordId where hd.RecordId=@id";
                 var item = conn.Query<HouseDesigns>(sql, new { id }).FirstOrDefault();
                 return item;
             }
@@ -363,7 +363,27 @@ namespace uBuildCore
             }
         }
 
-       
+
+        public int SaveHouseCustomization(SavedHouseCustomization customization)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                conn.Execute("DELETE FROM [dbo].[SavedHouseCustomization] WHERE  clientId = @clientId and HouseId=@houseId", new { clientId = customization.ClientId,houseId=customization.HouseId });
+                var id = conn.Insert(customization);
+                return id;
+            }
+        }
+
+        public SavedHouseCustomization GetSavedHouseCustomization(int clientId,int houseId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var p1 = Predicates.Field<SavedHouseCustomization>(f => f.ClientId, Operator.Eq, clientId);
+                var p2 = Predicates.Field<SavedHouseCustomization>(f => f.HouseId, Operator.Eq, houseId);
+                var predicate = Predicates.Group(GroupOperator.And,p1, p2);
+                return conn.GetList<SavedHouseCustomization>(predicate).FirstOrDefault();
+            }
+        }
 
         public UncompletedProfile GetUncompletedProfile(int clientId)
         {

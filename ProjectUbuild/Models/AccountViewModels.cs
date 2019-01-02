@@ -38,7 +38,6 @@ namespace ProjectUbuild.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "User Name or Email")]
         public string Email { get; set; }
 

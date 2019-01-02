@@ -52,7 +52,7 @@
                                     @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
                                     <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
 
-                                   
+
 
                                     @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
                                     {
@@ -277,7 +277,8 @@
         </div>
     <!--end modal strip-->
     }
-    else if (Request.IsAuthenticated && !Request.Url.AbsoluteUri.ToLower().Contains("profile"))
+    else if (Request.IsAuthenticated && Request.Url.AbsoluteUri.ToLower().Contains("apply")) { }
+    else if (Request.IsAuthenticated && (!Request.Url.AbsoluteUri.ToLower().Contains("profile") || !Request.Url.AbsoluteUri.ToLower().Contains("apply")))
     {
         <div class="modal-strip bg-white">
             <div class="container">

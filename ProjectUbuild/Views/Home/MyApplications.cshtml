@@ -38,7 +38,7 @@
             <div class="progress-circle-indeterminate progress-circle-master"></div>
         </div>
         <div class="row" style="margin-top: -40px">
-            <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+            <div class="col-md-12 col-sm-12 text-center">
                 @*<a href="" class="uppercase mb80 fa fa-file" style="display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;"></a>*@
                 @*@Html.ActionLink(" Start a new application", "Apply", "Loan", null, new { @class = " mb80 fa fa-file ", style = "display: inline-block;margin: 50px;font-size: 21px;color: darkgreen;" })*@
                 <div class="tabbed-content text-tabs">
@@ -72,7 +72,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new {clientUlain = Model.currentLoanApplication.ULAIN}, null)
+                                            @Html.ActionLink("Upload Supporting Documents here.", "LoanDocs", "Loan", new { clientUlain = Model.currentLoanApplication.ULAIN }, null)
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Loan Application Type</label>
@@ -153,7 +153,7 @@
                                         @if (@Model.currentLoanApplication.LPS05ClientConfirmation == 2)
                                         {
                                             <h4 class="col-sm-12 control-label">
-                                                <input ng-model="vm.model.acceptTerms" type="checkbox" name="name" style="width: 25px"/> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a> of this loan application
+                                                <input ng-model="vm.model.acceptTerms" type="checkbox" name="name" style="width: 25px" /> I Agree to the <a href="/terms" style="opacity: 0.8">Terms and Conditions</a> of this loan application
 
                                             </h4>
                                         }
@@ -178,35 +178,35 @@
                                     @if (Model.loanApplications != null && Model.loanApplications.Count > 0)
                                     {
 
-                                        <table class="table ">
+                                        <table class="table table-responsive table-striped">
                                             <thead>
-                                            <tr>
-                                                <td>ULain</td>
-                                                <td>Loan Application Type </td>
-                                                <td>Loan Tenure(Months) </td>
-                                                <td>Purpose of Loan </td>
-                                                <td>Repayment Method </td>
-                                                <td>Loan Amount</td>
-                                                <td>Application Date</td>
-                                                <td>Process Comment</td>
-                                                <td>Status</td>
-                                            </tr>
+                                                <tr>
+                                                    <th>ULain</th>
+                                                    <th>Loan Application Type </th>
+                                                    <th>Loan Tenure(Months) </th>
+                                                    <th>Purpose of Loan </th>
+                                                    <th>Repayment Method </th>
+                                                    <th>Loan Amount</th>
+                                                    <th>Application Date</th>
+                                                    <th>Process Comment</th>
+                                                    <th>Status</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            @for (var k = 0; k < Model.loanApplications.Count; k++)
-                                            {
-                                                <tr>
-                                                    <td>@Model.loanApplications[k].ULAIN</td>
-                                                    <td>@(Model.loanApplications[k].LoanApplTypeId == 1 ? "Full House" : "Phase")</td>
-                                                    <td>@Model.loanApplications[k].LoanTermMonths </td>
-                                                    <td>@Model.loanApplications[k].PurposeofLoan</td>
-                                                    <td>@Model.loanApplications[k].RepaymentMethod</td>
-                                                    <td>@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
-                                                    <td>@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
-                                                    <td>@Model.loanApplications[k].ProcessComment</td>
-                                                    <td>@Model.loanApplications[k].GetFinalStatus()</td>
-                                                </tr>
-                                            }
+                                                @for (var k = 0; k < Model.loanApplications.Count; k++)
+                                                {
+                                                    <tr>
+                                                        <td class="text-left">@Model.loanApplications[k].ULAIN</td>
+                                                        <td class="text-left">@(Model.loanApplications[k].LoanApplTypeId == 1 ? "Full House" : "Phase")</td>
+                                                        <td class="text-left">@Model.loanApplications[k].LoanTermMonths </td>
+                                                        <td class="text-left">@Model.loanApplications[k].PurposeofLoan</td>
+                                                        <td class="text-left">@Model.loanApplications[k].RepaymentMethod</td>
+                                                        <td class="text-left">@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
+                                                        <td class="text-left">@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
+                                                        <td class="text-left">@Model.loanApplications[k].ProcessComment</td>
+                                                        <td class="text-left">@Model.loanApplications[k].GetFinalStatus()</td>
+                                                    </tr>
+                                                }
 
 
                                             </tbody>

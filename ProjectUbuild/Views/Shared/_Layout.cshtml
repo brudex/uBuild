@@ -52,7 +52,7 @@
                                     @*<a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>*@
                                     <a href="@Url.Action("Index","Profile")" class="dropdown-item"><i class="pg-outdent"></i> My Profile</a>
 
-                                   
+
 
                                     @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { style = "display:inline-block;width:100%;margin-top:5px", @class = "clearfix  dropdown-item" }))
                                     {
@@ -277,22 +277,26 @@
         </div>
     <!--end modal strip-->
     }
-    else if (Request.IsAuthenticated && !Request.Url.AbsoluteUri.ToLower().Contains("profile"))
+    else if (Request.IsAuthenticated && Request.Url.AbsoluteUri.ToLower().Contains("apply")) { }
+    else if (Request.IsAuthenticated && (!Request.Url.AbsoluteUri.ToLower().Contains("profile") || !Request.Url.AbsoluteUri.ToLower().Contains("apply")))
     {
-        <div class="modal-strip bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 overflow-hidden">
-                        <i class="fa fa-info-circle pull-left color-primary" style="margin-top: 5px"></i>
-                        <p class="mb0 pull-left">
-                            Welcome @User.GetUbuildClient().FirstName . You are encouraged to provide all information needed to apply for a loan.
-                        </p>
-                        @Html.ActionLink("Update your profile", "Index", "Profile", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
+        if (User.GetUbuildClient().GetClientInfos() == null)
+        {
+            <div class="modal-strip bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 overflow-hidden">
+                            <i class="fa fa-info-circle pull-left color-primary" style="margin-top: 5px"></i>
+                            <p class="mb0 pull-left">
+                                Welcome @User.GetUbuildClient().FirstName . You are encouraged to provide all information needed to apply for a loan.
+                            </p>
+                            @Html.ActionLink("Update your profile", "Index", "Profile", null, new { @class = "btn btn-sm btn-filled mb0", style = "background:#a54240;border:0" })
 
-                    </div>
-                </div><!--end of row-->
-            </div><!--end of container-->
-        </div>
+                        </div>
+                    </div><!--end of row-->
+                </div><!--end of container-->
+            </div>
+        }
     }
     @Html.Partial("_Scripts")
 </body>

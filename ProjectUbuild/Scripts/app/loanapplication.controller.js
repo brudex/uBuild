@@ -65,7 +65,7 @@
                     vm.applyModel.customerNo = response.data.customerNo;
                     console.log("The applyModel >> ", vm.applyModel);
                 }
-            }); 
+            });
         }
 
         function submitLoanApplication() {
@@ -77,24 +77,24 @@
                 if (response.Status === "00") {
                     vm.ulain = response.Message;
                     swal({
-                            title: "Congratulations",
-                            text: "Your application has been received . Your ULAIN is : " + vm.ulain,
-                            buttons: {
-                                cancel: "OK",
-                                catch: {
-                                    text: "Submit Supported Documents",
-                                    value: "submitDocs"
-                                }
+                        title: "Congratulations",
+                        text: "Your application has been received . Your ULAIN is : " + vm.ulain,
+                        buttons: {
+                            cancel: "OK",
+                            catch: {
+                                text: "Submit Supported Documents",
+                                value: "submitDocs"
                             }
-                        })
-                        .then(function(value) {
+                        }
+                    })
+                        .then(function (value) {
                             switch (value) {
                                 case "submitDocs":
                                     $window.location.href = "/loan/LoanDocs?clientUlain=" + vm.ulain;
                                     break;
                                 default:
                                     $window.location.href = "/Home/MyApplications";
-                                break;
+                                    break;
                             }
                         });
 
@@ -108,6 +108,13 @@
             services.getBuildingPhases(function (response) {
                 console.log("Phase types >>", response);
                 vm.buildingPhases = response;
+
+                angular.forEach(vm.buildingPhases,
+                    function (item, index) {
+                        console.log("item", item);
+                        if (item.RecordId == vm.applyModel.forPhase)
+                            vm.applyModel.PurposeofLoan = item.PhaseName;
+                    });
             });
         }
 
@@ -126,7 +133,7 @@
         }
 
         function translateVals() {
-            
+
             if ($window.loanVals) {
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
                 vm.applyModel.loanTenure = $window.loanVals.loanTenure;
@@ -141,17 +148,22 @@
                 if ($window.loanVals.loanType === "Fullhouse") {
                     vm.applyModel.applyingFor = "1";
                 } else {
+
                     vm.applyModel.applyingFor = "2";
                     vm.applyModel.forPhase = Number($window.loanVals.phaseType);
+
+                   
+
                     console.log("vm.applyModel.forPhase", vm.applyModel.forPhase);
                 }
             }
-             
+
         }
 
         getRepaymentMethods();
         translateVals();
         getPhaseTypes();
-        getCurrencies(); 
+        getCurrencies();
+
     }
 })();

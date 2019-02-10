@@ -24,6 +24,12 @@ namespace ProjectUbuild.Controllers
             return View(vm);
         }
 
+        [Authorize]
+        public ActionResult Messages()
+        {
+            return View();
+        }
+
         
     }
 }

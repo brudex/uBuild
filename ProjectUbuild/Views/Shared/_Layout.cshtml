@@ -1,6 +1,6 @@
 ﻿@using ProjectUbuild.Models
 <!doctype html>
-<html lang="en" ng-app="ubuild">
+<html lang="en" ng-app="ubuild" data-ng-controller="AppCtrl">
 <head>
 
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Html.Partial("_Head")
 </head>
-<body>
+<body ng-cloak>
     <div class="nav-container">
         <a id="top"></a>
         <nav class="">
@@ -27,6 +27,13 @@
                     <i class="ti-email">&nbsp;</i>
                     <span class="sub">info@ubuild.ghlbank.com</span>
                 </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="module left hidden-sm hidden-xs">
+                    <i class="ti-email">&nbsp;</i>
+                    <span class="sub"><a href="@Url.Action("Messages","Profile")">Messages <span class="badge">{{Messages.length}}</span></a><br></span>
+                </div>
+            }
                 <div class="module right">
 
                     @if (Request.IsAuthenticated)

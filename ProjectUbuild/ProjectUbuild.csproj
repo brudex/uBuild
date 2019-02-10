@@ -2240,7 +2240,6 @@
     <Content Include="Scripts\app\eligibility.controller.js" />
     <Content Include="Scripts\app\loanapplication.controller.js" />
     <Content Include="Scripts\app\custom.currency.filter.js" />
-    <Content Include="Scripts\app\myapplication.controller.js" />
     <Content Include="Scripts\app\utilities.factory.js" />
     <Content Include="Scripts\app\services.factory.js" />
     <Content Include="Scripts\app\title.case.filter.js" />
@@ -2409,6 +2408,7 @@
     <Content Include="Views\FullHouse\HouseDesign.cshtml" />
     <Content Include="Views\Loan\LoanDocs.cshtml" />
     <Content Include="Views\Profile\Index - Copy.cshtml" />
+    <Content Include="Views\Profile\Messages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

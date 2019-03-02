@@ -219,7 +219,7 @@
 
         setTimeout(function() {
             loadDefaults();
-            retrieveSavedCustomization();
+            retrieveSavedCustomizations();
         }, 3000);  
     }
 

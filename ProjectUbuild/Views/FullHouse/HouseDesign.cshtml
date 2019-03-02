@@ -54,7 +54,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="switch">
-                                                <input type="checkbox">
+                                                <input type="checkbox" data-ng-model="vm.view3D">
                                                 <span class="slider round"></span>
                                             </label>
                                             <label class="font-weight-bold">3D View</label> 
@@ -73,9 +73,12 @@
                            
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="col-md-12">
+                    <div class="panel-body" >
+                        <div class="col-md-12" data-ng-hide="vm.view3D">
                             <img src="~/images/HouseImages/@Model.DesignImage" class="img-responsive img-rounded" alt="House Image">
+                        </div>
+                        <div class="col-md-12" data-ng-show="vm.view3D">
+                            <img src="~/images/HouseImages/@Model.HouseImage" class="img-responsive img-rounded" alt="House Image">
                         </div>
                     </div>
                     <div class="panel-footer">

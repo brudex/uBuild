@@ -34,6 +34,11 @@
                 }
             });
 
+        $scope.$watch("vm.view3D",
+            function (newValue) {
+                console.log('The 3d view changed >>', newValue);
+            });
+
         function loadCustomizables() {
             vm.ajax = true;
             services.getCustomizableFnFs(function (response) {
@@ -211,13 +216,11 @@
                 }
             });
         } 
-        
-
+         
         loadLoanAmountLimits(); 
         loadCustomizables();
         loadFittingsFixtures(); 
-
-
+         
         setTimeout(function() {
             loadDefaults();
             retrieveSavedCustomizations();

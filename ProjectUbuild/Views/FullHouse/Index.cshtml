@@ -64,7 +64,7 @@
                                                 </h4>*@
                                             <!-- /.rh_prop_card__type -->
                                             <h3 class="rh_prop_card__price text-success">
-                                                @design.ISOCode @design.BareDesignCost
+                                                @design.ISOCode @design.BareDesignCost.ToString("N2")
                                             </h3>
                                             <!-- /.rh_prop_card__price -->
                                             @Html.ActionLink("Select", "HouseDesign", "FullHouse", new { @id = design.RecordId }, new { @class = "btn btn-default" })

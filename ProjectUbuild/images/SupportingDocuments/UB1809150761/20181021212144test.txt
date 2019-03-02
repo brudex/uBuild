@@ -1,0 +1,21 @@
+{
+    'PaymentRequest':
+{
+  'Merchant':{
+       'GlobalPayID':'GPZENTEST008'
+        },
+'Card':{
+      'CardNumber':'14263636363',
+     'CardExpiryMonth':'01',
+     'CardExpiryYear':'01',
+     'CardCvv':'300'
+  },
+'Payment':{
+   'Description':'test_Payment',
+   'ReferenceID':'0001',
+   'OrderID':'0001',
+   'Amount':'500'
+}, 
+ 'Mode':'Visa'
+ }
+}

@@ -201,6 +201,7 @@
             $scope.$digest();
             vm.ajax = false;
         }
+
         function retrieveSavedCustomizations () {
             var payload = {};
             payload.houseId = fullHouseId;

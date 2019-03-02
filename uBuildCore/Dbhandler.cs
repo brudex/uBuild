@@ -344,6 +344,47 @@ namespace uBuildCore
             }
         }
 
+        public int SaveMessage(Messages message)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var id = conn.Insert(message);
+                return id;
+            }
+        }
+
+        public int CountUnreadMessages(string email)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var p1 = Predicates.Field<Messages>(f => f.Receipient, Operator.Eq, email);
+                var p2 = Predicates.Field<Messages>(f => f.IsRead, Operator.Eq, false);
+                var predicate = Predicates.Group(GroupOperator.And, p1, p2);
+                return conn.Count<Messages>(predicate);
+            }
+        }
+
+        public int MarkMessagesAsRead(string email)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                string sql = "update Messages set IsRead=1 where Receipient=@email";
+                return conn.Execute(sql,new {email});
+            }
+        }
+
+
+        public List<Messages> GetMessageList(string email)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var p1 = Predicates.Field<Messages>(f => f.Receipient, Operator.Eq, email);
+                var p2 = Predicates.Field<Messages>(f => f.Sender, Operator.Eq, email);
+                var predicate = Predicates.Group(GroupOperator.Or, p1, p2);
+                return conn.GetList<Messages>(predicate).ToList();
+            }
+        }
+
         public List<LoanDocuments> GetClientDocs(string ULAIN)
         {
             using (var conn = GetOpenDefaultDbConnection())

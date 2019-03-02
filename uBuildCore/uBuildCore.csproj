@@ -93,11 +93,13 @@
     <Compile Include="Models\LoanProcessStages.cs" />
     <Compile Include="Models\LoanProcStages.cs" />
     <Compile Include="Models\LoanProcStageStates.cs" />
+    <Compile Include="Models\MessageExchanges.cs" />
     <Compile Include="Models\PhaseLoanTenorLimits.cs" />
     <Compile Include="Models\RepaymentMethods.cs" />
     <Compile Include="Models\SavedHouseCustomiztions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestHandler.cs" />
+    <Compile Include="SendMessageHandler.cs" />
     <Compile Include="ServiceResponse.cs" />
     <Compile Include="SoftTokenService.cs" />
     <Compile Include="Models\UncompletedProfile.cs" />

@@ -93,7 +93,7 @@
     <Compile Include="Models\LoanProcessStages.cs" />
     <Compile Include="Models\LoanProcStages.cs" />
     <Compile Include="Models\LoanProcStageStates.cs" />
-    <Compile Include="Models\MessageExchanges.cs" />
+    <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\PhaseLoanTenorLimits.cs" />
     <Compile Include="Models\RepaymentMethods.cs" />
     <Compile Include="Models\SavedHouseCustomiztions.cs" />

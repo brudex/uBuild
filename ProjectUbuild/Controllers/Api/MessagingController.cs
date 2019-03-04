@@ -54,5 +54,19 @@ namespace ProjectUbuild.Controllers.Api
             response.Message = "Messages updated successfully";
             return response;
         }
+
+
+        [System.Web.Mvc.HttpGet]
+        public ServiceResponse GetMessageList()
+        {
+            var email = User.Identity.GetEmailAdress();
+             DbHandler.Instance.MarkMessagesAsRead(email);
+            var messages = DbHandler.Instance.GetMessageList(email);
+            var response = new ServiceResponse();
+            response.Status = "00";
+            response.Message = "Messages updated successfully";
+            response.data = messages;
+            return response;
+        }
     }
 }

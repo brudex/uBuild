@@ -25,7 +25,7 @@ namespace ProjectUbuild.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("upload url here")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/ClientDocs")]
         public string DocUploadUrl {
             get {
                 return ((string)(this["DocUploadUrl"]));

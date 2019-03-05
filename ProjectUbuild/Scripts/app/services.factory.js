@@ -28,7 +28,11 @@
             saveClientConfirmation: postData('/api/LoanApi/ClientConfirmation'),
             acceptRejectLoanTerms: postData('/api/LoanApi/AcceptRejectLoanTerms'),
             saveCustomization: postData('/api/HouseDesignApi/SaveHouseCustomization'),
-            retrieveSavedCustomization: postData('/api/HouseDesignApi/RetrievedSavedCustomization')
+            retrieveSavedCustomization: postData('/api/HouseDesignApi/RetrievedSavedCustomization'),
+            saveMessage: postData("/api/Messaging/SaveMessage"),
+            getUnreadMessagesCount: getData("/api/Messaging/GetUnreadMessagesCount"),
+            getMessageList: getData("/api/Messaging/GetMessageList"),
+            markMessagesAsRead: getData("/api/Messaging/MarkMessagesAsRead")
         };
 
         function postData(endpoint) {

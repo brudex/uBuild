@@ -102,7 +102,7 @@ namespace ProjectUbuild.Controllers.Api
                     {
                         var tstamp = DateTime.Now.ToString("yyyyMMddHHmmss");
                         var MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB  
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg",".pdf", ".docx" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))

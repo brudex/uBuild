@@ -26,7 +26,7 @@
     </div>
     <!--end of container-->
 </section>
-<section style="padding-top: 0">
+<section style="padding-top: 0" data-ng-controller="MessagingCtrl as vm" data-ng-init="init()">
    
     @*<h3 class=" text-center">Messaging</h3>*@
     <div class="messaging col-md-8">
@@ -133,6 +133,9 @@
                 </div>
             </div>*@
             <div class="mesgs">
+                <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                    <div class="progress-circle-indeterminate progress-circle-master"></div>
+                </div>
                 <div class="msg_history">
                     <div data-ng-repeat="msg in Messages" data-ng-class="{'incoming_msg':msg.Admin,'outgoing_msg':msg.Client}">
                         <div class="incoming_msg_img" data-ng-if="msg.Admin"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
@@ -145,13 +148,13 @@
                             </div>
                         </div>
                     </div>
-                    
-                   
+
+
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" class="write_msg form-control" placeholder="Type a message"/>
-                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        <input type="text" class="write_msg form-control" placeholder="Type a message" data-ng-model="model.message"/>
+                        <button class="msg_send_btn" data-ng-click="vm.saveMessage()" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>

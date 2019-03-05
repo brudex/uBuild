@@ -15,43 +15,20 @@
 
     function AppCtrl($scope, $http, $timeout, $rootScope, services, utils, $window) {
 
-        $rootScope.Messages = [
-            {
-                Id: 0,
-                Message: "This is from the client",
-                Admin: false,
-                Client: true,
-                TimeStamp: '11:01 AM | June 9'
-            },
-            {
-                Id: 1,
-                Message: "This is from the client",
-                Admin: false,
-                Client: true,
-                TimeStamp: '11:01 AM | June 9'
-            },
-            {
-                Id: 2,
-                Message: "This is from the admin",
-                Admin: true,
-                Client: false,
-                TimeStamp: '11:01 AM | June 9'
-            },
-            {
-                Id: 3,
-                Message: "This is from the client",
-                Admin: false,
-                Client: true,
-                TimeStamp: '11:01 AM | June 9'
-            },
-            {
-                Id: 4,
-                Message: "This is from the Admin",
-                Admin: true,
-                Client: true,
-                TimeStamp: '11:01 AM | June 9'
-            }
-        ];
+        var vm = this;
 
+        getMessageCount();
+       
+
+
+        function getMessageCount() {
+            services.getUnreadMessagesCount(function (response) {
+                if (response.Status == "00") {
+                    $rootScope.messagesCount = response.data;
+                }
+            });
+        }
+
+       
     }
 })();

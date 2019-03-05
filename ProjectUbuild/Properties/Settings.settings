@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DocUploadUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">upload url here</Value>
+      <Value Profile="(Default)">/ClientDocs</Value>
     </Setting>
   </Settings>
 </SettingsFile>

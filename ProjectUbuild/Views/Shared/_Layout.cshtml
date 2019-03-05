@@ -1,6 +1,6 @@
 ﻿@using ProjectUbuild.Models
 <!doctype html>
-<html lang="en" ng-app="ubuild" >
+<html lang="en" ng-app="ubuild" data-ng-controller="AppCtrl as vm">
 <head>
 
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
             {
                 <div class="module left hidden-sm hidden-xs">
                     <i class="ti-email">&nbsp;</i>
-                    <span class="sub"><a href="@Url.Action("Messages","Profile")">Messages <span class="badge">{{Messages.length}}</span></a><br></span>
+                    <span class="sub"><a href="@Url.Action("Messages","Profile")">Messages <span class="badge">{{messagesCount}}</span></a><br></span>
                 </div>
             }
                 <div class="module right">

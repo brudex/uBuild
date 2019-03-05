@@ -20,7 +20,7 @@ namespace ProjectUbuild.Controllers.Api
             var email = User.Identity.GetEmailAdress();
             var message = new Messages();
             message.Sender = email;
-            message.CreatedAt = DateTime.Now;
+           // message.CreatedAt = DateTime.Now;
             message.Receipient = "Bank";
             message.IsRead = false;
             message.Message = value["message"].ToString();

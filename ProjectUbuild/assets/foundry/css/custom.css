@@ -866,7 +866,7 @@ windows body, .windows p {
 }
 
 .msg_history {
-    height: 516px;
+    height: 400px;
     overflow-y: auto;
 }
 /*end*/

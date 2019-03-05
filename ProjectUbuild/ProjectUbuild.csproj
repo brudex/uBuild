@@ -2023,6 +2023,7 @@
     <Content Include="pages\img\progress\progress-circle-success.svg" />
     <Content Include="pages\img\progress\progress-circle-warning.svg" />
     <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\app\messaging.controller.js" />
     <Content Include="Scripts\app\myApplications.controller.js" />
     <Content Include="Scripts\app\HouseDesign.js" />
     <Content Include="pages\js\pages.calendar.js" />

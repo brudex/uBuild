@@ -20,7 +20,7 @@ namespace ProjectUbuild.Controllers.Api
             var email = User.Identity.GetEmailAdress();
             var message = new Messages();
             message.Sender = email;
-           // message.CreatedAt = DateTime.Now;
+            message.CreateDate = DateTime.Now;
             message.Receipient = "Bank";
             message.IsRead = false;
             message.Message = value["message"].ToString();
@@ -44,11 +44,11 @@ namespace ProjectUbuild.Controllers.Api
             return response; 
         }
 
-        [System.Web.Mvc.HttpGet]
+        [System.Web.Mvc.HttpPost]
         public ServiceResponse MarkMessagesAsRead()
         {
             var email = User.Identity.GetEmailAdress();
-             DbHandler.Instance.MarkMessagesAsRead(email);
+            DbHandler.Instance.MarkMessagesAsRead(email);
             var response = new ServiceResponse();
             response.Status = "00";
             response.Message = "Messages updated successfully";

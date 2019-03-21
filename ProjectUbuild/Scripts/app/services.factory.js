@@ -32,7 +32,7 @@
             saveMessage: postData("/api/Messaging/SaveMessage"),
             getUnreadMessagesCount: getData("/api/Messaging/GetUnreadMessagesCount"),
             getMessageList: getData("/api/Messaging/GetMessageList"),
-            markMessagesAsRead: getData("/api/Messaging/MarkMessagesAsRead")
+            markMessagesAsRead: postData("/api/Messaging/MarkMessagesAsRead")
         };
 
         function postData(endpoint) {

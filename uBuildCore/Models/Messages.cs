@@ -12,7 +12,7 @@ namespace uBuildCore.Models
         public string Sender { get; set; }
         public string Receipient { get; set; }
         public string Message { get; set; }
-        //public DateTime  CreatedAt { get; set; }
+        public DateTime  CreateDate { get; set; }
         public bool IsRead { get; set; }
     }
 }

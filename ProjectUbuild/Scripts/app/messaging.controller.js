@@ -8,7 +8,8 @@
         var vm = this;
         vm.ajax = false;
 
-        $scope.init = function() {
+        $scope.init = function () {
+            $scope.model = null;
             getMessages();
             markMessagesAsRead();
         };
@@ -35,15 +36,18 @@
         
 
         function markMessagesAsRead() {
-            services.markMessagesAsRead(function (response) {
-                if (response.Status == "00") {
-                    }
-            });
+            setTimeout(function() {
+                services.markMessagesAsRead(function (response) {
+                    
+                });
+            }, 1000);
+            
         }
 
         vm.saveMessage = function () {
             services.saveMessage($scope.model,
                 function (response) {
+                    $scope.init();
                     console.log(response);
                 });
         };

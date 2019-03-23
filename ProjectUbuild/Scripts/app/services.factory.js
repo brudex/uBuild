@@ -6,7 +6,7 @@
 
     function DataService($http, $location, $window) {
         var baseUrl = "";
-        return {
+         return {
             getFixturesFittings: getData('/api/LoanApi/GetFittingsFixtures'),
             getInterestRates: getData('/api/LoanApi/GetLoanInterestRates'),
             submitProfile: postData('/api/AccountApi/SaveProfile'),
@@ -97,6 +97,7 @@
                 });
         }
 
+       
 
     }
 })();

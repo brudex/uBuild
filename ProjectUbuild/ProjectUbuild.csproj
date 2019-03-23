@@ -2357,6 +2357,7 @@
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\defaults.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\getCountryData.js" />
     <Content Include="Scripts\jquery-intl-tel-input\spec\tests\static\loadUtils.js" />
+    <Content Include="Scripts\lockr.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />

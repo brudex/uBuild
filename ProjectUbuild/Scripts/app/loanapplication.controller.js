@@ -22,6 +22,7 @@
         vm.ulain = "";
         vm.ajax = false;
         vm.applyModel.currency = 1;
+        vm.formSubmitted = false;
 
         function getHouseImages() {
             vm.ajax = true;
@@ -68,7 +69,19 @@
             });
         }
 
-        function submitLoanApplication() {
+        function submitLoanApplication(valid) {
+            console.log('the apply model is >>>', vm.applyModel);
+            console.log('form is valid is >>>',valid);
+
+            vm.formSubmitted = true;
+            if (!valid) {
+                return;
+            }
+            if (!vm.applyModel.applyingFor) {
+                utils.toastError('Select type of loan you are Applying For');
+                console.log('applying for not selected');
+                return;
+            }
             vm.ajax = true;
             var payload = vm.applyModel;
             services.applyForLoan(payload, function (response) {
@@ -148,12 +161,8 @@
                 if ($window.loanVals.loanType === "Fullhouse") {
                     vm.applyModel.applyingFor = "1";
                 } else {
-
                     vm.applyModel.applyingFor = "2";
-                    vm.applyModel.forPhase = Number($window.loanVals.phaseType);
-
-                   
-
+                    vm.applyModel.forPhase = Number($window.loanVals.phaseType); 
                     console.log("vm.applyModel.forPhase", vm.applyModel.forPhase);
                 }
             }

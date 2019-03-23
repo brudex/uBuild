@@ -114,7 +114,7 @@ namespace uBuildCore
 
         public static ServiceResponse ClientConfirm(string uLain,bool accepted)
         {
-            var result = DbHandler.Instance.SaveClientConfirm(uLain,accepted);
+            var result = DbHandler.Instance.SaveClientConfirm(uLain,true);
             return new ServiceResponse()
             {
                 data = result,

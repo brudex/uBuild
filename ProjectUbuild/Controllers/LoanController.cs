@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace ProjectUbuild.Controllers
             NameValueCollection n = Request.QueryString;
             var clientAuth = User.GetUbuildClient();
             var ulains = DbHandler.Instance.GetClientLoanProcStages(clientAuth.RecordId, "U");
+            IDictionary<string,string> dict = new Dictionary<string, string>();
             if (ulains.Count == 0)
             {
 
@@ -46,7 +48,7 @@ namespace ProjectUbuild.Controllers
                 if (n.Count > 1)
                 {
 
-                    var dict = n.ToDictionary();
+                      dict = n.ToDictionary();
                     if (dict.ContainsKey("currency"))
                     {
                         dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
@@ -59,6 +61,7 @@ namespace ProjectUbuild.Controllers
                         dict["customerNo"] = clientInfo.CustomerNo;
                     }
                     var json = new JavaScriptSerializer().Serialize(dict);
+
                     viewModel.json = json;
                 }
             }

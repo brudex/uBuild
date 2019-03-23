@@ -17,6 +17,7 @@
         vm.loanLimits = [];
         vm.maxLoanTenure = 15;
         vm.minLoanTenure = 1;
+        var ubuildSaveKey = "__ubuild_ctSzyndnQLe1TOyTuo5hWIrzkLS4wIK3";
         var currencyId = 1;
         var fullHouseId = document.getElementById("__selected_house_id").value;
         vm.model = {};
@@ -55,8 +56,7 @@
             services.getHouseCustomizables(fullHouseId, function (response) {
                 vm.ajax = false;
                 console.log(response);
-                vm.fixtureFittings = response;
-
+                vm.fixtureFittings = response; 
             });
         }
 
@@ -127,12 +127,19 @@
         vm.saveCustomization = function () {
             var payload = vm.model;
             payload.houseId = fullHouseId;
-            services.saveCustomization(payload, function(response) {
-                if (response.status === "00") {
-                    utils.alertSuccess("Saved", response.Message);
-                }
-            });
+            $window.Lockr.flush()
+            $window.Lockr.set(ubuildSaveKey, payload);
+            utils.alertSuccess("Saved", "Customization saved"); 
         }
+
+        function generateGuid() {
+            function S4() {
+              return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+            } 
+           var  guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+            return guid;
+        }
+         
 
 
         vm.checkEligibility = function () {
@@ -208,19 +215,16 @@
         }
 
         function retrieveSavedCustomizations () {
-            var payload = {};
-            payload.houseId = fullHouseId;
-            services.retrieveSavedCustomization(payload, function (response) {
-                if (response.status === "00") {
-                    vm.model = response.data;
-                }
-            });
+            var model = $window.Lockr.get(ubuildSaveKey);
+            console.log('saved customization >>', model);
+            if (model) {
+                vm.model = model;
+            } 
         } 
          
         loadLoanAmountLimits(); 
         loadCustomizables();
-        loadFittingsFixtures(); 
-         
+        loadFittingsFixtures();  
         setTimeout(function() {
             loadDefaults();
             retrieveSavedCustomizations();

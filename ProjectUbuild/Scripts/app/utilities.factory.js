@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function ($) {
     angular
         .module('ubuild')
         .factory('brudexutils', UtilityFunctions);
@@ -6,8 +6,9 @@
     function UtilityFunctions($http, $location,$window) {
          return {
             alertSuccess: createAlert('success'),
-            alertError: createAlert('error')
-           
+            alertError: createAlert('error'),
+            toastError: createToast('error'),
+            toastSuccess: createToast('success')
         }; 
         function createAlert(alertType) {
             return function showAlert(title, message) {
@@ -19,7 +20,13 @@
                 $window.swal(title, message, alertType);
             } 
         }
+        function createToast(alertType) {
+            return function showAlert( message) {
+
+                window.toastr[alertType](message);
+            } 
+        }
         
 
     }
-})();
+})(window.jQuery);

@@ -2,11 +2,7 @@
     angular
         .module('ubuild', ['ngMessages']);
 
-})();
-
-
-
-
+})(); 
 (function () {
     'use strict';
     angular.module("ubuild")

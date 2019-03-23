@@ -1,6 +1,8 @@
 @model ProjectUbuild.Models.ApplyLoanViewModel
 @{
     ViewBag.Title = "Loan Application";
+    string str = String.Empty;
+    
 }
 <section class="page-title page-title-2 image-bg overlay parallax" style="height:125px">
     <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;img/home10.jpg&quot;); top: -100px;">
@@ -58,21 +60,18 @@
             else
             {
                 <div class="tab-content">
-
-                    <div class="tab-pane slide-left active padding-20 sm-no-padding" id="tab4">
-                        <div class="row">
-                            <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
-                                <div class="progress-circle-indeterminate progress-circle-master"></div>
-                            </div>
-                            <div class="col-md-5 b-r b-dashed b-grey ">
-                                <h4>Account Info</h4>
-                                <form class="" role="form">
-
-                                    <div class="form-group form-group-default required">
+                    <form class="" role="form" name="loanAppForm">
+                        <div class="tab-pane slide-left active padding-20 sm-no-padding" id="tab4">
+                            <div class="row">
+                                <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
+                                    <div class="progress-circle-indeterminate progress-circle-master"></div>
+                                </div> 
+                                <div class="col-md-5 b-r b-dashed b-grey ">
+                                    <h4>Account Info</h4> 
+                                    <div class="form-group form-group-default required " data-ng-class="{'has-error': loanAppForm.FullName.$invalid && vm.formSubmitted }">
                                         <label>Full Name</label>
-                                        <input type="text" class="form-control" name="PlaceOfBirth" data-ng-model="vm.applyModel.FullName">
+                                        <input type="text" class="form-control" name="FullName" data-ng-model="vm.applyModel.FullName" required="">
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group ">
@@ -99,8 +98,7 @@
                                                 <label for="phase">Phase</label>
                                             </span>
                                         </div>
-                                    </div>
-
+                                    </div> 
                                     <div class="form-group" data-ng-show="vm.applyModel.applyingFor == 2">
                                         <label>Choose Phase</label>
                                         <div>
@@ -108,25 +106,23 @@
                                                 <option value="">-Select Phase-</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Complete Loan Form</h4>
 
-                                </form>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Complete Loan Form</h4>
-                                <form role="form">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="form-group form-group-default required">
+                                                <div class="form-group form-group-default required" data-ng-class="{'has-error': loanAppForm.currency.$invalid && vm.formSubmitted }">
                                                     <label>Currency</label>
-                                                    <select class="form-control" data-ng-model="vm.applyModel.currency" data-ng-options="item.RecordId as item.ISOCode for item in vm.currencies"></select>
+                                                    <select class="form-control" data-ng-model="vm.applyModel.currency" name="currency" data-ng-options="item.RecordId as item.ISOCode for item in vm.currencies"></select>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="form-group form-group-default required">
+                                                <div class="form-group form-group-default required" data-ng-class="{'has-error': loanAppForm.AmtSought.$invalid && vm.formSubmitted }">
                                                     <label>Loan Amount</label>
-                                                    <input type="text" class="form-control" data-ng-model="vm.applyModel.AmtSought">
+                                                    <input type="number" class="form-control" data-ng-model="vm.applyModel.AmtSought" required="" name="AmtSought">
                                                 </div>
                                             </div>
                                         </div>
@@ -134,15 +130,15 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group form-group-default required">
+                                                <div class="form-group form-group-default required" data-ng-class="{'has-error': loanAppForm.loanTenure.$invalid && vm.formSubmitted }">
                                                     <label>Loan Tenure</label>
-                                                    <input type="text" class="form-control" data-ng-model="vm.applyModel.loanTenure">
+                                                    <input type="number" class="form-control" data-ng-model="vm.applyModel.loanTenure" required="" name="loanTenure">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group form-group-default required">
+                                                <div class="form-group form-group-default required" data-ng-class="{'has-error': loanAppForm.loanTenureUnit.$invalid && vm.formSubmitted }">
                                                     <label>Tenure Unit</label>
-                                                    <select class="form-control" data-ng-model="vm.applyModel.loanTenureUnit">
+                                                    <select class="form-control" data-ng-model="vm.applyModel.loanTenureUnit" required="" name="loanTenureUnit">
                                                         <option value="Months">Month(s)</option>
                                                         <option value="Years">Year(s)</option>
                                                     </select>
@@ -150,18 +146,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-
+                                    <div class="form-group" data-ng-class="{'has-error': loanAppForm.RepaymentMethod.$invalid && vm.formSubmitted }">
                                         <label>Repayment Method</label>
-                                        <select class="form-control" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
+                                        <select class="form-control" name="RepaymentMethod" required="" data-ng-model="vm.applyModel.RepaymentMethod" data-ng-options="item.RecordId as item.Method for item in vm.repaymentMethods">
                                             <option value="">-Select Repayment Method-</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-group form-group-default required ">
-                                            <label>Purpose of Loan</label>
-                                            <input type="text" class="form-control"  required="" data-ng-model="vm.applyModel.PurposeofLoan">
-                                        </div>
+                                    <div class="form-group form-group-default required" data-ng-class="{'has-error': loanAppForm.RepaymentMethod.$invalid && vm.formSubmitted }">
+                                         <label>Purpose of Loan</label>
+                                         <input type="text" class="form-control" name="PurposeofLoan" required="" data-ng-model="vm.applyModel.PurposeofLoan">
                                     </div>
                                     <div class="form-group">
                                         <label>
@@ -175,43 +168,45 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-6">
-
-                                            <div class="form-group form-group-default required">
+                                            <div class="form-group form-group-default ">
                                                 <label>Protection Security Type </label>
-                                                <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityType">
+                                                <input type="text" class="form-control"  data-ng-model="vm.applyModel.ProtectionSecurityType">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-
-                                            <div class="form-group form-group-default required">
+                                            <div class="form-group form-group-default ">
                                                 <label>Protection Security Details</label>
-                                                <input type="text" class="form-control" required="" data-ng-model="vm.applyModel.ProtectionSecurityDetails">
+                                                <input type="text" class="form-control"  data-ng-model="vm.applyModel.ProtectionSecurityDetails">
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-danger" type="button" data-ng-click="vm.submitLoanApplication()">
+                                    <button class="btn btn-danger" type="button" data-ng-click="vm.submitLoanApplication(loanAppForm.$valid)">
                                         <span><i class="fa fa-send"></i> Submit Application</span>
-                                    </button>
+                                    </button> 
+                                </div>
 
-                                </form>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                            <div class="wizard-footer padding-20 bg-master-light">
+                                <p class="small hint-text pull-left no-margin">
+                                </p>
 
-
-
-                    <div class="wizard-footer padding-20 bg-master-light">
-                        <p class="small hint-text pull-left no-margin">
-                        </p>
-
-                        <div class="clearfix"></div>
-                    </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
                 </div>
 
-                <script type="text/javascript">
-                     window.loanVals = @Html.Raw(Model.json);
-                </script>
-            }
+                 
+           
+                
+                 }
+
+
+          
+
+            <script type="text/javascript">
+                      window.loanVals = @Html.Raw(@Model.json)
+            </script>
 
 
         </div>

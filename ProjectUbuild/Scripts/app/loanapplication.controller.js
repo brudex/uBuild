@@ -148,6 +148,7 @@
         function translateVals() {
 
             if ($window.loanVals) {
+               
                 vm.applyModel.AmtSought = $window.loanVals.loanAmount;
                 vm.applyModel.loanTenure = $window.loanVals.loanTenure;
                 if ($window.loanVals.customerNo) {
@@ -170,9 +171,10 @@
         }
 
         getRepaymentMethods();
-        translateVals();
+        
         getPhaseTypes();
         getCurrencies();
+        translateVals();
 
     }
 })();

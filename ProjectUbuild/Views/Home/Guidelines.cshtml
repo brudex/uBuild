@@ -38,22 +38,23 @@
                     <li>Click on the Log In button</li>
                     <li>Click “register as a new user” </li>
                     <li>Fill the form and click submit</li>
-                    <li>The phone number provided on registration will be verified by entering the token OTP/Code for confirmation. The token will be received via SMS and email</li>
-
+                    <li>The phone number you provided will need to be verified by entering a 6-digit code you will
+                        receive via SMS and email.</li>
+                    <li>Input your verification code and click submit</li>
                 </ul>
 
                 <h3>How to Log-In</h3>
                 <ul class="lead" data-bullet="ti-arrow-right">
-                    <li>Click on the Log In button</li>
-                    <li>Enter your email and your password created during registration</li>
+                    <li>Click on the @Html.ActionLink("Log","Login","Account") In button</li>
+                    <li>Enter the email and your password you created during registration</li>
                     <li>Click submit</li>
                 </ul>
 
                 <h3>Eligibility Checker</h3>
                 <p>
                 <p>
-                    If you already have your House Designs and Bill of Quantities for your self-build project, you can check eligibility for your maximum loan amount.
-                    You will need to choose whether you need funds for a full house or just a phase
+                    If you already have your House Designs and Bill of Quantities for your self-build project, you can check
+                    how much you are eligible to borrow.
                 </p>
                 <ul class="lead">
                     <li>
@@ -62,6 +63,7 @@
                             <li>You can select the currency in which you want the loan, GHS or USD</li>
                             <li>You will need to enter your monthly income</li>
                             <li>Enter your desired loan amount</li>
+                            <li>Choose your desired loan duration</li>
                             <li>You can choose your desired loan tenure</li>
                             <li>Click on Check Eligibility</li>
                             <li>You will be provided with your maximum borrowing capacity and repayment amount</li>
@@ -71,10 +73,11 @@
                     <li>
                         <h4>Phase</h4>
                         <ul class="lead" data-bullet="ti-arrow-right">
-                            <li>You select the specific phase you need to complete</li>
+                            <li>Select the specific house construction phase you need to complete</li>
                             <li>You can select the currency in which you want the loan, GHS or USD</li>
                             <li>You will need to enter your monthly income</li>
                             <li>Enter your desired loan amount</li>
+                            <li>Choose your desired loan duration</li>
                             <li>You can choose your desired loan tenure</li>
                             <li>Click on Check Eligibility</li>
                             <li>You will be provided with your maximum borrowing capacity and repayment amount</li>
@@ -91,7 +94,7 @@
                 <h3>Start Exploring</h3>
                 <ul class="lead" data-bullet="ti-arrow-right">
                     <li>
-                        GHL Bank has provided various house designs for clients to choose from :
+                        GHL Bank has provided various house designs for you to choose from :
                         <ul>
                             <li>1 bedroom expandable to 2 and 3</li>
                             <li>2 bedrooms expandable to 3</li>
@@ -99,23 +102,22 @@
                         </ul>
                     </li>
 
-                    <li>The base cost of the house designs is made available to you at the point of selection</li>
+                    <li>The base cost of the house designs you choose will be displayed at the point of selection</li>
                     <li>You can customize all the fittings and fixtures on the selected house design</li>
                     <li>We will update your base cost with the customization costs</li>
-                    <li>Once satisfied, choose tenure and enter your monthly income.</li>
+                    <li>Once satisfied, choose your monthly income and desired loan tenure.</li>
                     <li>Click submit</li>
                     <li>You will be provided with your maximum borrowing capacity and repayment amount</li>
-                    <li>Once satisfied, you can click on the apply now button</li>
+                    <li>Once satisfied, you can click on the APPLY NOW button</li>
                     <li>If you are not already registered, you will be redirected to the registration page to complete registration</li>
                 </ul>
 
 
                 <h3>Profile Registration</h3>
                 <p>
-                    Are you a GHL Bank Account Holder?
-
+                    If you are a GHL Bank Account Holder
                 </p>
-                <h3>If yes</h3>
+                
                 <ul class="lead" data-bullet="ti-arrow-right">
                     <li>Kindly enter your account number</li>
                     <li>You will receive an OTP via phone and email to verify your information</li>
@@ -123,10 +125,12 @@
                     <li>Once you have verified successfully, click on CONTINUE</li>
                     <li>Verify the information on your page and click on the “save and continue” button</li>
                 </ul>
-                <h3> If no</h3>
+                <p>
+                    If you are not a GHL Bank Account Holder
+                </p>
                 <ul class="lead" data-bullet="ti-arrow-right">
                     <li>Fill the form, providing us with information on your personal details, residential information, identification, employment and emergency contact</li>
-                    <li>You need to complete all required fields and click on the save and continue button</li>
+                    <li>Please ensure you complete all required fields and click on the save and continue button</li>
                 </ul>
                 <h3>
                     Applying for a loan As
@@ -142,12 +146,12 @@
                 <h3>New Client</h3>
                 <ul class="lead" data-bullet="ti-arrow-right">
                     <li>Ensure that you have completed the Profile Registration form</li>
-                    <li>Enter the details for the loan application.</li>
+                    <li>Enter the required details on the loan application form.</li>
                     <li>Click save and submit to send your completed application to GHL Bank for processing</li>
                 </ul>
-                <p>Checking the status of your loan</p>
+                <h3>Checking the status of your loan</h3>
                 <ul class="lead" data-bullet="ti-arrow-right">
-                    <li>Click on the My Applications button</li>
+                    <li>Click on the @Html.ActionLink("My Applications","MyApplications","Home") link</li>
                     <li>Click on pending to see the latest update on your loan application</li>
                 </ul>
             </div>

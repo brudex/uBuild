@@ -44,14 +44,14 @@ namespace uBuildCore
                 response.Status = "00";
                 if (result.Qualified)
                 {
-                    response.Message = "You are qualified for a loan.\n";
-                    response.Message += "Your monthly repayment amount is " + data["currency"].ToString() + " " + result.MonthlyRePmt + "\n";
-                    response.Message += "Your have a borrowing capacity of  " + data["currency"].ToString() + " " + result.BorrowingCap;
+                    response.Message = "You are qualified for this loan.\n";
+                    response.Message += "Your monthly repayment is " + data["currency"].ToString() + " " + result.MonthlyRePmt + " for the next " + checkEligibilityRequest.LoanTenorMonths + " month(s) \n";
+                    response.Message += "You may borrow up to " + data["currency"].ToString() + " " + result.BorrowingCap;
                 }
                 else
                 {
                     response.Status = "01";
-                    response.Message = "Sorry according to the information provided you are not qualified";
+                    response.Message = "Sorry, the information you provided does not qualify you for this loan.Enter a lower loan amount or increase the loan tenure and try again.";
                 }
                 response.data = result;
             }
@@ -112,24 +112,25 @@ namespace uBuildCore
 
         }
 
-        public static ServiceResponse ClientConfirm(string uLain,bool accepted)
+        public static ServiceResponse ClientConfirm(string uLain, bool accepted)
         {
-            var result = DbHandler.Instance.SaveClientConfirm(uLain,true);
+            var result = DbHandler.Instance.SaveClientConfirm(uLain, true);
             return new ServiceResponse()
             {
                 data = result,
                 Status = (result == 1).ToString(),
-                Message =  "Data successfully updated"
+                Message = "Data successfully updated"
             };
         }
-        
-        
+
+
         public static ServiceResponse UpdatedUserAcceptedTerms(JObject data)
-        {var response = new ServiceResponse();
+        {
+            var response = new ServiceResponse();
             bool acceptedTerms = data["termsAccepted"].ToBoolean();
             int recordId = data["recordId"].ToInteger();
             var updated = DbHandler.Instance.UpdateLoanTermsAccepted(recordId, acceptedTerms);
-            response.Status = updated? "00" :"03";
+            response.Status = updated ? "00" : "03";
             if (updated)
             {
                 response.Message = "Data successfully updated ";
@@ -138,7 +139,7 @@ namespace uBuildCore
             {
                 response.Message = "There was an error please try again later";
             }
-            
+
             return response;
 
         }

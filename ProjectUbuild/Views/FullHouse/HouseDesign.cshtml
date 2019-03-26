@@ -128,14 +128,14 @@
                             <div class="card-header " role="tab" id="headingThree">
                                 <h4 class="card-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <h5>Base house cost : <span data-ng-bind="vm.model.houseCostCurrency"></span> <span>@Model.BareDesignCost.ToString("N2")</span></h5>
+                                        <h5 style="color: brown">Base house cost : <span data-ng-bind="vm.model.houseCostCurrency"></span> <span>@Model.BareDesignCost.ToString("N2")</span></h5>
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseThree" class="collapse" role="tabcard" aria-labelledby="headingThree">
                                 <div class="card-block">
                                     <table class="table cart mb48">
-                                        <caption>BOQs</caption>
+                                        <p>Bill of quantities</p>
                                         <thead>
                                         <tr>
 
@@ -156,7 +156,7 @@
                         <div class="card card-default m-b-0">
                             <div class="card-header " role="tab" id="headingOne">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a style="color: brown" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                        Your Customizations
                                     </a>
                                 </h4>
@@ -196,15 +196,15 @@
                         <div class="card card-default m-b-0">
                             <div class="card-header " role="tab" id="headingTwo">
                                 <h4 class="card-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Check Eligibility
+                                    <a style="color: brown" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <div class="label font-weight-bold text-white">Check eligibility for owning this house</div>
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="collapse" role="tabcard" aria-labelledby="headingTwo">
                                 <div class="card-block">
                                     <form>
-                                        <div class="label font-weight-bold text-white">Check eligibility for owning this house</div>
+                                       
                                         <div class="form-group form-group-default input-group">
                                             <label for="houseEligibility" class="ng-binding">Please Select Loan Tenure in Years.</label>
                                             <select data-ng-model="vm.model.tenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
@@ -213,7 +213,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group form-group-default input-group">
-                                            <label for="houseEligibility" class="ng-binding">Please enter your monthly.</label>
+                                            <label for="houseEligibility" class="ng-binding">Please enter your monthly income.</label>
                                             <input autocomplete="off" data-ng-model="vm.model.income" id="houseEligibility" placeholder="Monthly Income here" type="Text" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                             <span ng-show="vm.model.tenure && vm.model.income" class="input-group-addon primary p-r-15 p-l-15" style="cursor: pointer; background: #ac5e81" data-ng-click="vm.checkEligibility()">
                                                 Submit

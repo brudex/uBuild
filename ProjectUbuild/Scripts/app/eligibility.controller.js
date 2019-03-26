@@ -170,7 +170,7 @@
                         });
                 } else if (response.Status === "01") {
                     $scope.loading = false;
-                    utils.alertError("Sorry", response.Message);
+                    utils.alertError("", response.Message);
                 }
                 if (isLoanApplication && callbackFunc) {
                     $scope.loading = false;

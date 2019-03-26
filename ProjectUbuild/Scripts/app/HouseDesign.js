@@ -172,7 +172,7 @@
                         }
                     });
                 } else {
-                    utils.alertError("Sorry", response.Message);
+                    utils.alertError("", response.Message);
                 }
             });
         }

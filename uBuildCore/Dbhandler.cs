@@ -462,5 +462,14 @@ namespace uBuildCore
             }
         }
 
+        public List<BoqModel> GetHouseDesignBoQs(int houseId)
+        {
+            using (var conn = GetOpenDefaultDbConnection())
+            {
+                var list = conn.Query<BoqModel>("SELECT h.*,b.*,c.IsoCode  FROM  [dbo].[HouseBoqTable] h ,[dbo].[BOQ_Table] b inner join dbo.Currencies c on b.CurrencyId = c.RecordId where h.BoqId =b.RecordId and h.HouseDesignId=@houseId and b.IsActive = 1", new { houseId });
+                return list.ToList();
+            }
+        } 
+
     }
 }

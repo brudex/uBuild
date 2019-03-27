@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using Newtonsoft.Json.Linq;
 using ProjectUbuild.Models;
 using uBuildCore;
@@ -62,7 +63,26 @@ namespace ProjectUbuild.Controllers.Api
             return response;
 
         }
-         
+
+
+        [System.Web.Mvc.HttpPost]
+        public ServiceResponse BillOfQuantities([FromBody]JObject value)
+        {
+            var response = new ServiceResponse();
+            int houseId = value["houseId"].ToInteger();
+            var boqs = DbHandler.Instance.GetHouseDesignBoQs(houseId);
+            response.Status = "03";
+            if (boqs.Any())
+            {
+                response.Status = "00";
+                response.data = boqs;
+            }
+            return response;
+
+        }
+
+
+
 
     }
 }

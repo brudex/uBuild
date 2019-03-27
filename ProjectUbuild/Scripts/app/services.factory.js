@@ -32,7 +32,8 @@
             saveMessage: postData("/api/Messaging/SaveMessage"),
             getUnreadMessagesCount: getData("/api/Messaging/GetUnreadMessagesCount"),
             getMessageList: getData("/api/Messaging/GetMessageList"),
-            markMessagesAsRead: postData("/api/Messaging/MarkMessagesAsRead")
+            markMessagesAsRead: postData("/api/Messaging/MarkMessagesAsRead"),
+            getHouseDesignBoQs: postData("/api/HouseDesignApi/BillOfQuantities")
         };
 
         function postData(endpoint) {

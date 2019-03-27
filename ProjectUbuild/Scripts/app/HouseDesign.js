@@ -15,6 +15,7 @@
         vm.customizableFixtureFittings = [];
         vm.customizables = [];
         vm.loanLimits = [];
+        vm.boqs = [];
         vm.maxLoanTenure = 15;
         vm.minLoanTenure = 1;
         var ubuildSaveKey = "__ubuild_ctSzyndnQLe1TOyTuo5hWIrzkLS4wIK3";
@@ -77,6 +78,19 @@
             });
         }
 
+        function loadBoQs() {
+            vm.ajax = true;
+            var payload = {};
+            payload.houseId = fullHouseId;
+            services.getHouseDesignBoQs(payload,function (response) {
+                vm.ajax = false;
+                console.log("House Design Boqs >>>");
+                if (response.Status === "00") {
+                    vm.boqs = response.data;
+                } 
+            });
+        }
+
         function updateTotalCost() {
             vm.model.totalLoanAmt = vm.model.houseCost;
             for (var item in vm.model.selectedFixtures) {
@@ -132,14 +146,7 @@
             utils.alertSuccess("Saved", "Customization saved"); 
         }
 
-        function generateGuid() {
-            function S4() {
-              return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-            } 
-           var  guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
-            return guid;
-        }
-         
+        
 
 
         vm.checkEligibility = function () {
@@ -220,11 +227,14 @@
             if (model) {
                 vm.model = model;
             } 
-        } 
+        }
+
+
          
         loadLoanAmountLimits(); 
         loadCustomizables();
-        loadFittingsFixtures();  
+        loadFittingsFixtures();
+        loadBoQs();
         setTimeout(function() {
             loadDefaults();
             retrieveSavedCustomizations();

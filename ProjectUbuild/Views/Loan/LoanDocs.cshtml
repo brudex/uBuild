@@ -46,61 +46,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var r in Model.loanDocuments)
-                        {
-                            <tr>
-                                <td>@r.RecordId</td>
-                                <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
-                                <td>@r.Description</td>
-                                <td>@r.CreatedDate.ToLongDateString()</td>
-                                <td>
-                                    @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                        @{ int count = 1;}
+                    @foreach (var r in Model.loanDocuments)
+                    {
+                        <tr>
+                            <td>@(count++)</td>
+                            <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
+                            <td>@r.Description</td>
+                            <td>@r.CreatedDate.ToLongDateString()</td>
+                            <td>
+                                @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-            <!-- Modal -->
-            <div class="modal fade stick-up" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document" style="margin-top: 100px">
-                    <div class="modal-content">
-                        <div class="modal-header" style="padding: 15px">
-                            <h3 class="modal-title">Add new Document</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <!-- Modal -->
+        <div class="modal fade stick-up" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="margin-top: 100px">
+                <div class="modal-content">
+                    <div class="modal-header" style="padding: 15px">
+                        <h3 class="modal-title">Add new Document</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-progress" data-ng-show="vm.loadingFile" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
                         </div>
-                        <div class="modal-body">
-                            <div class="card-progress" data-ng-show="vm.loadingFile" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
-                                <div class="progress-circle-indeterminate progress-circle-master"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="select-option">
-                                        <i class="ti-angle-down"></i>
-                                        @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"), "Please select document type.",new { ng_model = "vm.uploadDoc.DocType", required = "required" })
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-option">
+                                    <i class="ti-angle-down"></i>
+                                    @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"), "Please select document type.", new { ng_model = "vm.uploadDoc.DocType", required = "required" })
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="file" file-model="vm.uploadDoc.myFile" accept=".pdf,.jpg,.jpeg" />
-                                    <button class="m-t-20 btn btn-default" ng-click="vm.uploadFile()" title="Please select type of document" data-ng-disabled="!vm.uploadDoc.DocType || !vm.uploadDoc.myFile">Upload Document</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="file" file-model="vm.uploadDoc.myFile" accept=".pdf,.jpg,.jpeg" />
+                                <button class="m-t-20 btn btn-default" ng-click="vm.uploadFile()" title="Please select type of document" data-ng-disabled="!vm.uploadDoc.DocType || !vm.uploadDoc.myFile">Upload Document</button>
 
-                                    <div class="panel panel-default m-t-35">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Notes</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <ul>
-                                                <li>The maximum file size for uploads is <strong>3MB</strong> </li>
-                                                <li>File types allowed are : PDF,JPG,JPEG</li>
+                                <div class="panel panel-default m-t-35">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Notes</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>The maximum file size for uploads is <strong>3MB</strong> </li>
+                                            <li>File types allowed are : PDF,JPG,JPEG</li>
 
-                                            </ul>
-                                        </div>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 @*<input type="file" file-model="myFile" accept=".pdf"/>*@
@@ -115,6 +116,6 @@
             </div>
         </div>
     </div>
-    </div>
-    <!--end of container-->
+</div>
+<!--end of container-->
 </section>

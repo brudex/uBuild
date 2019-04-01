@@ -1,6 +1,7 @@
 var imgurl = "";
 var homedesignupload = null;
 var uploadFormData = [];
+var uploadButton;
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -12,18 +13,18 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function SubmitDocs(e) {
+//function SubmitDocs(e) {
 
-    uploadFormData = $("#uploadForm").serializeArray();
+//    uploadFormData = $("#uploadForm").serializeArray();
 
-    homedesignupload.formData = uploadFormData;
-    console.log();
-    homedesignupload.submit();
-    $('#fileupload').bind('fileuploaddone',
-        function (e, data) {
-            location.reload(true);
-        });
-}
+//    homedesignupload.formData = uploadFormData;
+//    console.log();
+//    homedesignupload.submit();
+//    $('#fileupload').bind('fileuploaddone',
+//        function (e, data) {
+//            location.reload(true);
+//        });
+//}
 
 (function ($) {
 
@@ -41,10 +42,15 @@ function SubmitDocs(e) {
         $('.input-phone').intlInputPhone();
         $('[data-toggle="tooltip"]').tooltip({ boundary: 'scrollParent' })
         var ulain = getParameterByName("clientUlain");
+
+    
+
         $('#fileupload').fileupload({
             url: "/api/LoanApi/UploadDocument?clientUlain=" + ulain,
             dataType: 'json',
             autoUpload: false,
+            acceptFileTypes: /(\.|\/)(pdf)$/i,
+            maxFileSize: 999000,
             //formData: uploadFormData,
             done: function (e, data) {
                 $.each(data.result.files,
@@ -62,7 +68,38 @@ function SubmitDocs(e) {
                     progress + '%'
                 );
             }
-        }).prop('disabled', !$.support.fileInput)
+        }).on('fileuploadadd', function (e, data) {
+                data.context = $('<div/>').appendTo('#files');
+                $.each(data.files, function (index, file) {
+                    var node = $('<p/>')
+                        .append($('<span/>').text(file.name));
+                    if (!index) {
+                        node
+                            .append('<br>')
+                            .append(uploadButton.clone(true).data(data));
+                    }
+                    node.appendTo(data.context);
+                });
+            }).on('fileuploadprocessalways', function (e, data) {
+                var index = data.index,
+                    file = data.files[index],
+                    node = $(data.context.children()[index]);
+                if (file.preview) {
+                    node
+                        .prepend('<br>')
+                        .prepend(file.preview);
+                }
+                if (file.error) {
+                    node
+                        .append('<br>')
+                        .append($('<span class="text-danger"/>').text(file.error));
+                }
+                if (index + 1 === data.files.length) {
+                    data.context.find('button')
+                        .text('Upload')
+                        .prop('disabled', !!data.files.error);
+                }
+            }).prop('disabled', !$.support.fileInput)
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 

@@ -102,12 +102,12 @@ namespace ProjectUbuild.Controllers.Api
                     {
                         var tstamp = DateTime.Now.ToString("yyyyMMddHHmmss");
                         var MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB  
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png", ".jpeg",".pdf", ".docx" };
+                        IList<string> AllowedFileExtensions = new List<string> { ".pdf" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
                         {
-                            var message = string.Format("Please Upload image of type .jpg,.gif,.png,.jpeg");
+                            var message = string.Format("Please Upload image of type PDF");
                             dict.Add("error", message);
                             return Request.CreateResponse(HttpStatusCode.BadRequest, dict);
                         }
@@ -124,7 +124,7 @@ namespace ProjectUbuild.Controllers.Api
 
                                 var data = new LoanDocuments();
                                 data.ULAIN = clientUlain;
-                                data.Description = formValues["DocDescription"];
+                                data.Description = "";
                                 data.DocumentPath = clientUlain + "/" + tstamp + postedFile.FileName;
                                 data.CreatedDate = DateTime.Now;
                                 data.DateUploaded = DateTime.Now;

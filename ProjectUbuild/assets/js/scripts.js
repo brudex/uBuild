@@ -21,6 +21,7 @@ function SubmitDocs(e) {
     homedesignupload.submit();
     $('#fileupload').bind('fileuploaddone',
         function (e, data) {
+            alert("File Upload completed");
             location.reload(true);
         });
 }

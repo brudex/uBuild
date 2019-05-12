@@ -905,3 +905,7 @@ windows body, .windows p {
 /*.row.column-seperation .col-md-4:hover {
     background: #a17c7c
 }*/
+
+html {
+    overflow-y: scroll; 
+}

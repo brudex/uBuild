@@ -227,6 +227,7 @@
     <Content Include="assets\css\jquery.fileupload.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\style.min.css" />
+    <Content Include="assets\foundry\css\bootstrap-select.min.css" />
     <Content Include="assets\foundry\css\bootstrap.css" />
     <Content Include="assets\foundry\css\bootstrap.min.css" />
     <Content Include="assets\foundry\css\custom.css" />
@@ -2308,6 +2309,7 @@
     <Content Include="Scripts\app\update-profile.conftroller.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

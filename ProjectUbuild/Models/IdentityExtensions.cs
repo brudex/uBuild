@@ -11,7 +11,7 @@ using uBuildCore.Models;
 
 namespace ProjectUbuild.Models
 {
-    public static  class IdentityExtensions
+    public static class IdentityExtensions
     {
         public static ClientAuths GetUbuildClient(this IPrincipal user)
         {
@@ -31,7 +31,11 @@ namespace ProjectUbuild.Models
             using (var context = new ApplicationDbContext())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == userId);
-                return user.Email;
+                if (user != null)
+                    return user.Email;
+                else
+                    return string.Empty;
+
             }
         }
 

@@ -133,7 +133,7 @@ function getParameterByName(name, url) {
                 var wait = setTimeout(function() {
 
                     searchResults.find('.result-name').each(function() {
-                        if (searchField.val().length != 0) {
+                        if (searchField.val().length !== 0) {
                             $(this).html(searchField.val());
                             searchResults.fadeIn("fast"); // reveal updated results
                         }

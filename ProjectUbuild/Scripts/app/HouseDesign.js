@@ -48,6 +48,8 @@
                 console.log("the loaded customizables >>");
                 console.log(response);
                 vm.customizables = response;
+
+                $('.custom-selectpicker').select2();
             });
         }
 		 

@@ -55,7 +55,8 @@
                             <td>@r.Description</td>
                             <td>@r.CreatedDate.ToLongDateString()</td>
                             <td>
-                                @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
+                                @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId },
+                                    new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = confirm('Do you want to remove this file?'); }" })
                             </td>
                         </tr>
                     }

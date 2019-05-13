@@ -469,7 +469,5 @@
         getUncompletedProfile();
     }
 
-    function getFormStatus(isFormValid) {
-        return
-    }
+    
 })();

@@ -46,77 +46,76 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var r in Model.loanDocuments)
-                        {
-                            <tr>
-                                <td>@r.RecordId</td>
-                                <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
-                                <td>@r.Description</td>
-                                <td>@r.CreatedDate.ToLongDateString()</td>
-                                <td>
-                                    @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                        @{ int count = 1;}
+                    @foreach (var r in Model.loanDocuments)
+                    {
+                        <tr>
+                            <td>@(count++)</td>
+                            <td>@r.DocumentPath.Split('/').LastOrDefault()</td>
+                            <td>@r.Description</td>
+                            <td>@r.CreatedDate.ToLongDateString()</td>
+                            <td>
+                                @Html.ActionLink("Remove", "RemoveLoanDoc", "Loan", new { uLain = r.ULAIN, Id = r.RecordId }, new { @class = "fa fa-remove", onclick = "function(event){ event.preventDefault = !confirm('Do you want to remove this file?'); }" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-            <!-- Modal -->
-            <div class="modal fade stick-up" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document" style="margin-top: 100px">
-                    <div class="modal-content">
-                        <div class="modal-header" style="padding: 15px">
-                            <h3 class="modal-title">Add new Document</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <!-- Modal -->
+        <div class="modal fade stick-up" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="margin-top: 100px">
+                <div class="modal-content">
+                    <div class="modal-header" style="padding: 15px">
+                        <h3 class="modal-title">Add new Document</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-progress" data-ng-show="vm.loadingFile" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                            <div class="progress-circle-indeterminate progress-circle-master"></div>
                         </div>
-                        <div class="modal-body">
-                            <form method="post" name="uploadForm" id="uploadForm" onsubmit="SubmitDocs()">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="select-option">
-                                            <i class="ti-angle-down"></i>
-                                            @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"))
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-option">
+                                    <i class="ti-angle-down"></i>
+                                    @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"), "Please select document type.", new { ng_model = "vm.uploadDoc.DocType", required = "required" })
                                 </div>
-                               
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="form-group required">
-                                                <label>Select Document</label>
-                                                <span class="btn btn-success fileinput-button">
-                                                    <i class="glyphicon glyphicon-plus"></i>
-                                                    <span>Select files...</span>
-                                                    <!-- The file input field used as target for the file upload widget -->
-                                                    <input id="fileupload" type="file" name="files[]" multiple>
-                                                </span>
-                                                <br>
-                                                <br>
-                                                <!-- The global progress bar -->
-                                                <div id="progress" class="progress" style="clear: both;height: 5px">
-                                                    <div class="progress-bar progress-bar-success"></div>
-                                                </div>
-                                                <!-- The container for the uploaded files -->
-                                                <div id="files" class="files"></div>
+                            </div>
+                        </div>
 
-                                            </div>
-                                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="file" file-model="vm.uploadDoc.myFile" accept=".pdf,.jpg,.jpeg" />
+                                <button class="m-t-20 btn btn-default" ng-click="vm.uploadFile()" title="Please select type of document" data-ng-disabled="!vm.uploadDoc.DocType || !vm.uploadDoc.myFile">Upload Document</button>
+
+                                <div class="panel panel-default m-t-35">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Notes</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>The maximum file size for uploads is <strong>3MB</strong> </li>
+                                            <li>File types allowed are : PDF,JPG,JPEG</li>
+
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Upload Document</button>
-                                </div>
-                            </form>
+
+                                @*<input type="file" file-model="myFile" accept=".pdf"/>*@
+                                @*<button ng-click="vm.uploadFile()" class="btn btn-primary">upload me</button>*@
+
+                            </div>
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!--end of container-->
+</div>
+<!--end of container-->
 </section>

@@ -102,14 +102,18 @@ namespace ProjectUbuild.Controllers.Api
                     {
                         var tstamp = DateTime.Now.ToString("yyyyMMddHHmmss");
                         var MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB  
-                        IList<string> AllowedFileExtensions = new List<string> { ".pdf" };
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".jpeg", ".pdf" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
                         {
-                            var message = string.Format("Please Upload image of type PDF");
-                            dict.Add("error", message);
-                            return Request.CreateResponse(HttpStatusCode.BadRequest, dict);
+                            var message = string.Format("Please Upload image of type .jpg,.jpeg,pdf");
+
+                            return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = message });
+                        }
+                        else if (postedFile.ContentLength > MaxContentLength)
+                        {
+                            return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = "File too large" });
                         }
                         else
                         {
@@ -124,7 +128,7 @@ namespace ProjectUbuild.Controllers.Api
 
                                 var data = new LoanDocuments();
                                 data.ULAIN = clientUlain;
-                                data.Description = "";
+                                 //data.Description = formValues["DocDescription"];
                                 data.DocumentPath = clientUlain + "/" + tstamp + postedFile.FileName;
                                 data.CreatedDate = DateTime.Now;
                                 data.DateUploaded = DateTime.Now;
@@ -132,30 +136,27 @@ namespace ProjectUbuild.Controllers.Api
                                 data.DocTypeId = Convert.ToInt32(formValues["DocType"]);
 
                                 DbHandler.Instance.SaveClientDoc(data);
+
+                                return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "00", Message = "File uploaded successfuly" });
                             }
                             catch (Exception e)
                             {
-                                Logger.Debug(this, e.Message);
+                                Logger.Error(this, "Error uploading document", e);
                             }
 
                         }
                     }
 
-                    var message1 = string.Format("Image Updated Successfully.");
-                    dict.Add("success", message1);
-                    return Request.CreateResponse(HttpStatusCode.Created, dict);
+
 
                 }
 
-                var res = string.Format("Please Upload a image.");
-                dict.Add("error", res);
-                return Request.CreateResponse(HttpStatusCode.NotFound, dict);
+                return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = "Please select a file to upload" });
             }
             catch (Exception ex)
             {
-                var res = string.Format("some Message");
-                dict.Add("error", res);
-                return Request.CreateResponse(HttpStatusCode.NotFound, dict);
+                Logger.Error(this, "Error uploading document", ex);
+                return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = "File could not be uploaded . please try again. File might be larger than 4MB" });
             }
         }
 
@@ -202,10 +203,10 @@ namespace ProjectUbuild.Controllers.Api
         {
             var ulain = data["ulain"];
             var accepted = data["accepted"].ToBoolean();
-            return LoanApplicationHandler.ClientConfirm(ulain.ToString(),accepted);
+            return LoanApplicationHandler.ClientConfirm(ulain.ToString(), accepted);
         }
 
-        
+
         //[Authorize]
         //[System.Web.Mvc.HttpPost]
         //public ServiceResponse AcceptRejectLoanTerms([FromBody]JObject data)

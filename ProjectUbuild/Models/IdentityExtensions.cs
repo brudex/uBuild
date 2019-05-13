@@ -28,11 +28,17 @@ namespace ProjectUbuild.Models
         public static string GetEmailAdress(this IIdentity identity)
         {
             var userId = identity.GetUserId();
-            using (var context = new ApplicationDbContext())
+            if (!string.IsNullOrEmpty(userId))
             {
-                var user = context.Users.FirstOrDefault(u => u.Id == userId);
-                return user.Email;
+                using (var context = new ApplicationDbContext())
+                {
+
+                    var user = context.Users.FirstOrDefault(u => u.Id == userId);
+                    return user.Email;
+                }
             }
+            return string.Empty;
+
         }
 
 

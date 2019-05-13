@@ -35,12 +35,21 @@ namespace ProjectUbuild.Controllers.Api
         [System.Web.Mvc.HttpGet]
         public ServiceResponse GetUnreadMessagesCount()
         {
-            var email = User.Identity.GetEmailAdress();
-            int count =DbHandler.Instance.CountUnreadMessages(email);
-            var response=new ServiceResponse();
-            response.Status = "00";
-            response.Message = "Message saved successfully";
-            response.data = count;
+            var response = new ServiceResponse();
+            if (User.Identity.IsAuthenticated)
+            {
+                var email = User.Identity.GetEmailAdress();
+                int count = DbHandler.Instance.CountUnreadMessages(email);
+                response.Status = "00";
+                response.Message = "Unread messages retrieved";
+                response.data = count;
+            }
+            else
+            {
+                response.Status = "02";
+                response.Message = "User is not logged in";
+            }
+           
             return response; 
         }
 

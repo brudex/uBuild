@@ -201,7 +201,7 @@
                                                         <td class="text-left">@Model.loanApplications[k].LoanTermMonths </td>
                                                         <td class="text-left">@Model.loanApplications[k].PurposeofLoan</td>
                                                         <td class="text-left">@Model.loanApplications[k].RepaymentMethod</td>
-                                                        <td class="text-left">@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought</td>
+                                                        <td class="text-left">@Model.loanApplications[k].CurrencyCode @Model.loanApplications[k].AmtSought.ToString("N2")</td>
                                                         <td class="text-left">@Model.loanApplications[k].ApplSubmitDate.ToString("yyyy-MM-dd")</td>
                                                         <td class="text-left">@Model.loanApplications[k].ProcessComment</td>
                                                         <td class="text-left">@Model.loanApplications[k].GetFinalStatus()</td>

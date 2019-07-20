@@ -58,13 +58,12 @@ namespace uBuildCore
             string acctNo = data["acctNo"].ToStringOrEmpty();
             try
             {
-
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
-                //string s = JsonConvert.SerializeObject(tclient);
-                if (tclient != null && tclient.MobilePhone != null)
+                string s = JsonConvert.SerializeObject(tclient);
+                if(tclient != null && tclient.MobilePhone != null)
                 {
                     string mobile = tclient.MobilePhone;
-                    var otp = SoftTokenService.GenerateSoftToken(acctNo);
+                    var otp = SoftTokenService.GenerateSoftToken(acctNo.Trim());
                     string message = "Verification code : " + otp;
                     GHLService.Notification.SendSMS(mobile, message);
                     GHLService.Notification.SendEmail(tclient.EmailAddress, "GHL Verification Code", message);
@@ -119,7 +118,7 @@ namespace uBuildCore
                         dataResult.Remove("IdExpiryDate");
                         dataResult.Remove("IdIssueDate");
                         dataResult.Remove("DateOfBirth");
-                        dataResult.Remove("PermitIssueDate9");
+                        dataResult.Remove("PermitIssueDate");
                         dataResult.Remove("MonthlySalary");
 
                         var infos = JsonConvert.DeserializeObject<ClientInfos>(dataResult.ToString());

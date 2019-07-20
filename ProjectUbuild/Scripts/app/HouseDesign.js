@@ -143,7 +143,7 @@
         vm.saveCustomization = function () {
             var payload = vm.model;
             payload.houseId = fullHouseId;
-            $window.Lockr.flush()
+            $window.Lockr.flush();
             $window.Lockr.set(ubuildSaveKey, payload);
             utils.alertSuccess("Saved", "Customization saved"); 
         }
@@ -153,7 +153,7 @@
 
         vm.checkEligibility = function () {
             vm.ajax = true;
-            var payload = {loanType :"Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure };
+            var payload = { loanType: "Fullhouse", monthlyIncome: vm.model.income, loanAmount: vm.model.houseCost, currency: vm.model.houseCostCurrency, loanTenure: vm.model.tenure, loanTenureUnit :'Years'};
             console.log('the payload is >>>', payload);
             services.checkLoanEligibility(payload, function (response) {
                 vm.ajax = false;

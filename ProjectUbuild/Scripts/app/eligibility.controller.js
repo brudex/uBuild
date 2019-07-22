@@ -140,7 +140,12 @@
                 filterLoanAmountLimitsBySelectedCurrency();
             });
 
-        $scope.checkEligibility = function () {
+        $scope.checkEligibility = function (isValid) {
+
+            $scope.submitted = true;
+            if (!isValid)
+                return;
+
             $scope.loading = true;
             var payload = Object.assign({}, $scope.builder);
             console.log('the payload is >>>', payload);

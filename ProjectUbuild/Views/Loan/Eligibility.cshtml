@@ -37,12 +37,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8  col-sm-12 ">
-                <form novalidate="" name="eligibilityForm">
+                <form novalidate="" name="eligibilityForm" data-ng-submit="checkEligibility(eligibilityForm.$valid)">
                     <div class="row">
                         <div class="col-md-10">
                             <h2 class="fs-title" title="Choose Fullhouse or Phase to proceed to loan applications" style="margin-bottom: 0">Choose Loan Type</h2>
                             <div>
-                                <select required="" class="" data-ng-model="builder.loanType">
+                                <select required="" class="" data-ng-model="builder.loanType" name="loanType">
                                     <option value="">-Select Loan Type-</option>
                                     <option value="Fullhouse">Full house</option>
                                     <option value="Phase">Phase</option>
@@ -54,7 +54,7 @@
                         <div class="col-md-10">
                             <h2 class="fs-title" style="margin-bottom: 0">Choose Phase</h2>
                             <div>
-                                <select class="" required data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
+                                <select class="" name="phase" required data-ng-model="builder.phase" data-ng-options="item.RecordId as item.PhaseName for item in buildingPhases">
                                     <option value="">-Select Phase-</option>
                                 </select>
                             </div>
@@ -62,14 +62,15 @@
                     </div>
                     <div class="row" style="margin-top: 15px">
                         <div class="col-md-10">
-                            <div class="form-group form-group-default ">
+                            <div class="form-group form-group-default " data-ng-class="{'has-error':(submitted && !eligibilityForm.currency.$valid)}">
                                 <label>Choose Currency</label>
                                 <div class="radio radio-success">
-                                    <input type="radio" checked="checked" ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
+                                    <input type="radio" checked="checked" required ng-model="builder.currency" name="currency" value="GHS" id="currencyGHS">
                                     <label for="currencyGHS">GHS</label>
-                                    <input type="radio" ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
+                                    <input type="radio" required ng-model="builder.currency" name="currency" id="currencyUSD" value="USD">
                                     <label for="currencyUSD">USD</label>
                                 </div>
+                                <span data-ng-show="submitted && !eligibilityForm.currency.$valid" class="help-block">Please select currrency</span>
                             </div>
                         </div>
                     </div>
@@ -78,48 +79,50 @@
                             <div class="form-group-attached m-b-10">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group form-group-default input-group">
+                                        <div class="form-group form-group-default input-group" data-ng-class="{'has-error':(submitted && !eligibilityForm.loanTenure.$valid)}">
                                             <label for="houseEligibility" class="ng-binding">Please enter Loan Tenure.</label>
-                                            <select required="" data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                            <select required="" name="loanTenure" data-ng-model="builder.loanTenure" id="loanTenure" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                                 <option value="">Select Loan Tenure</option>
                                                 <option data-ng-repeat="t in getTenureRange()" value="{{t}}">{{t}}</option>
                                             </select>
+                                            <span data-ng-show="submitted && !eligibilityForm.loanTenure.$valid" class="help-block">Please select loan tenure</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group form-group-default input-group">
+                                        <div class="form-group form-group-default input-group" data-ng-class="{'has-error':(submitted && !eligibilityForm.loanType.$valid)}">
                                             <label for="houseEligibility" class="ng-binding">Tenure Unit.</label>
-                                            <select required="" data-ng-disabled="builder.loanType=='Phase'" data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                            <select required="" name="loanType" data-ng-disabled="builder.loanType=='Phase'" data-ng-model="builder.loanTenureUnit" id="loanTenureUnit" placeholder="Loan Tenure" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
                                                 <option selected="selected" value="Years">Year(s)</option>
                                                 <option value="Months">Months</option>
                                             </select>
+                                            <span data-ng-show="submitted && !eligibilityForm.loanType.$valid" class="help-block">Please select loan tenure unit</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group form-group-default input-group">
-                                <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
-                                <input autocomplete="off" required="" data-ng-model="builder.loanAmount" id="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
 
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group form-group-default input-group" data-ng-class="{'has-error':(submitted && !eligibilityForm.loanAmount.$valid)}">
+                                <label for="houseEligibility_loanAmount" class="ng-binding">Please enter Loan Amount.</label>
+                                <input autocomplete="off" required="" name="loanAmount" data-ng-model="builder.loanAmount" id="houseEligibility_loanAmount" placeholder="Loan Amount here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                <span data-ng-show="submitted && eligibilityForm.loanAmount.$invalid " class="help-block">Please enter loan amount</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="form-group form-group-default input-group">
+                            <div class="form-group form-group-default input-group" data-ng-class="{'has-error':(submitted && !eligibilityForm.monthlyIncome.$valid)}">
                                 <label for="houseEligibility" class="ng-binding">Please enter your monthly income.</label>
-                                <input required="" autocomplete="off" data-ng-model="builder.monthlyIncome" id="houseEligibility" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
-                               
+                                <input required="" autocomplete="off" name="monthlyIncome" data-ng-model="builder.monthlyIncome" id="houseEligibility" placeholder="Monthly Income here" type="number" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                <span class="help-block" data-ng-show="submitted && eligibilityForm.monthlyIncome.$invalid ">Please enter monthly income</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <button title="Complete the form to enable the button for submission"  ng-disabled="!eligibilityForm.$valid" class="btn btn-danger" style="cursor: pointer; background: #ac5e81" data-ng-click="checkEligibility()">
+                        <button title="Complete the form to enable the button for submission"  class="btn btn-danger" style="cursor: pointer; background: #ac5e81" >
                             Submit
                         </button>
                     </div>

@@ -909,3 +909,7 @@ windows body, .windows p {
 html {
     overflow-y: scroll; 
 }
+
+.help-block{
+    padding-left:7px
+}

@@ -108,8 +108,7 @@ namespace uBuildCore
             DbHandler.Instance.SaveLoanApplication(loaApp);
             response.Status = "00";
             response.Message = ulain;
-            return response;
-
+            return response; 
         }
 
         public static ServiceResponse ClientConfirm(string uLain, bool accepted)

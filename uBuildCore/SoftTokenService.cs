@@ -46,7 +46,7 @@ namespace uBuildCore
 
         public static bool VerifyToken(string token,string acctNo)
         {
-            var softToken = _tokenRepo.FirstOrDefault(x => x.AcctNumber == acctNo);
+            var softToken = _tokenRepo.FirstOrDefault(x => x.AcctNumber.Trim() == acctNo);
             if (softToken != null)
             {
                 if (token == softToken.Token)

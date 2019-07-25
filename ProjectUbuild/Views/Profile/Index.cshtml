@@ -147,7 +147,7 @@ else
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
                                             </div>
-                                            
+
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -208,9 +208,9 @@ else
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default input-group col-md-10 required" data-ng-class="{'has-error'  : basicInfoForm.DateOfBirth.$invalid  }">
-                                                            <div class="form-input-group " >
+                                                            <div class="form-input-group ">
                                                                 <label>Date of birth</label>
-                                                                <input type="text" name="DateOfBirth" required="" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-component2" placeholder="">
+                                                                <input type="text" name="DateOfBirth" required="" data-ng-model="vm.profile.DateOfBirth" class="form-control" id="datepicker-dateOfBirth" placeholder="">
                                                             </div>
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
@@ -312,7 +312,7 @@ else
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
                                             </div>
-                                            
+
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -373,7 +373,7 @@ else
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default">
                                                             <label>Social Security No</label>
-                                                            <input type="text" class="form-control" name="SocialSecurityNo"  data-ng-model="vm.profile.SocialSecurityNo">
+                                                            <input type="text" class="form-control" name="SocialSecurityNo" data-ng-model="vm.profile.SocialSecurityNo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -417,7 +417,7 @@ else
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default">
                                                             <label>Residential Phone</label>
-                                                            <input type="text" class="form-control" name="ResidentialPhone"  data-ng-model="vm.profile.ResidentialPhone">
+                                                            <input type="text" class="form-control" name="ResidentialPhone" data-ng-model="vm.profile.ResidentialPhone">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -434,7 +434,7 @@ else
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
                                             </div>
-                                           <div class="form-group-attached m-b-10">
+                                            <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group form-group-default required" data-ng-class="{'has-error'  : identificationForm.IdCardType.$invalid  }">
@@ -510,7 +510,7 @@ else
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
                                             </div>
-                                           
+
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -525,9 +525,9 @@ else
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.EmployerName.$invalid  }">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : employmentForm.EmployerName.$invalid ,'required': vm.profile.EmploymentStatus!='Unemployed'}">
                                                             <label>Employer Name </label>
-                                                            <input type="text" class="form-control" name="EmployerName" required="" data-ng-model="vm.profile.EmployerName">
+                                                            <input type="text" class="form-control" name="EmployerName" data-ng-required="vm.profile.EmploymentStatus!='Unemployed'" data-ng-model="vm.profile.EmployerName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -551,15 +551,15 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.EmployerTypeOfBiz.$invalid  }">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error': employmentForm.EmployerTypeOfBiz.$invalid ,'required': vm.profile.EmploymentStatus!='Unemployed'}">
                                                             <label>Employer Type Of Business </label>
-                                                            <input type="text" class="form-control" name="EmployerTypeOfBiz" required="" data-ng-model="vm.profile.EmployerTypeOfBiz">
+                                                            <input type="text" class="form-control" name="EmployerTypeOfBiz" data-ng-required="vm.profile.EmploymentStatus!='Unemployed'" data-ng-model="vm.profile.EmployerTypeOfBiz">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : employmentForm.EmployerPhoneNo.$invalid ,'required': vm.profile.EmploymentStatus!='Unemployed'}">
                                                             <label>Employer Phone .No </label>
-                                                            <input type="text" class="form-control" name="EmployerPhoneNo" required="" data-ng-model="vm.profile.EmployerPhoneNo">
+                                                            <input type="text" class="form-control" name="EmployerPhoneNo" data-ng-required="vm.profile.EmploymentStatus!='Unemployed'" data-ng-model="vm.profile.EmployerPhoneNo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -584,9 +584,9 @@ else
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group form-group-default required" data-ng-class="{'has-error'  : employmentForm.MonthlySalary.$invalid  }">
+                                                        <div class="form-group form-group-default" data-ng-class="{'has-error'  : employmentForm.MonthlySalary.$invalid ,'required': vm.profile.EmploymentStatus!='Unemployed'}">
                                                             <label>Monthly Salary </label>
-                                                            <input type="number" class="form-control" name="MonthlySalary" data-ng-model="vm.profile.MonthlySalary">
+                                                            <input type="number" class="form-control" name="MonthlySalary" data-ng-required="vm.profile.EmploymentStatus!='Unemployed'" data-ng-model="vm.profile.MonthlySalary">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -609,7 +609,7 @@ else
                                             <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
                                                 <div class="progress-circle-indeterminate progress-circle-master"></div>
                                             </div>
-                                            
+                                            <h5 style="text-decoration:underline">Emergency Contact 1</h5>
                                             <div class="form-group-attached m-b-10">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -671,6 +671,74 @@ else
                                                         <div class="form-group form-group-default">
                                                             <label>Emergency Contact Relationship </label>
                                                             <input type="text" class="form-control" name="EmergencyContactRship" data-ng-model="vm.profile.EmergencyContactRship">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <h5 style="text-decoration:underline">Emergency Contact 2</h5>
+                                            <div class="form-group-attached m-b-10">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact Title </label>
+                                                            <select class="form-control" data-ng-model="vm.profile.EmergencyContactTitle2" name="Title" required="">
+                                                                <option value="">--Select Title--</option>
+                                                                <option value="Mr">Mr.</option>
+                                                                <option value="Mrs">Mrs.</option>
+                                                                <option value="Miss">Miss.</option>
+                                                                <option value="Dr">Dr.</option>
+                                                                <option value="Prof">Prof.</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact FirstName </label>
+                                                            <input type="text" class="form-control" name="EmergencyContactFirstName"  data-ng-model="vm.profile.EmergencyContactFirstName2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-attached m-b-10">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact LastName </label>
+                                                            <input type="text" class="form-control" name="EmergencycontactLastName" data-ng-model="vm.profile.EmergencycontactLastName2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact Phone </label>
+                                                            <input type="text" class="form-control" name="EmergencyContactPhone" data-ng-model="vm.profile.EmergencyContactPhone2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-attached m-b-10">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default ">
+                                                            <label>Emergency Contact Address </label>
+                                                            <input type="text" class="form-control" name="EmergencyContactAddress" data-ng-model="vm.profile.EmergencyContactAddress2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact Email </label>
+                                                            <input type="text" class="form-control" name="EmergencyContactEmail" data-ng-model="vm.profile.EmergencyContactEmail2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-attached m-b-10">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Emergency Contact Relationship </label>
+                                                            <input type="text" class="form-control" name="EmergencyContactRship" data-ng-model="vm.profile.EmergencyContactRship2">
                                                         </div>
                                                     </div>
                                                 </div>

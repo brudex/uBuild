@@ -913,3 +913,6 @@ html {
 .help-block{
     padding-left:7px
 }
+button[disabled]{
+    opacity:0.5
+}

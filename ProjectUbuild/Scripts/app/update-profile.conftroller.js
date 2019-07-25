@@ -25,7 +25,7 @@
                     vm.isReadonly = true;
             });
 
-
+        getMinDateOfBirth();
 
         vm.saveAndNext = function (formValid, pageNo, e) {
             e.preventDefault();
@@ -111,6 +111,19 @@
 
         function formatProfileData() {
             vm.profile.Gender = vm.profile.Gender.upper()[0];
+        }
+
+        function getMinDateOfBirth() {
+
+            var todaysDate = new Date();
+            var year = todaysDate.getFullYear();
+            var minDate = new Date((year - 18), 0, 1);
+
+            $('#datepicker-dateOfBirth').datepicker(
+                {
+                    endDate: minDate
+                });
+                       
         }
 
 
@@ -440,9 +453,9 @@
                         break;
                 }
 
-                
+
                 if (formId !== "") {
-                        $('#rootwizard').find("form[name*='" + formId + "']").trigger('submit');
+                    $('#rootwizard').find("form[name*='" + formId + "']").trigger('submit');
                 }
 
 
@@ -469,5 +482,5 @@
         getUncompletedProfile();
     }
 
-    
+
 })();

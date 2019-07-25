@@ -40,10 +40,17 @@ function getParameterByName(name, url) {
                
             });
         $('.input-phone').intlInputPhone();
-        $('[data-toggle="tooltip"]').tooltip({ boundary: 'scrollParent' })
+        $('[data-toggle="tooltip"]').tooltip({ boundary: 'scrollParent' });
         var ulain = getParameterByName("clientUlain");
 
-    
+        $("#agreementChk").change(function () {
+            
+            if ($(this).is(":checked")) {
+                $("#registerButton").attr('disabled', false);
+            } else {
+                $("#registerButton").attr('disabled', true);
+            }
+        });
 
         $('#fileupload').fileupload({
             url: "/api/LoanApi/UploadDocument?clientUlain=" + ulain,

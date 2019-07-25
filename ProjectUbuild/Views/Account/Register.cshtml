@@ -21,8 +21,8 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name", autocomplete = "off",title="Please choose a user name" , data_toggle="tooltip" })
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off",title="Please enter a email address here" , data_toggle="tooltip" })
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name", autocomplete = "off", title = "Please choose a user name", data_toggle = "tooltip" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off", title = "Please enter a email address here", data_toggle = "tooltip" })
                         @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control", placeholder = "First name", autocomplete = "off", title = "Please enter your first name here", data_toggle = "tooltip" })
                         @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off", title = "Please enter a last name here", data_toggle = "tooltip" })
                         @*@Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off",id="" })*@
@@ -32,16 +32,37 @@
                             new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
 
-                        <input type="submit" value="Register" />
+                        <p class="">
+                            <span> <input type="checkbox" name="checkbox" id="agreementChk" value="Checkbox" /> I agree to your <a onclick="(function() { $('#termsModal').modal('show') })()" href="#termsModal">Terms Of Use</a></span>
+                                                        
+                        </p>
+
+                        <input type="submit" disabled id="registerButton" value="Register" title="Accept Terms and conditions to continue" />
                     }
-                    <p class="mb0">
-                        By signing up, you agree to our
-                        <a href="#">Terms Of Use</a>
-                    </p>
+                        
                 </div>
             </div>
         </div>
         <!--end of row-->
+
+
     </div>
     <!--end of container-->
 </section>
+<div class="modal fade stick-up" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="margin-top: 100px">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 15px">
+                <h3 class="modal-title">Terms and Conditions</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Terms and Conditions content here
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -40,14 +40,20 @@
                 <form novalidate="" name="eligibilityForm" data-ng-submit="checkEligibility(eligibilityForm.$valid)">
                     <div class="row">
                         <div class="col-md-10">
-                            <h2 class="fs-title" title="Choose Fullhouse or Phase to proceed to loan applications" style="margin-bottom: 0">Choose Loan Type</h2>
-                            <div>
-                                <select required="" class="" data-ng-model="builder.loanType" name="loanType">
+                           
+
+                            <div class="form-group form-group-default input-group " data-ng-class="{'has-error':(submitted && !eligibilityForm.loanType1.$valid)}">
+                                <label for="houseEligibility" class="ng-binding">Please enter Loan Type.</label>
+                                <select required="" name="loanType1" data-ng-model="builder.loanType" id="loanType" placeholder="Loan loanType" class="form-control" style="">
                                     <option value="">-Select Loan Type-</option>
                                     <option value="Fullhouse">Full house</option>
                                     <option value="Phase">Phase</option>
                                 </select>
+                                <span data-ng-show="submitted && eligibilityForm.loanType1.$invalid" class="help-block">Please select loan type</span>
                             </div>
+
+
+
                         </div>
                     </div>
                     <div class="row" ng-if="builder.loanType=='Phase'" style="margin-top: 15px">

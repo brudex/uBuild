@@ -5,7 +5,6 @@
     Layout = "~/views/shared/_Layout.cshtml";
 }
 
-
 <section class="cover fullscreen image-bg overlay" style="height: auto;min-height: 800px">
     <div class="background-image-holder">
         <img alt="image" class="background-image" src="~/assets/foundry/img/register.jpg" />
@@ -16,22 +15,17 @@
                 <div class="feature bordered text-center" style="margin-top:50px">
                     <h4 class="uppercase">Register Here</h4>
                     @Html.ValidationSummary("", new { @class = "text-danger" })
-
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "text-left", role = "form", id = "form-login" }))
                     {
                         @Html.AntiForgeryToken()
-
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name", autocomplete = "off", title = "Please choose a user name", data_toggle = "tooltip" })
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address", autocomplete = "off", title = "Please enter a email address here", data_toggle = "tooltip" })
                         @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control", placeholder = "First name", autocomplete = "off", title = "Please enter your first name here", data_toggle = "tooltip" })
                         @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off", title = "Please enter a last name here", data_toggle = "tooltip" })
                         @*@Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off",id="" })*@
                         <div class="input-phone"></div>
-
-                        @Html.PasswordFor(m => m.Password,
-                            new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
+                        @Html.PasswordFor(m => m.Password,new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
-
                         <p class="">
                             <span> <input type="checkbox" name="checkbox" id="agreementChk" value="Checkbox" /> I agree to your <a onclick="(function() { $('#termsModal').modal('show') })()" href="#termsModal">Terms Of Use</a></span>
 

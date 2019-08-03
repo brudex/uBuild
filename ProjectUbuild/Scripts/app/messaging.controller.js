@@ -21,12 +21,18 @@
                 if (response.Status == "00") {
                     vm.ajax = false;
                     var messages = response.data;
-                    angular.forEach(messages,
-                        function (message, index) {
-                            if (message.Sender == "GHL Bank")
-                                message.Admin = true;
-                            else message.Client = true;
-                        });
+                    messages.forEach(function(message) {
+                        if (message.Sender == "Bank")
+                            message.Admin = true;
+                        else message.Client = true;
+                    });
+                    
+//                    angular.forEach(messages,
+//                        function (message, index) {
+//                            if (message.Sender == "Bank")
+//                                message.Admin = true;
+//                            else message.Client = true;
+//                        });
 
                     console.log(messages);
                     $rootScope.Messages = messages;

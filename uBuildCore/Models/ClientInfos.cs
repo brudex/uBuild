@@ -58,6 +58,16 @@ namespace uBuildCore.Models
         public string EmergencyContactAddress { get; set; }
         public string EmergencyContactEmail { get; set; }
         public string EmergencyContactRship { get; set; }
+
+
+        public string EmergencyContactTitle2 { get; set; }
+        public string EmergencyContactFirstName2 { get; set; }
+        public string EmergencycontactLastName2 { get; set; }
+        public string EmergencyConactPhone2 { get; set; }
+        public string EmergencyContactAddress2 { get; set; }
+        public string EmergencyContactEmail2 { get; set; }
+        public string EmergencyContactRship2 { get; set; }
+
         public int? CreatorId { get; set; }
         public string CreatorName { get; set; }
         public DateTime? CreatedDate { get; set; }

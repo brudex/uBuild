@@ -28,6 +28,10 @@ namespace ProjectUbuild.Controllers.Api
                 infos.ClientId = clientAuth.RecordId;
                 infos.CreatorId = 0;
                 infos.CreatorName = "SYSTEM";
+                if (string.IsNullOrEmpty(infos.CustomerNo))
+                {
+                    infos.CustomerNo = Guid.NewGuid().ToString();
+                }
                 DbHandler.Instance.SaveGhlClientInfos(infos);
                 
             }

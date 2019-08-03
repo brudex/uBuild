@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('ubuild', ['ngMessages'])
+        .module('ubuild', ['ngMessages']);
 
 
 })();

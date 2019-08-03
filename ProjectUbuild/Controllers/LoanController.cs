@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using ProjectUbuild.Models;
@@ -27,7 +24,6 @@ namespace ProjectUbuild.Controllers
                 return Redirect("/Home/MyApplications");
 
             var vm = new LoadDocsViewModel(clientUlain);
-
             return View(vm);
         }
 
@@ -41,34 +37,33 @@ namespace ProjectUbuild.Controllers
             var clientAuth = User.GetUbuildClient();
             var ulains = DbHandler.Instance.GetClientLoanProcStages(clientAuth.RecordId, "U");
             IDictionary<string,string> dict = new Dictionary<string, string>();
+            if (n.Count > 1)
+            {
+                dict = n.ToDictionary();
+            }
+            if (dict.ContainsKey("currency"))
+            {
+                dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
+            }
             if (ulains.Count == 0)
             {
 
-                viewModel.hasApplied = false;
-                if (n.Count > 1)
+                viewModel.hasApplied = false; 
+                var clientInfo = clientAuth.GetClientInfo();
+                if (clientInfo != null)
                 {
-
-                      dict = n.ToDictionary();
-                    if (dict.ContainsKey("currency"))
-                    {
-                        dict["currencyId"] = "" + DbHandler.Instance.GetCurrencyId(dict["currency"].ToString());
-                    }
-                    var clientInfo = clientAuth.GetClientInfo();
-                    if (clientInfo != null)
-                    {
-                        dict["fullName"] = clientInfo.FirstName + " " + clientInfo.LastName;
-                        dict["accountNumber"] = clientInfo.CustomerNo; //todo get acct number
-                        dict["customerNo"] = clientInfo.CustomerNo;
-                    }
-                    var json = new JavaScriptSerializer().Serialize(dict);
-
-                    viewModel.json = json;
+                    dict["fullName"] = clientInfo.FirstName + " " + clientInfo.LastName;
+                    dict["accountNumber"] = clientInfo.CustomerNo; //todo get acct number
+                    dict["customerNo"] = clientInfo.CustomerNo;
                 }
+                
             }
             else
             {
                 viewModel.hasApplied = true;
             }
+            var json = new JavaScriptSerializer().Serialize(dict);
+            viewModel.json = json;
             return View(viewModel);
         }
 

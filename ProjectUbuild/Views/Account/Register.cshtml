@@ -33,11 +33,11 @@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
 
                         <p class="">
-                            <span> <input type="checkbox" name="checkbox" id="agreementChk" value="Checkbox" /> I agree to your <a onclick="(function() { $('#termsModal').modal('show') })()" href="#termsModal">Terms Of Use</a></span>
+                            <span> <input type="checkbox" name="checkbox" id="agreementChk" value="Checkbox" /> I agree to your <a onclick="(function() { $('#termsModal').modal('show') })()" href="#termsModal" style="color:red">Terms Of Use</a></span>
 
                         </p>
 
-                        <input type="submit" disabled id="registerButton" value="Register" title="Accept Terms and conditions to continue" />
+                        <input type="submit" id="registerButton" value="Register" title="Accept Terms and conditions to continue" />
                     }
 
                 </div>
@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div class="modal-body">
-    <pre>UBUILD Home Finance Market Place Portal Terms and Conditions – www.ghlbank.com
+    <pre> UBUILD Home Finance Market Place Portal Terms and Conditions – www.ghlbank.com
     (NOV/2018)
     PLEASE READ THESE TERMS AND CONDITIONS PRIOR TO USING UBUILD HOME FINANCE PORTAL ON THE LINK BELOW.
     www.ghlbank.com

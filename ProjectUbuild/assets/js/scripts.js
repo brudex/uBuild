@@ -43,14 +43,15 @@ function getParameterByName(name, url) {
         $('[data-toggle="tooltip"]').tooltip({ boundary: 'scrollParent' });
         var ulain = getParameterByName("clientUlain");
 
-        $("#agreementChk").change(function () {
-            
-            if ($(this).is(":checked")) {
-                $("#registerButton").attr('disabled', false);
-            } else {
-                $("#registerButton").attr('disabled', true);
+
+        $("#registerButton").click(function (event) {
+            if (!$("#agreementChk").is(":checked")) {
+                event.preventDefault();
+                alert("Please accept Terms and conditions");
             }
         });
+
+        
 
         $('#fileupload').fileupload({
             url: "/api/LoanApi/UploadDocument?clientUlain=" + ulain,

@@ -15,7 +15,7 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="feature bordered text-center" style="margin-top:50px">
                     <h4 class="uppercase">Register Here</h4>
-                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    @Html.ValidationSummary("", new { @class = "alert alert-danger", style = "background:#ff000070" })
 
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "text-left", role = "form", id = "form-login" }))
                     {
@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div class="modal-body">
-    <pre> UBUILD Home Finance Market Place Portal Terms and Conditions – www.ghlbank.com
+                <pre> UBUILD Home Finance Market Place Portal Terms and Conditions – www.ghlbank.com
     (NOV/2018)
     PLEASE READ THESE TERMS AND CONDITIONS PRIOR TO USING UBUILD HOME FINANCE PORTAL ON THE LINK BELOW.
     www.ghlbank.com

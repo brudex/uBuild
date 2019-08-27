@@ -35,7 +35,7 @@
     <div class="card-progress" style="background-color: rgba(255, 255, 255, 0.8); display: block;" data-ng-show="vm.ajax">
         <div class="progress-circle-indeterminate progress-circle-master"></div>
     </div>
-   
+
     <div class="row" style="margin-top: -15px">
         <div class="col-md-8">
             <div class="row">
@@ -47,7 +47,7 @@
                                 <div class="col-sm-4">
                                     <h4>
                                         House Image
-                                       
+
                                     </h4>
                                 </div>
                                 <div class="col-sm-4">
@@ -58,22 +58,22 @@
                                                 <span class="slider round"></span>
                                             </label>
                                             <label class="font-weight-bold" data-ng-hide="vm.view3D">Floor Plans</label>
-                                            <label class="font-weight-bold" data-ng-show="vm.view3D">3D Drawings</label> 
+                                            <label class="font-weight-bold" data-ng-show="vm.view3D">3D Drawings</label>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
-                                
-                                    <div class="col-sm-4">
-                                        <button class="btn btn-primary btn-sm pull-right" data-ng-click="vm.saveCustomization()">Save Customization</button>
-                                    </div>
-                                
-                               
+
+                                <div class="col-sm-4">
+                                    <button class="btn btn-primary btn-sm pull-right" data-ng-click="vm.saveCustomization()">Save Customization</button>
+                                </div>
+
+
                             </div>
-                           
+
                         </div>
                     </div>
-                    <div class="panel-body" >
+                    <div class="panel-body">
                         <div class="col-md-12" data-ng-hide="vm.view3D">
                             <img src="~/images/HouseImages/@Model.HouseImage " class="img-responsive img-rounded" alt="House Image">
                         </div>
@@ -88,11 +88,11 @@
                                     <div class="col-md-3">
                                         @* <div class="form-group form-group-default " style="height: 60px"> *@
                                         @*     <label class="">Customizable Items List</label> *@
-                                            <select class="custom-selectpicker" data-live-search="true"
-                                                    aria-hidden="true" data-ng-options="item as item.ItemName for item in vm.customizables" data-ng-model="vm.model.selectedCustomizable" data-ng-change="vm.getFixturesForCustomizable(vm.model.selectedCustomizable)">
-                                                <option value="">Select Customizable..</option>
-                                            </select>
-                                           
+                                        <select class="custom-selectpicker" data-live-search="true"
+                                                aria-hidden="true" data-ng-options="item as item.ItemName for item in vm.customizables" data-ng-model="vm.model.selectedCustomizable" data-ng-change="vm.getFixturesForCustomizable(vm.model.selectedCustomizable)">
+                                            <option value="">Select Customizable..</option>
+                                        </select>
+
                                         @* </div> *@
                                     </div>
                                     <div class="col-md-9" style="max-height: 310px; overflow: auto;" data-ng-show="vm.customizableFixtureFittings.length>0">
@@ -117,7 +117,7 @@
                     <h3>= <span data-ng-bind="vm.model.houseCostCurrency"></span> <span data-ng-bind="vm.model.totalLoanAmt | currency :''"></span></h3>
                 </div>
                 <div class="panel-body">
-                    
+
                     <div class="card-group horizontal" id="accordion" role="tablist" aria-multiselectable="false">
                         <div class="card card-default m-b-0">
                             <div class="card-header " role="tab" id="headingThree">
@@ -133,17 +133,17 @@
                                     <table class="table cart mb48">
                                         <p>Bill of quantities</p>
                                         <thead>
-                                        <tr>
+                                            <tr>
 
-                                            <th>Building Stage</th>
-                                            <th>Cost (GHS)</th>
-                                        </tr>
+                                                <th>Building Stage</th>
+                                                <th>Cost (GHS)</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr data-ng-repeat="item in vm.boqs">
-                                            <td data-ng-bind="item.Name">Land Acquisition</td>
-                                            <td data-ng-bind="item.Price | currency:''">2,000.00</td>
-                                        </tr>
+                                            <tr data-ng-repeat="item in vm.boqs">
+                                                <td data-ng-bind="item.Name">Land Acquisition</td>
+                                                <td data-ng-bind="item.Price | currency:''">2,000.00</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -183,7 +183,7 @@
                             <div class="card-header " role="tab" id="headingOne">
                                 <h4 class="card-title">
                                     <a style="color: brown" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                       Your Customizations
+                                        Your Customizations
                                     </a>
                                 </h4>
                             </div>
@@ -191,41 +191,66 @@
                                 <div class="card-block">
                                     <table class="table cart mb48">
                                         <thead>
-                                        <tr>
+                                            <tr>
 
-                                            <th>Item</th>
-                                            <th>Quantity</th>
-                                            <th>Unit Cost ({{vm.model.houseCostCurrency}})</th>
-                                        </tr>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
+                                                <th>Unit Cost ({{vm.model.houseCostCurrency}})</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
 
-                                        <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
+                                            <tr data-ng-repeat="(key, value) in vm.model.selectedFixtures">
 
-                                            <td>
-                                                <a href="#">
-                                                    <img alt="{{value.ItemDescription}}" class="product-thumb" src="/images/FixturesImages/{{value.ItemImage}}" style="width: 90%"/>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="value.ItemCount">1</span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="value.UnitCost | currency:''"></span>
-                                            </td>
-                                        </tr>
+                                                <td>
+                                                    <a href="#">
+                                                        <img alt="{{value.ItemDescription}}" class="product-thumb" src="/images/FixturesImages/{{value.ItemImage}}" style="width: 90%" />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span data-ng-bind="value.ItemCount">1</span>
+                                                </td>
+                                                <td>
+                                                    <span data-ng-bind="value.UnitCost | currency:''"></span>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                       
-                        
-                    </div> 
-                   
+
+
+                    </div>
+
 
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade stick-up" id="showNoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="margin-top: 100px">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 20px">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 well">
+                        <h5>
+                            You can save your house customization and come back to it if you @Html.ActionLink("login","login","Account").
+                        </h5>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

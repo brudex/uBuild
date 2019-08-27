@@ -381,7 +381,9 @@ namespace uBuildCore
                 var p1 = Predicates.Field<Messages>(f => f.Receipient, Operator.Eq, email);
                 var p2 = Predicates.Field<Messages>(f => f.Sender, Operator.Eq, email);
                 var predicate = Predicates.Group(GroupOperator.Or, p1, p2);
-                return conn.GetList<Messages>(predicate).ToList();
+                List<ISort> sortList = new List<ISort>();
+                sortList.Add(Predicates.Sort<Messages>(x => x.CreateDate, true));
+                return conn.GetList<Messages>(predicate,sortList).ToList();
             }
         }
 

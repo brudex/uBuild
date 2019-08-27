@@ -12,7 +12,7 @@
         vm.init = function (data) {
             console.log('The data is >>>', data);
             vm.uLain = data.ULAIN;
-            if (data.LPS05ClientConfirmation != 3 && data.LPS05ClientConfirmation != 4) {
+            if (data.LPS05ClientConfirmation != 3 && data.LPS06LoanDisbursement == 3) {
                 vm.model.acceptTerms = true;
             }
         }
@@ -76,7 +76,7 @@
                         console.log('the payload for agreed to terms >>>', payload);
                         services.saveClientConfirmation(payload, function (response) {
                             if (response.Status !== "00") {
-                                swal(response.Message);
+                                //swal(response.Message);
                             }
                         });
                     }

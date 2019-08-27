@@ -33,12 +33,12 @@ namespace uBuildCore
                 if (tclient != null)
                 {
                     dataResult["customerNo"] = tclient.CustomerNo;
-                    dataResult["accountNumber"] = string.Format("XXX{0}XXXX",tclient.CustomerNo);
+                    dataResult["accountNumber"] = string.Format("XXX{0}XXXX", tclient.CustomerNo);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error(typeof (AccountProfileHandler), "Errror in T24Customer.GetCustomerBYNumber ", ex);
+                Logger.Error(typeof(AccountProfileHandler), "Errror in T24Customer.GetCustomerBYNumber ", ex);
             }
 
             dataResult["fullName"] = client.FullName();
@@ -60,7 +60,7 @@ namespace uBuildCore
             {
                 tclient = T24Customer.GetCustomerBYAccount(acctNo);
                 string s = JsonConvert.SerializeObject(tclient);
-                if(tclient != null && tclient.MobilePhone != null)
+                if (tclient != null && tclient.MobilePhone != null)
                 {
                     string mobile = tclient.MobilePhone;
                     var otp = SoftTokenService.GenerateSoftToken(acctNo.Trim());
@@ -80,7 +80,7 @@ namespace uBuildCore
             {
                 response.Status = "05";
                 response.Message = ex.Message;
-                Logger.Error(typeof (AccountProfileHandler), "Errror in T24Customer.GetCustomerBYNumber ", ex);
+                Logger.Error(typeof(AccountProfileHandler), "Errror in T24Customer.GetCustomerBYNumber ", ex);
             }
 
             return response;
@@ -131,18 +131,29 @@ namespace uBuildCore
                         infos.ClientId = clientAuth.RecordId;
                         infos.CreatorId = 0;
                         infos.CreatorName = "SYSTEM";
-                        DbHandler.Instance.SaveGhlClientInfos(infos);
-                        response.Status = "00";
-                        response.Message = "Data successfull validated";
-                         
+
+                        try
+                        {
+                            DbHandler.Instance.SaveGhlClientInfos(infos);
+                            response.Status = "00";
+                            response.Message = "Data successfull validated";
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(typeof(AccountProfileHandler), "there was an error updating profile", ex);
+                            response.Status = "03";
+                            response.Message = "Your customer information is already attached to another profile. Kindly contact the bank";
+                        }
+
+
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(typeof (AccountProfileHandler), "there was an error updating profile", ex);
+                    Logger.Error(typeof(AccountProfileHandler), "there was an error updating profile", ex);
                     response.Status = "004";
-                    response.Message = "there was an error updating profile";
+                    response.Message = "There was an error updating profile";
                     return response;
                 }
             }
@@ -151,8 +162,8 @@ namespace uBuildCore
                 response.Status = "03";
                 response.Message = "Invalid verification token";
             }
-            
-            return response; 
+
+            return response;
         }
     }
 }

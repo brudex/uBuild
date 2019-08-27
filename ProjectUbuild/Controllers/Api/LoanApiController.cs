@@ -127,6 +127,8 @@ namespace ProjectUbuild.Controllers.Api
                                 postedFile.SaveAs(filePath);
 
                                 var data = new LoanDocuments();
+                                var docTypes = DbHandler.Instance.GetList<DocTypes>();
+
                                 data.ULAIN = clientUlain;
                                  //data.Description = formValues["DocDescription"];
                                 data.DocumentPath = clientUlain + "/" + tstamp + postedFile.FileName;

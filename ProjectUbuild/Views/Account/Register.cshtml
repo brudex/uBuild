@@ -24,7 +24,7 @@
                         @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", placeholder = "Last name", autocomplete = "off", title = "Please enter a last name here", data_toggle = "tooltip" })
                         @*@Html.TextBoxFor(m => m.Phonenumber, new { @class = "form-control", placeholder = "Phone Number", autocomplete = "off",id="" })*@
                         <div class="input-phone"></div>
-                        @Html.PasswordFor(m => m.Password,new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html="true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", autocomplete = "off", data_toggle = "tooltip", data_html = "true", data_placement = "bottom", title = "<p>Password must :</p>* be at least 6 characters,* have upper and lower case letters and *special characters." })
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", autocomplete = "off" })
                         <p class="">
                             <span> <input type="checkbox" name="checkbox" id="agreementChk" value="Checkbox" /> I agree to your <a onclick="(function() { $('#termsModal').modal('show') })()" href="#termsModal" style="color:red">Terms Of Use</a></span>
@@ -43,6 +43,7 @@
     </div>
     <!--end of container-->
 </section>
+
 <div class="modal fade stick-up" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" style="margin-top: 50px;width:1079px">
         <div class="modal-content">
@@ -247,3 +248,6 @@
         </div>
     </div>
 </div>
+
+
+

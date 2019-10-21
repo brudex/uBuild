@@ -122,8 +122,17 @@
             $('#datepicker-dateOfBirth').datepicker(
                 {
                     endDate: minDate
+                }); 
+
+            $("#datepicker-PermitIssueDate").datepicker(
+                {
+                    endDate: todaysDate
                 });
-                       
+            $("#datepicker-IdIssueDate").datepicker(
+                {
+                    endDate: todaysDate
+                });
+            
         }
 
 

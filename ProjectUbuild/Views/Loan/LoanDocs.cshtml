@@ -75,41 +75,43 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="card-progress" data-ng-show="vm.loadingFile" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
-                            <div class="progress-circle-indeterminate progress-circle-master"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="select-option">
-                                    <i class="ti-angle-down"></i>
-                                    @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"), "Please select document type.", new { ng_model = "vm.uploadDoc.DocType", required = "required" })
-                                </div>
+                        <form ng-submit="vm.uploadFile()">
+                            <div class="card-progress" data-ng-show="vm.loadingFile" style="background-color: rgba(255, 255, 255, 0.8); display: block;">
+                                <div class="progress-circle-indeterminate progress-circle-master"></div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="file" file-model="vm.uploadDoc.myFile" accept=".pdf,.jpg,.jpeg" />
-                                <button class="m-t-20 btn btn-default" ng-click="vm.uploadFile()" title="Please select type of document" data-ng-disabled="!vm.uploadDoc.DocType || !vm.uploadDoc.myFile">Upload Document</button>
-
-                                <div class="panel panel-default m-t-35">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Attention</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li>The maximum file size for uploads is <strong>3MB</strong> </li>
-                                            <li>File types allowed are : PDF,JPG,JPEG</li>
-
-                                        </ul>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        @Html.DropDownList("DocType", new SelectList(Model.loanDocs, "RecordId", "DocTypeName"), "Please select document type.", new { ng_model = "vm.uploadDoc.DocType", required = "required" })
                                     </div>
                                 </div>
-
-                                @*<input type="file" file-model="myFile" accept=".pdf"/>*@
-                                @*<button ng-click="vm.uploadFile()" class="btn btn-primary">upload me</button>*@
-
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="file" file-model="vm.uploadDoc.myFile" accept=".pdf,.jpg,.jpeg" />
+                                    <button class="m-t-20 btn btn-default" type="submit" title="Please select type of document" data-ng-disabled="!vm.uploadDoc.DocType || !vm.uploadDoc.myFile">Upload Document</button>
+
+                                    <div class="panel panel-default m-t-35">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Attention</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>The maximum file size for uploads is <strong>3MB</strong> </li>
+                                                <li>File types allowed are : PDF,JPG,JPEG</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    @*<input type="file" file-model="myFile" accept=".pdf"/>*@
+                                    @*<button ng-click="vm.uploadFile()" class="btn btn-primary">upload me</button>*@
+
+                                </div>
+                            </div>
+                        </form>
 
                     </div>
 

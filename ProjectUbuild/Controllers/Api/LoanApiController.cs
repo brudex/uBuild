@@ -158,7 +158,8 @@ namespace ProjectUbuild.Controllers.Api
             catch (Exception ex)
             {
                 Logger.Error(this, "Error uploading document", ex);
-                return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = "File could not be uploaded . please try again. File might be larger than 4MB" });
+
+                return Request.CreateResponse(HttpStatusCode.OK, new ServiceResponse() { Status = "01", Message = "File could not be uploaded . please try again. File might be larger than 3MB" });
             }
         }
 
